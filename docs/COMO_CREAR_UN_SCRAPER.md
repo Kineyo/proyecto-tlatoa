@@ -52,18 +52,104 @@ final class CongresoEjemploScraperService
 ```
 
 ## 4. Checklist del PR
-- [ ] `php tools/gateway.php lint "<archivos>"` sin errores.
+- [ ] Validación de sintaxis sin errores según tu OS.
 - [ ] Cada registro tiene `metadata.fuente_url` y `metadata.fecha_extraccion`.
 - [ ] Rate limit ≥ 1000 ms; sin peticiones en paralelo.
 - [ ] Sin datos personales no públicos.
 - [ ] Fila actualizada en `docs/FUENTES.md`.
 
-## 5. Prompt sugerido para tu IA
+## 5. Compilación, Ejecución y Prompts de Agentes según tu OS
+
+<details open>
+<summary><strong>🛠️ ¿Cómo compilar / ejecutar tu scraper según tu OS?</strong></summary>
+<br>
+
+<details>
+<summary><strong>🐧 Linux (Bash / Zsh)</strong></summary>
+
+```bash
+# Validar sintaxis del scraper PHP
+php tools/gateway.php lint "src/Services/CongresoEjemploScraperService.php,tools/core/ScraperRouter.php"
+
+# Ejecutar el scraper desde el gateway CLI
+php tools/gateway.php scrape congreso-ejemplo
+
+# Si integras el nuevo dataset en el servicio activo Python (FastAPI), verifica su compilación:
+python3 -m py_compile app/services/data_service.py
 ```
-Lee AGENTS.md, docs/DATA_SCHEMA.md y src/Services/SilIngestService.php.
-Crea un scraper en src/Services/ para <URL del portal> que extraiga <datos>
-de la legislatura <N>, usando HttpClient y LegisladorDTO, PHP 8.1 con
-strict_types, sin dependencias externas, parseando con DOMDocument/DOMXPath.
-Incluye metadata.fuente_url y fecha_extraccion. Archivo < 400 líneas.
-Registra la fuente en tools/core/ScraperRouter.php.
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para Linux)</strong></summary>
+
+```text
+Lee `AGENTS.md`, `docs/DATA_SCHEMA.md` y `src/Services/SilIngestService.php` (entorno Linux, rutas POSIX `/`).
+1. Crea un scraper en `src/Services/<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
+2. Usa `PulsoCivico\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
+3. Guarda el dataset en `storage/data/json/<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
+4. Registra la fuente en `tools/core/ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app/services/data_service.py`.
+5. Valida antes de finalizar con:
+   `php tools/gateway.php lint "src/Services/<Fuente>ScraperService.php,tools/core/ScraperRouter.php"`
 ```
+</details>
+</details>
+
+<details>
+<summary><strong>🪟 Windows (PowerShell)</strong></summary>
+
+```powershell
+# Validar sintaxis del scraper con el runner centralizado de Windows
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "src\Services\CongresoEjemploScraperService.php,tools\core\ScraperRouter.php"
+
+# Ejecutar el scraper desde el runner centralizado
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 scrape congreso-ejemplo
+
+# Si integras el nuevo dataset en el servicio activo Python (FastAPI), verifica su compilación:
+python -m py_compile app\services\data_service.py
+```
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para Windows)</strong></summary>
+
+```text
+Lee `AGENTS.md`, `docs\DATA_SCHEMA.md` y `src\Services\SilIngestService.php` (entorno Windows PowerShell, rutas con `\`).
+1. Crea un scraper en `src\Services\<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
+2. Usa `PulsoCivico\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
+3. Guarda el dataset en `storage\data\json\<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
+4. Registra la fuente en `tools\core\ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app\services\data_service.py`.
+5. Valida antes de finalizar con el runner centralizado:
+   `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "src\Services\<Fuente>ScraperService.php,tools\core\ScraperRouter.php"`
+```
+</details>
+</details>
+
+<details>
+<summary><strong>🍎 macOS (Zsh / Bash)</strong></summary>
+
+```zsh
+# Validar sintaxis del scraper PHP
+php tools/gateway.php lint "src/Services/CongresoEjemploScraperService.php,tools/core/ScraperRouter.php"
+
+# Ejecutar el scraper desde el gateway CLI
+php tools/gateway.php scrape congreso-ejemplo
+
+# Si integras el nuevo dataset en el servicio activo Python (FastAPI), verifica su compilación:
+python3 -m py_compile app/services/data_service.py
+```
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para macOS)</strong></summary>
+
+```text
+Lee `AGENTS.md`, `docs/DATA_SCHEMA.md` y `src/Services/SilIngestService.php` (entorno macOS, rutas POSIX `/`).
+1. Crea un scraper en `src/Services/<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
+2. Usa `PulsoCivico\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
+3. Guarda el dataset en `storage/data/json/<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
+4. Registra la fuente en `tools/core/ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app/services/data_service.py`.
+5. Valida antes de finalizar con:
+   `php tools/gateway.php lint "src/Services/<Fuente>ScraperService.php,tools/core/ScraperRouter.php"`
+```
+</details>
+</details>
+
+</details>
+
