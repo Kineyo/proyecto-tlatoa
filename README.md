@@ -1,10 +1,6 @@
 # 🇲🇽 Pulso Cívico — Guía y Documentación del Proyecto
 
 <p align="center">
-  <img src="assets/og-cover.png" alt="Pulso Cívico — Plataforma de Transparencia Política" width="700">
-</p>
-
-<p align="center">
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+"></a>
   <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"></a>
   <a href="https://jinja.palletsprojects.com/"><img src="https://img.shields.io/badge/Jinja2-Plantillas-B41717?style=for-the-badge&logo=jinja&logoColor=white" alt="Jinja2"></a>
@@ -14,6 +10,12 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/Licencia-AGPL--3.0-blue.svg?style=for-the-badge" alt="Licencia AGPL-3.0"></a>
   <a href="DATA_LICENSE.md"><img src="https://img.shields.io/badge/Datos-CC%20BY%204.0-lightgrey.svg?style=for-the-badge" alt="CC BY 4.0"></a>
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-Bienvenidas-brightgreen.svg?style=for-the-badge" alt="PRs Bienvenidas"></a>
+</p>
+
+
+
+<p align="center">
+  <img src="assets/og-cover.png" alt="Pulso Cívico — Plataforma de Transparencia Política" width="700">
 </p>
 
 <p align="center">
@@ -54,6 +56,11 @@ Cruzamos **datos oficiales del gobierno** con **noticias** para mostrar el histo
 ---
 
 ## 🧭 ¿Qué hay hoy y qué es lo que tenemos?
+
+
+<p align="center">
+  <img src="assets/Mapa_CDMX.png" alt="Mapa de la Republica Mexicana" width="700">
+</p>
 
 ### ✅ Cobertura Consolidada en el Repositorio:
 - **Poder Legislativo Federal (Diputados y Senadores):** 326 JSONs / 10,983 registros correspondientes a las Legislaturas 57 a 66 (1997–2027). Incluye comisiones, asistencias parlamentarias, suplentes y trayectorias.
