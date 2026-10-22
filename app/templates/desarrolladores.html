@@ -1,0 +1,276 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="breadcrumb-ios">
+    <ol class="breadcrumb mb-3">
+        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Desarrolladores y Agentes IA</li>
+    </ol>
+</nav>
+
+<!-- Hero Section Desarrolladores -->
+<div class="card-civic p-4 p-md-5 mb-4 border shadow-sm">
+    <div class="row align-items-center">
+        <div class="col-lg-8">
+            <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary small fw-semibold mb-3">
+                <i class="bi bi-terminal"></i> Código Abierto &bull; FastAPI + Jinja2 + Datos Abiertos JSON
+            </div>
+            <h1 class="display-6 fw-bold text-dark mb-3">
+                Guía para Nuevos Desarrolladores
+            </h1>
+            <p class="lead text-secondary mb-3" style="font-size: 1.05rem; line-height: 1.6;">
+                Levanta <strong>{{ app_name }}</strong> en tu equipo local en menos de 2 minutos. Selecciona tu sistema operativo para ver los comandos adaptados y despliega la sublista <strong>Agentes</strong> para copiar el prompt con las rutas exactas de tu entorno.
+            </p>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <span class="badge bg-dark text-white py-2 px-3 rounded-pill">
+                    <i class="bi bi-filetype-py me-1"></i> Python 3.10+ (FastAPI Activo)
+                </span>
+                <span class="badge bg-light text-secondary border py-2 px-3 rounded-pill">
+                    <i class="bi bi-cpu me-1"></i> Prompts Listos para Agentes IA
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="p-4 bg-light rounded-4 border">
+                <h6 class="fw-bold text-dark mb-2">
+                    <i class="bi bi-folder2-open text-primary me-1"></i> Mapa Rápido del Entorno Activo
+                </h6>
+                <ul class="list-unstyled small text-secondary mb-0 d-flex flex-column gap-2">
+                    <li><code>app/main.py</code> &mdash; Punto de entrada FastAPI</li>
+                    <li><code>app/routers/</code> &mdash; Endpoints web y API</li>
+                    <li><code>app/services/</code> &mdash; Lógica y DataService</li>
+                    <li><code>app/templates/</code> &mdash; Vistas Jinja2 + Bootstrap</li>
+                    <li><code>storage/data/json/</code> &mdash; +3,200 datasets JSON</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Desplegable Principal: ¿Cómo compilar según tu OS? -->
+<div class="card-civic p-4 mb-5 border shadow-sm">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+        <div>
+            <h4 class="fw-bold text-dark mb-1">
+                <i class="bi bi-sliders text-primary me-2"></i>¿Cómo compilar y ejecutar según tu OS?
+            </h4>
+            <p class="text-secondary small mb-0">
+                Despliega tu sistema operativo para ver los comandos de terminal y la sublista <strong>Agentes</strong>.
+            </p>
+        </div>
+    </div>
+
+    <div class="accordion" id="accordionOS">
+        <!-- 1. LINUX -->
+        <div class="accordion-item border rounded-3 mb-3 overflow-hidden">
+            <h2 class="accordion-header" id="headingLinux">
+                <button class="accordion-button fw-bold text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLinux" aria-expanded="true" aria-controls="collapseLinux">
+                    <i class="bi bi-ubuntu text-primary me-2 fs-5"></i> 🐧 Linux (Ubuntu / Debian / Fedora / Arch)
+                </button>
+            </h2>
+            <div id="collapseLinux" class="accordion-collapse collapse show" aria-labelledby="headingLinux" data-bs-parent="#accordionOS">
+                <div class="accordion-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="small fw-semibold text-secondary">Comandos de instalación, ejecución y verificación (Bash / Zsh):</span>
+                        <button class="btn btn-sm btn-outline-secondary rounded-pill py-0 px-2 btn-copy-block" data-target="cmd-linux">
+                            <i class="bi bi-clipboard me-1"></i>Copiar comandos
+                        </button>
+                    </div>
+                    <pre id="cmd-linux" class="bg-dark text-light p-3 rounded-3 small mb-3"><code># 1. Copiar configuración de entorno
+cp .env.example .env
+
+# 2. Crear entorno virtual e instalar dependencias
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# 3. Iniciar servidor FastAPI con recarga en vivo
+uvicorn app.main:app --reload --port 8000
+
+# 4. Validar sintaxis Python y chequeo de salud CLI
+python3 -m py_compile app/main.py app/routers/web.py
+php tools/gateway.php health</code></pre>
+
+                    <!-- Sublista desplegable: Agentes (Linux) -->
+                    <div class="accordion" id="subAccordionLinux">
+                        <div class="accordion-item border border-primary-subtle rounded-3">
+                            <h2 class="accordion-header" id="headingAgentLinux">
+                                <button class="accordion-button collapsed bg-primary-subtle text-primary fw-semibold py-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAgentLinux" aria-expanded="false" aria-controls="collapseAgentLinux">
+                                    <i class="bi bi-robot me-2"></i> Agentes — Prompt adaptado a rutas de Linux
+                                </button>
+                            </h2>
+                            <div id="collapseAgentLinux" class="accordion-collapse collapse" aria-labelledby="headingAgentLinux" data-bs-parent="#subAccordionLinux">
+                                <div class="accordion-body bg-white">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="small text-muted">Pega este prompt al inicio de tu conversación con Cursor, Claude, ChatGPT, Gemini o Copilot:</span>
+                                        <button class="btn btn-sm btn-primary rounded-pill py-0 px-3 btn-copy-block" data-target="prompt-linux">
+                                            <i class="bi bi-clipboard-check me-1"></i>Copiar Prompt
+                                        </button>
+                                    </div>
+                                    <pre id="prompt-linux" class="bg-light border p-3 rounded-3 small mb-0" style="white-space: pre-wrap;"><code>Estás trabajando en Pulso Cívico sobre Linux (entorno POSIX con rutas `/`).
+REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
+1. El servidor activo corre en Python / FastAPI en `app/main.py` sirviendo plantillas Jinja2 desde `app/templates/`.
+2. Todo desarrollo nuevo de backend, endpoints y vistas DEBE implementarse en `app/routers/`, `app/services/` y `app/templates/` (NO en `src/` ni `views/` salvo herramientas CLI).
+3. Los datasets JSON viven en `storage/data/json/`.
+4. Para verificar sintaxis y estado en terminal usa:
+   - `python3 -m py_compile app/main.py app/routers/web.py`
+   - `php tools/gateway.php lint "src/Services/MiArchivo.php"`
+   - `php tools/gateway.php health`
+   - `php tools/gateway.php git:status`
+5. Mantén neutralidad estricta, archivos &lt; 400 líneas, enlaza siempre `fuente_url` oficial (.gob.mx) y nunca uses `git add .`.</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. WINDOWS -->
+        <div class="accordion-item border rounded-3 mb-3 overflow-hidden">
+            <h2 class="accordion-header" id="headingWindows">
+                <button class="accordion-button collapsed fw-bold text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWindows" aria-expanded="false" aria-controls="collapseWindows">
+                    <i class="bi bi-windows text-primary me-2 fs-5"></i> 🪟 Windows (PowerShell / Windows Terminal)
+                </button>
+            </h2>
+            <div id="collapseWindows" class="accordion-collapse collapse" aria-labelledby="headingWindows" data-bs-parent="#accordionOS">
+                <div class="accordion-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="small fw-semibold text-secondary">Comandos de instalación, ejecución y runner centralizado (PowerShell):</span>
+                        <button class="btn btn-sm btn-outline-secondary rounded-pill py-0 px-2 btn-copy-block" data-target="cmd-windows">
+                            <i class="bi bi-clipboard me-1"></i>Copiar comandos
+                        </button>
+                    </div>
+                    <pre id="cmd-windows" class="bg-dark text-light p-3 rounded-3 small mb-3"><code># 1. Copiar configuración de entorno
+Copy-Item .env.example .env
+
+# 2. Crear entorno virtual e instalar dependencias
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+
+# 3. Iniciar servidor FastAPI con recarga en vivo
+uvicorn app.main:app --reload --port 8000
+
+# 4. Validar sintaxis y salud mediante el runner centralizado de Windows
+python -m py_compile app\main.py app\routers\web.py
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health</code></pre>
+
+                    <!-- Sublista desplegable: Agentes (Windows) -->
+                    <div class="accordion" id="subAccordionWindows">
+                        <div class="accordion-item border border-primary-subtle rounded-3">
+                            <h2 class="accordion-header" id="headingAgentWindows">
+                                <button class="accordion-button collapsed bg-primary-subtle text-primary fw-semibold py-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAgentWindows" aria-expanded="false" aria-controls="collapseAgentWindows">
+                                    <i class="bi bi-robot me-2"></i> Agentes — Prompt adaptado a rutas de Windows
+                                </button>
+                            </h2>
+                            <div id="collapseAgentWindows" class="accordion-collapse collapse" aria-labelledby="headingAgentWindows" data-bs-parent="#subAccordionWindows">
+                                <div class="accordion-body bg-white">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="small text-muted">Pega este prompt al inicio de tu conversación con Cursor, Claude, ChatGPT, Gemini o Copilot:</span>
+                                        <button class="btn btn-sm btn-primary rounded-pill py-0 px-3 btn-copy-block" data-target="prompt-windows">
+                                            <i class="bi bi-clipboard-check me-1"></i>Copiar Prompt
+                                        </button>
+                                    </div>
+                                    <pre id="prompt-windows" class="bg-light border p-3 rounded-3 small mb-0" style="white-space: pre-wrap;"><code>Estás trabajando en Pulso Cívico sobre Windows (PowerShell con rutas `\`).
+REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
+1. El servidor activo corre en Python / FastAPI en `app\main.py` sirviendo plantillas Jinja2 desde `app\templates\`.
+2. Todo desarrollo nuevo de backend, endpoints y vistas DEBE implementarse en `app\routers\`, `app\services\` y `app\templates\` (NO en `src\` ni `views\` salvo herramientas CLI).
+3. Los datasets JSON viven en `storage\data\json\`.
+4. Toda operación interna de consola DEBE ejecutarse con el runner centralizado:
+   - `python -m py_compile app\main.py app\routers\web.py`
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "src\Services\MiArchivo.php"`
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health`
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 git:status`
+5. Mantén neutralidad estricta, archivos &lt; 400 líneas, enlaza siempre `fuente_url` oficial (.gob.mx) y nunca uses `git add .`.</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. MACOS -->
+        <div class="accordion-item border rounded-3 overflow-hidden">
+            <h2 class="accordion-header" id="headingMac">
+                <button class="accordion-button collapsed fw-bold text-dark bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMac" aria-expanded="false" aria-controls="collapseMac">
+                    <i class="bi bi-apple text-primary me-2 fs-5"></i> 🍎 macOS (Zsh / Terminal)
+                </button>
+            </h2>
+            <div id="collapseMac" class="accordion-collapse collapse" aria-labelledby="headingMac" data-bs-parent="#accordionOS">
+                <div class="accordion-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="small fw-semibold text-secondary">Comandos de instalación, ejecución y verificación (Zsh):</span>
+                        <button class="btn btn-sm btn-outline-secondary rounded-pill py-0 px-2 btn-copy-block" data-target="cmd-mac">
+                            <i class="bi bi-clipboard me-1"></i>Copiar comandos
+                        </button>
+                    </div>
+                    <pre id="cmd-mac" class="bg-dark text-light p-3 rounded-3 small mb-3"><code># 1. Copiar configuración de entorno
+cp .env.example .env
+
+# 2. Crear entorno virtual e instalar dependencias
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# 3. Iniciar servidor FastAPI con recarga en vivo
+uvicorn app.main:app --reload --port 8000
+
+# 4. Validar sintaxis Python y chequeo de salud CLI
+python3 -m py_compile app/main.py app/routers/web.py
+php tools/gateway.php health</code></pre>
+
+                    <!-- Sublista desplegable: Agentes (macOS) -->
+                    <div class="accordion" id="subAccordionMac">
+                        <div class="accordion-item border border-primary-subtle rounded-3">
+                            <h2 class="accordion-header" id="headingAgentMac">
+                                <button class="accordion-button collapsed bg-primary-subtle text-primary fw-semibold py-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAgentMac" aria-expanded="false" aria-controls="collapseAgentMac">
+                                    <i class="bi bi-robot me-2"></i> Agentes — Prompt adaptado a rutas de macOS
+                                </button>
+                            </h2>
+                            <div id="collapseAgentMac" class="accordion-collapse collapse" aria-labelledby="headingAgentMac" data-bs-parent="#subAccordionMac">
+                                <div class="accordion-body bg-white">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="small text-muted">Pega este prompt al inicio de tu conversación con Cursor, Claude, ChatGPT, Gemini o Copilot:</span>
+                                        <button class="btn btn-sm btn-primary rounded-pill py-0 px-3 btn-copy-block" data-target="prompt-mac">
+                                            <i class="bi bi-clipboard-check me-1"></i>Copiar Prompt
+                                        </button>
+                                    </div>
+                                    <pre id="prompt-mac" class="bg-light border p-3 rounded-3 small mb-0" style="white-space: pre-wrap;"><code>Estás trabajando en Pulso Cívico sobre macOS (Zsh / entorno POSIX con rutas `/`).
+REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
+1. El servidor activo corre en Python / FastAPI en `app/main.py` sirviendo plantillas Jinja2 desde `app/templates/`.
+2. Todo desarrollo nuevo de backend, endpoints y vistas DEBE implementarse en `app/routers/`, `app/services/` y `app/templates/` (NO en `src/` ni `views/` salvo herramientas CLI).
+3. Los datasets JSON viven en `storage/data/json/`.
+4. Para verificar sintaxis y estado en terminal usa:
+   - `python3 -m py_compile app/main.py app/routers/web.py`
+   - `php tools/gateway.php lint "src/Services/MiArchivo.php"`
+   - `php tools/gateway.php health`
+   - `php tools/gateway.php git:status`
+5. Mantén neutralidad estricta, archivos &lt; 400 líneas, enlaza siempre `fuente_url` oficial (.gob.mx) y nunca uses `git add .`.</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.btn-copy-block').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const targetId = btn.getAttribute('data-target');
+        const el = document.getElementById(targetId);
+        if (!el) return;
+        navigator.clipboard.writeText(el.innerText).then(function() {
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i class="bi bi-check2 me-1"></i>¡Copiado!';
+            setTimeout(function() { btn.innerHTML = original; }, 1800);
+        });
+    });
+});
+</script>
+{% endblock %}

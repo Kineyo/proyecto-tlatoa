@@ -239,6 +239,12 @@
                         <span>Explorador</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link-ios {% if request.url.path.startswith('/desarrolladores') %}active{% endif %}" href="/desarrolladores">
+                        <i class="bi bi-terminal"></i>
+                        <span>Desarrolladores</span>
+                    </a>
+                </li>
             </ul>
 
             <!-- Herramientas a la Derecha: Selector de Legislatura + Buscador Compacto -->
@@ -426,6 +432,7 @@
                 <ul class="list-unstyled small d-flex flex-column gap-2 mb-3">
                     <li><a href="/explorador" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-table me-1"></i>Explorador de Datos</a></li>
                     <li><a href="/legislaturas" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-clock-history me-1"></i>Archivo Histórico (1997–2027)</a></li>
+                    <li><a href="/desarrolladores" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-terminal me-1"></i>Desarrolladores y Agentes IA</a></li>
                     <li><a href="/docs" target="_blank" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-code-slash me-1"></i>API REST Documentation</a></li>
                 </ul>
                 <div class="p-2 bg-light rounded-3 border">

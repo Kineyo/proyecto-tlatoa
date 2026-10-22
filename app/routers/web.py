@@ -84,6 +84,22 @@ async def metodologia_view(request: Request):
         }
     )
 
+@router.get("/desarrolladores")
+async def desarrolladores_view(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="desarrolladores.html",
+        context={
+            "seo": {
+                "title": f"Guía para Desarrolladores y Agentes IA | {settings.APP_NAME}",
+                "description": f"Cómo compilar y ejecutar {settings.APP_NAME} según tu sistema operativo (Linux, Windows, macOS) y prompts listos para asistentes de IA.",
+                "canonical": "/desarrolladores"
+            },
+            "legislatura": 66,
+            "meta_legislatura": data_service.LEGISLATURAS_CATALOG.get(66)
+        }
+    )
+
 @router.get("/legislaturas")
 async def legislaturas_index_view(request: Request):
     return templates.TemplateResponse(
