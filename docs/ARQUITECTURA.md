@@ -8,6 +8,32 @@
 
 ---
 
+## Modelo Conceptual: Grafo Cívico y Desacoplamiento Persona vs. Mandato
+
+La identidad de un actor político trasciende a una sola asamblea o legislatura. Para evitar duplicidades y permitir auditorías históricas a lo largo del tiempo, la plataforma desacopla la persona física de sus cargos temporales:
+
+* **Entidad `politicos` (Persona Invariante):**  
+  Representa a la persona física: nombre oficial, fotografía principal, semblanza curricular, escolaridad y slug SEO permanente (`/politicos/{slug}`).
+* **Entidad `mandatos_legislativos` (Cargo Temporal en una Legislatura):**  
+  Representa el ejercicio del cargo en un periodo constitucional determinado:
+  - Cámara (Diputados / Senadores / Congreso Local) y Legislatura (ej. LXVI).
+  - Grupo parlamentario o bancada (permite rastrear el **"Detector de Chapulines"** y cambios de partido).
+  - Principio de elección (Mayoría Relativa, Representación Proporcional, Primera Minoría).
+  - Entidad federativa y distrito electoral.
+  - Rol de mandato: **Propietario** o **Suplente**. Si es suplente, enlaza al mandato titular que cubre (`titular_mandato_id`).
+
+### Relaciones del Grafo:
+```mermaid
+flowchart TD
+    LEG["Legislatura"] --> MAND["Mandato Legislativo"]
+    POL["Persona / Político"] --> MAND
+    MAND --> PART["Partido Político (Bancada)"]
+    MAND --> COM["Comisión Legislativa"]
+    MAND -. "es suplente de" .-> TIT["Mandato Propietario"]
+```
+
+---
+
 ## Flujo de Datos del Sistema
 
 ```mermaid
@@ -83,6 +109,24 @@ requirements.txt         Dependencias Python (FastAPI, uvicorn, jinja2, orjson, 
 | `/estudios`, `/estudios/{categoria}` | FastAPI + Jinja2 | Análisis de paridad de género, pluralidad y escolaridad parlamentaria |
 | `/api/buscar`, `/api/politicos` | FastAPI (JSON) | API de autocompletado y búsqueda parametrizada |
 | `/sitemap.xml`, `/llms.txt` | FastAPI | Indexación SEO y contexto para agentes de Inteligencia Artificial |
+
+---
+
+## Requerimientos del Sistema (RF y RNF)
+
+### Requerimientos Funcionales (RF)
+* **RF-01 (Perfil Integral del Político):** Datos biográficos, contacto oficial, fotografía oficial y semáforos de actividad parlamentaria.
+* **RF-02 (Red Bidireccional de Suplencias):** Enlace mutuo entre titular y suplente con detalle del periodo de asunción.
+* **RF-03 (Navegación de Comisiones):** Detalle de integrantes clasificados por cargo (Presidente, Secretarios, Integrantes).
+* **RF-04 (Línea de Tiempo de Bancadas / Chapulineo):** Registro cronológico de cambios de partido a lo largo de legislaturas.
+* **RF-05 (Auditoría Criptográfica):** Todo registro incluye `fuente_url` (`.gob.mx`) y hash SHA-256 de respaldo.
+* **RF-06 (Búsqueda Rápida):** Búsqueda instantánea en cliente/servidor por nombre, estado, distrito o comisión (`Ctrl+K`).
+
+### Requerimientos No Funcionales (RNF)
+* **RNF-01 (Rendimiento Extremo):** Renderizado SSR en menos de 500 ms en redes móviles; consultas en memoria resueltas en < 15 ms gracias al motor FastAPI con orjson.
+* **RNF-02 (Arquitectura Sin Dependencias Pesadas):** Cero bases de datos complejas obligatorias; frontend ágil con Bootstrap 5.3 vía CDN y JavaScript Vanilla nativo.
+* **RNF-03 (SEO y Rich Snippets):** Metadatos OpenGraph para redes sociales y marcado estructurado Schema.org (`Person`, `GovernmentOrganization`).
+* **RNF-04 (Blindaje de Neutralidad):** Cero juicios o descalificaciones. Solo datos oficiales trazables a portales gubernamentales.
 
 ---
 
