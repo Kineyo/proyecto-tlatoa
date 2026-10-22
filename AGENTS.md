@@ -36,12 +36,113 @@
 10. **Scrapers**: respetar `rate_limit_ms` (≥ 1000 ms), no saturar servidores de gobierno, guardar siempre `fuente_url` y `fecha_extraccion`.
 11. **Datos personales**: solo información pública del cargo (nada de domicilios particulares, familiares ni datos sensibles).
 
-## Verificación antes de entregar
+## Verificación y Compilación según tu OS
+
+<details open>
+<summary><strong>🛠️ ¿Cómo compilar y verificar según tu OS?</strong></summary>
+<br>
+
+<details>
+<summary><strong>🐧 Linux (Bash / Zsh)</strong></summary>
+
 ```bash
+# Levantar servidor activo (FastAPI + Jinja2)
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+
+# Validar sintaxis Python y PHP antes de entregar
+python3 -m py_compile app/main.py app/routers/web.py
 php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"
 php tools/gateway.php health
 ```
-En Windows también: `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "<archivos>"`
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para Linux)</strong></summary>
+
+```text
+Estás en Pulso Cívico ejecutándose sobre Linux (rutas POSIX con `/`).
+1. El entorno activo es Python (FastAPI + Jinja2) en `app/main.py`.
+2. Desarrolla endpoints en `app/routers/`, lógica en `app/services/` y vistas en `app/templates/`. No edites `src/` ni `views/` para cambios de UI o backend web activo.
+3. Los datasets residen en `storage/data/json/`.
+4. Para verificar sintaxis y estado usa:
+   - `python3 -m py_compile <archivos_python>`
+   - `php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"`
+   - `php tools/gateway.php health`
+   - `php tools/gateway.php git:status`
+5. Cumple neutralidad absoluta, archivos < 400 líneas y commits granulares sin `git add .`.
+```
+</details>
+</details>
+
+<details>
+<summary><strong>🪟 Windows (PowerShell / CMD)</strong></summary>
+
+```powershell
+# Levantar servidor activo (FastAPI + Jinja2)
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+
+# Validar sintaxis Python y PHP con el runner centralizado
+python -m py_compile app\main.py app\routers\web.py
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "ruta\archivo1.php,ruta\archivo2.php"
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health
+```
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para Windows)</strong></summary>
+
+```text
+Estás en Pulso Cívico ejecutándose sobre Windows (PowerShell, rutas con `\`).
+1. El entorno activo es Python (FastAPI + Jinja2) en `app\main.py`.
+2. Desarrolla endpoints en `app\routers\`, lógica en `app\services\` y vistas en `app\templates\`. No edites `src\` ni `views\` para cambios de UI o backend web activo.
+3. Los datasets residen en `storage\data\json\`.
+4. Ejecuta toda validación e inspección mediante el runner centralizado:
+   - `python -m py_compile <archivos_python>`
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "ruta\archivo1.php,ruta\archivo2.php"`
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health`
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 git:status`
+5. Cumple neutralidad absoluta, archivos < 400 líneas y commits granulares sin `git add .`.
+```
+</details>
+</details>
+
+<details>
+<summary><strong>🍎 macOS (Zsh / Bash)</strong></summary>
+
+```zsh
+# Levantar servidor activo (FastAPI + Jinja2)
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+
+# Validar sintaxis Python y PHP antes de entregar
+python3 -m py_compile app/main.py app/routers/web.py
+php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"
+php tools/gateway.php health
+```
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para macOS)</strong></summary>
+
+```text
+Estás en Pulso Cívico ejecutándose sobre macOS (rutas POSIX con `/`).
+1. El entorno activo es Python (FastAPI + Jinja2) en `app/main.py`.
+2. Desarrolla endpoints en `app/routers/`, lógica en `app/services/` y vistas en `app/templates/`. No edites `src/` ni `views/` para cambios de UI o backend web activo.
+3. Los datasets residen en `storage/data/json/`.
+4. Para verificar sintaxis y estado usa:
+   - `python3 -m py_compile <archivos_python>`
+   - `php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"`
+   - `php tools/gateway.php health`
+   - `php tools/gateway.php git:status`
+5. Cumple neutralidad absoluta, archivos < 400 líneas y commits granulares sin `git add .`.
+```
+</details>
+</details>
+
+</details>
 
 Si hay error de sintaxis, **corregirlo antes de proponer el cambio**.
 
