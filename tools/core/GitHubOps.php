@@ -6,7 +6,7 @@ namespace PulsoCivico\Tools;
 class GitHubOps
 {
     private const API_BASE = 'https://api.github.com';
-    private const DEFAULT_REPO = 'elpulsocivico/pulso-civico';
+    private const DEFAULT_REPO = 'Kineyo/pulso-civico';
 
     private static function getToken(): string
     {

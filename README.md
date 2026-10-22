@@ -1,5 +1,12 @@
 # 🇲🇽 Pulso Cívico — Guía y Documentación del Proyecto
 
+> [!IMPORTANT]
+> ### ⚖️ Aviso Legal, Identidad y Licencia GNU AGPLv3 (Octubre de 2026)
+> - **Bifurcación Independiente (Hard Fork):** Esta es una bifurcación independiente (Hard Fork) mantenida y modificada por **Kineyo (Alex)** a partir de **octubre de 2026**.
+> - **Visión del Proyecto:** Este proyecto está enfocado en expandir Pulso Cívico a todas las plataformas y lenguajes de programación posibles (incluyendo clientes nativos móviles como Android, escritorio y nuevas arquitecturas) para garantizar que sea accesible para cualquier persona sin barreras técnicas.
+> - **Cumplimiento GNU AGPLv3:** Se conserva y reconoce el copyright original &copy; 2024–2026 de los autores originales del código base. Las modificaciones y nuevas características están bajo copyright &copy; 2026 Kineyo (Alex). Todo el proyecto se distribuye bajo la licencia **GNU Affero General Public License v3.0 (AGPLv3)**.
+> - **Disponibilidad de Código Fuente (Sección 13):** En estricto cumplimiento de la Sección 13 de la AGPLv3, el código fuente completo y correspondiente de este proyecto está disponible de forma libre y gratuita en el repositorio oficial: **[https://github.com/Kineyo/pulso-civico](https://github.com/Kineyo/pulso-civico)**. Consulta [`NOTICE.md`](NOTICE.md) y [`LICENSE`](LICENSE).
+
 <p align="center">
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+"></a>
   <a href="https://fastapi.tiangolo.com/"><img src="https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"></a>
@@ -280,7 +287,7 @@ Para colaborar con tus cambios de manera ordenada y sin fricciones, se utiliza e
 ```
 
 ### Paso 1: Crear tu Fork en GitHub
-1. Ve a [https://github.com/elpulsocivico/pulso-civico](https://github.com/elpulsocivico/pulso-civico).
+1. Ve a [https://github.com/Kineyo/pulso-civico](https://github.com/Kineyo/pulso-civico).
 2. Haz clic en el botón superior derecho **"Fork"**.
 3. Confirma la creación en tu cuenta personal (quedará como `https://github.com/<tu-usuario>/pulso-civico`).
 
@@ -295,7 +302,7 @@ git remote -v
 
 Si aún no tienes configurados `origin` y `upstream`:
 ```bash
-# 1. Renombra el repositorio principal como 'upstream' (fuente original)
+# 1. Renombra el repositorio principal como 'upstream' (fuente de referencia)
 git remote rename origin upstream
 
 # 2. Agrega tu Fork personal como 'origin' (reemplaza <tu-usuario> con tu cuenta de GitHub)
@@ -306,8 +313,8 @@ Deberás ver ambos configurados:
 ```text
 origin    https://github.com/<tu-usuario>/pulso-civico.git (fetch)
 origin    https://github.com/<tu-usuario>/pulso-civico.git (push)
-upstream  https://github.com/elpulsocivico/pulso-civico.git (fetch)
-upstream  https://github.com/elpulsocivico/pulso-civico.git (push)
+upstream  https://github.com/Kineyo/pulso-civico.git (fetch)
+upstream  https://github.com/Kineyo/pulso-civico.git (push)
 ```
 
 ---
@@ -392,7 +399,7 @@ git push -u origin docs/mejora-documentacion
 
 1. Ve a tu repositorio en GitHub: `https://github.com/<tu-usuario>/pulso-civico`.
 2. Verás un cartel verde con el botón **"Compare & pull request"**. Haz clic en él.
-3. Asegúrate de que la rama base sea `elpulsocivico/pulso-civico` en `main`.
+3. Asegúrate de que la rama base sea `Kineyo/pulso-civico` en `main`.
 4. Llena la plantilla del Pull Request describiendo los cambios de forma clara y concisa.
 5. Haz clic en **"Create pull request"**.
 

@@ -28,6 +28,7 @@ $searchApiUrl = Router::url('/api/buscar');
                 <button type="button" class="btn btn-link p-0 text-secondary text-decoration-none small me-3" data-bs-toggle="modal" data-bs-target="#modalManifiesto" title="Conoce nuestro Manifiesto de Neutralidad"><i class="bi bi-shield-check text-primary me-1"></i>Manifiesto</button>
                 <a href="<?= Router::url('/sitemap.xml') ?>" class="text-secondary text-decoration-none small me-3" target="_blank">Sitemap</a>
                 <a href="<?= Router::url('/llms.txt') ?>" class="text-secondary text-decoration-none small me-3" target="_blank" title="Guía para modelos de IA">LLMs.txt</a>
+                <a href="https://github.com/Kineyo/pulso-civico" class="text-secondary text-decoration-none small me-3" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>GitHub</a>
                 <button type="button" class="btn btn-link p-0 text-secondary text-decoration-none small btn-reportar-anomalia" data-origen-tipo="general" data-origen-id="sitio-web" data-origen-nombre="Portal Pulso Cívico" title="Reportar anomalía o dato inconsistente"><i class="bi bi-flag text-danger me-1"></i>Reportar error</button>
             </div>
         </div>

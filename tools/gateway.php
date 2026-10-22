@@ -641,7 +641,7 @@ switch ($action) {
 
     case 'github:prs':
         $state = in_array($target, ['open', 'closed', 'all'], true) ? $target : 'open';
-        $result = GitHubOps::listPullRequests('elpulsocivico/pulso-civico', $state);
+        $result = GitHubOps::listPullRequests('Kineyo/pulso-civico', $state);
         $prs = [];
         if (!empty($result['data']) && is_array($result['data'])) {
             foreach ($result['data'] as $p) {
@@ -665,7 +665,7 @@ switch ($action) {
         break;
 
     case 'github:search':
-        $query = urlencode($target . ' repo:elpulsocivico/pulso-civico');
+        $query = urlencode($target . ' repo:Kineyo/pulso-civico');
         $result = GitHubOps::api('GET', "search/issues?q={$query}");
         $items = [];
         foreach ($result['data']['items'] ?? [] as $it) {
@@ -684,7 +684,7 @@ switch ($action) {
         $branches = ['data/leg-58', 'data/leg-59', 'data/leg-60'];
         $foundPrs = [];
         foreach ($branches as $b) {
-            $res = GitHubOps::api('GET', "repos/elpulsocivico/pulso-civico/pulls?head=elpulsocivico:{$b}&state=all");
+            $res = GitHubOps::api('GET', "repos/Kineyo/pulso-civico/pulls?head=Kineyo:{$b}&state=all");
             $list = [];
             if (!empty($res['data']) && is_array($res['data'])) {
                 foreach ($res['data'] as $p) {
@@ -703,7 +703,7 @@ switch ($action) {
 
     case 'github:pr':
         $num = is_numeric($target) ? (int)$target : 52;
-        $result = GitHubOps::api('GET', "repos/elpulsocivico/pulso-civico/pulls/{$num}");
+        $result = GitHubOps::api('GET', "repos/Kineyo/pulso-civico/pulls/{$num}");
         $d = $result['data'] ?? [];
         $response['pr'] = [
             'number' => $d['number'] ?? $num,
@@ -718,7 +718,7 @@ switch ($action) {
 
     case 'github:fetch_all_prs_data':
         $dryRun = ($target === 'dry-run');
-        $prListRes = GitHubOps::listPullRequests('elpulsocivico/pulso-civico', 'open');
+        $prListRes = GitHubOps::listPullRequests('Kineyo/pulso-civico', 'open');
         $prs = $prListRes['data'] ?? [];
         $downloadedFiles = [];
         $errors = [];
@@ -730,7 +730,7 @@ switch ($action) {
             $headRef = $pr['head']['ref'] ?? '';
             if ($prNum <= 0) continue;
 
-            $filesRes = GitHubOps::api('GET', "repos/elpulsocivico/pulso-civico/pulls/{$prNum}/files?per_page=100");
+            $filesRes = GitHubOps::api('GET', "repos/Kineyo/pulso-civico/pulls/{$prNum}/files?per_page=100");
             $prFiles = $filesRes['data'] ?? [];
             if (!is_array($prFiles)) continue;
 
@@ -793,7 +793,7 @@ switch ($action) {
 
                 if ($content === null) {
                     // Fallback a contents API
-                    $cRes = GitHubOps::api('GET', "repos/elpulsocivico/pulso-civico/contents/{$filename}?ref=" . urlencode($headRef));
+                    $cRes = GitHubOps::api('GET', "repos/Kineyo/pulso-civico/contents/{$filename}?ref=" . urlencode($headRef));
                     if ($cRes['ok'] && isset($cRes['data']['content'])) {
                         $content = base64_decode($cRes['data']['content']);
                     }
