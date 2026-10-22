@@ -106,20 +106,134 @@ Es el motor activo de la plataforma por su velocidad, concurrencia asíncrona y 
 
 #### Requisitos:
 - **Python 3.10 o superior**.
-- **Git**.
+- **Git** (y opcionalmente **PHP 8.1+** para herramientas CLI de auditoría).
 
-#### Puesta en marcha en 3 pasos:
+<details open>
+<summary><strong>🛠️ ¿Cómo compilar / ejecutar según tu OS? (Desplegar menú)</strong></summary>
+<br>
+
+<details>
+<summary><strong>🐧 Linux (Ubuntu / Debian / Fedora / Arch)</strong></summary>
+
 ```bash
 # 1. Copiar archivo de entorno
 cp .env.example .env
 
-# 2. Instalar dependencias
+# 2. Crear entorno virtual e instalar dependencias
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 # (Opcional con uv: uv venv && uv pip install -r requirements.txt)
 
 # 3. Iniciar el servidor FastAPI con recarga en vivo
 uvicorn app.main:app --reload --port 8000
+
+# 4. Chequeo de salud del proyecto (CLI auxiliar)
+php tools/gateway.php health
 ```
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para Linux)</strong></summary>
+
+> Copia y pega este prompt al inicio de tu sesión con tu asistente de IA (Cursor, Claude, ChatGPT, Gemini, Copilot):
+
+```text
+Estás trabajando en Pulso Cívico sobre Linux (entorno POSIX).
+REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
+1. El servidor activo corre en Python / FastAPI en `app/main.py` sirviendo vistas Jinja2 desde `app/templates/`.
+2. Todo cambio visual, de endpoints o lógica de negocio DEBE implementarse en `app/routers/`, `app/services/` y `app/templates/` (NUNCA en las carpetas legacy `src/` o `views/` a menos que sea un scraper/herramienta CLI).
+3. Los datasets JSON viven en `storage/data/json/`.
+4. Para verificar estado, salud o linting en terminal usa:
+   - `php tools/gateway.php health`
+   - `php tools/gateway.php git:status`
+   - `php tools/gateway.php lint "src/Services/MiArchivo.php"`
+5. Mantén neutralidad estricta, archivos < 400 líneas y enlaza siempre `fuente_url` oficial (.gob.mx). Lee `AGENTS.md` antes de proponer cambios.
+```
+</details>
+</details>
+
+<details>
+<summary><strong>🪟 Windows (PowerShell / Terminal)</strong></summary>
+
+```powershell
+# 1. Copiar archivo de entorno
+Copy-Item .env.example .env
+
+# 2. Crear entorno virtual e instalar dependencias
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+# (Opcional con uv: uv venv && uv pip install -r requirements.txt)
+
+# 3. Iniciar el servidor FastAPI con recarga en vivo
+uvicorn app.main:app --reload --port 8000
+
+# 4. Chequeo de salud con el runner centralizado de Windows
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health
+```
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para Windows)</strong></summary>
+
+> Copia y pega este prompt al inicio de tu sesión con tu asistente de IA (Cursor, Claude, ChatGPT, Gemini, Copilot):
+
+```text
+Estás trabajando en Pulso Cívico sobre Windows (PowerShell).
+REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
+1. El servidor activo corre en Python / FastAPI en `app\main.py` sirviendo vistas Jinja2 desde `app\templates\`.
+2. Todo cambio visual, de endpoints o lógica de negocio DEBE implementarse en `app\routers\`, `app\services\` y `app\templates\` (NUNCA en las carpetas legacy `src\` o `views\` a menos que sea un scraper/herramienta CLI).
+3. Los datasets JSON viven en `storage\data\json\`.
+4. Toda operación interna de consola DEBE ejecutarse mediante el runner centralizado:
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health`
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 git:status`
+   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "src\Services\MiArchivo.php"`
+5. Mantén neutralidad estricta, archivos < 400 líneas y enlaza siempre `fuente_url` oficial (.gob.mx). Lee `AGENTS.md` antes de proponer cambios.
+```
+</details>
+</details>
+
+<details>
+<summary><strong>🍎 macOS (Zsh / Terminal)</strong></summary>
+
+```zsh
+# 1. Copiar archivo de entorno
+cp .env.example .env
+
+# 2. Crear entorno virtual e instalar dependencias (Homebrew Python / uv)
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+# (Opcional con uv: uv venv && uv pip install -r requirements.txt)
+
+# 3. Iniciar el servidor FastAPI con recarga en vivo
+uvicorn app.main:app --reload --port 8000
+
+# 4. Chequeo de salud del proyecto (CLI auxiliar)
+php tools/gateway.php health
+```
+
+<details>
+<summary><strong>🤖 Agentes (Prompt adaptado para macOS)</strong></summary>
+
+> Copia y pega este prompt al inicio de tu sesión con tu asistente de IA (Cursor, Claude, ChatGPT, Gemini, Copilot):
+
+```text
+Estás trabajando en Pulso Cívico sobre macOS (Zsh / entorno POSIX).
+REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
+1. El servidor activo corre en Python / FastAPI en `app/main.py` sirviendo vistas Jinja2 desde `app/templates/`.
+2. Todo cambio visual, de endpoints o lógica de negocio DEBE implementarse en `app/routers/`, `app/services/` y `app/templates/` (NUNCA en las carpetas legacy `src/` o `views/` a menos que sea un scraper/herramienta CLI).
+3. Los datasets JSON viven en `storage/data/json/`.
+4. Para verificar estado, salud o linting en terminal usa:
+   - `php tools/gateway.php health`
+   - `php tools/gateway.php git:status`
+   - `php tools/gateway.php lint "src/Services/MiArchivo.php"`
+5. Mantén neutralidad estricta, archivos < 400 líneas y enlaza siempre `fuente_url` oficial (.gob.mx). Lee `AGENTS.md` antes de proponer cambios.
+```
+</details>
+</details>
+
+</details>
+
 Abre tu navegador en: [http://localhost:8000](http://localhost:8000)
 
 ---
@@ -217,15 +331,37 @@ git checkout -b docs/mejora-documentacion
 
 ### Paso 4: Hacer tus cambios y verificar sintaxis
 
-Edita los archivos necesarios. Antes de hacer commit, valida la salud del repositorio:
+Edita los archivos necesarios. Antes de hacer commit, valida la sintaxis según tu sistema operativo:
+
+<details>
+<summary><strong>🐧 Linux / 🍎 macOS — Validar sintaxis</strong></summary>
 
 ```bash
 # Validar salud general y sintaxis:
 php tools/gateway.php health
 
-# O validar archivos específicos con el linter interno:
+# Validar Python (compilación rápida de módulos modificados):
+python3 -m py_compile app/main.py app/routers/web.py
+
+# Validar archivos PHP específicos con la herramienta interna:
 php tools/gateway.php lint "src/Controllers/WebController.php"
 ```
+</details>
+
+<details>
+<summary><strong>🪟 Windows (PowerShell) — Validar sintaxis</strong></summary>
+
+```powershell
+# Validar salud general y sintaxis:
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health
+
+# Validar Python:
+python -m py_compile app\main.py app\routers\web.py
+
+# Validar archivos PHP con el runner centralizado:
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "src\Controllers\WebController.php"
+```
+</details>
 
 ---
 
