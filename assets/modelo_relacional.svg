@@ -1,0 +1,436 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 820" width="1320" height="820" style="background:#f8fafc; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Shadows & Filters -->
+    <filter id="card-shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.04"/>
+    </filter>
+    <filter id="badge-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#d97706"/>
+    </marker>
+
+    <!-- Gradients -->
+    <linearGradient id="header-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1320" height="820" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- Top Banner -->
+  <g transform="translate(40, 24)">
+    <rect width="1240" height="56" rx="10" fill="url(#header-grad)"/>
+    <text x="24" y="30" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="0.5">PULSO CÍVICO</text>
+    <text x="165" y="30" font-size="15" font-weight="400" fill="#94a3b8">|  Modelo Relacional de Datos y Grafo de Conocimiento</text>
+    <rect x="1060" y="16" width="156" height="24" rx="12" fill="#3b82f6" fill-opacity="0.2"/>
+    <text x="1138" y="32" font-size="11" font-weight="600" fill="#60a5fa" text-anchor="middle">ESPECIFICACIÓN 3FN</text>
+  </g>
+
+  <!-- ================= RELATIONAL CONNECTORS (BACKGROUND PATHS) ================= -->
+  <!-- Catálogos to Mandatos -->
+  <path d="M 270 170 C 300 170, 300 480, 340 480" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <path d="M 270 330 C 300 330, 300 500, 340 500" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <path d="M 270 510 C 300 510, 310 520, 340 520" fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+
+  <!-- Politicos to Mandatos (Principal 1:N) -->
+  <path d="M 470 325 L 470 405" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+  <text x="480" y="370" font-size="11" font-weight="600" fill="#2563eb">1 : N (Mandatos)</text>
+
+  <!-- Mandatos to Suplencia (Self-loop) -->
+  <path d="M 340 600 C 290 600, 290 670, 340 670" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber)"/>
+  <text x="245" y="638" font-size="10" font-weight="700" fill="#d97706">Suple a (Titular)</text>
+
+  <!-- Politicos to Trayectorias -->
+  <path d="M 600 180 L 670 180" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+  <!-- Politicos to Noticia Menciones -->
+  <path d="M 600 240 C 630 240, 630 600, 670 600" fill="none" stroke="#6366f1" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+
+  <!-- Noticias to Menciones -->
+  <path d="M 790 465 L 790 535" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Mandatos to Comision Integrantes -->
+  <path d="M 600 470 C 800 470, 850 340, 970 340" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+
+  <!-- Comisiones to Comision Integrantes -->
+  <path d="M 1100 225 L 1100 275" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+
+  <!-- Mandatos to Iniciativa Firmantes -->
+  <path d="M 600 550 C 800 550, 850 680, 970 680" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+
+  <!-- Iniciativas to Iniciativa Firmantes -->
+  <path d="M 1100 575 L 1100 625" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+
+  <!-- ================= COLUMNA 1: CATÁLOGOS BASE ================= -->
+  <!-- Header de Columna 1 -->
+  <text x="45" y="105" font-size="12" font-weight="700" fill="#64748b" letter-spacing="0.5">1. CATÁLOGOS BASE</text>
+
+  <!-- Tabla: estados -->
+  <g transform="translate(45, 115)" filter="url(#card-shadow)">
+    <rect width="225" height="125" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 217 0 Q 225 0 225 8 L 225 28 L 0 28 Z" fill="#f1f5f9"/>
+    <circle cx="14" cy="14" r="4" fill="#0284c7"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">estados</text>
+    <text x="210" y="18" font-size="10" fill="#64748b" text-anchor="end">catálogo</text>
+    <!-- Campos -->
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="210" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="68" font-size="11" fill="#334155">clave_inegi</text>
+    <text x="210" y="68" font-size="11" fill="#94a3b8" text-anchor="end">CHAR(2)</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="88" font-size="11" fill="#334155">nombre</text>
+    <text x="210" y="88" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(80)</text>
+
+    <text x="14" y="108" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="108" font-size="11" fill="#334155">abreviatura</text>
+    <text x="210" y="108" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(10)</text>
+  </g>
+
+  <!-- Tabla: partidos -->
+  <g transform="translate(45, 260)" filter="url(#card-shadow)">
+    <rect width="225" height="135" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 217 0 Q 225 0 225 8 L 225 28 L 0 28 Z" fill="#f1f5f9"/>
+    <circle cx="14" cy="14" r="4" fill="#0284c7"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">partidos</text>
+    <text x="210" y="18" font-size="10" fill="#64748b" text-anchor="end">catálogo</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="210" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="68" font-size="11" fill="#334155">siglas</text>
+    <text x="210" y="68" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(20)</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="88" font-size="11" fill="#334155">nombre_oficial</text>
+    <text x="210" y="88" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(150)</text>
+
+    <text x="14" y="108" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="108" font-size="11" fill="#334155">color_hex</text>
+    <text x="210" y="108" font-size="11" fill="#94a3b8" text-anchor="end">CHAR(7)</text>
+  </g>
+
+  <!-- Tabla: legislaturas -->
+  <g transform="translate(45, 415)" filter="url(#card-shadow)">
+    <rect width="225" height="135" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 217 0 Q 225 0 225 8 L 225 28 L 0 28 Z" fill="#f1f5f9"/>
+    <circle cx="14" cy="14" r="4" fill="#0284c7"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">legislaturas</text>
+    <text x="210" y="18" font-size="10" fill="#64748b" text-anchor="end">catálogo</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="210" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="68" font-size="11" fill="#334155">numero_romano</text>
+    <text x="210" y="68" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(10)</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="88" font-size="11" fill="#334155">anio_inicio</text>
+    <text x="210" y="88" font-size="11" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+
+    <text x="14" y="108" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="108" font-size="11" fill="#334155">anio_fin</text>
+    <text x="210" y="108" font-size="11" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+  </g>
+
+  <!-- ================= COLUMNA 2: NÚCLEO DE IDENTIDAD ================= -->
+  <text x="340" y="105" font-size="12" font-weight="700" fill="#1e3a8a" letter-spacing="0.5">2. IDENTIDAD Y MANDATOS (CORE)</text>
+
+  <!-- Tabla: politicos (Persona Invariante) -->
+  <g transform="translate(340, 115)" filter="url(#card-shadow)">
+    <rect width="260" height="210" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.8"/>
+    <path d="M 0 8 Q 0 0 8 0 L 252 0 Q 260 0 260 8 L 260 32 L 0 32 Z" fill="#eff6ff"/>
+    <circle cx="16" cy="16" r="5" fill="#2563eb"/>
+    <text x="28" y="21" font-size="14" font-weight="800" fill="#1e40af">politicos</text>
+    <rect x="150" y="7" width="100" height="18" rx="9" fill="#dbeafe"/>
+    <text x="200" y="20" font-size="9.5" font-weight="700" fill="#1e40af" text-anchor="middle">PERSONA INVARIANTE</text>
+
+    <text x="14" y="55" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="38" y="55" font-size="11" font-weight="600" fill="#0f172a">id</text>
+    <text x="246" y="55" font-size="11" fill="#64748b" text-anchor="end">INT UNSIGNED</text>
+
+    <text x="14" y="77" font-size="11" font-weight="700" fill="#d97706">UQ</text>
+    <text x="38" y="77" font-size="11" font-weight="600" fill="#0f172a">slug</text>
+    <text x="246" y="77" font-size="11" fill="#64748b" text-anchor="end">VARCHAR(150)</text>
+
+    <text x="14" y="99" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="99" font-size="11" fill="#334155">nombre_completo</text>
+    <text x="246" y="99" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(200)</text>
+
+    <text x="14" y="121" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="121" font-size="11" fill="#334155">foto_oficial_url</text>
+    <text x="246" y="121" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(255)</text>
+
+    <text x="14" y="143" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="143" font-size="11" fill="#334155">escolaridad_maxima</text>
+    <text x="246" y="143" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(100)</text>
+
+    <text x="14" y="165" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="165" font-size="11" fill="#334155">asistencia_historica_pct</text>
+    <text x="246" y="165" font-size="11" fill="#94a3b8" text-anchor="end">DECIMAL(5,2)</text>
+
+    <text x="14" y="187" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="187" font-size="11" fill="#334155">created_at / updated_at</text>
+    <text x="246" y="187" font-size="11" fill="#94a3b8" text-anchor="end">TIMESTAMP</text>
+  </g>
+
+  <!-- Tabla: mandatos_legislativos (Cargo Temporal) -->
+  <g transform="translate(340, 410)" filter="url(#card-shadow)">
+    <rect width="260" height="310" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.8"/>
+    <path d="M 0 8 Q 0 0 8 0 L 252 0 Q 260 0 260 8 L 260 32 L 0 32 Z" fill="#eff6ff"/>
+    <circle cx="16" cy="16" r="5" fill="#1d4ed8"/>
+    <text x="28" y="21" font-size="13" font-weight="800" fill="#1e40af">mandatos_legislativos</text>
+    <rect x="175" y="7" width="75" height="18" rx="9" fill="#dbeafe"/>
+    <text x="212" y="20" font-size="9" font-weight="700" fill="#1e40af" text-anchor="middle">TEMPORAL</text>
+
+    <text x="14" y="55" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="38" y="55" font-size="11" font-weight="600" fill="#0f172a">id</text>
+    <text x="246" y="55" font-size="11" fill="#64748b" text-anchor="end">INT UNSIGNED</text>
+
+    <text x="14" y="77" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="38" y="77" font-size="11" font-weight="600" fill="#0f172a">politico_id</text>
+    <text x="246" y="77" font-size="11" fill="#059669" text-anchor="end">-> politicos</text>
+
+    <text x="14" y="99" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="38" y="99" font-size="11" fill="#334155">legislatura_id</text>
+    <text x="246" y="99" font-size="11" fill="#059669" text-anchor="end">-> legislaturas</text>
+
+    <text x="14" y="121" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="38" y="121" font-size="11" fill="#334155">partido_id</text>
+    <text x="246" y="121" font-size="11" fill="#059669" text-anchor="end">-> partidos</text>
+
+    <text x="14" y="143" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="38" y="143" font-size="11" fill="#334155">estado_id</text>
+    <text x="246" y="143" font-size="11" fill="#059669" text-anchor="end">-> estados</text>
+
+    <text x="14" y="165" font-size="11" font-weight="700" fill="#d97706">FK</text>
+    <text x="38" y="165" font-size="11" font-weight="600" fill="#b45309">titular_mandato_id</text>
+    <text x="246" y="165" font-size="11" fill="#d97706" text-anchor="end">-> suplencia</text>
+
+    <text x="14" y="187" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="187" font-size="11" fill="#334155">camara</text>
+    <text x="246" y="187" font-size="11" fill="#94a3b8" text-anchor="end">ENUM(Dip, Sen)</text>
+
+    <text x="14" y="209" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="209" font-size="11" fill="#334155">tipo_cargo</text>
+    <text x="246" y="209" font-size="11" fill="#94a3b8" text-anchor="end">ENUM(Prop, Supl)</text>
+
+    <text x="14" y="231" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="231" font-size="11" fill="#334155">principio_eleccion</text>
+    <text x="246" y="231" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(50)</text>
+
+    <text x="14" y="253" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="253" font-size="11" fill="#334155">distrito_electoral</text>
+    <text x="246" y="253" font-size="11" fill="#94a3b8" text-anchor="end">TINYINT</text>
+
+    <text x="14" y="275" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="275" font-size="11" fill="#334155">es_activo</text>
+    <text x="246" y="275" font-size="11" fill="#94a3b8" text-anchor="end">TINYINT(1)</text>
+
+    <text x="14" y="297" font-size="11" font-weight="700" fill="#64748b">·</text>
+    <text x="38" y="297" font-size="11" fill="#334155">fecha_inicio / fecha_fin</text>
+    <text x="246" y="297" font-size="11" fill="#94a3b8" text-anchor="end">DATE</text>
+  </g>
+
+  <!-- ================= COLUMNA 3: HISTORIAL & COBERTURA ================= -->
+  <text x="670" y="105" font-size="12" font-weight="700" fill="#4338ca" letter-spacing="0.5">3. HISTORIAL Y COBERTURA</text>
+
+  <!-- Tabla: trayectorias -->
+  <g transform="translate(670, 115)" filter="url(#card-shadow)">
+    <rect width="245" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 237 0 Q 245 0 245 8 L 245 28 L 0 28 Z" fill="#f8fafc"/>
+    <circle cx="14" cy="14" r="4" fill="#7c3aed"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">trayectorias</text>
+    <text x="230" y="18" font-size="10" fill="#64748b" text-anchor="end">militancia</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="230" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="36" y="68" font-size="11" fill="#334155">politico_id</text>
+    <text x="230" y="68" font-size="11" fill="#059669" text-anchor="end">-> politicos</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="36" y="88" font-size="11" fill="#334155">partido_id</text>
+    <text x="230" y="88" font-size="11" fill="#059669" text-anchor="end">-> partidos</text>
+
+    <text x="14" y="108" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="108" font-size="11" fill="#334155">cargo_o_militancia</text>
+    <text x="230" y="108" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(150)</text>
+
+    <text x="14" y="128" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="128" font-size="11" fill="#334155">anio_inicio / anio_fin</text>
+    <text x="230" y="128" font-size="11" fill="#94a3b8" text-anchor="end">SMALLINT</text>
+  </g>
+
+  <!-- Tabla: noticias_radar -->
+  <g transform="translate(670, 310)" filter="url(#card-shadow)">
+    <rect width="245" height="155" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 237 0 Q 245 0 245 8 L 245 28 L 0 28 Z" fill="#f8fafc"/>
+    <circle cx="14" cy="14" r="4" fill="#d97706"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">noticias_radar</text>
+    <text x="230" y="18" font-size="10" fill="#64748b" text-anchor="end">prensa</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="230" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="68" font-size="11" fill="#334155">titulo</text>
+    <text x="230" y="68" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(255)</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="88" font-size="11" fill="#334155">url_fuente</text>
+    <text x="230" y="88" font-size="11" fill="#94a3b8" text-anchor="end">TEXT</text>
+
+    <text x="14" y="108" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="108" font-size="11" fill="#334155">sha256_hash</text>
+    <text x="230" y="108" font-size="11" fill="#94a3b8" text-anchor="end">CHAR(64)</text>
+
+    <text x="14" y="128" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="128" font-size="11" fill="#334155">fecha_publicacion</text>
+    <text x="230" y="128" font-size="11" fill="#94a3b8" text-anchor="end">DATE</text>
+  </g>
+
+  <!-- Tabla: noticia_menciones -->
+  <g transform="translate(670, 540)" filter="url(#card-shadow)">
+    <rect width="245" height="115" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 237 0 Q 245 0 245 8 L 245 28 L 0 28 Z" fill="#f8fafc"/>
+    <circle cx="14" cy="14" r="4" fill="#d97706"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">noticia_menciones</text>
+    <text x="230" y="18" font-size="10" fill="#64748b" text-anchor="end">pivote</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="230" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="36" y="68" font-size="11" fill="#334155">noticia_id</text>
+    <text x="230" y="68" font-size="11" fill="#059669" text-anchor="end">-> noticias</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="36" y="88" font-size="11" fill="#334155">politico_id</text>
+    <text x="230" y="88" font-size="11" fill="#059669" text-anchor="end">-> politicos</text>
+  </g>
+
+  <!-- ================= COLUMNA 4: ACTIVIDAD LEGISLATIVA ================= -->
+  <text x="970" y="105" font-size="12" font-weight="700" fill="#065f46" letter-spacing="0.5">4. ACTIVIDAD PARLAMENTARIA</text>
+
+  <!-- Tabla: comisiones -->
+  <g transform="translate(970, 115)" filter="url(#card-shadow)">
+    <rect width="250" height="110" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 28 L 0 28 Z" fill="#f8fafc"/>
+    <circle cx="14" cy="14" r="4" fill="#059669"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">comisiones</text>
+    <text x="235" y="18" font-size="10" fill="#64748b" text-anchor="end">órgano</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="235" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="68" font-size="11" fill="#334155">nombre</text>
+    <text x="235" y="68" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(200)</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="88" font-size="11" fill="#334155">camara</text>
+    <text x="235" y="88" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(50)</text>
+  </g>
+
+  <!-- Tabla: comision_integrantes -->
+  <g transform="translate(970, 275)" filter="url(#card-shadow)">
+    <rect width="250" height="135" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 28 L 0 28 Z" fill="#f8fafc"/>
+    <circle cx="14" cy="14" r="4" fill="#059669"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">comision_integrantes</text>
+    <text x="235" y="18" font-size="10" fill="#64748b" text-anchor="end">pivote</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="235" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="36" y="68" font-size="11" fill="#334155">comision_id</text>
+    <text x="235" y="68" font-size="11" fill="#059669" text-anchor="end">-> comisiones</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="36" y="88" font-size="11" fill="#334155">mandato_id</text>
+    <text x="235" y="88" font-size="11" fill="#059669" text-anchor="end">-> mandatos</text>
+
+    <text x="14" y="108" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="108" font-size="11" fill="#334155">cargo_en_comision</text>
+    <text x="235" y="108" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(50)</text>
+  </g>
+
+  <!-- Tabla: iniciativas -->
+  <g transform="translate(970, 465)" filter="url(#card-shadow)">
+    <rect width="250" height="110" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 28 L 0 28 Z" fill="#f8fafc"/>
+    <circle cx="14" cy="14" r="4" fill="#059669"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">iniciativas</text>
+    <text x="235" y="18" font-size="10" fill="#64748b" text-anchor="end">leyes</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="235" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="68" font-size="11" fill="#334155">titulo</text>
+    <text x="235" y="68" font-size="11" fill="#94a3b8" text-anchor="end">TEXT</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#0f172a">·</text>
+    <text x="36" y="88" font-size="11" fill="#334155">estatus</text>
+    <text x="235" y="88" font-size="11" fill="#94a3b8" text-anchor="end">VARCHAR(50)</text>
+  </g>
+
+  <!-- Tabla: iniciativa_firmantes -->
+  <g transform="translate(970, 625)" filter="url(#card-shadow)">
+    <rect width="250" height="110" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 0 8 Q 0 0 8 0 L 242 0 Q 250 0 250 8 L 250 28 L 0 28 Z" fill="#f8fafc"/>
+    <circle cx="14" cy="14" r="4" fill="#059669"/>
+    <text x="26" y="18" font-size="13" font-weight="700" fill="#0f172a">iniciativa_firmantes</text>
+    <text x="235" y="18" font-size="10" fill="#64748b" text-anchor="end">pivote</text>
+
+    <text x="14" y="48" font-size="11" font-weight="700" fill="#2563eb">PK</text>
+    <text x="36" y="48" font-size="11" fill="#334155">id</text>
+    <text x="235" y="48" font-size="11" fill="#94a3b8" text-anchor="end">INT</text>
+
+    <text x="14" y="68" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="36" y="68" font-size="11" fill="#334155">iniciativa_id</text>
+    <text x="235" y="68" font-size="11" fill="#059669" text-anchor="end">-> iniciativas</text>
+
+    <text x="14" y="88" font-size="11" font-weight="700" fill="#059669">FK</text>
+    <text x="36" y="88" font-size="11" fill="#334155">mandato_id</text>
+    <text x="235" y="88" font-size="11" fill="#059669" text-anchor="end">-> mandatos</text>
+  </g>
+
+  <!-- Footer Info -->
+  <g transform="translate(45, 785)">
+    <text x="0" y="0" font-size="11" fill="#64748b">Plataforma Ciudadana Neutral y de Código Abierto  ·  Formato 3FN  ·  Soporte Híbrido JSON Datasets / SQLite / MySQL</text>
+    <text x="1230" y="0" font-size="11" font-weight="600" fill="#94a3b8" text-anchor="end">pulso-civico.org</text>
+  </g>
+</svg>

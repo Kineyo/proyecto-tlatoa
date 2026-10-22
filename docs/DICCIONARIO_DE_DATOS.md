@@ -7,7 +7,10 @@
 ## 1. RESUMEN DEL MODELO
 El modelo relacional implementa un **Grafo de Nodos y Vínculos** normalizado en 3FN para la integridad de datos, con contadores precalculados para garantizar tiempos de respuesta ultra-rápidos (<5 ms).
 
-```
+<details>
+<summary><b>Diagrama en ASCII</b> (clic para desplegar)</summary>
+
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        MAPA DE ENTIDADES DEL GRAFO                     │
 └────────────────────────────────────────────────────────────────────────┘
@@ -23,6 +26,28 @@ El modelo relacional implementa un **Grafo de Nodos y Vínculos** normalizado en
            ▼                  ▼                                           │
   [comision_integr.]  [iniciativa_firmantes]                         [noticias_radar]
 ```
+
+```mermaid
+flowchart TD
+    estados["estados"] --> mandatos["mandatos_legislativos"]
+    partidos["partidos"] --> mandatos
+    legislaturas["legislaturas"] --> mandatos
+    politicos["politicos (Persona)"] --> mandatos
+    mandatos --> comisiones["comisiones"]
+    mandatos --> iniciativas["iniciativas"]
+    politicos --> trayectorias["trayectorias"]
+    politicos --> noticia_menciones["noticia_menciones"]
+    comisiones --> comision_integr["comision_integr."]
+    iniciativas --> iniciativa_firmantes["iniciativa_firmantes"]
+    noticias_radar["noticias_radar"] --> noticia_menciones
+    mandatos -. "suple a" .-> politicos
+```
+
+</details>
+
+<p align="center">
+  <img src="../assets/modelo_relacional.png" alt="Pulso Cívico — Modelo Relacional de Datos y Grafo de Conocimiento" width="100%">
+</p>
 
 ---
 
