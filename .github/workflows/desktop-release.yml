@@ -2,6 +2,8 @@ name: "Build & Release Desktop Native (Rust Offline)"
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
   workflow_dispatch:
