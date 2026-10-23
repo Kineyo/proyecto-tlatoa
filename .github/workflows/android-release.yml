@@ -1,0 +1,78 @@
+name: "Build & Release Android APK (Offline Native)"
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compilar Base de Datos SQLite Móvil (tlatoa.db)
+        run: |
+          python3 tools/build_mobile_db.py
+          mkdir -p android/app/src/main/assets
+          cp storage/tlatoa.db android/app/src/main/assets/tlatoa.db
+
+      - name: Configurar Toolchain de Rust y NDK
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android, armv7-linux-androideabi, x86_64-linux-android
+
+      - name: Instalar cargo-ndk
+        run: cargo install cargo-ndk
+
+      - name: Compilar Rust Core Engine para Android (libtlatoa_core.so)
+        working-directory: crates/tlatoa-core
+        run: |
+          mkdir -p ../../android/app/src/main/jniLibs/arm64-v8a
+          mkdir -p ../../android/app/src/main/jniLibs/armeabi-v7a
+          mkdir -p ../../android/app/src/main/jniLibs/x86_64
+
+          cargo ndk -t arm64-v8a -o ../../android/app/src/main/jniLibs build --release
+          cargo ndk -t armeabi-v7a -o ../../android/app/src/main/jniLibs build --release
+          cargo ndk -t x86_64 -o ../../android/app/src/main/jniLibs build --release
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Compilar APK con Gradle
+        working-directory: android
+        run: |
+          chmod +x gradlew 2>/dev/null || true
+          gradle assembleRelease --no-daemon || gradle assembleDebug --no-daemon
+
+      - name: Publicar APK en GitHub Releases
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            android/app/build/outputs/apk/**/*.apk
+            storage/tlatoa.db
+          draft: false
+          prerelease: false
+          name: "Proyecto Tlatoa Android (100% Offline)"
+          body: |
+            ### 📱 Proyecto Tlatoa — Versión Nativa Offline para Android
+            
+            - **Motor**: Rust Core Engine (`rusqlite` + FTS5).
+            - **Interfaz**: Kotlin con Jetpack Compose.
+            - **Base de Datos**: 100% desconectada integrada (`tlatoa.db`).
+            - **Sin Tiendas**: Descarga e instala directamente en tu teléfono Android.
