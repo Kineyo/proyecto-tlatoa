@@ -3,7 +3,7 @@
 > **Regla de adopción:** Si vas a scrapear un estado, abre un Issue en GitHub con el nombre `[Scraper] Congreso de <Estado>` o coméntalo en el grupo para asignártelo aquí.
 > 
 > **Convención de archivos:** `storage/data/json/congreso_<estado_slug>_leg_<numero>.json`  
-> **Convención de scraper:** `src/Services/Scrapers/Congreso<Estado>ScraperService.php`
+> **Convención de scraper:** `src/Services/Congreso<Estado>ScraperService.php`
 
 ---
 
@@ -60,7 +60,7 @@
    - Avisa en el grupo o abre un Issue en GitHub: *"Tomo el Congreso de Jalisco"*.
    - Se actualiza la tabla marcando 🚧 **En Progreso** y tu nombre/usuario de GitHub.
 2. **Crear el Scraper**:
-   - Programar en `src/Services/Scrapers/Congreso<Estado>ScraperService.php`.
+   - Programar en `src/Services/Congreso<Estado>ScraperService.php` (o `<Estado>ScraperService.php`).
    - Seguir `docs/COMO_CREAR_UN_SCRAPER.md`.
    - Rate limit mínimo: 1,000 ms.
 3. **Subir los datos con evidencia**:

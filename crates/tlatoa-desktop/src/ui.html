@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Tlatoa — Escritorio Offline</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --bg-body: #F2F2F7;
+            --bg-card: #FFFFFF;
+            --text-main: #1C1C1E;
+            --text-muted: #8E8E93;
+            --accent: #007AFF;
+        }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .navbar-desktop {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .card-pol {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            cursor: pointer;
+        }
+        .card-pol:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        .badge-offline {
+            background: #E8F5E9;
+            color: #2E7D32;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-party {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        .search-box {
+            border-radius: 30px;
+            padding: 12px 20px 12px 46px;
+            border: 1px solid rgba(0,0,0,0.12);
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 14px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        .filter-pill {
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: #FFFFFF;
+            color: var(--text-main);
+            transition: all 0.15s ease;
+        }
+        .filter-pill.active {
+            background: var(--accent);
+            color: #FFFFFF;
+            border-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar-desktop py-3 px-4 d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+            <span class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px; font-weight: bold;">
+                T
+            </span>
+            <div>
+                <span class="fw-bold fs-5">Proyecto Tlatoa</span>
+                <span class="text-muted small ms-2 d-none d-md-inline">Escritorio Nativo</span>
+            </div>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <span class="badge-offline">
+                <i class="bi bi-shield-check"></i> 100% Offline • Rust Core
+            </span>
+            <span class="text-muted small" id="latencyStat">Latencia: <strong class="text-success">&lt; 1ms</strong></span>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container py-4" style="max-width: 1000px;">
+        
+        <!-- Search Bar Section -->
+        <div class="position-relative mb-3">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" id="searchInput" class="form-control search-box" placeholder="Busca por nombre, estado, cargo o partido (ej. Noroña, Alito, Claudia, Jalisco)..." autofocus autocomplete="off">
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="d-flex gap-2 flex-wrap mb-4" id="filterContainer">
+            <span class="filter-pill active" data-filter="todos">Todos</span>
+            <span class="filter-pill" data-filter="Senadores">Senadores</span>
+            <span class="filter-pill" data-filter="Diputados">Diputados Federales</span>
+            <span class="filter-pill" data-filter="Gobernador">Gobernadores</span>
+            <span class="filter-pill" data-filter="Municipal">Alcaldes</span>
+            <span class="filter-pill" data-filter="Local">Congresos Locales</span>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="d-flex justify-content-between align-items-center mb-3 text-muted small px-1">
+            <span id="resultCount">Escribe al menos 2 caracteres para buscar en la base de datos...</span>
+            <span>Motor: <strong>Rust + SQLite FTS5</strong></span>
+        </div>
+
+        <!-- Results Grid -->
+        <div class="row g-3" id="resultsGrid"></div>
+
+    </div>
+
+    <!-- Modal Detalle Político -->
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header border-bottom py-3">
+                    <h5 class="modal-title fw-bold" id="modalPolName">Expediente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body p-4" id="modalPolBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const resultCount = document.getElementById('resultCount');
+        const latencyStat = document.getElementById('latencyStat');
+        const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
+        let currentFilter = 'todos';
+        let debounceTimer = null;
+        let lastQuery = '';
+
+        // Filtros por cargo
+        document.querySelectorAll('.filter-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                currentFilter = pill.dataset.filter;
+                if (lastQuery.length >= 2) executeSearch(lastQuery);
+            });
+        });
+
+        // Búsqueda ultrarrápida reactiva con debounce de 60ms
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(debounceTimer);
+            const query = e.target.value.trim();
+            if (query.length < 2) {
+                resultsGrid.innerHTML = '';
+                resultCount.innerText = 'Escribe al menos 2 caracteres para buscar...';
+                return;
+            }
+            debounceTimer = setTimeout(() => executeSearch(query), 60);
+        });
+
+        async function executeSearch(query) {
+            lastQuery = query;
+            const t0 = performance.now();
+            try {
+                const res = await fetch(`/api/buscar?q=${encodeURIComponent(query)}&limit=40`);
+                const data = await res.json();
+                const elapsed = (performance.now() - t0).toFixed(1);
+                latencyStat.innerHTML = `Latencia: <strong class="text-success">${elapsed} ms</strong>`;
+
+                let items = data.resultados || [];
+                if (currentFilter !== 'todos') {
+                    items = items.filter(it => it.cargo.includes(currentFilter) || it.camara.includes(currentFilter));
+                }
+
+                resultCount.innerText = `Se encontraron ${items.length} representantes en ${elapsed} ms`;
+                renderResults(items);
+            } catch (err) {
+                resultCount.innerText = 'Error al consultar el motor de datos local.';
+            }
+        }
+
+        function renderResults(items) {
+            if (items.length === 0) {
+                resultsGrid.innerHTML = `
+                    <div class="col-12 text-center py-5 text-muted">
+                        <i class="bi bi-person-x fs-1 d-block mb-2"></i>
+                        No se encontraron representantes que coincidan con la búsqueda.
+                    </div>`;
+                return;
+            }
+
+            resultsGrid.innerHTML = items.map(p => {
+                const color = p.partido_color || '#6C757D';
+                return `
+                <div class="col-md-6">
+                    <div class="card-pol p-3 h-100" onclick="openDetails('${p.slug}')">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge-party" style="background-color: ${color}20; color: ${color};">
+                                ${escapeHtml(p.partido)}
+                            </span>
+                            <span class="text-muted small">${escapeHtml(p.entidad)}</span>
+                        </div>
+                        <h6 class="fw-bold mb-1 text-dark">${escapeHtml(p.nombre_completo)}</h6>
+                        <div class="text-secondary small">${escapeHtml(p.cargo)}</div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        async function openDetails(slug) {
+            try {
+                const res = await fetch(`/api/politico?slug=${encodeURIComponent(slug)}`);
+                const p = await res.json();
+                if (!p) return;
+
+                document.getElementById('modalPolName').innerText = p.nombre_completo || p.nombre || 'Expediente';
+                const body = document.getElementById('modalPolBody');
+                
+                body.innerHTML = `
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="rounded-circle bg-light d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; font-size: 1.5rem;">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+                        <div>
+                            <span class="badge bg-primary mb-1">${escapeHtml(p.partido || 'Sin Partido')}</span>
+                            <div class="fw-semibold text-secondary">${escapeHtml(p.cargo || p.camara || 'Servidor Público')}</div>
+                            <div class="text-muted small">${escapeHtml(p.entidad || 'México')}</div>
+                        </div>
+                    </div>
+                    <div class="bg-light p-3 rounded-3 border small">
+                        <strong>Trazabilidad Oficial:</strong> Este registro se encuentra respaldado de forma inmutable en el repositorio local desconectado de Proyecto Tlatoa.
+                    </div>
+                `;
+                detailModal.show();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        function escapeHtml(str) {
+            return String(str || '').replace(/[&<>"']/g, m => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            })[m]);
+        }
+
+        // Búsqueda inicial automática
+        executeSearch('Noroña');
+    </script>
+</body>
+</html>

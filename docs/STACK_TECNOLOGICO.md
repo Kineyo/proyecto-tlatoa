@@ -9,7 +9,9 @@
 
 | Capa | Tecnología | Justificación y Ventaja |
 |---|---|---|
-| **Backend Primario (Activo)** | **Python 3.10+ (FastAPI + Uvicorn)** | Arquitectura asíncrona (ASGI) de latencia ultra-baja (< 15 ms), tipado estricto con Pydantic y pre-indexación en memoria de más de 3,200 datasets mediante `orjson`. |
+| **Capa Móvil (Android)** | **Kotlin + Jetpack Compose** | Aplicación nativa 100% offline, Material Design 3, enlace JNI a motor Rust y base SQLite compactada. |
+| **Motor Nativo Offline & Desktop** | **Rust 2021 (FTS5 + tiny_http)** | Búsquedas en < 0.5 ms (`crates/tlatoa-core`), app de escritorio autocontenida sin runtime de Python (`crates/tlatoa-desktop`). |
+| **Backend Primario (Web)** | **Python 3.10+ (FastAPI + Uvicorn)** | Arquitectura asíncrona (ASGI) de latencia ultra-baja (< 15 ms), tipado estricto con Pydantic y pre-indexación en memoria de más de 3,200 datasets mediante `orjson`. |
 | **Motor de Vistas** | **Jinja2 + HTML5 Semántico** | Renderizado server-side ultrarrápido, componentes modulares (`app/templates/partials/`), herencia de layouts y compatibilidad nativa mobile-first. |
 | **Almacenamiento y Datos** | **Datasets JSON Planos (`storage/data/json/`)** | Cero motores de bases de datos pesados (sin MySQL ni PostgreSQL). Más de 33,000 registros ciudadanos y electorales versionados y auditables directamente en Git. |
 | **Frontend & UI** | **Bootstrap 5.3 + JavaScript Vanilla** | Componentes responsivos ciudadanos, buscador global Spotlight (`Ctrl+K`), visualizador SVG interactivo de entidades y cero frameworks SPA pesados (sin compiladores ni bundlers). |

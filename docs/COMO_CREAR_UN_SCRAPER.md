@@ -18,6 +18,7 @@ Para una fuente nueva:
 3. Mapea los resultados a los DTOs de `src/DTO/` (ver [DATA_SCHEMA.md](DATA_SCHEMA.md)).
 4. Guarda el resultado en `storage/data/json/<camara>_leg_<numero>.json`.
 5. Registra un nuevo `case` en `ScraperRouter::run()`.
+6. Compila los nuevos datos a la base SQLite optimizada para las aplicaciones móviles y escritorio: `python3 tools/build_mobile_db.py`.
 
 ## 3. Esqueleto
 ```php
@@ -57,6 +58,7 @@ final class CongresoEjemploScraperService
 - [ ] Rate limit ≥ 1000 ms; sin peticiones en paralelo.
 - [ ] Sin datos personales no públicos.
 - [ ] Fila actualizada en `docs/FUENTES.md`.
+- [ ] Base de datos offline actualizada con `python3 tools/build_mobile_db.py` (si se incorporan nuevos políticos).
 
 ## 5. Compilación, Ejecución y Prompts de Agentes según tu OS
 

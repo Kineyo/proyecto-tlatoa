@@ -66,13 +66,21 @@ flowchart TD
 ## Estructura del Proyecto
 
 ```text
-app/                     Núcleo activo de la aplicación en Python (FastAPI)
+android/                 Aplicación móvil nativa (Kotlin + Jetpack Compose + JNI a Rust)
+  app/src/main/java/     Código Kotlin (MainActivity, ViewModel, TlatoaEngine JNI)
+
+crates/                  Ecosistema nativo en Rust (Compilación sin runtime de Python)
+  tlatoa-core/           Motor de búsqueda offline ultra-rápido en Rust (SQLite FTS5, C-ABI y JNI)
+  tlatoa-desktop/        Aplicación de escritorio todo-en-uno en Rust (tiny_http + webview/browser)
+
+app/                     Núcleo activo de la plataforma web en Python (FastAPI)
   core/                  Configuración (config.py) y seguridad / rate limit (security.py)
   routers/               Rutas web (web.py), API REST (api.py) y auditoría (electoral.py)
   services/              Lógica de datos (data_service.py), auditoría (audit_service.py), educación (education_service.py)
   templates/             Vistas Jinja2 (home.html, politico.html, layouts y partials)
 
 storage/                 Almacenamiento estático de datos abiertos y assets
+  tlatoa.db              Base de datos SQLite optimizada con FTS5 (< 18 MB) para apps móviles y escritorio
   data/json/             Datasets ciudadanos publicados (3,201 JSONs / 33,368 registros)
     municipios/          Historial electoral de 54 años y cabildos (2,474 JSONs)
     ejecutivo/           Gobernadores de 32 estados y CDMX (34 JSONs / 300 reg.)
@@ -80,6 +88,7 @@ storage/                 Almacenamiento estático de datos abiertos y assets
   cache/                 Caché de índices y páginas compiladas (ignorado en git)
 
 tools/                   Herramientas de línea de comandos, runner y scrapers
+  build_mobile_db.py     ETL para compilar datasets JSON a SQLite FTS5 para Android/Desktop
   run.ps1                Runner centralizado multiplataforma
   gateway.php            CLI universal de inspección, linting y scrapers
   core/                  Linter, GitOps, Inspector, CatalogBuilder, DataIntegrityAudit
