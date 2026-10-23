@@ -83,4 +83,5 @@ jobs:
         with:
           files: dist/*
           draft: false
-          prerelease: false
+          prerelease: true
+          name: "Proyecto Tlatoa v1.0 [Beta]"

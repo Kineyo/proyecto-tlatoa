@@ -98,12 +98,16 @@ jobs:
         with:
           files: dist/*
           draft: false
-          prerelease: false
-          name: "Proyecto Tlatoa Android (100% Offline)"
+          prerelease: true
+          name: "Proyecto Tlatoa v1.0 [Beta]"
           body: |
-            ### 📱 Proyecto Tlatoa — Versión Nativa Offline para Android
+            ### 🇲🇽 Proyecto Tlatoa v1.0 [Beta] — Lanzamiento Oficial Multiplataforma (100% Offline)
             
-            - **Motor**: Rust Core Engine (`rusqlite` + FTS5) con fallback SQLite nativo.
-            - **Interfaz**: Kotlin con Jetpack Compose.
-            - **Base de Datos**: 100% desconectada integrada (`tlatoa.db` con 16,100+ actores políticos).
-            - **Sin Tiendas**: Descarga e instala `tlatoa-android.apk` directamente en tu teléfono Android.
+            Plataforma ciudadana independiente, abierta y 100% desconectada para la fiscalización del poder público en México.
+            
+            #### 📱 Aplicación Móvil (Android)
+            - **Archivo descargable**: `tlatoa-android.apk`
+            - **Motor**: Rust Core Engine (`rusqlite` + SQLite FTS5) con fallback a SQLite nativo de Android.
+            - **Interfaz**: Kotlin con Jetpack Compose (Material Design 3).
+            - **Datos**: 16,100 actores políticos indexados (Federales, Gobernadores, Alcaldes y Congresos Locales).
+            - **Instalación**: Descarga directa sin Google Play ni suscripciones. Consulta `docs/SOLUCION_DE_PROBLEMAS.md` si tu teléfono pide permisos de fuentes desconocidas.
