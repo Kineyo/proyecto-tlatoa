@@ -1,157 +1,129 @@
-# AGENTS.md — Reglas para asistentes de IA
+# AGENTS.md — Reglas para Asistentes de IA (Pulso Cívico)
 
-> Este archivo lo leen automáticamente Cursor, Claude Code, GitHub Copilot, Gemini/Antigravity, Codex y otros agentes.
-> Si usas ChatGPT u otra IA de chat, **pégale este archivo al inicio de la conversación**.
+> Fuente única de verdad para agentes de IA y desarrolladores.
 
-## Contexto del proyecto y Entorno Activo
-- **ENTORNO ACTIVO EN ESTA PC: PYTHON (FastAPI + Jinja2)**.
-  - El servidor que se ejecuta y visualiza localmente en esta máquina corre en **Python / FastAPI (`app/main.py`)** con plantillas en `app/templates/`.
-  - **REGLA ESTRICTA**: Todo desarrollo nuevo de backend, endpoints, vistas y lógica visual DEBE realizarse en **Python** dentro del directorio `app/` (`app/routers/`, `app/services/`, `app/templates/`), NO en PHP (`src/`, `views/`), para que los cambios se reflejen de inmediato en la aplicación en ejecución.
-- Principio rector: **neutralidad**. Todo dato mostrado debe provenir de una fuente oficial o nota periodística **enlazada**. Nunca generar opiniones, calificativos ni datos inventados.
+## 1. Stack Activo (Python / FastAPI)
+- **Servidor local activo**: Python 3 + FastAPI (`app/main.py`) sirviendo Jinja2 en `app/templates/`. URL: `http://localhost:8000`.
+- **Desarrollo activo**: Todo nuevo endpoint, vista o lógica va en `app/` (`app/routers/`, `app/services/`, `app/templates/`).
+- **PROHIBIDO**: Editar o crear vistas/backend en PHP (`src/`, `views/`) para la web activa. PHP solo se mantiene para scrapers CLI y `tools/gateway.php`.
+- **Datasets**: `storage/data/json/`.
 
-## Mapa del código
-| Ruta | Qué contiene | ¿Tocar? |
+## 2. Neutralidad y Datos
+1. **Neutralidad total**: Cero juicios de valor, opiniones o adjetivos hacia actores políticos.
+2. **Fuentes oficiales**: Todo dato debe incluir `fuente_url` oficial verificada (`.gob.mx`, Gaceta, DOF). Prohibido alucinar o inventar datos.
+3. **Privacidad**: Solo datos públicos del cargo. Prohibido exponer domicilios, teléfonos personales o información de familiares.
+
+## 3. Mapa del Código
+| Ruta | Contenido | Acción |
 |---|---|---|
-| `index.php` | Front controller | Rara vez |
-| `src/Core/` | Router, HttpClient, Logger, ViewHelper | Solo con issue aprobado |
-| `src/Controllers/` | Controladores web | Sí |
-| `src/Services/` | Lógica de datos y scrapers | Sí |
-| `src/DTO/` | Contratos de datos tipados | **Solo con aprobación** (rompe datasets) |
-| `views/` | Plantillas PHP/HTML | Sí |
-| `config/config.php` | Configuración (lee `.env`) | Con cuidado |
-| `tools/` | Runner y utilidades CLI | Sí |
-| `storage/data/` | Datasets JSON generados | Solo vía scrapers |
-| `storage/raw/` | Descargas crudas (ignorado en git salvo fotos) | No |
+| `app/routers/` | Endpoints y rutas FastAPI | ✅ Desarrollar aquí |
+| `app/services/` | Lógica de datos y agregadores | ✅ Desarrollar aquí |
+| `app/templates/` | Plantillas Jinja2 (HTML) | ✅ Desarrollar aquí |
+| `app/main.py` | Configuración FastAPI | ✅ Editar con cuidado |
+| `storage/data/json/` | Datasets procesados en JSON | ⚠️ Solo vía scrapers |
+| `tools/` | Runners centralizados CLI | ✅ Agregar chequeos |
+| `src/` | Scrapers y backend PHP legacy | ❌ No tocar para web activa |
+| `views/` | Vistas PHP legacy | ❌ No tocar (usar `app/templates/`) |
+| `storage/raw/` | Descargas crudas (html, fotos) | ❌ No tocar |
 
-## Reglas obligatorias
-1. **`declare(strict_types=1);`** en todo archivo PHP. No eliminar tipos.
-2. **Sin dependencias nuevas** (Composer/npm) sin issue aprobado. Usar funciones nativas de PHP/JS.
-3. **URLs portables**: nunca `href="/..."` ni `fetch('/...')`. Usar `Router::url('/ruta')`. En PHP, rutas con `__DIR__`.
-4. **Escapar toda salida** en vistas con `ViewHelper::e()`.
-5. **Cero secretos** en código. Configuración vía `.env` (ver `.env.example`).
-6. **Archivos < 400 líneas**. Si una clase crece más, dividirla.
-7. **Lógica reutilizable** → servicio/helper, nunca copiar-pegar.
-8. **Firmas existentes**: parámetros nuevos siempre opcionales con valor por defecto.
-9. **Prohibido** escribir `// ... resto del código igual` o resumir código existente. Entregar archivos completos o diffs exactos.
-10. **Scrapers**: respetar `rate_limit_ms` (≥ 1000 ms), no saturar servidores de gobierno, guardar siempre `fuente_url` y `fecha_extraccion`.
-11. **Datos personales**: solo información pública del cargo (nada de domicilios particulares, familiares ni datos sensibles).
+## 4. Reglas Obligatorias de Código
+1. **Límite de tamaño**: Archivos < 400 líneas. Si excede, modularizar.
+2. **Dependencias**: Cero dependencias nuevas en `requirements.txt` o `composer.json` sin autorización.
+3. **Secretos**: Cero credenciales hardcodeadas; usar siempre `.env` (referencia: `.env.example`).
+4. **URLs portables**: Nunca usar rutas absolutas hardcodeadas en plantillas ni enlaces.
+5. **Código completo**: Prohibido entregar `// resto del código igual` o `pass # TODO`. Entregar código completo o bloques de reemplazo exactos.
+6. **Lectura quirúrgica**: Leer bloques acotados (30–80 líneas con StartLine/EndLine) para ahorrar tokens.
+7. **Git**: Commits convencionales (`feat:`, `fix:`, `data:`, `scraper:`, `docs:`, `refactor:`, `chore:`). **NUNCA usar `git add .`**; hacer stage archivo por archivo.
 
-## Verificación y Compilación según tu OS
+## 5. Runners y Validación (Zero-Prompt & Batching)
+Valida en lote al terminar cada bloque de trabajo. Prohibido ejecutar comandos dispersos ad-hoc (`php -l`, `dir`, etc.).
 
-<details open>
-<summary><strong>🛠️ ¿Cómo compilar y verificar según tu OS?</strong></summary>
-<br>
-
-<details>
-<summary><strong>🐧 Linux (Bash / Zsh)</strong></summary>
-
+### Linux / macOS
 ```bash
-# Levantar servidor activo (FastAPI + Jinja2)
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-
-# Validar sintaxis Python y PHP antes de entregar
-python3 -m py_compile app/main.py app/routers/web.py
-php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"
+# Validar sintaxis Python y PHP
+python3 -m py_compile app/main.py app/routers/*.py app/services/*.py
+php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"  # si modificaste PHP
 php tools/gateway.php health
+php tools/gateway.php git:status
 ```
 
-<details>
-<summary><strong>🤖 Agentes (Prompt adaptado para Linux)</strong></summary>
-
-```text
-Estás en Pulso Cívico ejecutándose sobre Linux (rutas POSIX con `/`).
-1. El entorno activo es Python (FastAPI + Jinja2) en `app/main.py`.
-2. Desarrolla endpoints en `app/routers/`, lógica en `app/services/` y vistas en `app/templates/`. No edites `src/` ni `views/` para cambios de UI o backend web activo.
-3. Los datasets residen en `storage/data/json/`.
-4. Para verificar sintaxis y estado usa:
-   - `python3 -m py_compile <archivos_python>`
-   - `php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"`
-   - `php tools/gateway.php health`
-   - `php tools/gateway.php git:status`
-5. Cumple neutralidad absoluta, archivos < 400 líneas y commits granulares sin `git add .`.
-```
-</details>
-</details>
-
-<details>
-<summary><strong>🪟 Windows (PowerShell / CMD)</strong></summary>
-
+### Windows (PowerShell)
 ```powershell
-# Levantar servidor activo (FastAPI + Jinja2)
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-
-# Validar sintaxis Python y PHP con el runner centralizado
+# Validar sintaxis Python y PHP
 python -m py_compile app\main.py app\routers\web.py
 powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "ruta\archivo1.php,ruta\archivo2.php"
 powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health
+powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 git:status
 ```
 
-<details>
-<summary><strong>🤖 Agentes (Prompt adaptado para Windows)</strong></summary>
+## 6. Formato de Respuesta de la IA
+1. **Diagnóstico**: 1-2 líneas sobre el problema o estado.
+2. **Acción**: Resumen directo de cambios.
+3. **Ubicación**: Enlaces a archivos y líneas (`[archivo](file:///ruta/al/archivo#L10-L30)`).
 
+## 7. Prompts Específicos por Agente
+
+### 🤖 Claude (Claude Code / Anthropic)
 ```text
-Estás en Pulso Cívico ejecutándose sobre Windows (PowerShell, rutas con `\`).
-1. El entorno activo es Python (FastAPI + Jinja2) en `app\main.py`.
-2. Desarrolla endpoints en `app\routers\`, lógica en `app\services\` y vistas en `app\templates\`. No edites `src\` ni `views\` para cambios de UI o backend web activo.
-3. Los datasets residen en `storage\data\json\`.
-4. Ejecuta toda validación e inspección mediante el runner centralizado:
-   - `python -m py_compile <archivos_python>`
-   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "ruta\archivo1.php,ruta\archivo2.php"`
-   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health`
-   - `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 git:status`
-5. Cumple neutralidad absoluta, archivos < 400 líneas y commits granulares sin `git add .`.
-```
-</details>
-</details>
-
-<details>
-<summary><strong>🍎 macOS (Zsh / Bash)</strong></summary>
-
-```zsh
-# Levantar servidor activo (FastAPI + Jinja2)
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-
-# Validar sintaxis Python y PHP antes de entregar
-python3 -m py_compile app/main.py app/routers/web.py
-php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"
-php tools/gateway.php health
+Actúas como Claude Code en Pulso Cívico.
+- ENTORNO ACTIVO: Python 3 + FastAPI (`app/main.py`) y Jinja2 (`app/templates/`).
+- REGLA SUPREMA: No edites PHP (`src/`, `views/`) para la web activa. Modifica solo `app/routers/`, `app/services/` y `app/templates/`.
+- DATOS: `storage/data/json/`. Neutralidad absoluta, sin juicios y con `fuente_url` oficial (.gob.mx).
+- REGLAS: Archivos < 400 líneas. Cero dependencias nuevas. Cero secretos (usar `.env`). Código completo sin truncar.
+- VERIFICACIÓN:
+  * Linux/macOS: `python3 -m py_compile <archivos>` y `php tools/gateway.php health`
+  * Windows: `python -m py_compile <archivos>` y `powershell .\tools\run.ps1 health`
+- GIT: Nunca uses `git add .`; stage archivo por archivo con prefijo convencional (`feat:`, `fix:`).
+- RESPUESTA: Diagnóstico -> Acción -> Ubicación exacta.
 ```
 
-<details>
-<summary><strong>🤖 Agentes (Prompt adaptado para macOS)</strong></summary>
-
+### 🤖 OpenCode (OpenCode Interpreter / CLI)
 ```text
-Estás en Pulso Cívico ejecutándose sobre macOS (rutas POSIX con `/`).
-1. El entorno activo es Python (FastAPI + Jinja2) en `app/main.py`.
-2. Desarrolla endpoints en `app/routers/`, lógica en `app/services/` y vistas en `app/templates/`. No edites `src/` ni `views/` para cambios de UI o backend web activo.
-3. Los datasets residen en `storage/data/json/`.
-4. Para verificar sintaxis y estado usa:
-   - `python3 -m py_compile <archivos_python>`
-   - `php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"`
-   - `php tools/gateway.php health`
-   - `php tools/gateway.php git:status`
-5. Cumple neutralidad absoluta, archivos < 400 líneas y commits granulares sin `git add .`.
+Actúas como OpenCode en Pulso Cívico.
+- ENTORNO ACTIVO: Python / FastAPI con Jinja2 en `app/`.
+- DIRECTIVA: Edita solo en `app/routers/`, `app/services/` y `app/templates/`. No toques `src/` ni `views/`.
+- RUNNER: Usa el gateway centralizado sin comandos sueltos:
+  * Unix: `php tools/gateway.php health` | `php tools/gateway.php lint "<rutas>"`
+  * Windows: `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health`
+- SINTAXIS: Valida con `python3 -m py_compile <archivos>`.
+- REGLAS: Archivos < 400 líneas, sin secretos, código completo funcional, neutralidad total en datos. Nunca uses `git add .`.
 ```
-</details>
-</details>
 
-</details>
+### 🤖 OpenAI Codex (Codex CLI / ChatGPT / Copilot CLI)
+```text
+Eres un agente de desarrollo basado en OpenAI Codex en Pulso Cívico.
+- ENTORNO ACTIVO: Python (FastAPI + Jinja2) en `app/main.py`.
+- ZONA PERMITIDA: `app/routers/`, `app/services/`, `app/templates/`, `storage/data/json/`.
+- PROHIBIDO: Editar `src/` o `views/` para la aplicación web activa.
+- DIRECTRICES: Neutralidad estricta (datos con `fuente_url` oficial), archivos < 400 líneas, cero dependencias nuevas, código completo sin abreviar.
+- VALIDACIÓN: `python3 -m py_compile <archivos>` y runner `php tools/gateway.php health` (Unix) o `powershell .\tools\run.ps1 health` (Windows).
+- GIT: Commits convencionales; nunca `git add .`.
+```
 
-Si hay error de sintaxis, **corregirlo antes de proponer el cambio**.
+### 🤖 Antigravity (Google DeepMind / Gemini CLI)
+```text
+Eres el agente Antigravity / Gemini en Pulso Cívico.
+- MODO: Ultra-eficiencia, bajo consumo de tokens y cero prompts innecesarios en terminal.
+- ENTORNO ACTIVO: Python (FastAPI + Jinja2) en `app/main.py`. Todo desarrollo web va en `app/routers/`, `app/services/` o `app/templates/`. PROHIBIDO tocar PHP (`src/`, `views/`) para la web activa.
+- LECTURA QUIRÚRGICA: Inspecciona bloques de 30-80 líneas con StartLine/EndLine. No leas archivos enteros sin necesidad.
+- RUNNER ZERO-PROMPT: Valida en lote con `python3 -m py_compile` y el runner del OS (`php tools/gateway.php health` o `powershell .\tools\run.ps1 health`). Prohibido comandos ad-hoc dispersos.
+- RESPUESTA: Diagnóstico rápido -> Acción tomada -> Ubicación exacta con enlace.
+- REGLAS: Archivos < 400 líneas, neutralidad absoluta, nunca `git add .`.
+```
 
-## Commits
-Prefijos: `feat:`, `fix:`, `data:`, `scraper:`, `docs:`, `refactor:`, `chore:`.
-Nunca `git add .` — agregar solo archivos modificados.
+### 🤖 Cursor / GitHub Copilot (Agentes de IDE)
+```text
+Contexto para Cursor / GitHub Copilot en Pulso Cívico:
+- ENTORNO ACTIVO: Python / FastAPI (`app/main.py`) con Jinja2 en `app/templates/`.
+- DESARROLLO ACTIVO: `app/routers/` (APIs/rutas), `app/services/` (lógica/datos), `app/templates/` (UI).
+- NO MODIFICAR: `src/` ni `views/` para funcionalidades activas.
+- REGLAS: Archivos < 400 líneas, preservar tipos/comentarios, neutralidad estricta con `fuente_url`, sin dependencias nuevas sin aprobación.
+- VALIDACIÓN: Ejecutar `python3 -m py_compile` antes de entregar cambios.
+```
 
-## Documentación de referencia
+## 8. Documentación de Referencia
 - Arquitectura: `docs/ARQUITECTURA.md`
-- Formato de datos: `docs/DATA_SCHEMA.md`
-- Crear scraper: `docs/COMO_CREAR_UN_SCRAPER.md`
+- Esquema JSON: `docs/DATA_SCHEMA.md`
+- Scrapers: `docs/COMO_CREAR_UN_SCRAPER.md`
 - Fuentes: `docs/FUENTES.md`
+- Diccionario: `docs/DICCIONARIO_DE_DATOS.md`

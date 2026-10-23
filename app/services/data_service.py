@@ -1,4 +1,5 @@
 import re
+import html
 import unicodedata
 from pathlib import Path
 from typing import List, Dict, Any, Optional
@@ -126,11 +127,12 @@ def detect_party_from_text(text: str) -> Optional[str]:
 
 def render_party_timeline_badge(partido: str, es_actual: bool = False) -> str:
     canonical = get_canonical_party_name(partido)
+    safe_canonical = html.escape(canonical, quote=True)
     color = get_party_color(canonical)
     icon = get_party_micro_icon(canonical)
     tag_actual = ' <span class="badge bg-success text-white ms-1" style="font-size: 0.58rem; padding: 1px 4px; font-weight: 700;">Actual</span>' if es_actual else ""
     bg_style = 'background-color: #FFF9DB; color: #856404; border-color: #FFE066 !important;' if canonical == "PRD" else f'background-color: {color}14; color: {color}; border-color: {color}40 !important;'
-    return f'<span class="party-timeline-badge d-inline-flex align-items-center gap-1 py-0 px-2 rounded-pill border" style="font-size: 0.68rem; font-weight: 600; line-height: 1.6; {bg_style}" title="Filiación política en este periodo: {canonical}">{icon}<span>{canonical}</span>{tag_actual}</span>'
+    return f'<span class="party-timeline-badge d-inline-flex align-items-center gap-1 py-0 px-2 rounded-pill border" style="font-size: 0.68rem; font-weight: 600; line-height: 1.6; {bg_style}" title="Filiación política en este periodo: {safe_canonical}">{icon}<span>{safe_canonical}</span>{tag_actual}</span>'
 
 def render_party_badge(partido: str) -> str:
     p = (partido or "").strip()
@@ -172,7 +174,8 @@ def render_party_badge(partido: str) -> str:
         label = p or "Independiente"
         bg = "#6C757D"
 
-    return f'<span class="party-badge" title="{label}" data-party-color="{bg}">{icon}<span>{label}</span></span>'
+    safe_label = html.escape(label, quote=True)
+    return f'<span class="party-badge" title="{safe_label}" data-party-color="{bg}">{icon}<span>{safe_label}</span></span>'
 
 def formatear_nombre_natural(nombre_raw: str) -> str:
     """

@@ -506,6 +506,16 @@
         }
     });
 
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
     let debounceTimer;
     input.addEventListener('input', (e) => {
         const query = e.target.value.trim();
@@ -521,16 +531,16 @@
                 .then(data => {
                     const items = data.resultados || [];
                     if (items.length === 0) {
-                        resultsContainer.innerHTML = '<div class="text-center text-muted p-4 small">No se encontraron resultados para "' + query + '"</div>';
+                        resultsContainer.innerHTML = '<div class="text-center text-muted p-4 small">No se encontraron resultados para "' + escapeHtml(query) + '"</div>';
                         return;
                     }
                     resultsContainer.innerHTML = items.map(item => `
-                        <a href="${item.url}" class="d-flex align-items-center justify-content-between p-2 rounded text-decoration-none text-dark hover-bg">
+                        <a href="${encodeURI(item.url || '#')}" class="d-flex align-items-center justify-content-between p-2 rounded text-decoration-none text-dark hover-bg">
                             <div>
-                                <div class="fw-semibold small">${item.nombre}</div>
-                                <span class="badge bg-light text-secondary border" style="font-size: 0.65rem;">${item.camara || ''} &bull; ${item.partido || ''}</span>
+                                <div class="fw-semibold small">${escapeHtml(item.nombre)}</div>
+                                <span class="badge bg-light text-secondary border" style="font-size: 0.65rem;">${escapeHtml(item.camara || '')} &bull; ${escapeHtml(item.partido || '')}</span>
                             </div>
-                            <small class="text-muted">${item.entidad || ''}</small>
+                            <small class="text-muted">${escapeHtml(item.entidad || '')}</small>
                         </a>
                     `).join('');
                 })

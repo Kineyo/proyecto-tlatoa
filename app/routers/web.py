@@ -8,15 +8,21 @@ from app.services.data_service import (
     render_party_timeline_badge, get_canonical_party_name,
     get_party_micro_icon, normalizar_entidad
 )
+import jinja2
+from jinja2 import select_autoescape
+from jinja2.sandbox import SandboxedEnvironment
 from app.services.education_service import education_service
 from app.services.audit_service import audit_service
 
 router = APIRouter(tags=["Vistas Web"])
 templates = Jinja2Templates(directory=str(settings.TEMPLATES_DIR))
+templates.env = SandboxedEnvironment(
+    loader=jinja2.FileSystemLoader(str(settings.TEMPLATES_DIR)),
+    autoescape=select_autoescape(["html", "xml", "htm"])
+)
 templates.env.globals["app_name"] = settings.APP_NAME
 templates.env.globals["app_short_name"] = settings.APP_SHORT_NAME
 templates.env.globals["app_tagline"] = settings.APP_TAGLINE
-templates.env.globals["settings"] = settings
 
 @router.get("/")
 async def home_view(request: Request, leg: int = Query(66, description="Número de legislatura")):

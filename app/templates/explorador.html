@@ -676,6 +676,16 @@
     const CONFIG_STORAGE_KEY = 'pulso_explorador_columnas_v1';
     let timeoutBusqueda = null;
 
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
     // 1. Inicializar personalización de columnas
     document.addEventListener('DOMContentLoaded', () => {
         cargarConfiguracionColumnas();
@@ -858,7 +868,7 @@
                 let chain = '';
                 for (let i = 0; i < it.transicion_badges.length; i++) {
                     const b = it.transicion_badges[i];
-                    chain += `<span class="party-tag-sm border" style="background-color: ${b.color}14; color: ${b.color}; border-color: ${b.color}40 !important;">${b.nombre}</span>`;
+                    chain += `<span class="party-tag-sm border" style="background-color: ${b.color}14; color: ${b.color}; border-color: ${b.color}40 !important;">${escapeHtml(b.nombre)}</span>`;
                     if (i < it.transicion_badges.length - 1) {
                         chain += '<i class="bi bi-arrow-right text-muted" style="font-size: 0.65rem;"></i>';
                     }
@@ -869,7 +879,7 @@
                         <i class="bi bi-arrow-left-right me-1"></i>${it.transicion_lista.length} partidos
                     </div>`;
             } else {
-                transicionHtml = `<span class="text-muted small"><i class="bi bi-shield-check text-success me-1"></i>${it.partido_actual} (Fiel)</span>`;
+                transicionHtml = `<span class="text-muted small"><i class="bi bi-shield-check text-success me-1"></i>${escapeHtml(it.partido_actual)} (Fiel)</span>`;
             }
 
             // Principio
@@ -879,15 +889,15 @@
             } else if (it.principio_tipo === 'plurinominal') {
                 principioBadge = '<span class="badge bg-info-subtle text-info-emphasis border border-info-subtle rounded-pill" style="font-size: 0.72rem;"><i class="bi bi-card-list me-1"></i>Plurinominal</span>';
             } else {
-                principioBadge = `<span class="badge bg-light text-secondary border rounded-pill" style="font-size: 0.72rem;">${it.principio_eleccion}</span>`;
+                principioBadge = `<span class="badge bg-light text-secondary border rounded-pill" style="font-size: 0.72rem;">${escapeHtml(it.principio_eleccion)}</span>`;
             }
 
             // Licencia
             let licenciaSub = '';
             if (it.tiene_licencia && it.suplente_nombre) {
-                licenciaSub = `<div class="small" style="font-size: 0.72rem;"><span class="text-muted">Suplente:</span> <a href="/politicos/${it.suplente_slug || ''}" class="fw-semibold text-primary text-decoration-none">${it.suplente_nombre} ↗</a></div>`;
+                licenciaSub = `<div class="small" style="font-size: 0.72rem;"><span class="text-muted">Suplente:</span> <a href="/politicos/${encodeURIComponent(it.suplente_slug || '')}" class="fw-semibold text-primary text-decoration-none">${escapeHtml(it.suplente_nombre)} ↗</a></div>`;
             } else if (it.es_suplente && it.titular_nombre) {
-                licenciaSub = `<div class="small" style="font-size: 0.72rem;"><span class="text-muted">Cubre a:</span> <a href="/politicos/${it.titular_slug || ''}" class="fw-semibold text-primary text-decoration-none">${it.titular_nombre} ↗</a></div>`;
+                licenciaSub = `<div class="small" style="font-size: 0.72rem;"><span class="text-muted">Cubre a:</span> <a href="/politicos/${encodeURIComponent(it.titular_slug || '')}" class="fw-semibold text-primary text-decoration-none">${escapeHtml(it.titular_nombre)} ↗</a></div>`;
             }
 
             // Asistencia
@@ -895,9 +905,9 @@
             if (it.asistencia_pct !== null && it.asistencia_pct !== undefined) {
                 let badgeClass = it.asistencia_semaforo === 'verde' ? 'bg-success text-white' : (it.asistencia_semaforo === 'amarillo' ? 'bg-warning text-dark' : 'bg-danger text-white');
                 asistHtml = `
-                    <a href="${it.url}#asistencia" class="text-decoration-none">
-                        <span class="badge ${badgeClass} rounded-pill px-2" style="font-size: 0.75rem;">${it.asistencia_pct_fmt}</span>
-                        <div class="text-muted" style="font-size: 0.65rem;">${it.asistencia_sesiones}</div>
+                    <a href="${encodeURI(it.url || '#')}#asistencia" class="text-decoration-none">
+                        <span class="badge ${badgeClass} rounded-pill px-2" style="font-size: 0.75rem;">${escapeHtml(it.asistencia_pct_fmt)}</span>
+                        <div class="text-muted" style="font-size: 0.65rem;">${escapeHtml(it.asistencia_sesiones)}</div>
                     </a>`;
             }
 
@@ -906,37 +916,37 @@
                 <tr>
                     <td class="col-foto text-center">${fotoHtml}</td>
                     <td class="col-nombre">
-                        <a href="${it.url}" class="fw-bold text-dark text-decoration-none d-block lh-sm hover-primary">${it.nombre}</a>
+                        <a href="${encodeURI(it.url || '#')}" class="fw-bold text-dark text-decoration-none d-block lh-sm hover-primary">${escapeHtml(it.nombre)}</a>
                     </td>
                     <td class="col-nivel">${nivelBadge}</td>
-                    <td class="col-cargo"><span class="fw-semibold text-secondary">${it.cargo}</span></td>
-                    <td class="col-entidad"><a href="/estados/${it.entidad_slug}" class="text-decoration-none text-dark hover-primary">${it.entidad}</a></td>
-                    <td class="col-municipio"><span class="text-muted small">${it.municipio || 'Representación Estatal'}</span></td>
+                    <td class="col-cargo"><span class="fw-semibold text-secondary">${escapeHtml(it.cargo)}</span></td>
+                    <td class="col-entidad"><a href="/estados/${encodeURIComponent(it.entidad_slug || '')}" class="text-decoration-none text-dark hover-primary">${escapeHtml(it.entidad)}</a></td>
+                    <td class="col-municipio"><span class="text-muted small">${escapeHtml(it.municipio || 'Representación Estatal')}</span></td>
                     <td class="col-partido">
-                        <span class="party-tag-sm border" style="background-color: ${it.partido_actual_color}14; color: ${it.partido_actual_color}; border-color: ${it.partido_actual_color}40 !important;">${it.partido_actual}</span>
+                        <span class="party-tag-sm border" style="background-color: ${it.partido_actual_color}14; color: ${it.partido_actual_color}; border-color: ${it.partido_actual_color}40 !important;">${escapeHtml(it.partido_actual)}</span>
                     </td>
                     <td class="col-transicion">${transicionHtml}</td>
                     <td class="col-principio">${principioBadge}</td>
                     <td class="col-licencia">
-                        <span class="badge ${it.licencia_badge} rounded-pill mb-1 d-inline-block" style="font-size: 0.72rem;">${it.estatus_licencia}</span>
+                        <span class="badge ${it.licencia_badge} rounded-pill mb-1 d-inline-block" style="font-size: 0.72rem;">${escapeHtml(it.estatus_licencia)}</span>
                         ${licenciaSub}
                     </td>
                     <td class="col-reeleccion">
-                        ${it.es_reelecto ? `<span class="badge bg-dark text-white rounded-pill" style="font-size: 0.72rem;"><i class="bi bi-arrow-repeat me-1"></i>${it.reeleccion_texto}</span>` : '<span class="text-muted small">Primer Periodo</span>'}
+                        ${it.es_reelecto ? `<span class="badge bg-dark text-white rounded-pill" style="font-size: 0.72rem;"><i class="bi bi-arrow-repeat me-1"></i>${escapeHtml(it.reeleccion_texto)}</span>` : '<span class="text-muted small">Primer Periodo</span>'}
                     </td>
                     <td class="col-asistencia text-center">${asistHtml}</td>
                     <td class="col-iniciativas text-center">
-                        ${it.iniciativas_total > 0 ? `<a href="${it.url}#iniciativas" class="badge bg-light text-primary border rounded-pill px-2 text-decoration-none fw-bold" style="font-size: 0.75rem;">${it.iniciativas_total} ↗</a>` : '<span class="text-muted small">0</span>'}
+                        ${it.iniciativas_total > 0 ? `<a href="${encodeURI(it.url || '#')}#iniciativas" class="badge bg-light text-primary border rounded-pill px-2 text-decoration-none fw-bold" style="font-size: 0.75rem;">${it.iniciativas_total} ↗</a>` : '<span class="text-muted small">0</span>'}
                     </td>
                     <td class="col-estudios col-hidden">
-                        <div class="fw-semibold">${it.grado_academico}</div>
-                        <small class="text-muted">${it.disciplina}</small>
+                        <div class="fw-semibold">${escapeHtml(it.grado_academico)}</div>
+                        <small class="text-muted">${escapeHtml(it.disciplina)}</small>
                     </td>
                     <td class="col-comisiones col-hidden">
-                        ${it.preside_comision ? `<span class="badge bg-warning-subtle text-dark border border-warning-subtle rounded-pill">Preside: ${it.presidencias_str}</span>` : `<span class="text-muted small">${it.comisiones_total} comisiones</span>`}
+                        ${it.preside_comision ? `<span class="badge bg-warning-subtle text-dark border border-warning-subtle rounded-pill">Preside: ${escapeHtml(it.presidencias_str)}</span>` : `<span class="text-muted small">${it.comisiones_total} comisiones</span>`}
                     </td>
                     <td class="col-periodo col-hidden">
-                        <span class="badge bg-light text-secondary border">${it.periodo}</span>
+                        <span class="badge bg-light text-secondary border">${escapeHtml(it.periodo)}</span>
                     </td>
                 </tr>`;
         }

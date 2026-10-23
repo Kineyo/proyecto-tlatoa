@@ -340,6 +340,16 @@
 <!-- Lógica JavaScript Reactiva con Lazy Loading y Recálculo Dinámico de Píldoras -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
     const apiUrl = '/api/estudios';
     const selectorCategorias = document.getElementById('selectorCategorias');
     const selectorPartidos = document.getElementById('selectorPartidos');
@@ -506,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (q) {
-            chipsHtml += `<span class="badge bg-warning-subtle text-dark border d-inline-flex align-items-center gap-1 rounded-pill px-2 py-1">🔍 "${q}" <i class="bi bi-x-circle cursor-pointer" onclick="window.quitarFiltro('texto')"></i></span>`;
+            chipsHtml += `<span class="badge bg-warning-subtle text-dark border d-inline-flex align-items-center gap-1 rounded-pill px-2 py-1">🔍 "${escapeHtml(q)}" <i class="bi bi-x-circle cursor-pointer" onclick="window.quitarFiltro('texto')"></i></span>`;
         }
 
         contenedorChips.innerHTML = chipsHtml;

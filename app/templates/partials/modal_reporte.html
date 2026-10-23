@@ -238,7 +238,7 @@
             boxFiltros.classList.remove('d-none');
             inputFiltros.value = filtrosJson;
             txtTecnico.value = filtrosJson;
-            txtHumano.innerHTML = filtrosHumano || 'Filtros aplicados en la búsqueda ciudadana.';
+            txtHumano.textContent = filtrosHumano || 'Filtros aplicados en la búsqueda ciudadana.';
             if (categoriaDefault) {
                 document.getElementById('rep_categoria').value = categoriaDefault;
             }
@@ -285,7 +285,7 @@
             boxFiltros.classList.remove('d-none');
             inputFiltros.value = typeof config.filtrosJson === 'string' ? config.filtrosJson : JSON.stringify(config.filtrosJson, null, 2);
             txtTecnico.value = inputFiltros.value;
-            txtHumano.innerHTML = config.filtrosHumano || 'Filtros aplicados en la búsqueda de representantes.';
+            txtHumano.textContent = config.filtrosHumano || 'Filtros aplicados en la búsqueda de representantes.';
         } else if (boxFiltros) {
             boxFiltros.classList.add('d-none');
             inputFiltros.value = '';
