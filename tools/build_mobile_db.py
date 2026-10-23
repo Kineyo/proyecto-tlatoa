@@ -7,8 +7,16 @@ Convierte los datasets JSON en un archivo SQLite 'storage/tlatoa.db' optimizado 
 import json
 import re
 import sqlite3
+import sys
 import unicodedata
 from pathlib import Path
+
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
 
 try:
     import orjson
