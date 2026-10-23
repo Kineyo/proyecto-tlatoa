@@ -4,21 +4,45 @@ on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
-  lint:
+  verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: shivammathur/setup-php@v2
+      - name: Checkout Código
+        uses: actions/checkout@v4
+
+      - name: Configurar PHP 8.2
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
           extensions: curl, mbstring, json
           coverage: none
-      - name: Sintaxis PHP
+
+      - name: Validar Sintaxis PHP
         run: |
           find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l | grep -v "No syntax errors" || true
           ! find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l 2>&1 | grep -q "Parse error"
-      - name: Sin secretos ni archivos prohibidos
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validar Sintaxis Python y Compilador SQLite
+        run: |
+          python -m py_compile app/main.py app/core/*.py app/routers/*.py app/services/*.py tools/*.py
+          python tools/build_mobile_db.py
+
+      - name: Configurar Toolchain de Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Validar Compilación de Motor y App de Escritorio en Rust
+        run: |
+          cargo check --manifest-path crates/tlatoa-core/Cargo.toml || (rm -f crates/tlatoa-core/Cargo.lock && cargo check --manifest-path crates/tlatoa-core/Cargo.toml)
+          cargo check --manifest-path crates/tlatoa-desktop/Cargo.toml || (rm -f crates/tlatoa-desktop/Cargo.lock && cargo check --manifest-path crates/tlatoa-desktop/Cargo.toml)
+
+      - name: Auditar Sin Secretos ni Archivos Prohibidos
         run: |
           ! git ls-files | grep -E '(^|/)\.env$|cookie\.txt$|\.log$'

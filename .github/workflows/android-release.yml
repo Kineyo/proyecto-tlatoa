@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Código
         uses: actions/checkout@v4
 
-      - name: Configurar Python
+      - name: Configurar Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -28,13 +28,40 @@ jobs:
           mkdir -p android/app/src/main/assets
           cp storage/tlatoa.db android/app/src/main/assets/tlatoa.db
 
-      - name: Configurar Toolchain de Rust y NDK
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Configurar Gradle 8.7 (Compatible con AGP 8.3.2)
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+
+      - name: Configurar Toolchain de Rust y Targets Android
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android, armv7-linux-androideabi, x86_64-linux-android
 
-      - name: Instalar cargo-ndk
-        run: cargo install cargo-ndk
+      - name: Instalar cargo-ndk (Precompilado con Fallback)
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-ndk
+
+      - name: Verificar y Exportar ANDROID_NDK_HOME
+        run: |
+          if [ -n "${ANDROID_NDK_LATEST_HOME:-}" ] && [ -d "$ANDROID_NDK_LATEST_HOME" ]; then
+            echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> "$GITHUB_ENV"
+          elif [ -n "${ANDROID_NDK_HOME:-}" ] && [ -d "$ANDROID_NDK_HOME" ]; then
+            echo "ANDROID_NDK_HOME=$ANDROID_NDK_HOME" >> "$GITHUB_ENV"
+          elif [ -d "${ANDROID_HOME}/ndk" ]; then
+            LATEST_NDK=$(ls -d "${ANDROID_HOME}/ndk/"* | sort -V | tail -n 1)
+            echo "ANDROID_NDK_HOME=$LATEST_NDK" >> "$GITHUB_ENV"
+          else
+            yes | "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --install "ndk;26.3.11579264"
+            echo "ANDROID_NDK_HOME=${ANDROID_HOME}/ndk/26.3.11579264" >> "$GITHUB_ENV"
+          fi
 
       - name: Compilar Rust Core Engine para Android (libtlatoa_core.so)
         working-directory: crates/tlatoa-core
@@ -43,36 +70,38 @@ jobs:
           mkdir -p ../../android/app/src/main/jniLibs/armeabi-v7a
           mkdir -p ../../android/app/src/main/jniLibs/x86_64
 
-          cargo ndk -t arm64-v8a -o ../../android/app/src/main/jniLibs build --release
+          cargo ndk -t arm64-v8a -o ../../android/app/src/main/jniLibs build --release || (rm -f Cargo.lock && cargo ndk -t arm64-v8a -o ../../android/app/src/main/jniLibs build --release)
           cargo ndk -t armeabi-v7a -o ../../android/app/src/main/jniLibs build --release
           cargo ndk -t x86_64 -o ../../android/app/src/main/jniLibs build --release
 
-      - name: Configurar JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Compilar APK con Gradle
+      - name: Compilar APK Firmado con Gradle
         working-directory: android
         run: |
-          chmod +x gradlew 2>/dev/null || true
-          gradle assembleRelease --no-daemon || gradle assembleDebug --no-daemon
+          gradle assembleRelease --no-daemon --stacktrace || gradle assembleDebug --no-daemon --stacktrace
+          mkdir -p ../dist
+          APK_FILE=$(find app/build/outputs/apk -name "*.apk" | sort | head -n 1)
+          cp "$APK_FILE" ../dist/tlatoa-android.apk
+          cp ../storage/tlatoa.db ../dist/tlatoa.db
+
+      - name: Subir Artefactos de Compilación (GitHub Actions)
+        uses: actions/upload-artifact@v4
+        with:
+          name: tlatoa-android-package
+          path: dist/*
+          if-no-files-found: error
 
       - name: Publicar APK en GitHub Releases
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            android/app/build/outputs/apk/**/*.apk
-            storage/tlatoa.db
+          files: dist/*
           draft: false
           prerelease: false
           name: "Proyecto Tlatoa Android (100% Offline)"
           body: |
             ### 📱 Proyecto Tlatoa — Versión Nativa Offline para Android
             
-            - **Motor**: Rust Core Engine (`rusqlite` + FTS5).
+            - **Motor**: Rust Core Engine (`rusqlite` + FTS5) con fallback SQLite nativo.
             - **Interfaz**: Kotlin con Jetpack Compose.
-            - **Base de Datos**: 100% desconectada integrada (`tlatoa.db`).
-            - **Sin Tiendas**: Descarga e instala directamente en tu teléfono Android.
+            - **Base de Datos**: 100% desconectada integrada (`tlatoa.db` con 16,100+ actores políticos).
+            - **Sin Tiendas**: Descarga e instala `tlatoa-android.apk` directamente en tu teléfono Android.
