@@ -42,11 +42,16 @@ Garantizar la **soberanía ciudadana de los datos**. Que la información públic
   * [Android (.APK directo sin tiendas)](#android-apk-directo-100-offline)
   * [Escritorio Nativo (Windows, Linux, Mac)](#escritorio-nativo-windows-linux-macos)
   * [Servidor Web Local (FastAPI / Python)](#servidor-web-local-python--fastapi)
+* [🛠️ Solución de Problemas para el Usuario Final (Troubleshooting)](#️-solución-de-problemas-frecuentes-troubleshooting)
 * [🤝 2. Cómo Apoyar al Proyecto](#-2-cómo-apoyar-al-proyecto)
 * [📬 3. Cómo Enviar Información o Reportar Errores (Sin saber programar)](#-3-cómo-enviar-información-o-reportar-errores-sin-programar)
 * [💻 4. Cómo Aportar con Código y Scrapers (Para desarrolladores)](#-4-cómo-aportar-con-código-y-scrapers-para-desarrolladores)
 * [🏛️ 5. Cobertura de Datos y Arquitectura](#-5-cobertura-de-datos-y-arquitectura)
 * [⚖️ 6. Licencias y Aviso Legal](#️-6-licencias-y-aviso-legal-agplv3)
+
+> [!TIP]
+> **¿Tienes algún problema al instalar la app en Android, Windows o Linux?**  
+> Consulta nuestra **[Guía de Solución de Problemas para Usuarios (`docs/SOLUCION_DE_PROBLEMAS.md`)](docs/SOLUCION_DE_PROBLEMAS.md)** con respuestas paso a paso.
 
 ---
 
@@ -77,6 +82,16 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
 Abre en tu navegador: `http://localhost:8000`
+
+---
+
+## 🛠️ Solución de Problemas Frecuentes (Troubleshooting)
+
+Si al abrir o instalar la aplicación encuentras algún aviso de seguridad o duda técnica, revisa nuestra guía completa: **[`docs/SOLUCION_DE_PROBLEMAS.md`](docs/SOLUCION_DE_PROBLEMAS.md)**.
+
+* **Android ("Fuentes desconocidas" o "Play Protect"):** Cómo permitir la instalación directa del archivo `.apk` y cómo opera el modo de autorreparación y respaldo SQLite nativo.
+* **Windows / Linux ("SmartScreen", permisos o falta de `tlatoa.db`):** Cómo ejecutar el paquete portable `.zip`, dar permisos con `chmod +x` o abrir el navegador manualmente si no se lanza solo.
+* **Buscador y Base de Datos:** Cómo recompilar `storage/tlatoa.db` con `python3 tools/build_mobile_db.py` y cómo funciona la búsqueda tolerante a acentos y caracteres especiales.
 
 ---
 

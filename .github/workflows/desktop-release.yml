@@ -16,14 +16,17 @@ jobs:
         include:
           - os: ubuntu-latest
             artifact_name: tlatoa-desktop-linux-x86_64
+            bundle_name: tlatoa-desktop-linux-x86_64-portable.zip
             target: x86_64-unknown-linux-gnu
             binary_path: crates/tlatoa-desktop/target/release/tlatoa-desktop
           - os: windows-latest
             artifact_name: tlatoa-desktop-windows-x86_64.exe
+            bundle_name: tlatoa-desktop-windows-x86_64-portable.zip
             target: x86_64-pc-windows-msvc
             binary_path: crates/tlatoa-desktop/target/release/tlatoa-desktop.exe
           - os: macos-latest
             artifact_name: tlatoa-desktop-macos-x86_64
+            bundle_name: tlatoa-desktop-macos-x86_64-portable.zip
             target: x86_64-apple-darwin
             binary_path: crates/tlatoa-desktop/target/release/tlatoa-desktop
 
@@ -33,6 +36,14 @@ jobs:
       - name: Checkout Código
         uses: actions/checkout@v4
 
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compilar Base de Datos SQLite (tlatoa.db)
+        run: python3 tools/build_mobile_db.py
+
       - name: Configurar Rust
         uses: dtolnay/rust-toolchain@stable
 
@@ -40,13 +51,17 @@ jobs:
         working-directory: crates/tlatoa-desktop
         run: cargo build --release
 
-      - name: Renombrar Artefacto
+      - name: Empaquetar Distribución Portable (Binario + tlatoa.db)
         shell: bash
         run: |
-          mkdir -p dist
+          mkdir -p dist/portable
           cp ${{ matrix.binary_path }} dist/${{ matrix.artifact_name }}
+          cp ${{ matrix.binary_path }} dist/portable/${{ matrix.artifact_name }}
+          cp storage/tlatoa.db dist/portable/tlatoa.db
+          python3 -c "import shutil; shutil.make_archive('dist/${{ matrix.bundle_name }}'.replace('.zip',''), 'zip', 'dist/portable')"
+          rm -rf dist/portable
 
-      - name: Publicar Binario en GitHub Releases
+      - name: Publicar Binarios en GitHub Releases
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:

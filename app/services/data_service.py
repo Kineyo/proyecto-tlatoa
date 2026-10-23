@@ -6,7 +6,21 @@ from typing import List, Dict, Any, Optional
 from datetime import date
 from collections import defaultdict, Counter
 import json
-import orjson
+try:
+    import orjson
+except ImportError:
+    class _OrjsonFallback:
+        @staticmethod
+        def loads(data):
+            if isinstance(data, (bytes, bytearray)):
+                return json.loads(data.decode("utf-8", errors="replace"))
+            return json.loads(data)
+
+        @staticmethod
+        def dumps(obj):
+            return json.dumps(obj, ensure_ascii=False).encode("utf-8")
+
+    orjson = _OrjsonFallback()  # type: ignore[assignment]
 from app.core.config import settings
 from app.services.education_service import education_service
 

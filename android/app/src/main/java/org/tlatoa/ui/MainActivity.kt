@@ -8,8 +8,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
@@ -26,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import org.tlatoa.core.TlatoaEngine
 import org.tlatoa.data.PoliticoSummary
 import org.tlatoa.ui.theme.TlatoaTheme
@@ -54,18 +57,38 @@ fun TlatoaSearchScreen() {
     var searchQuery by remember { mutableStateOf("") }
     var results by remember { mutableStateOf<List<PoliticoSummary>>(emptyList()) }
     var isSearching by remember { mutableStateOf(false) }
+    var selectedPolitico by remember { mutableStateOf<PoliticoSummary?>(null) }
+    var selectedJson by remember { mutableStateOf("") }
 
-    // Búsqueda ultrarrápida reactiva a cada pulsación de tecla
     LaunchedEffect(searchQuery) {
         if (searchQuery.trim().length >= 2) {
             isSearching = true
             results = withContext(Dispatchers.Default) {
-                TlatoaEngine.search(searchQuery.trim(), limit = 30)
+                TlatoaEngine.search(searchQuery.trim(), limit = 40)
             }
             isSearching = false
         } else {
             results = emptyList()
         }
+    }
+
+    LaunchedEffect(selectedPolitico) {
+        val current = selectedPolitico
+        if (current != null) {
+            selectedJson = withContext(Dispatchers.Default) {
+                TlatoaEngine.getPoliticoDetails(current.slug)
+            }
+        } else {
+            selectedJson = ""
+        }
+    }
+
+    if (selectedPolitico != null) {
+        PoliticoDetailDialog(
+            summary = selectedPolitico!!,
+            rawJson = selectedJson,
+            onDismiss = { selectedPolitico = null }
+        )
     }
 
     Scaffold(
@@ -98,7 +121,6 @@ fun TlatoaSearchScreen() {
                     }
                 },
                 actions = {
-                    // Badge de modo Offline Nativo
                     Surface(
                         color = Color(0xFFE8F5E9),
                         shape = RoundedCornerShape(12.dp),
@@ -138,12 +160,11 @@ fun TlatoaSearchScreen() {
         ) {
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Barra de Búsqueda Instantánea
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("Escribe un nombre (ej. Noroña, Alito, Claudia)...") },
+                placeholder = { Text("Busca por nombre, estado o partido (ej. Noroña)...") },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Search, contentDescription = "Buscar")
                 },
@@ -164,7 +185,6 @@ fun TlatoaSearchScreen() {
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Lista de Resultados
             if (results.isEmpty() && searchQuery.trim().length >= 2 && !isSearching) {
                 Box(
                     modifier = Modifier.fillMaxSize(),
@@ -182,7 +202,7 @@ fun TlatoaSearchScreen() {
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Teclea al menos 2 letras para buscar al instante...",
+                        text = "Teclea al menos 2 letras para buscar sin internet...",
                         color = Color.Gray,
                         fontSize = 14.sp
                     )
@@ -193,7 +213,10 @@ fun TlatoaSearchScreen() {
                     contentPadding = PaddingValues(bottom = 24.dp)
                 ) {
                     items(results, key = { it.slug }) { politico ->
-                        PoliticoCard(politico = politico)
+                        PoliticoCard(
+                            politico = politico,
+                            onClick = { selectedPolitico = politico }
+                        )
                     }
                 }
             }
@@ -202,11 +225,11 @@ fun TlatoaSearchScreen() {
 }
 
 @Composable
-fun PoliticoCard(politico: PoliticoSummary) {
+fun PoliticoCard(politico: PoliticoSummary, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { /* Abre expediente completo */ },
+            .clickable(onClick = onClick),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
@@ -222,10 +245,9 @@ fun PoliticoCard(politico: PoliticoSummary) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Etiqueta del Partido Político con color oficial
                 val parsedColor = try {
                     Color(android.graphics.Color.parseColor(politico.partidoColor))
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                     Color(0xFF6C757D)
                 }
 
@@ -242,7 +264,6 @@ fun PoliticoCard(politico: PoliticoSummary) {
                     )
                 }
 
-                // Entidad Federativa
                 Text(
                     text = politico.entidad,
                     fontSize = 12.sp,
@@ -251,7 +272,6 @@ fun PoliticoCard(politico: PoliticoSummary) {
                 )
             }
 
-            // Nombre Completo
             Text(
                 text = politico.nombreCompleto,
                 fontWeight = FontWeight.Bold,
@@ -260,7 +280,6 @@ fun PoliticoCard(politico: PoliticoSummary) {
                 overflow = TextOverflow.Ellipsis
             )
 
-            // Cargo
             Text(
                 text = politico.cargo,
                 fontSize = 13.sp,
@@ -270,4 +289,73 @@ fun PoliticoCard(politico: PoliticoSummary) {
             )
         }
     }
+}
+
+@Composable
+fun PoliticoDetailDialog(
+    summary: PoliticoSummary,
+    rawJson: String,
+    onDismiss: () -> Unit
+) {
+    val details = remember(rawJson) {
+        try {
+            if (rawJson.isNotEmpty()) JSONObject(rawJson) else null
+        } catch (_: Exception) {
+            null
+        }
+    }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cerrar")
+            }
+        },
+        title = {
+            Text(
+                text = summary.nombreCompleto,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp
+            )
+        },
+        text = {
+            Column(
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text("Partido: ${summary.partido}", fontWeight = FontWeight.SemiBold)
+                Text("Cargo: ${summary.cargo}")
+                Text("Entidad: ${summary.entidad}")
+
+                if (details != null) {
+                    val principio = details.optString("principio_eleccion")
+                    if (principio.isNotEmpty()) Text("Principio: $principio")
+
+                    val periodo = details.optString("periodo")
+                        .ifEmpty { details.optString("fecha_toma_protesta") }
+                        .ifEmpty { details.optString("fecha_inicio") }
+                    if (periodo.isNotEmpty()) Text("Periodo / Inicio: $periodo")
+
+                    val suplente = details.optString("suplente_nombre")
+                    if (suplente.isNotEmpty() && suplente != "null") Text("Suplente: $suplente")
+
+                    val estudios = details.optString("ultimo_grado_estudios")
+                        .ifEmpty { details.optString("preparacion_academica") }
+                    if (estudios.isNotEmpty() && estudios != "null") Text("Escolaridad: $estudios")
+
+                    val meta = details.optJSONObject("metadata")
+                    val fuente = meta?.optString("fuente_url")
+                        ?.ifEmpty { details.optString("fuente_url") }
+                        ?: "Portal Oficial (.gob.mx)"
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "Fuente Oficial: $fuente",
+                        fontSize = 12.sp,
+                        color = Color.Gray
+                    )
+                }
+            }
+        }
+    )
 }
