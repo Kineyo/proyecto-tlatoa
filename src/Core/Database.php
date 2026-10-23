@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Core;
+namespace Tlatoa\Core;
 
 use PDO;
 use PDOException;
@@ -50,7 +50,7 @@ class Database
         } else {
             $host = (string)(getenv('DB_HOST') ?: '127.0.0.1');
             $port = (string)(getenv('DB_PORT') ?: '3306');
-            $database = (string)(getenv('DB_DATABASE') ?: 'elpulso');
+            $database = (string)(getenv('DB_DATABASE') ?: 'tlatoa');
             $username = (string)(getenv('DB_USERNAME') ?: 'root');
             $password = (string)(getenv('DB_PASSWORD') ?: '');
 

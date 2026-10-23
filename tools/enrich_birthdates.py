@@ -1,5 +1,5 @@
 """
-Script de enriquecimiento de fechas de nacimiento y edad para Pulso Cívico.
+Script de enriquecimiento de fechas de nacimiento y edad para Proyecto Tlatoa.
 Paso 1: Consulta masiva a Wikidata (rápida, cubre miles en segundos).
 Paso 2: Barrido quirúrgico a SIL SEGOB para legisladores sin fecha en la legislatura activa (LXVI).
 """
@@ -43,7 +43,7 @@ def get_wikidata_dob_map() -> Dict[str, str]:
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "ElPulsoCivicoBot/1.0 (observatorio ciudadano; contacto@elpulso.mx)",
+            "User-Agent": "TlatoaBot/1.0 (observatorio ciudadano; contacto@tlatoa.org)",
             "Accept": "application/sparql-results+json"
         }
     )

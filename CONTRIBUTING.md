@@ -1,4 +1,4 @@
-# Cómo contribuir a Pulso Cívico
+# Cómo contribuir a Proyecto Tlatoa
 
 ¡Gracias por sumarte! No necesitas ser programador para aportar.
 
@@ -41,7 +41,7 @@ php tools/gateway.php health
 <summary><strong>🤖 Agentes (Prompt adaptado a rutas de Linux)</strong></summary>
 
 ```text
-Trabajas en Pulso Cívico sobre Linux. Lee primero `AGENTS.md`.
+Trabajas en Proyecto Tlatoa sobre Linux. Lee primero `AGENTS.md`.
 - Entorno web activo: Python / FastAPI (`app/main.py`), routers en `app/routers/`, servicios en `app/services/` y plantillas Jinja2 en `app/templates/`.
 - Datasets JSON en `storage/data/json/`.
 - Antes de entregar cambios valida en terminal con:
@@ -72,7 +72,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health
 <summary><strong>🤖 Agentes (Prompt adaptado a rutas de Windows)</strong></summary>
 
 ```text
-Trabajas en Pulso Cívico sobre Windows (PowerShell). Lee primero `AGENTS.md`.
+Trabajas en Proyecto Tlatoa sobre Windows (PowerShell). Lee primero `AGENTS.md`.
 - Entorno web activo: Python / FastAPI (`app\main.py`), routers en `app\routers\`, servicios en `app\services\` y plantillas Jinja2 en `app\templates\`.
 - Datasets JSON en `storage\data\json\`.
 - Ejecuta diagnósticos y validaciones mediante el runner centralizado:
@@ -103,7 +103,7 @@ php tools/gateway.php health
 <summary><strong>🤖 Agentes (Prompt adaptado a rutas de macOS)</strong></summary>
 
 ```text
-Trabajas en Pulso Cívico sobre macOS. Lee primero `AGENTS.md`.
+Trabajas en Proyecto Tlatoa sobre macOS. Lee primero `AGENTS.md`.
 - Entorno web activo: Python / FastAPI (`app/main.py`), routers en `app/routers/`, servicios en `app/services/` y plantillas Jinja2 en `app/templates/`.
 - Datasets JSON en `storage/data/json/`.
 - Antes de entregar cambios valida en terminal con:

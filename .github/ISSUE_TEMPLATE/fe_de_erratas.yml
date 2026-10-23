@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Pulso Cívico se rige por la verdad fáctica de las fuentes oficiales. Si encuentras un dato erróneo, por favor documenta la fuente oficial correspondiente para corregir el scraper.
+        Proyecto Tlatoa se rige por la verdad fáctica de las fuentes oficiales. Si encuentras un dato erróneo, por favor documenta la fuente oficial correspondiente para corregir el scraper.
   - type: input
     id: funcionario
     attributes:

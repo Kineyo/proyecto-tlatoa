@@ -1,4 +1,4 @@
-# Plan de Migración de Pulso Cívico: PHP a Python + Red P2P y Auditoría Electoral
+# Plan de Migración de Proyecto Tlatoa: PHP a Python + Red P2P y Auditoría Electoral
 
 ## 1. Visión y Objetivos de la Migración
 1. **Transición sin pérdida de datos:** Preservar intactos los datasets JSON existentes en `storage/data/json/` y las fotos en `storage/raw/photos/`.

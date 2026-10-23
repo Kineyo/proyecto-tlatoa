@@ -1,11 +1,11 @@
-# DOCUMENTO DE ANÁLISIS, REQUERIMIENTOS Y MODELO DE GRAFO CÍVICO
-## Pulso Cívico — Plataforma de Transparencia Legislativa y Grafo de Poder
+# DOCUMENTO DE ANÁLISIS, REQUERIMIENTOS Y MODELO DE GRAFO CIUDADANO
+## Proyecto Tlatoa — Plataforma de Transparencia Legislativa y Grafo de Poder
 **Versión:** 1.0 | **Fecha:** Octubre 2026 | **Ámbito:** Nivel Federal (Cámara de Diputados y Senadores)
 
 ---
 
 ## 1. INTRODUCCIÓN Y VISIÓN DEL SISTEMA
-**Pulso Cívico** es un ecosistema cívico digital de alto rendimiento diseñado para transformar la opacidad de los datos parlamentarios de México en un **Grafo de Conocimiento Interconectado (Knowledge Graph)** navegable, verificable y antipartidista.
+**Proyecto Tlatoa** es un ecosistema ciudadano digital de alto rendimiento diseñado para transformar la opacidad de los datos parlamentarios de México en un **Grafo de Conocimiento Interconectado (Knowledge Graph)** navegable, verificable y antipartidista.
 
 A diferencia de un directorio tradicional estático, la plataforma modela a los actores políticos y sus relaciones como **nodos y aristas dinámicas a través del tiempo**.
 

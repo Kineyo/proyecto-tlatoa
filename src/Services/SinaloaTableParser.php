@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 /**
  * SinaloaTableParser: Parser especializado en estructuras de tablas legislativas de Sinaloa.

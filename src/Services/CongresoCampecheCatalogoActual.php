@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 /**
  * Catálogo oficial y verificado de la LXV Legislatura (2024-2027)

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
-use PulsoCivico\Services\DataService;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
+use Tlatoa\Services\DataService;
 
 /**
  * @var array $pol  Datos del político a renderizar

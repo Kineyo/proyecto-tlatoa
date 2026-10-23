@@ -29,7 +29,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228403.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228403.jpg",
+            "foto_local_path": "storage/raw/photos/9228403.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -151,7 +151,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228395.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228395.jpg",
+            "foto_local_path": "storage/raw/photos/9228395.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -267,7 +267,7 @@
             "preparacion_academica": "Ingeniería Industrial",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228397.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228397.jpg",
+            "foto_local_path": "storage/raw/photos/9228397.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -366,7 +366,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229381.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229381.jpg",
+            "foto_local_path": "storage/raw/photos/9229381.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -509,7 +509,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229154.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229154.jpg",
+            "foto_local_path": "storage/raw/photos/9229154.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -698,7 +698,7 @@
             "preparacion_academica": "Derecho Fiscal",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228399.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228399.jpg",
+            "foto_local_path": "storage/raw/photos/9228399.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -808,7 +808,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229018.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229018.jpg",
+            "foto_local_path": "storage/raw/photos/9229018.jpg",
             "total_comisiones": 6,
             "comisiones": [
                 {
@@ -961,7 +961,7 @@
             "preparacion_academica": "Alta Dirección",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229016.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229016.jpg",
+            "foto_local_path": "storage/raw/photos/9229016.jpg",
             "total_comisiones": 17,
             "comisiones": [
                 {
@@ -1196,7 +1196,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229012.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229012.jpg",
+            "foto_local_path": "storage/raw/photos/9229012.jpg",
             "total_comisiones": 5,
             "comisiones": [
                 {

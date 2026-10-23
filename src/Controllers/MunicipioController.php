@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Controllers;
+namespace Tlatoa\Controllers;
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
-use PulsoCivico\Services\DataService;
-use PulsoCivico\Services\MunicipioService;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
+use Tlatoa\Services\DataService;
+use Tlatoa\Services\MunicipioService;
 
 /**
  * MunicipioController: Controla las vistas canónicas del Directorio Nacional de Alcaldes
@@ -50,7 +50,7 @@ class MunicipioController
         $canonical = Router::url('/alcaldes');
 
         $seo = [
-            'title' => 'Directorio Nacional de Presidentas y Presidentes Municipales de México — Pulso Cívico',
+            'title' => 'Directorio Nacional de Presidentas y Presidentes Municipales de México — Proyecto Tlatoa',
             'description' => 'Radiografía de gobernanza local en los 2,474 municipios y alcaldías de México. Directorio oficial de alcaldes vigentes y partidos políticos.',
             'canonical' => $canonical,
             'schema' => [
@@ -76,7 +76,7 @@ class MunicipioController
         if ($municipio === null) {
             http_response_code(404);
             $seo = [
-                'title' => 'Municipio No Encontrado — Pulso Cívico',
+                'title' => 'Municipio No Encontrado — Proyecto Tlatoa',
                 'description' => "No se encontró el municipio con clave {$cvegeo}.",
                 'canonical' => Router::url('/alcaldes'),
             ];
@@ -89,7 +89,7 @@ class MunicipioController
         $canonical = Router::url('/municipios/' . $cvegeo);
 
         $seo = [
-            'title' => "Alcalde e Historia Política de {$nombreMun}, {$entidad} — Pulso Cívico",
+            'title' => "Alcalde e Historia Política de {$nombreMun}, {$entidad} — Proyecto Tlatoa",
             'description' => "Cronología histórica de alcaldes, partidos gobernantes y alternancia política en {$nombreMun}, {$entidad} desde 1970 hasta la fecha.",
             'canonical' => $canonical,
             'schema' => [

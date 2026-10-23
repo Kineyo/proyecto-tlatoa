@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\DTO;
+namespace Tlatoa\DTO;
 
 /**
  * Data Transfer Object que representa un legislador federal con todos sus atributos auditables.

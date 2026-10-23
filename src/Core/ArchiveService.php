@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Core;
+namespace Tlatoa\Core;
 
 /**
  * Servicio de preservación y archivado externo de evidencia digital.
@@ -31,7 +31,7 @@ class ArchiveService
             CURLOPT_HEADER => true,
             CURLOPT_TIMEOUT => self::TIMEOUT,
             CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_USERAGENT => 'PulsoCivico-PreservationBot/1.0 (+https://github.com/pulso-civico)',
+            CURLOPT_USERAGENT => 'Tlatoa-PreservationBot/1.0 (+https://github.com/Kineyo/proyecto-tlatoa)',
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_SSL_VERIFYHOST => false,
         ]);

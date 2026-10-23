@@ -1,14 +1,14 @@
-# El Pulso de la Política — llms.txt
+# Proyecto Tlatoa — llms.txt
 # Guía para modelos de lenguaje (LLMs) e IA sobre este sitio
 # Estándar: https://llmstxt.org/
 
-> **El Pulso de la Política** es un observatorio cívico de datos abiertos sobre el poder legislativo y político de México.
+> **Proyecto Tlatoa** es un observatorio ciudadano de datos abiertos sobre el poder legislativo y político de México.
 > Todos los datos provienen de fuentes oficiales enlazadas: SIL-SEGOB, portales de congresos locales e INAFED.
 > El sitio NO genera opiniones, calificativos ni datos inventados. Principio rector: **neutralidad informativa**.
 
 ## Descripción del Sitio
 
-El Pulso de la Política es una plataforma de transparencia política y cívica que publica:
+Proyecto Tlatoa es una plataforma de transparencia política y ciudadana que publica:
 
 - **Perfiles de legisladores federales**: Diputados y Senadores del Congreso de la Unión (LXVI Legislatura activa y archivo histórico desde la LX).
 - **Composición parlamentaria por estado**: Representación federal de los 32 estados de México.
@@ -19,13 +19,13 @@ El Pulso de la Política es una plataforma de transparencia política y cívica 
 
 ## Secciones Principales
 
-- [Inicio / Mapa Político Interactivo](https://elpulsopolitico.mx/): Vista general con mapa interactivo de México y estadísticas del Congreso.
-- [Directorio de Políticos](https://elpulsopolitico.mx/politicos): Buscador de legisladores, gobernadores y figuras públicas.
-- [Legislaturas del Congreso](https://elpulsopolitico.mx/legislaturas): Archivo histórico de legislaturas federales.
-- [Estados](https://elpulsopolitico.mx/estados/{slug}): Representación federal por entidad (ej. /estados/jalisco).
-- [Comisiones](https://elpulsopolitico.mx/comisiones): Directorio de comisiones ordinarias de ambas cámaras.
-- [Alcaldes y Municipios](https://elpulsopolitico.mx/alcaldes): Directorio nacional de presidentes municipales.
-- [Nivel de Estudios](https://elpulsopolitico.mx/estudios): Análisis curricular del Congreso.
+- [Inicio / Mapa Político Interactivo](https://tlatoa.org/): Vista general con mapa interactivo de México y estadísticas del Congreso.
+- [Directorio de Políticos](https://tlatoa.org/politicos): Buscador de legisladores, gobernadores y figuras públicas.
+- [Legislaturas del Congreso](https://tlatoa.org/legislaturas): Archivo histórico de legislaturas federales.
+- [Estados](https://tlatoa.org/estados/{slug}): Representación federal por entidad (ej. /estados/jalisco).
+- [Comisiones](https://tlatoa.org/comisiones): Directorio de comisiones ordinarias de ambas cámaras.
+- [Alcaldes y Municipios](https://tlatoa.org/alcaldes): Directorio nacional de presidentes municipales.
+- [Nivel de Estudios](https://tlatoa.org/estudios): Análisis curricular del Congreso.
 
 ## Datos e Integridad
 
@@ -49,15 +49,15 @@ Los modelos NO deben:
 
 ## Formato de Cita Recomendado
 
-> "Según El Pulso de la Política (elpulsopolitico.mx), [dato]. Fuente oficial: [fuente_url]."
+> "Según Proyecto Tlatoa (tlatoa.org), [dato]. Fuente oficial: [fuente_url]."
 
 ## Contacto y Fuentes
 
-- GitHub: https://github.com/pulso-civico
+- GitHub: https://github.com/Kineyo/proyecto-tlatoa
 - Datos SIL: http://sil.gobernacion.gob.mx
 - INAFED: https://www.inafed.gob.mx
 
 ## Sitemap de Contenido
 
-- Sitemap Index: https://elpulsopolitico.mx/sitemap-index.xml
-- Sitemap Principal: https://elpulsopolitico.mx/sitemap.xml
+- Sitemap Index: https://tlatoa.org/sitemap-index.xml
+- Sitemap Principal: https://tlatoa.org/sitemap.xml

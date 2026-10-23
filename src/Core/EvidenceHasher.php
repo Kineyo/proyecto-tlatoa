@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Core;
+namespace Tlatoa\Core;
 
 /**
  * Servicio criptográfico de integridad para evidencia pública.
@@ -81,7 +81,7 @@ class EvidenceHasher
 
         $manifest = [
             'version' => '1.0',
-            'protocol' => 'PulsoCivico-ProofOfExistence',
+            'protocol' => 'Tlatoa-ProofOfExistence',
             'fecha_manifiesto' => $fecha,
             'timestamp_utc' => gmdate('Y-m-d\TH:i:s\Z'),
             'total_evidencias' => count($items),

@@ -36,8 +36,8 @@
   <!-- Top Banner -->
   <g transform="translate(40, 24)">
     <rect width="1240" height="56" rx="10" fill="url(#header-grad)"/>
-    <text x="24" y="30" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="0.5">PULSO CÍVICO</text>
-    <text x="165" y="30" font-size="15" font-weight="400" fill="#94a3b8">|  Modelo Relacional de Datos y Grafo de Conocimiento</text>
+    <text x="24" y="30" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="0.5">PROYECTO TLATOA</text>
+    <text x="205" y="30" font-size="15" font-weight="400" fill="#94a3b8">|  Modelo Relacional de Datos y Grafo de Conocimiento</text>
     <rect x="1060" y="16" width="156" height="24" rx="12" fill="#3b82f6" fill-opacity="0.2"/>
     <text x="1138" y="32" font-size="11" font-weight="600" fill="#60a5fa" text-anchor="middle">ESPECIFICACIÓN 3FN</text>
   </g>
@@ -431,6 +431,6 @@
   <!-- Footer Info -->
   <g transform="translate(45, 785)">
     <text x="0" y="0" font-size="11" fill="#64748b">Plataforma Ciudadana Neutral y de Código Abierto  ·  Formato 3FN  ·  Soporte Híbrido JSON Datasets / SQLite / MySQL</text>
-    <text x="1230" y="0" font-size="11" font-weight="600" fill="#94a3b8" text-anchor="end">pulso-civico.org</text>
+    <text x="1230" y="0" font-size="11" font-weight="600" fill="#94a3b8" text-anchor="end">tlatoa.org</text>
   </g>
 </svg>

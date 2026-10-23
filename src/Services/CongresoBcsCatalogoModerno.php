@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 /**
  * Catálogo oficial de las Legislaturas IX a XVI (1999 a 2024) de BCS.

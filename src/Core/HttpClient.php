@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Core;
+namespace Tlatoa\Core;
 
 /**
  * Cliente HTTP resiliente con reintentos exponenciales, control de tasa y auditoría de peticiones.

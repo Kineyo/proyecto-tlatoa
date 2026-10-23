@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\ViewHelper;
 
 /**
- * DataService: Gestiona y enriquece la estructura de datos cívicos.
+ * DataService: Gestiona y enriquece la estructura de datos ciudadanos.
  * Normaliza slugs canónicos para SEO, relaciones de grafo y consultas por estado y partido.
  */
 class DataService
@@ -1057,7 +1057,7 @@ class DataService
                 'partido' => $partido,
                 'asientos' => $asientos,
                 'porcentaje' => $pct,
-                'color' => \PulsoCivico\Core\ViewHelper::getPartyColor($partido),
+                'color' => \Tlatoa\Core\ViewHelper::getPartyColor($partido),
             ];
         }
 
@@ -1068,7 +1068,7 @@ class DataService
                 'partido' => $partido,
                 'asientos' => $asientos,
                 'porcentaje' => $pct,
-                'color' => \PulsoCivico\Core\ViewHelper::getPartyColor($partido),
+                'color' => \Tlatoa\Core\ViewHelper::getPartyColor($partido),
             ];
         }
 
@@ -1738,7 +1738,7 @@ class DataService
             array_unshift($historialFiltrado, $cargoActual);
         }
 
-        // 5. Análisis cívico de trayectoria: escalas de gobierno y transición de partidos
+        // 5. Análisis ciudadano de trayectoria: escalas de gobierno y transición de partidos
         $partidosEnCarrera = [];
         if (!empty($partidoCargoActual) && !str_contains(strtoupper($partidoCargoActual), 'SIN PARTIDO')) {
             $canActual = ViewHelper::getCanonicalPartyName($partidoCargoActual);

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
-use PulsoCivico\DTO\AlcaldeDTO;
+use Tlatoa\DTO\AlcaldeDTO;
 
 /**
  * Servicio para la gestión, ingesta y consulta del Directorio Nacional de Alcaldes
@@ -65,7 +65,7 @@ class MunicipioService
         if (str_starts_with($csvContentOrPath, 'http://') || str_starts_with($csvContentOrPath, 'https://')) {
             $context = stream_context_create([
                 'http' => [
-                    'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) PulsoCivicoBot/1.0',
+                    'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) TlatoaBot/1.0',
                     'timeout' => 60,
                 ],
                 'ssl' => [
@@ -423,7 +423,7 @@ class MunicipioService
         $lines = [];
         if (str_starts_with($csvContentOrPath, 'http://') || str_starts_with($csvContentOrPath, 'https://')) {
             $context = stream_context_create([
-                'http' => ['user_agent' => 'Mozilla/5.0 PulsoCivicoBot/1.0', 'timeout' => 60],
+                'http' => ['user_agent' => 'Mozilla/5.0 TlatoaBot/1.0', 'timeout' => 60],
                 'ssl' => ['verify_peer' => false, 'verify_peer_name' => false],
             ]);
             $rawContent = (string)@file_get_contents($csvContentOrPath, false, $context);

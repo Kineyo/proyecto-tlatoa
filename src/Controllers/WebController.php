@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Controllers;
+namespace Tlatoa\Controllers;
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\PageCache;
-use PulsoCivico\Services\DataService;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\PageCache;
+use Tlatoa\Services\DataService;
 
 /**
  * WebController: Despacha las vistas canónicas optimizadas para SEO y las APIs internas.
@@ -29,7 +29,7 @@ class WebController
         $cachedHtml = $pageCache->get();
         if ($cachedHtml !== null) {
             if (!headers_sent()) {
-                header('X-Pulso-Cache: HIT');
+                header('X-Tlatoa-Cache: HIT');
             }
             echo $cachedHtml;
             return;
@@ -52,13 +52,13 @@ class WebController
         $canonical = Router::url('/' . ($numLeg !== 66 ? '?leg=' . $numLeg : ''));
 
         $seo = [
-            'title' => "El Pulso de la Política — Observatorio del Congreso Mexicano ({$romano} Legislatura)",
+            'title' => "Proyecto Tlatoa — Observatorio del Congreso Mexicano ({$romano} Legislatura)",
             'description' => "Radiografía, composición parlamentaria y trabajo de los senadores y diputados federales de México en la {$romano} Legislatura ({$periodo}).",
             'canonical' => $canonical,
             'schema' => [
                 '@context' => 'https://schema.org',
                 '@type' => 'WebSite',
-                'name' => 'El Pulso de la Política',
+                'name' => 'Proyecto Tlatoa',
                 'url' => $canonical,
                 'potentialAction' => [
                     '@type' => 'SearchAction',
@@ -69,7 +69,7 @@ class WebController
         ];
 
         if (!headers_sent()) {
-            header('X-Pulso-Cache: MISS');
+            header('X-Tlatoa-Cache: MISS');
         }
         ob_start();
         require dirname(__DIR__, 2) . '/views/home.php';
@@ -112,7 +112,7 @@ HTML;
         $canonical = Router::url('/politicos/' . $slug . ($numLeg > 0 && $numLeg !== 66 ? '?leg=' . $numLeg : ''));
 
         $seo = [
-            'title' => "{$nombre} ({$partido}) — {$camara} ({$romano} Legislatura) | El Pulso de la Política",
+            'title' => "{$nombre} ({$partido}) — {$camara} ({$romano} Legislatura) | Proyecto Tlatoa",
             'description' => "Expediente oficial de {$nombre}, {$camara} de la {$romano} Legislatura por {$entidad}. Bancada {$partido}, comisiones legislativas e iniciativas.",
             'canonical' => $canonical,
             'og_image' => $politico['foto_oficial_url'] ?? '',
@@ -169,7 +169,7 @@ HTML;
         $canonical = Router::url('/politicos' . ($numLegParam ? '?leg=' . $numLegParam : ''));
 
         $seo = [
-            'title' => 'Directorio de Políticos y Representantes de México | El Pulso de la Política',
+            'title' => 'Directorio de Políticos y Representantes de México | Proyecto Tlatoa',
             'description' => "Directorio ciudadano con radiografía, trayectoria política y cargos acumulados (senadores, diputados federales, locales, alcaldes y gobernadores) de {$totalPoliticos} figuras públicas mexicanas.",
             'canonical' => $canonical,
             'schema' => [
@@ -205,7 +205,7 @@ HTML;
         $canonical = Router::url('/estados/' . $slug . ($numLeg !== 66 ? '?leg=' . $numLeg : ''));
 
         $seo = [
-            'title' => "Legisladores Federales de {$nombre} ({$romano} Legislatura) | El Pulso de la Política",
+            'title' => "Legisladores Federales de {$nombre} ({$romano} Legislatura) | Proyecto Tlatoa",
             'description' => "Radiografía completa de los senadores y diputados federales que representan a {$nombre} en el Congreso de la Unión durante la {$romano} Legislatura.",
             'canonical' => $canonical,
             'schema' => [
@@ -228,7 +228,7 @@ HTML;
         $canonical = Router::url('/comisiones');
 
         $seo = [
-            'title' => 'Comisiones Ordinarias del Congreso de la Unión (LXVI Legislatura) | El Pulso de la Política',
+            'title' => 'Comisiones Ordinarias del Congreso de la Unión (LXVI Legislatura) | Proyecto Tlatoa',
             'description' => 'Directorio y buscador de las comisiones de la Cámara de Diputados y el Senado de la República.',
             'canonical' => $canonical,
             'schema' => [
@@ -261,7 +261,7 @@ HTML;
         $canonical = Router::url('/comisiones/' . $slug);
 
         $seo = [
-            'title' => "{$nombre} — Integrantes y Mesa Directiva | El Pulso de la Política",
+            'title' => "{$nombre} — Integrantes y Mesa Directiva | Proyecto Tlatoa",
             'description' => "Composición, presidencia e integrantes de la {$nombre} en el Congreso de la Unión.",
             'canonical' => $canonical,
             'schema' => [
@@ -456,7 +456,7 @@ HTML;
         $cachedHtml = $pageCache->get();
         if ($cachedHtml !== null) {
             if (!headers_sent()) {
-                header('X-Pulso-Cache: HIT');
+                header('X-Tlatoa-Cache: HIT');
             }
             echo $cachedHtml;
             return;
@@ -484,13 +484,13 @@ HTML;
         ];
 
         $seo = [
-            'title' => ($titulosSeo[$categoriaActiva] ?? $titulosSeo['todos']) . ' — El Pulso de la Política',
+            'title' => ($titulosSeo[$categoriaActiva] ?? $titulosSeo['todos']) . ' — Proyecto Tlatoa',
             'description' => 'Radiografía curricular y grados académicos de los diputados y senadores de la LXVI Legislatura del Congreso de la Unión.',
             'canonical' => Router::url('/estudios' . ($categoriaActiva !== 'todos' ? '/' . $categoriaActiva : '')),
         ];
 
         if (!headers_sent()) {
-            header('X-Pulso-Cache: MISS');
+            header('X-Tlatoa-Cache: MISS');
         }
         ob_start();
         require dirname(__DIR__, 2) . '/views/estudios.php';
@@ -734,8 +734,8 @@ HTML;
         }
         // Fallback mínimo si no existe el archivo estático
         $host = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost');
-        echo "# El Pulso de la Política — llms.txt\n";
-        echo "> Observatorio cívico de datos abiertos sobre el poder legislativo y político de México.\n\n";
+        echo "# Proyecto Tlatoa — llms.txt\n";
+        echo "> Observatorio ciudadano de datos abiertos sobre el poder legislativo y político de México.\n\n";
         echo "- [Inicio]({$host}" . Router::url('/') . ")\n";
         echo "- [Políticos]({$host}" . Router::url('/politicos') . ")\n";
         echo "- [Comisiones]({$host}" . Router::url('/comisiones') . ")\n";
@@ -751,7 +751,7 @@ HTML;
         $disponibles = $this->dataService->getLegislaturasDisponibles();
 
         $seo = [
-            'title' => 'Legislaturas del Congreso de la Unión — Archivo Histórico y Actual | El Pulso de la Política',
+            'title' => 'Legislaturas del Congreso de la Unión — Archivo Histórico y Actual | Proyecto Tlatoa',
             'description' => 'Explora los periodos constitucionales del Congreso de la Unión: LXVI (actual), LXV, LXIV y archivo parlamentario federal de México.',
             'canonical' => Router::url('/legislaturas'),
             'schema' => [
@@ -788,7 +788,7 @@ HTML;
         $canonical = Router::url('/legislaturas/' . $num);
 
         $seo = [
-            'title' => "{$romano} Legislatura ({$periodo}) — Integración y Fuerza Parlamentaria | El Pulso de la Política",
+            'title' => "{$romano} Legislatura ({$periodo}) — Integración y Fuerza Parlamentaria | Proyecto Tlatoa",
             'description' => "Composición parlamentaria, bancadas de partidos, senadores, diputados y radiografía cívica de la {$romano} Legislatura del Congreso de la Unión ({$periodo}).",
             'canonical' => $canonical,
             'schema' => [

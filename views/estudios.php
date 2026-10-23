@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
-use PulsoCivico\Services\DataService;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
+use Tlatoa\Services\DataService;
 
 /**
  * @var array $politicosConEstudios Colección de políticos con perfil académico clasificado
@@ -571,11 +571,11 @@ document.addEventListener('DOMContentLoaded', function () {
         termometroBadgeTipo.textContent = 'Entidad Federativa';
         termometroTitulo.textContent = '📍 ' + est.nombre + ' (' + est.total + ' representantes)';
         
-        let mensajeCívico = 'Radiografía de preparación académica de los legisladores que representan a ' + est.nombre + '.';
+        let mensajeCiudadano = 'Radiografía de preparación académica de los legisladores que representan a ' + est.nombre + '.';
         if (parseFloat(pctPos) >= 40) {
-            mensajeCívico = '💡 ' + est.nombre + ' destaca con una alta proporción de legisladores con estudios de posgrado (' + pctPos + '%).';
+            mensajeCiudadano = '💡 ' + est.nombre + ' destaca con una alta proporción de legisladores con estudios de posgrado (' + pctPos + '%).';
         }
-        termometroSubtitulo.textContent = mensajeCívico;
+        termometroSubtitulo.textContent = mensajeCiudadano;
 
         linkFichaEstado.href = estadoBaseUrl + est.slug;
         linkFichaEstado.textContent = 'Ver expediente de ' + est.nombre + ' →';

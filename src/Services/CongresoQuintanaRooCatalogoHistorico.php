@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 /**
  * Catálogo histórico de legislaturas del H. Congreso del Estado de Quintana Roo.

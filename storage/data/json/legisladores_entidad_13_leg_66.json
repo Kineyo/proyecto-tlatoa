@@ -29,7 +29,7 @@
             "preparacion_academica": "Contaduría Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228605.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228605.jpg",
+            "foto_local_path": "storage/raw/photos/9228605.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -146,7 +146,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228613.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228613.jpg",
+            "foto_local_path": "storage/raw/photos/9228613.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -247,7 +247,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228615.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228615.jpg",
+            "foto_local_path": "storage/raw/photos/9228615.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -408,7 +408,7 @@
             "preparacion_academica": "Administración de Instituciones de Salud",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228611.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228611.jpg",
+            "foto_local_path": "storage/raw/photos/9228611.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -548,7 +548,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229402.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229402.jpg",
+            "foto_local_path": "storage/raw/photos/9229402.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -680,7 +680,7 @@
             "preparacion_academica": "Gerontología",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228952.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228952.jpg",
+            "foto_local_path": "storage/raw/photos/9228952.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -761,7 +761,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228609.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228609.jpg",
+            "foto_local_path": "storage/raw/photos/9228609.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -872,7 +872,7 @@
             "preparacion_academica": "Ciencias de la Comunicación",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228617.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228617.jpg",
+            "foto_local_path": "storage/raw/photos/9228617.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1001,7 +1001,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228607.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228607.jpg",
+            "foto_local_path": "storage/raw/photos/9228607.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1145,7 +1145,7 @@
             "preparacion_academica": "Ingeniería Civil",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228954.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228954.jpg",
+            "foto_local_path": "storage/raw/photos/9228954.jpg",
             "total_comisiones": 8,
             "comisiones": [
                 {
@@ -1355,7 +1355,7 @@
             "preparacion_academica": "Periodismo",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228950.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228950.jpg",
+            "foto_local_path": "storage/raw/photos/9228950.jpg",
             "total_comisiones": 10,
             "comisiones": [
                 {
@@ -1596,7 +1596,7 @@
             "preparacion_academica": "Comunicación Política y Gobernanza Estratégica",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228960.jpg",
-            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228960.jpg",
+            "foto_local_path": "storage/raw/photos/9228960.jpg",
             "total_comisiones": 10,
             "comisiones": [
                 {

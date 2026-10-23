@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
 
 /**
  * @var array $estados
@@ -20,10 +20,10 @@ require __DIR__ . '/layout/header.php';
 <!-- Hero Section -->
 <div class="text-center py-4 py-md-5 mb-4">
     <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-primary-subtle text-primary small fw-semibold mb-3">
-        <i class="bi bi-shield-check"></i> El Pulso de la Política &bull; <?= ViewHelper::e($currentLegRomano ?? ($romano ?? 'LXVI')) ?> Legislatura (<?= ViewHelper::e($periodo ?? '2024–2027') ?>)
+        <i class="bi bi-shield-check"></i> Proyecto Tlatoa &bull; <?= ViewHelper::e($currentLegRomano ?? ($romano ?? 'LXVI')) ?> Legislatura (<?= ViewHelper::e($periodo ?? '2024–2027') ?>)
     </div>
     <h1 class="display-5 fw-bold text-dark mb-3">
-        El Pulso de la Política
+        Proyecto Tlatoa
     </h1>
     <p class="lead text-secondary mx-auto mb-4" style="max-width: 680px; font-size: 1.1rem;">
         Monitorea la composición del Congreso, la fuerza de los partidos y el perfil de cada legislador en los 32 estados de la República en tiempo real.

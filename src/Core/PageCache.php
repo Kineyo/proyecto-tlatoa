@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Core;
+namespace Tlatoa\Core;
 
 /**
  * PageCache: Caché de salida HTML en disco para rutas de alta demanda.

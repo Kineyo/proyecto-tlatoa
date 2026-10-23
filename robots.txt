@@ -1,4 +1,4 @@
-# robots.txt — El Pulso de la Política | Observatorio Cívico de México
+# robots.txt — Proyecto Tlatoa | Observatorio Ciudadano de México
 # Optimizado para Googlebot, Bingbot, y rastreadores LLM (GPTBot, Claude, Gemini)
 
 # ── Rastreadores Generales ──
@@ -47,7 +47,7 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# ── Rastreadores LLM (Acceso permitido — datos cívicos públicos) ──
+# ── Rastreadores LLM (Acceso permitido — datos ciudadanos públicos) ──
 User-agent: GPTBot
 Allow: /
 Allow: /politicos/
@@ -97,5 +97,5 @@ Allow: /
 Allow: /llms.txt
 
 # ── Sitemaps ──
-Sitemap: https://elpulsopolitico.mx/sitemap-index.xml
-Sitemap: https://elpulsopolitico.mx/sitemap.xml
+Sitemap: https://tlatoa.org/sitemap-index.xml
+Sitemap: https://tlatoa.org/sitemap.xml

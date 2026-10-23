@@ -2,13 +2,13 @@ import os
 from pathlib import Path
 from pydantic_settings import BaseSettings
 
-# Directorio raíz del proyecto (e:\xampp\htdocs\elpulso)
+# Directorio raíz del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 class Settings(BaseSettings):
     BASE_DIR: Path = BASE_DIR
-    APP_NAME: str = "El Pulso de la Política"
-    APP_SHORT_NAME: str = "El Pulso"
+    APP_NAME: str = "Proyecto Tlatoa"
+    APP_SHORT_NAME: str = "Tlatoa"
     APP_TAGLINE: str = "Radiografía ciudadana de Gobernadores, Alcaldes, Diputados y Senadores"
     APP_ENV: str = "development"
     DEBUG: bool = True

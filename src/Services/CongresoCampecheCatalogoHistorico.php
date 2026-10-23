@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 /**
  * Catálogo histórico verificado del H. Congreso del Estado de Campeche (2015-2024).

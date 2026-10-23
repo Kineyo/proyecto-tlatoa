@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
+use Tlatoa\Core\Router;
 ?>
 
 <!-- Modal de Manifiesto de Neutralidad y Metodología de Datos -->
@@ -15,7 +15,7 @@ use PulsoCivico\Core\Router;
                     </span>
                     <div>
                         <h5 class="modal-title fw-bold text-dark mb-0" id="modalManifiestoLabel">Manifiesto de Neutralidad y Metodología</h5>
-                        <small class="text-secondary">Principios rectores de Pulso Cívico para la fiscalización ciudadana</small>
+                        <small class="text-secondary">Principios rectores de Proyecto Tlatoa para la fiscalización ciudadana</small>
                     </div>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -28,7 +28,7 @@ use PulsoCivico\Core\Router;
                         <i class="bi bi-compass text-primary"></i> Nuestro Compromiso Fundamental
                     </h6>
                     <p class="mb-0 small">
-                        <strong>Pulso Cívico</strong> es una plataforma ciudadana independiente y sin fines de lucro. 
+                        <strong>Proyecto Tlatoa</strong> es una plataforma ciudadana independiente y sin fines de lucro. 
                         No pertenecemos a ningún partido político ni recibimos financiamiento gubernamental. 
                         Nuestra misión es hacer accesible, auditable y comprensible la información pública oficial del Estado Mexicano, sin emitir juicios de valor, opiniones editoriales ni calificativos hacia ningún representante.
                     </p>
@@ -137,7 +137,7 @@ use PulsoCivico\Core\Router;
                 <div class="alert alert-info py-2 px-3 small border-info-subtle mb-0 d-flex align-items-center gap-2">
                     <i class="bi bi-info-circle-fill text-info fs-5 flex-shrink-0"></i>
                     <span>
-                        Pulso Cívico respeta los derechos de acceso a la información pública contemplados en el Artículo 6° de la Constitución Política de los Estados Unidos Mexicanos.
+                        Proyecto Tlatoa respeta los derechos de acceso a la información pública contemplados en el Artículo 6° de la Constitución Política de los Estados Unidos Mexicanos.
                     </span>
                 </div>
             </div>

@@ -120,7 +120,7 @@ def parse_wiki_leg(leg_romano: str, raw_dir: str) -> list:
     else:
         title = f'Anexo:{leg_romano}_Legislatura_del_Congreso_del_Estado_de_Coahuila'
         url = f'https://es.wikipedia.org/w/api.php?action=parse&page={title}&prop=wikitext&format=json'
-        req = urllib.request.Request(url, headers={'User-Agent': 'PulsoCivico/1.0 (contacto@pulsocivico.mx)'})
+        req = urllib.request.Request(url, headers={'User-Agent': 'Tlatoa/1.0 (contacto@tlatoa.org)'})
         time.sleep(1.0)
         with urllib.request.urlopen(req) as resp:
             content = resp.read().decode('utf-8')

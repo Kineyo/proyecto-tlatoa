@@ -1,4 +1,4 @@
-# AGENTS.md — Reglas para Asistentes de IA (Pulso Cívico)
+# AGENTS.md — Reglas para Asistentes de IA (Proyecto Tlatoa)
 
 > Fuente única de verdad para agentes de IA y desarrolladores.
 
@@ -65,7 +65,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 git:status
 
 ### 🤖 Claude (Claude Code / Anthropic)
 ```text
-Actúas como Claude Code en Pulso Cívico.
+Actúas como Claude Code en Proyecto Tlatoa.
 - ENTORNO ACTIVO: Python 3 + FastAPI (`app/main.py`) y Jinja2 (`app/templates/`).
 - REGLA SUPREMA: No edites PHP (`src/`, `views/`) para la web activa. Modifica solo `app/routers/`, `app/services/` y `app/templates/`.
 - DATOS: `storage/data/json/`. Neutralidad absoluta, sin juicios y con `fuente_url` oficial (.gob.mx).
@@ -79,7 +79,7 @@ Actúas como Claude Code en Pulso Cívico.
 
 ### 🤖 OpenCode (OpenCode Interpreter / CLI)
 ```text
-Actúas como OpenCode en Pulso Cívico.
+Actúas como OpenCode en Proyecto Tlatoa.
 - ENTORNO ACTIVO: Python / FastAPI con Jinja2 en `app/`.
 - DIRECTIVA: Edita solo en `app/routers/`, `app/services/` y `app/templates/`. No toques `src/` ni `views/`.
 - RUNNER: Usa el gateway centralizado sin comandos sueltos:
@@ -91,7 +91,7 @@ Actúas como OpenCode en Pulso Cívico.
 
 ### 🤖 OpenAI Codex (Codex CLI / ChatGPT / Copilot CLI)
 ```text
-Eres un agente de desarrollo basado en OpenAI Codex en Pulso Cívico.
+Eres un agente de desarrollo basado en OpenAI Codex en Proyecto Tlatoa.
 - ENTORNO ACTIVO: Python (FastAPI + Jinja2) en `app/main.py`.
 - ZONA PERMITIDA: `app/routers/`, `app/services/`, `app/templates/`, `storage/data/json/`.
 - PROHIBIDO: Editar `src/` o `views/` para la aplicación web activa.
@@ -102,7 +102,7 @@ Eres un agente de desarrollo basado en OpenAI Codex en Pulso Cívico.
 
 ### 🤖 Antigravity (Google DeepMind / Gemini CLI)
 ```text
-Eres el agente Antigravity / Gemini en Pulso Cívico.
+Eres el agente Antigravity / Gemini en Proyecto Tlatoa.
 - MODO: Ultra-eficiencia, bajo consumo de tokens y cero prompts innecesarios en terminal.
 - ENTORNO ACTIVO: Python (FastAPI + Jinja2) en `app/main.py`. Todo desarrollo web va en `app/routers/`, `app/services/` o `app/templates/`. PROHIBIDO tocar PHP (`src/`, `views/`) para la web activa.
 - LECTURA QUIRÚRGICA: Inspecciona bloques de 30-80 líneas con StartLine/EndLine. No leas archivos enteros sin necesidad.
@@ -113,7 +113,7 @@ Eres el agente Antigravity / Gemini en Pulso Cívico.
 
 ### 🤖 Cursor / GitHub Copilot (Agentes de IDE)
 ```text
-Contexto para Cursor / GitHub Copilot en Pulso Cívico:
+Contexto para Cursor / GitHub Copilot en Proyecto Tlatoa:
 - ENTORNO ACTIVO: Python / FastAPI (`app/main.py`) con Jinja2 en `app/templates/`.
 - DESARROLLO ACTIVO: `app/routers/` (APIs/rutas), `app/services/` (lógica/datos), `app/templates/` (UI).
 - NO MODIFICAR: `src/` ni `views/` para funcionalidades activas.

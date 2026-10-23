@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
-use PulsoCivico\Services\DataService;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
+use Tlatoa\Services\DataService;
 
 /** @var array{title?: string, description?: string, canonical?: string, og_image?: string, schema?: array} $seo */
-$pageTitle = $seo['title'] ?? 'El Pulso de la Política — Observatorio del Congreso Mexicano';
+$pageTitle = $seo['title'] ?? 'Proyecto Tlatoa — Observatorio del Congreso Mexicano';
 $pageDesc = $seo['description'] ?? 'Monitoreo ciudadano y radiografía del poder legislativo en México.';
 $canonicalUrl = $seo['canonical'] ?? Router::url('/');
 $ogImage = $seo['og_image'] ?? Router::url('/assets/og-cover.png');
@@ -51,14 +51,14 @@ $catalogLegislaturas = DataService::LEGISLATURAS_CATALOG;
     <meta name="revisit-after" content="7 days">
 
     <!-- Autoría y atribución -->
-    <meta name="author" content="El Pulso de la Política — Observatorio Cívico">
-    <meta name="copyright" content="El Pulso de la Política — Datos bajo CC BY 4.0">
-    <meta name="generator" content="El Pulso de la Política v1.0">
+    <meta name="author" content="Proyecto Tlatoa — Observatorio Ciudadano">
+    <meta name="copyright" content="Proyecto Tlatoa — Datos bajo CC BY 4.0">
+    <meta name="generator" content="Proyecto Tlatoa v1.0">
 
     <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_MX">
-    <meta property="og:site_name" content="El Pulso de la Política">
+    <meta property="og:site_name" content="Proyecto Tlatoa">
     <meta property="og:title" content="<?= ViewHelper::e($pageTitle) ?>">
     <meta property="og:description" content="<?= ViewHelper::e($pageDesc) ?>">
     <meta property="og:url" content="<?= ViewHelper::e($canonicalUrl) ?>">
@@ -69,7 +69,7 @@ $catalogLegislaturas = DataService::LEGISLATURAS_CATALOG;
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@PulsoPoliticoMX">
+    <meta name="twitter:site" content="@ProyectoTlatoa">
     <meta name="twitter:title" content="<?= ViewHelper::e($pageTitle) ?>">
     <meta name="twitter:description" content="<?= ViewHelper::e($pageDesc) ?>">
     <meta name="twitter:image" content="<?= ViewHelper::e($ogImage) ?>">
@@ -215,7 +215,7 @@ $catalogLegislaturas = DataService::LEGISLATURAS_CATALOG;
             <span class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                 <i class="bi bi-activity"></i>
             </span>
-            <span>El Pulso de la Política</span>
+            <span>Proyecto Tlatoa</span>
         </a>
 
         <div class="d-flex align-items-center gap-2">

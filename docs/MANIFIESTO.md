@@ -1,10 +1,10 @@
-# MANIFIESTO DE PULSO CÍVICO
+# MANIFIESTO DE PROYECTO TLATOA
 **Principios Inviolables de Neutralidad, Reproducibilidad y Código Abierto**
 
 ---
 
 ## 1. Misión
-Pulso Cívico es una plataforma cívica independiente desarrollada por la comunidad. Nuestro único fin es hacer accesibles, legibles y auditables los datos públicos de los representantes populares en México.
+Proyecto Tlatoa es una plataforma cívica independiente desarrollada por la comunidad. Nuestro único fin es hacer accesibles, legibles y auditables los datos públicos de los representantes populares en México.
 
 No somos un partido político, no representamos a ninguna facción y no recibimos financiamiento gubernamental ni partidista.
 

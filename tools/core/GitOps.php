@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Tools;
+namespace Tlatoa\Tools;
 
 class GitOps
 {

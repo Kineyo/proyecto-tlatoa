@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\ViewHelper;
 
 /**
  * @var array $escolaridadStats
@@ -27,10 +27,10 @@ $topInstPriv = $stats['top_instituciones_privadas'] ?? [];
 $porCamaraInst = $stats['por_camara_institucion'] ?? [];
 $porPartidoInst = $stats['por_partido_institucion'] ?? [];
 
-$urlPosgrados = \PulsoCivico\Core\Router::url('/estudios/posgrados');
-$urlLicenciaturas = \PulsoCivico\Core\Router::url('/estudios/licenciatura');
-$urlMediaTrunca = \PulsoCivico\Core\Router::url('/estudios/media-trunca');
-$urlTodosEstudios = \PulsoCivico\Core\Router::url('/estudios');
+$urlPosgrados = \Tlatoa\Core\Router::url('/estudios/posgrados');
+$urlLicenciaturas = \Tlatoa\Core\Router::url('/estudios/licenciatura');
+$urlMediaTrunca = \Tlatoa\Core\Router::url('/estudios/media-trunca');
+$urlTodosEstudios = \Tlatoa\Core\Router::url('/estudios');
 ?>
 
 <div class="card-civic p-4 mb-5 border shadow-sm" id="seccion-educacion">
@@ -648,7 +648,7 @@ $urlTodosEstudios = \PulsoCivico\Core\Router::url('/estudios');
                                 <?php 
                                 $rankE = 1;
                                 foreach ($estadosRanking as $estItem): 
-                                    $urlEstado = \PulsoCivico\Core\Router::url('/estados/' . $estItem['slug']);
+                                    $urlEstado = \Tlatoa\Core\Router::url('/estados/' . $estItem['slug']);
                                 ?>
                                 <tr>
                                     <td class="text-muted small fw-medium"><?= $rankE++ ?></td>

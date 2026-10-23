@@ -3,9 +3,9 @@ description: Reportar información incorrecta de un político, votación o comis
 labels: ["datos", "verificacion"]
 body:
   - type: input
-    id: url_pulso
+    id: url_tlatoa
     attributes:
-      label: Página de Pulso Cívico donde aparece
+      label: Página de Proyecto Tlatoa donde aparece
     validations:
       required: true
   - type: textarea

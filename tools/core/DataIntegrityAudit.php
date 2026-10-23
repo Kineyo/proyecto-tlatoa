@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Tools;
+namespace Tlatoa\Tools;
 
 /**
  * DataIntegrityAudit: Auditor de integridad semántica de datos, homónimos y anomalías de scrapers.

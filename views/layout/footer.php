@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
+use Tlatoa\Core\Router;
 
 $homeUrl = Router::url('/');
 $searchApiUrl = Router::url('/api/buscar');
@@ -13,7 +13,7 @@ $searchApiUrl = Router::url('/api/buscar');
     <div class="container text-center text-md-start">
         <div class="row align-items-center">
             <div class="col-md-6 mb-3 mb-md-0">
-                <span class="fw-bold text-dark">El Pulso de la Política</span> &bull;
+                <span class="fw-bold text-dark">Proyecto Tlatoa</span> &bull;
                 <span class="text-secondary small">Observatorio y Radiografía del H. Congreso de la Unión (LXVI Legislatura).</span>
                 <div class="text-muted small mt-1" style="font-size: 0.75rem;">
                     Datos oficiales extraídos del Sistema de Información Legislativa (SIL - SEGOB).
@@ -28,8 +28,8 @@ $searchApiUrl = Router::url('/api/buscar');
                 <button type="button" class="btn btn-link p-0 text-secondary text-decoration-none small me-3" data-bs-toggle="modal" data-bs-target="#modalManifiesto" title="Conoce nuestro Manifiesto de Neutralidad"><i class="bi bi-shield-check text-primary me-1"></i>Manifiesto</button>
                 <a href="<?= Router::url('/sitemap.xml') ?>" class="text-secondary text-decoration-none small me-3" target="_blank">Sitemap</a>
                 <a href="<?= Router::url('/llms.txt') ?>" class="text-secondary text-decoration-none small me-3" target="_blank" title="Guía para modelos de IA">LLMs.txt</a>
-                <a href="https://github.com/Kineyo/pulso-civico" class="text-secondary text-decoration-none small me-3" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>GitHub</a>
-                <button type="button" class="btn btn-link p-0 text-secondary text-decoration-none small btn-reportar-anomalia" data-origen-tipo="general" data-origen-id="sitio-web" data-origen-nombre="Portal Pulso Cívico" title="Reportar anomalía o dato inconsistente"><i class="bi bi-flag text-danger me-1"></i>Reportar error</button>
+                <a href="https://github.com/Kineyo/proyecto-tlatoa" class="text-secondary text-decoration-none small me-3" target="_blank" rel="noopener"><i class="bi bi-github me-1"></i>GitHub</a>
+                <button type="button" class="btn btn-link p-0 text-secondary text-decoration-none small btn-reportar-anomalia" data-origen-tipo="general" data-origen-id="sitio-web" data-origen-nombre="Proyecto Tlatoa" title="Reportar anomalía o dato inconsistente"><i class="bi bi-flag text-danger me-1"></i>Reportar error</button>
             </div>
         </div>
     </div>

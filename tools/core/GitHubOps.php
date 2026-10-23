@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Tools;
+namespace Tlatoa\Tools;
 
 class GitHubOps
 {
     private const API_BASE = 'https://api.github.com';
-    private const DEFAULT_REPO = 'Kineyo/pulso-civico';
+    private const DEFAULT_REPO = 'Kineyo/proyecto-tlatoa';
 
     private static function getToken(): string
     {
@@ -52,7 +52,7 @@ class GitHubOps
         $ch = curl_init();
 
         $headers = [
-            'User-Agent: PulsoCivico-Agent/1.0',
+            'User-Agent: Tlatoa-Agent/1.0',
             'Authorization: Bearer ' . $token,
             'Accept: application/vnd.github+json',
             'X-GitHub-Api-Version: 2022-11-28',

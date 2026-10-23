@@ -691,7 +691,7 @@ async def api_estudios_paginados(
 @router.get("/sitemap.xml")
 async def sitemap_xml():
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    base = "https://elpulso.mx"
+    base = "https://tlatoa.org"
     urls = [
         f"<url><loc>{base}/</loc><lastmod>{now}</lastmod><priority>1.0</priority></url>",
         f"<url><loc>{base}/explorador</loc><lastmod>{now}</lastmod><priority>0.95</priority></url>",

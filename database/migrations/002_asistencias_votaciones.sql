@@ -1,5 +1,5 @@
 -- ========================================================================
--- PULSO CÍVICO — MIGRACIÓN 002: ASISTENCIAS, VOTACIONES NOMINALES Y KPIs
+-- PROYECTO TLATOA — MIGRACIÓN 002: ASISTENCIAS, VOTACIONES NOMINALES Y KPIs
 -- Motor: MySQL 8.0 / MariaDB 10.11+
 -- Ámbito: Cámara de Diputados y Cámara de Senadores (Congreso de la Unión)
 -- ========================================================================

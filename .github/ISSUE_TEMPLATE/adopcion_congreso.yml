@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Gracias por adoptar un Congreso Local para Pulso Cívico.
+        Gracias por adoptar un Congreso Local para Proyecto Tlatoa.
         Recuerda que solo se admiten fuentes oficiales (.gob.mx) y datasets reproducibles mediante scrapers.
   - type: dropdown
     id: estado

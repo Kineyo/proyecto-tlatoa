@@ -33,10 +33,10 @@ $envBool = static function (string $key, bool $default) use ($env): bool {
     return in_array($value, ['1', 'true', 'yes', 'on'], true);
 };
 
-// Configuración general del proyecto Pulso Cívico
+// Configuración general de Proyecto Tlatoa
 return [
     'app' => [
-        'name' => 'El Pulso de la Política - ETL Engine',
+        'name' => 'Proyecto Tlatoa - ETL Engine',
         'version' => '1.0.0',
         'env' => $env('APP_ENV', 'development'),
     ],

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 /**
  * AuditService: Sistema de auditoría, control de reportes ciudadanos y mitigación de spam.

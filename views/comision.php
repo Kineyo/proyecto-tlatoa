@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
 
 /**
  * @var array $comision
@@ -15,7 +15,7 @@ $integrantes = $comision['integrantes'] ?? [];
 $homeUrl = Router::url('/');
 $canonicalUrl = Router::url('/comisiones/' . $slug);
 
-$legNumero = (int)($comision['legislatura'] ?? (isset($_GET['leg']) ? PulsoCivico\Services\DataService::parseNumeroLegislatura((string)$_GET['leg']) : 66));
+$legNumero = (int)($comision['legislatura'] ?? (isset($_GET['leg']) ? Tlatoa\Services\DataService::parseNumeroLegislatura((string)$_GET['leg']) : 66));
 
 // Separar por jerarquía: Presidencia, Secretarías y Colegiados
 $presidencia = [];

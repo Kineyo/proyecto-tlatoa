@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
 
 /**
  * @var array $catalog

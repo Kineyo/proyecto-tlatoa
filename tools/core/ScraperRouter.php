@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Tools;
+namespace Tlatoa\Tools;
 
-use PulsoCivico\Core\Logger;
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Services\SilIngestService;
+use Tlatoa\Core\Logger;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Services\SilIngestService;
 
 class ScraperRouter
 {
@@ -16,7 +16,7 @@ class ScraperRouter
     {
         // Cargar autoloader de src
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) {
@@ -274,7 +274,7 @@ class ScraperRouter
 
         $logger = new Logger($config['paths']['logs'], 'ROUTER-VOTACIONES');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\ParliamentScraperService($config, $httpClient, $logger);
+        $service = new \Tlatoa\Services\ParliamentScraperService($config, $httpClient, $logger);
 
         $inicio = microtime(true);
         $lista = $service->getVotacionesPorPeriodo($pert);
@@ -321,10 +321,10 @@ class ScraperRouter
         $logger = new Logger($config['paths']['logs'], 'ROUTER-ASISTENCIAS');
         $sitlHttpConfig = array_merge($config['sil'], [
             'rate_limit_ms' => 100,
-            'base_url' => \PulsoCivico\Services\ParliamentScraperService::BASE_SITL_DIPUTADOS,
+            'base_url' => \Tlatoa\Services\ParliamentScraperService::BASE_SITL_DIPUTADOS,
         ]);
         $httpClient = new HttpClient($sitlHttpConfig, $logger);
-        $service = new \PulsoCivico\Services\ParliamentScraperService($config, $httpClient, $logger);
+        $service = new \Tlatoa\Services\ParliamentScraperService($config, $httpClient, $logger);
 
         if ($camara === 'senadores' || $camara === 'senado') {
             return $service->scrapeAsistenciasSenadoresPeriodo($pert);
@@ -337,7 +337,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-BC');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\CongresoBajaCaliforniaScraperService($httpClient, $logger, $config['paths']['storage']);
+        $service = new \Tlatoa\Services\CongresoBajaCaliforniaScraperService($httpClient, $logger, $config['paths']['storage']);
 
         $leg = $params['legislatura'] ?? 'all';
         if ($leg === 'all' || $leg === 'todas') {
@@ -351,7 +351,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-BCS');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\CongresoBcsScraperService($httpClient, $logger, $config['paths']['storage']);
+        $service = new \Tlatoa\Services\CongresoBcsScraperService($httpClient, $logger, $config['paths']['storage']);
 
         $modo = strtolower((string)($params['modo'] ?? 'todo'));
         if ($modo === 'actual' || $modo === '17' || (!empty($params['legislatura']) && (int)$params['legislatura'] === 17)) {
@@ -369,7 +369,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-CAM');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\CongresoCampecheScraperService($httpClient, $logger, $config['paths']['storage']);
+        $service = new \Tlatoa\Services\CongresoCampecheScraperService($httpClient, $logger, $config['paths']['storage']);
 
         $modo = strtolower((string)($params['modo'] ?? 'todo'));
         if ($modo === 'actual' || $modo === '65' || (!empty($params['legislatura']) && (int)$params['legislatura'] === 65)) {
@@ -400,7 +400,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-YUC');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\CongresoYucatanScraperService($httpClient, $logger, $config['paths']['storage']);
+        $service = new \Tlatoa\Services\CongresoYucatanScraperService($httpClient, $logger, $config['paths']['storage']);
 
         $modo = strtolower((string)($params['modo'] ?? 'todo'));
         if ($modo === 'actual' || $modo === '64' || (!empty($params['legislatura']) && (int)$params['legislatura'] === 64)) {
@@ -418,7 +418,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-QROO');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\CongresoQuintanaRooScraperService($httpClient, $logger, $config['paths']['storage']);
+        $service = new \Tlatoa\Services\CongresoQuintanaRooScraperService($httpClient, $logger, $config['paths']['storage']);
 
         $modo = strtolower((string)($params['modo'] ?? 'todo'));
         if ($modo === 'actual' || $modo === '18' || (!empty($params['legislatura']) && (int)$params['legislatura'] === 18)) {
@@ -436,7 +436,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-CHIS');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\CongresoChiapasScraperService($httpClient, $logger, $config['paths']['storage']);
+        $service = new \Tlatoa\Services\CongresoChiapasScraperService($httpClient, $logger, $config['paths']['storage']);
 
         $modo = strtolower((string)($params['modo'] ?? 'todo'));
         if ($modo === 'actual' || $modo === '69' || (!empty($params['legislatura']) && (int)$params['legislatura'] === 69)) {
@@ -454,7 +454,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], $logChannel);
         $httpClient = new HttpClient($config['sil'], $logger);
-        $fullClass = '\\PulsoCivico\\Services\\' . $className;
+        $fullClass = '\\Tlatoa\\Services\\' . $className;
         /** @var mixed $service */
         $service = new $fullClass($httpClient, $logger, $config['paths']['storage']);
 
@@ -469,7 +469,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-SINALOA');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\SinaloaScraperService($config, $httpClient, $logger);
+        $service = new \Tlatoa\Services\SinaloaScraperService($config, $httpClient, $logger);
 
         $historico = !empty($params['historico']) || (isset($params['legislatura']) && $params['legislatura'] === 'all');
         if ($historico) {
@@ -484,7 +484,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-SONORA');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\SonoraScraperService($config, $httpClient, $logger);
+        $service = new \Tlatoa\Services\SonoraScraperService($config, $httpClient, $logger);
 
         $historico = !empty($params['historico']) || (isset($params['legislatura']) && $params['legislatura'] === 'all');
         if ($historico) {
@@ -499,7 +499,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-DURANGO');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\DurangoScraperService($config, $httpClient, $logger);
+        $service = new \Tlatoa\Services\DurangoScraperService($config, $httpClient, $logger);
 
         $historico = !empty($params['historico']) || (isset($params['legislatura']) && $params['legislatura'] === 'all');
         if ($historico) {
@@ -514,7 +514,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-CHIHUAHUA');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\ChihuahuaScraperService($config, $httpClient, $logger);
+        $service = new \Tlatoa\Services\ChihuahuaScraperService($config, $httpClient, $logger);
 
         $historico = !empty($params['historico']) || (isset($params['legislatura']) && $params['legislatura'] === 'all');
         if ($historico) {
@@ -529,7 +529,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'SCRAPER-COAHUILA');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\CoahuilaScraperService($config, $httpClient, $logger);
+        $service = new \Tlatoa\Services\CoahuilaScraperService($config, $httpClient, $logger);
 
         $inicio = microtime(true);
         if (!empty($params['todas']) || (isset($params['historico']) && (string)$params['historico'] === '1')) {
@@ -546,7 +546,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'SCRAPER-NUEVOLEON');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\NuevoLeonScraperService($config, $httpClient, $logger);
+        $service = new \Tlatoa\Services\NuevoLeonScraperService($config, $httpClient, $logger);
 
         $inicio = microtime(true);
         if (!empty($params['todas']) || (isset($params['historico']) && (string)$params['historico'] === '1')) {
@@ -563,7 +563,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-EJECUTIVO-ESTATAL');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\EjecutivoEstatalService($httpClient, $logger, $config['paths']['storage']);
+        $service = new \Tlatoa\Services\EjecutivoEstatalService($httpClient, $logger, $config['paths']['storage']);
 
         return $service->scrapeEntidad($entidad);
     }
@@ -572,7 +572,7 @@ class ScraperRouter
     {
         $logger = new Logger($config['paths']['logs'], 'ROUTER-CDMX');
         $httpClient = new HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\CongresoCdmxScraperService($httpClient, $logger, $config['paths']['storage']);
+        $service = new \Tlatoa\Services\CongresoCdmxScraperService($httpClient, $logger, $config['paths']['storage']);
 
         if (!empty($params['key'])) {
             return $service->scrapeLegislaturaKey((string)$params['key']);
@@ -584,7 +584,7 @@ class ScraperRouter
     private static function scrapeAlcaldes(array $config, array $params): array
     {
         $inicio = microtime(true);
-        $service = new \PulsoCivico\Services\MunicipioService();
+        $service = new \Tlatoa\Services\MunicipioService();
 
         $archivo = $params['archivo'] ?? $params['csv'] ?? null;
         if (empty($archivo)) {
@@ -604,7 +604,7 @@ class ScraperRouter
         $httpConfig['rate_limit_ms'] = max(1000, (int)($httpConfig['rate_limit_ms'] ?? 1000));
         $httpClient = new HttpClient($httpConfig, $logger);
 
-        $service = new \PulsoCivico\Services\InafedScraperService($httpClient, $logger);
+        $service = new \Tlatoa\Services\InafedScraperService($httpClient, $logger);
 
         $cvegeo = isset($params['cvegeo']) ? (string)$params['cvegeo'] : ($params['municipio'] ?? '01001');
         $res = $service->scrapeMunicipioHistorico((string)$cvegeo);

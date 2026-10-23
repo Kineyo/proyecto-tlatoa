@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 /**
  * Catálogo histórico fundacional del H. Congreso del Estado de Baja California Sur (1974-1999).

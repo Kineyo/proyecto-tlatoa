@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\DTO;
+namespace Tlatoa\DTO;
 
 /**
  * Representa una sesión formal del Pleno parlamentario (Diputados o Senadores).

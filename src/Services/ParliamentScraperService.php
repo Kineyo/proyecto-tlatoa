@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Core\Logger;
-use PulsoCivico\DTO\VotacionDTO;
-use PulsoCivico\DTO\SesionPlenoDTO;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Core\Logger;
+use Tlatoa\DTO\VotacionDTO;
+use Tlatoa\DTO\SesionPlenoDTO;
 
 /**
  * Servicio de extracción, análisis e indexación de Votaciones Nominales y Asistencias
@@ -576,7 +576,7 @@ class ParliamentScraperService
             $nombre = $sen['nombre_completo'] ?? '';
             if (empty($nombre)) continue;
 
-            $slug = \PulsoCivico\Services\DataService::slugify($nombre);
+            $slug = \Tlatoa\Services\DataService::slugify($nombre);
             $partido = $sen['partido'] ?? 'Sin Partido';
 
             // Determinar asistencias del senador

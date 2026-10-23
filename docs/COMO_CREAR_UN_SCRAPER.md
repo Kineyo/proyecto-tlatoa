@@ -14,7 +14,7 @@ Se registran en `tools/core/ScraperRouter.php` (fuentes `sil`, `votaciones`, `as
 
 Para una fuente nueva:
 1. Crea `src/Services/<Fuente>ScraperService.php` (< 400 líneas; divide en helpers si crece).
-2. Usa **siempre** `PulsoCivico\Core\HttpClient` (ya trae reintentos, rate limit y logs). No uses `file_get_contents` sobre URLs.
+2. Usa **siempre** `Tlatoa\Core\HttpClient` (ya trae reintentos, rate limit y logs). No uses `file_get_contents` sobre URLs.
 3. Mapea los resultados a los DTOs de `src/DTO/` (ver [DATA_SCHEMA.md](DATA_SCHEMA.md)).
 4. Guarda el resultado en `storage/data/json/<camara>_leg_<numero>.json`.
 5. Registra un nuevo `case` en `ScraperRouter::run()`.
@@ -24,11 +24,11 @@ Para una fuente nueva:
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Core\Logger;
-use PulsoCivico\DTO\LegisladorDTO;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Core\Logger;
+use Tlatoa\DTO\LegisladorDTO;
 
 final class CongresoEjemploScraperService
 {
@@ -84,7 +84,7 @@ python3 -m py_compile app/services/data_service.py
 ```text
 Lee `AGENTS.md`, `docs/DATA_SCHEMA.md` y `src/Services/SilIngestService.php` (entorno Linux, rutas POSIX `/`).
 1. Crea un scraper en `src/Services/<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
-2. Usa `PulsoCivico\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
+2. Usa `Tlatoa\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
 3. Guarda el dataset en `storage/data/json/<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
 4. Registra la fuente en `tools/core/ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app/services/data_service.py`.
 5. Valida antes de finalizar con:
@@ -113,7 +113,7 @@ python -m py_compile app\services\data_service.py
 ```text
 Lee `AGENTS.md`, `docs\DATA_SCHEMA.md` y `src\Services\SilIngestService.php` (entorno Windows PowerShell, rutas con `\`).
 1. Crea un scraper en `src\Services\<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
-2. Usa `PulsoCivico\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
+2. Usa `Tlatoa\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
 3. Guarda el dataset en `storage\data\json\<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
 4. Registra la fuente en `tools\core\ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app\services\data_service.py`.
 5. Valida antes de finalizar con el runner centralizado:
@@ -142,7 +142,7 @@ python3 -m py_compile app/services/data_service.py
 ```text
 Lee `AGENTS.md`, `docs/DATA_SCHEMA.md` y `src/Services/SilIngestService.php` (entorno macOS, rutas POSIX `/`).
 1. Crea un scraper en `src/Services/<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
-2. Usa `PulsoCivico\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
+2. Usa `Tlatoa\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
 3. Guarda el dataset en `storage/data/json/<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
 4. Registra la fuente en `tools/core/ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app/services/data_service.py`.
 5. Valida antes de finalizar con:

@@ -1,5 +1,5 @@
 -- ========================================================================
--- PULSO CÍVICO — ESQUEMA RELACIONAL Y GRAFO DE CONOCIMIENTO LEGISLATIVO
+-- PROYECTO TLATOA — ESQUEMA RELACIONAL Y GRAFO DE CONOCIMIENTO LEGISLATIVO
 -- Motor: MySQL 8.0 / MariaDB 10.11+
 -- Collation: utf8mb4_unicode_ci
 -- ========================================================================

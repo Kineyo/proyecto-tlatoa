@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
 
 /**
  * @var array $estado
@@ -402,7 +402,7 @@ function renderPoliticoCardFull(array $p, int $numLeg = 66): void {
                 </p>
                 <div class="list-group list-group-flush rounded-3 border overflow-hidden">
                     <?php 
-                    $catalogLegs = \PulsoCivico\Services\DataService::LEGISLATURAS_CATALOG;
+                    $catalogLegs = \Tlatoa\Services\DataService::LEGISLATURAS_CATALOG;
                     foreach ($catalogLegs as $lNum => $lInfo): 
                         $esEsta = ($lNum === ($numLeg ?? 66));
                         $esAct = (($lInfo['estatus'] ?? '') === 'activa');

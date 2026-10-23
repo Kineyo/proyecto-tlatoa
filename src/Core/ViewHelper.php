@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Core;
+namespace Tlatoa\Core;
 
 /**
  * ViewHelper: Funciones de renderizado reutilizables para la UI y SEO.

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\DTO;
+namespace Tlatoa\DTO;
 
 /**
  * Representa una votación nominal electrónica en el Pleno.

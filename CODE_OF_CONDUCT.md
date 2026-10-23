@@ -1,7 +1,7 @@
 # Código de Conducta
 
 ## Compromiso
-Pulso Cívico es un espacio abierto a cualquier persona, sin importar ideología, partido, origen, género, edad o nivel técnico. Nos une la transparencia, no una postura política.
+Proyecto Tlatoa es un espacio abierto a cualquier persona, sin importar ideología, partido, origen, género, edad o nivel técnico. Nos une la transparencia, no una postura política.
 
 ## Principio de neutralidad (obligatorio)
 - La plataforma publica **hechos verificables con fuente**, no opiniones.

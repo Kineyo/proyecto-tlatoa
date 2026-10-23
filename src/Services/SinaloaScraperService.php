@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Core\Logger;
-use PulsoCivico\Core\EvidenceHasher;
-use PulsoCivico\DTO\LegisladorDTO;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Core\Logger;
+use Tlatoa\Core\EvidenceHasher;
+use Tlatoa\DTO\LegisladorDTO;
 
 /**
  * SinaloaScraperService: Extractor oficial del H. Congreso del Estado de Sinaloa.
@@ -229,7 +229,7 @@ class SinaloaScraperService
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'PulsoCivicoBot/1.0 (contacto@pulsocivico.org)');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'TlatoaBot/1.0 (contacto@tlatoa.org)');
         $res = (string)curl_exec($ch);
         if (PHP_VERSION_ID < 80500) {
             @curl_close($ch);

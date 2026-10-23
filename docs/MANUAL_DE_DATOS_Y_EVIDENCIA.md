@@ -1,12 +1,12 @@
 # MANUAL DE DATOS, INTEGRIDAD Y EVIDENCIA CRIPTOGRÁFICA
-## Pulso Cívico — Estándar para Colaboradores e Inteligencias Artificiales
+## Proyecto Tlatoa — Estándar para Colaboradores e Inteligencias Artificiales
 **Versión:** 1.0 | **Ámbito:** Universal Open Source
 
 ---
 
 ## 1. PRINCIPIO RECTOR: LA FE PÚBLICA DIGITAL
 
-Pulso Cívico es una plataforma estrictamente antipartidista de transparencia política. Para blindar el proyecto contra acusaciones de manipulación, censura o alteración:
+Proyecto Tlatoa es una plataforma estrictamente antipartidista de transparencia política. Para blindar el proyecto contra acusaciones de manipulación, censura o alteración:
 
 > **Todo dato oficial ingresado a la plataforma debe contar con su correspondiente prueba criptográfica de existencia y respaldo inmutable.**
 
@@ -29,8 +29,8 @@ flowchart LR
 ### 1. Extracción con Trazabilidad
 - Al descargar una página del SIL o gaceta parlamentaria, se calcula su huella:
   ```php
-  use PulsoCivico\Core\EvidenceHasher;
-  use PulsoCivico\Core\ArchiveService;
+  use Tlatoa\Core\EvidenceHasher;
+  use Tlatoa\Core\ArchiveService;
 
   $sha256 = EvidenceHasher::hashContent($htmlCrudo);
   $archiveUrl = ArchiveService::getArchiveLookupUrl($urlOficial);
@@ -54,7 +54,7 @@ flowchart LR
 
 ## 3. MODELO DE BASE DE DATOS Y PORTABILIDAD
 
-El sistema incluye un conector agnóstico (`PulsoCivico\Core\Database`):
+El sistema incluye un conector agnóstico (`Tlatoa\Core\Database`):
 
 ### Para Colaboradores Locales y Pruebas Rápidas (Por defecto: SQLite)
 - **Cero configuración requerida.**
@@ -67,7 +67,7 @@ El sistema incluye un conector agnóstico (`PulsoCivico\Core\Database`):
   DB_DRIVER=mysql
   DB_HOST=127.0.0.1
   DB_PORT=3306
-  DB_DATABASE=elpulso
+  DB_DATABASE=tlatoa
   DB_USERNAME=root
   DB_PASSWORD=tu_password
   ```

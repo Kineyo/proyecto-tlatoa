@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 use DOMDocument;
 use DOMElement;
 use DOMXPath;
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Core\Logger;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Core\Logger;
 
 /**
  * Scraper y consolidador oficial del H. Congreso de la Ciudad de México y la

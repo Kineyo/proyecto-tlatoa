@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 use DOMDocument;
 use DOMXPath;
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Core\Logger;
-use PulsoCivico\DTO\AlcaldeDTO;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Core\Logger;
+use Tlatoa\DTO\AlcaldeDTO;
 
 /**
  * Scraper especializado de la Enciclopedia de los Municipios y Delegaciones de México (INAFED / SEGOB).

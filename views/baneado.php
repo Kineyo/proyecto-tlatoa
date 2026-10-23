@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
 
 /**
  * @var array{banned: bool, expires_at: ?int, reason: ?string, remaining_seconds: int} $banStatus
@@ -38,7 +38,7 @@ require __DIR__ . '/layout/header.php';
                             <div>
                                 <strong class="d-block mb-1">Tu dirección IP se encuentra en periodo de enfriamiento (24 horas)</strong>
                                 <span class="small text-muted d-block mb-2">
-                                    Se detectaron más de <strong>5 envíos por minuto</strong> desde tu conexión, lo cual excede el ritmo normal de un usuario humano y activa las defensas anti-spam del observatorio cívico.
+                                    Se detectaron más de <strong>5 envíos por minuto</strong> desde tu conexión, lo cual excede el ritmo normal de un usuario humano y activa las defensas anti-spam del observatorio ciudadano.
                                 </span>
                                 <ul class="list-unstyled small mb-0 text-secondary border-top pt-2 mt-2">
                                     <li><i class="bi bi-hdd-network me-1"></i> <strong>IP registrada:</strong> <code><?= ViewHelper::e($ip) ?></code></li>
@@ -66,7 +66,7 @@ require __DIR__ . '/layout/header.php';
                 <div class="p-3 bg-light rounded-3 mb-4 text-start">
                     <h6 class="fw-semibold text-dark mb-2 small"><i class="bi bi-question-circle me-1"></i> ¿Por qué existe esta medida de seguridad?</h6>
                     <p class="text-secondary small mb-0">
-                        Pulso Cívico es una iniciativa ciudadana de neutralidad y datos abiertos. Para evitar saturación maliciosa, inyección de bots y garantizar que cada ticket de inconsistencia sea auditado responsablemente por un equipo humano, limitamos la velocidad de envío a 5 reportes/minuto.
+                        Proyecto Tlatoa es una iniciativa ciudadana de neutralidad y datos abiertos. Para evitar saturación maliciosa, inyección de bots y garantizar que cada ticket de inconsistencia sea auditado responsablemente por un equipo humano, limitamos la velocidad de envío a 5 reportes/minuto.
                     </p>
                 </div>
 

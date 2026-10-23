@@ -7,7 +7,7 @@
 ---
 
 ## 1. Resumen Ejecutivo
-Se realizó la migración completa del frontend y backend de **Pulso Cívico** desde PHP vanilla hacia una arquitectura moderna y de alto rendimiento basada en **Python 3.12 + FastAPI + Jinja2 + orjson**.
+Se realizó la migración completa del frontend y backend de **Proyecto Tlatoa** desde PHP vanilla hacia una arquitectura moderna y de alto rendimiento basada en **Python 3.12 + FastAPI + Jinja2 + orjson**.
 
 Durante el proceso de auditoría profunda del repositorio y de los datasets (`storage/data/json/`), se detectaron y resolvieron anomalías estructurales preexistentes que afectaban la precisión de los datos parlamentarios, las rutas históricas y la experiencia de usuario.
 

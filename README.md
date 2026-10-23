@@ -1,11 +1,6 @@
-# 🇲🇽 Pulso Cívico — Guía y Documentación del Proyecto
+# Proyecto Tlatoa
 
-> [!IMPORTANT]
-> ### ⚖️ Aviso Legal, Identidad y Licencia GNU AGPLv3 (Octubre de 2026)
-> - **Bifurcación Independiente (Hard Fork):** Esta es una bifurcación independiente (Hard Fork) mantenida y modificada por **Kineyo (Alex)** a partir de **octubre de 2026**.
-> - **Visión del Proyecto:** Este proyecto está enfocado en expandir Pulso Cívico a todas las plataformas y lenguajes de programación posibles (incluyendo clientes nativos móviles como Android, escritorio y nuevas arquitecturas) para garantizar que sea accesible para cualquier persona sin barreras técnicas.
-> - **Cumplimiento GNU AGPLv3:** Se conserva y reconoce el copyright original &copy; 2024–2026 de los autores originales del código base. Las modificaciones y nuevas características están bajo copyright &copy; 2026 Kineyo (Alex). Todo el proyecto se distribuye bajo la licencia **GNU Affero General Public License v3.0 (AGPLv3)**.
-> - **Disponibilidad de Código Fuente (Sección 13):** En estricto cumplimiento de la Sección 13 de la AGPLv3, el código fuente completo y correspondiente de este proyecto está disponible de forma libre y gratuita en el repositorio oficial: **[https://github.com/Kineyo/pulso-civico](https://github.com/Kineyo/pulso-civico)**. Consulta [`NOTICE.md`](NOTICE.md) y [`LICENSE`](LICENSE).
+> **Plataforma cívica independiente enfocada en la accesibilidad ciudadana multiplataforma (Android nativo, web y nuevos entornos de ejecución).**
 
 <p align="center">
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+"></a>
@@ -19,19 +14,15 @@
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-Bienvenidas-brightgreen.svg?style=for-the-badge" alt="PRs Bienvenidas"></a>
 </p>
 
-
-
 <p align="center">
-  <img src="assets/og-cover.png" alt="Pulso Cívico — Plataforma de Transparencia Política" width="700">
+  <img src="assets/og-cover.png" alt="Proyecto Tlatoa — Plataforma de Transparencia Política" width="700">
 </p>
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=py,fastapi,php,js,html,css,bootstrap,docker,git,github" alt="Iconos de Tecnologías" />
 </p>
 
-> **Plataforma ciudadana, neutral y de código abierto para la transparencia política en México.**
-
-Cruzamos **datos oficiales del gobierno** con **noticias** para mostrar el historial real de cada representante popular: qué iniciativas presentan, cómo votan en el pleno, su trayectoria partidista y el fenómeno del "chapulineo" (cambio de partido). 
+Cruzamos **datos oficiales del gobierno** con **noticias** para mostrar el historial real de cada representante popular: qué iniciativas presentan, cómo votan en el pleno, su trayectoria partidista y el fenómeno del "chapulineo" (cambio de partido).
 
 **Objetivo único:** Facilitar un **voto informado y consciente**.
 
@@ -43,19 +34,19 @@ Cruzamos **datos oficiales del gobierno** con **noticias** para mostrar el histo
 
 ## 📌 ¿Qué es lo relevante de este proyecto?
 
-1. **Impacto Cívico Directo:**
+1. **Impacto Ciudadano Directo:**
    - En México, la información de los políticos suele estar dispersa en gacetas en PDF o portales legislativos confusos.
-   - Pulso Cívico centraliza el historial legislativo, ejecutivo y municipal para que cualquier ciudadano audite a sus representantes en segundos.
+   - Proyecto Tlatoa centraliza el historial legislativo, ejecutivo y municipal para que cualquier ciudadano audite a sus representantes en segundos.
 2. **Neutralidad Absoluta y Verificabilidad:**
    - **Regla de oro:** Todo dato mostrado debe tener un enlace directo a una fuente oficial (`.gob.mx`) o nota periodística verificada con hash criptográfico SHA-256.
    - Cero opiniones, cero adjetivos, cero propaganda partidista.
 3. **Arquitectura Híbrida de Alto Rendimiento y Low-Cost (FastAPI + JSON):**
-   - **Stack primario moderno:** Desarrollado en **Python 3.10+ con FastAPI, Uvicorn, Jinja2 y orjson** para máxima velocidad de respuesta (< 15ms), concurrencia asíncrona y pre-indexación en memoria de los más de 3,200 datasets cívicos.
+   - **Stack primario moderno:** Desarrollado en **Python 3.10+ con FastAPI, Uvicorn, Jinja2 y orjson** para máxima velocidad de respuesta (< 15ms), concurrencia asíncrona y pre-indexación en memoria de los más de 3,200 datasets públicos.
    - **Cero bases de datos pesadas obligatorias** (sin necesidad de configurar MySQL/PostgreSQL para correrlo localmente): los datos viven en archivos JSON estáticos en [`storage/data/json/`](storage/data/json/) versionados directamente con Git.
    - **Frontend ágil:** Bootstrap 5.3 vía CDN y JavaScript Vanilla nativo (sin frameworks SPA ni compiladores pesados).
    - **Capa CLI y Contingencia:** Mantiene herramientas CLI e ingesta histórica en PHP 8.1+ ([`tools/gateway.php`](tools/gateway.php), [`tools/run.ps1`](tools/run.ps1)) para máxima compatibilidad y auditoría.
    - Cualquier persona puede correrlo en su computadora en menos de 2 minutos.
-4. **Grafo Cívico Interconectado (Todo es un hipervínculo):**
+4. **Grafo Ciudadano Interconectado (Todo es un hipervínculo):**
    - Modela a los actores políticos como una red navegable a través del tiempo.
    - **Persona Invariante vs. Mandatos Temporales:** La identidad del político trasciende legislaturas. Desacoplar a la persona de sus cargos permite auditar suplencias, mandatos históricos y cambios de partido a lo largo de los años ("detector de chapulines").
    - **Hipervínculos Bidireccionales:** Políticos, mandatos, partidos, comisiones, entidades federativas, municipios y votaciones están interconectados.
@@ -63,7 +54,6 @@ Cruzamos **datos oficiales del gobierno** con **noticias** para mostrar el histo
 ---
 
 ## 🧭 ¿Qué hay hoy y qué es lo que tenemos?
-
 
 <p align="center">
   <img src="assets/Mapa_CDMX.png" alt="Mapa de la Republica Mexicana" width="700">
@@ -87,8 +77,8 @@ Cruzamos **datos oficiales del gobierno** con **noticias** para mostrar el histo
    - Enriquecer los perfiles, votaciones y comisiones de los 128 Senadores de la LXVI Legislatura.
 3. **Ampliación de Cabildos Municipales:**
    - Ampliar la cobertura de síndicos y regidores en municipios donde los OPLEs publiquen sábanas de integración completa.
-4. **Optimización de UI y Visualización Cívica:**
-   - Mejorar componentes móviles (*mobile-first*), líneas de tiempo interactivas de mandatos políticos y herramientas de exportación de datos abiertos en CSV.
+4. **Optimización de UI y Visualización Ciudadana:**
+   - Mejorar componentes móviles (*mobile-first*), clientes nativos como Android, líneas de tiempo interactivas de mandatos políticos y herramientas de exportación de datos abiertos en CSV.
 5. **Calidad de Código y Modularización:**
    - Mantener archivos < 400 líneas de código y continuar la homologación de servicios extractores.
 
@@ -145,7 +135,7 @@ php tools/gateway.php health
 > Copia y pega este prompt al inicio de tu sesión con tu asistente de IA (Cursor, Claude, ChatGPT, Gemini, Copilot):
 
 ```text
-Estás trabajando en Pulso Cívico sobre Linux (entorno POSIX).
+Estás trabajando en Proyecto Tlatoa sobre Linux (entorno POSIX).
 REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
 1. El servidor activo corre en Python / FastAPI en `app/main.py` sirviendo vistas Jinja2 desde `app/templates/`.
 2. Todo cambio visual, de endpoints o lógica de negocio DEBE implementarse en `app/routers/`, `app/services/` y `app/templates/` (NUNCA en las carpetas legacy `src/` o `views/` a menos que sea un scraper/herramienta CLI).
@@ -185,7 +175,7 @@ powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health
 > Copia y pega este prompt al inicio de tu sesión con tu asistente de IA (Cursor, Claude, ChatGPT, Gemini, Copilot):
 
 ```text
-Estás trabajando en Pulso Cívico sobre Windows (PowerShell).
+Estás trabajando en Proyecto Tlatoa sobre Windows (PowerShell).
 REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
 1. El servidor activo corre en Python / FastAPI en `app\main.py` sirviendo vistas Jinja2 desde `app\templates\`.
 2. Todo cambio visual, de endpoints o lógica de negocio DEBE implementarse en `app\routers\`, `app\services\` y `app\templates\` (NUNCA en las carpetas legacy `src\` o `views\` a menos que sea un scraper/herramienta CLI).
@@ -225,7 +215,7 @@ php tools/gateway.php health
 > Copia y pega este prompt al inicio de tu sesión con tu asistente de IA (Cursor, Claude, ChatGPT, Gemini, Copilot):
 
 ```text
-Estás trabajando en Pulso Cívico sobre macOS (Zsh / entorno POSIX).
+Estás trabajando en Proyecto Tlatoa sobre macOS (Zsh / entorno POSIX).
 REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
 1. El servidor activo corre en Python / FastAPI en `app/main.py` sirviendo vistas Jinja2 desde `app/templates/`.
 2. Todo cambio visual, de endpoints o lógica de negocio DEBE implementarse en `app/routers/`, `app/services/` y `app/templates/` (NUNCA en las carpetas legacy `src/` o `views/` a menos que sea un scraper/herramienta CLI).
@@ -287,9 +277,9 @@ Para colaborar con tus cambios de manera ordenada y sin fricciones, se utiliza e
 ```
 
 ### Paso 1: Crear tu Fork en GitHub
-1. Ve a [https://github.com/Kineyo/pulso-civico](https://github.com/Kineyo/pulso-civico).
+1. Ve a [https://github.com/Kineyo/proyecto-tlatoa](https://github.com/Kineyo/proyecto-tlatoa).
 2. Haz clic en el botón superior derecho **"Fork"**.
-3. Confirma la creación en tu cuenta personal (quedará como `https://github.com/<tu-usuario>/pulso-civico`).
+3. Confirma la creación en tu cuenta personal (quedará como `https://github.com/<tu-usuario>/proyecto-tlatoa`).
 
 ---
 
@@ -306,15 +296,15 @@ Si aún no tienes configurados `origin` y `upstream`:
 git remote rename origin upstream
 
 # 2. Agrega tu Fork personal como 'origin' (reemplaza <tu-usuario> con tu cuenta de GitHub)
-git remote add origin https://github.com/<tu-usuario>/pulso-civico.git
+git remote add origin https://github.com/<tu-usuario>/proyecto-tlatoa.git
 ```
 
 Deberás ver ambos configurados:
 ```text
-origin    https://github.com/<tu-usuario>/pulso-civico.git (fetch)
-origin    https://github.com/<tu-usuario>/pulso-civico.git (push)
-upstream  https://github.com/Kineyo/pulso-civico.git (fetch)
-upstream  https://github.com/Kineyo/pulso-civico.git (push)
+origin    https://github.com/<tu-usuario>/proyecto-tlatoa.git (fetch)
+origin    https://github.com/<tu-usuario>/proyecto-tlatoa.git (push)
+upstream  https://github.com/Kineyo/proyecto-tlatoa.git (fetch)
+upstream  https://github.com/Kineyo/proyecto-tlatoa.git (push)
 ```
 
 ---
@@ -382,7 +372,7 @@ git add README.md
 
 # Realiza el commit siguiendo el formato estándar:
 # Prefijos permitidos: feat:, fix:, scraper:, data:, docs:, refactor:, chore:
-git commit -m "docs: mejora README con grafos civicos, coberturas actualizadas y badges"
+git commit -m "docs: mejora README con grafos de datos, coberturas actualizadas y badges"
 ```
 
 ---
@@ -397,9 +387,9 @@ git push -u origin docs/mejora-documentacion
 
 ### Paso 7: Abrir un Pull Request (PR)
 
-1. Ve a tu repositorio en GitHub: `https://github.com/<tu-usuario>/pulso-civico`.
+1. Ve a tu repositorio en GitHub: `https://github.com/<tu-usuario>/proyecto-tlatoa`.
 2. Verás un cartel verde con el botón **"Compare & pull request"**. Haz clic en él.
-3. Asegúrate de que la rama base sea `Kineyo/pulso-civico` en `main`.
+3. Asegúrate de que la rama base sea `Kineyo/proyecto-tlatoa` en `main`.
 4. Llena la plantilla del Pull Request describiendo los cambios de forma clara y concisa.
 5. Haz clic en **"Create pull request"**.
 
@@ -453,7 +443,7 @@ git push -u origin docs/mejora-documentacion
 
 - [CONTRIBUTING.md](CONTRIBUTING.md) — Normas de contribución y flujo de trabajo en GitHub.
 - [AGENTS.md](AGENTS.md) — Instrucciones y restricciones para asistentes de IA (Cursor, Copilot, Claude, Gemini).
-- [docs/MANIFIESTO.md](docs/MANIFIESTO.md) — Principios rectores de neutralidad cívica.
+- [docs/MANIFIESTO.md](docs/MANIFIESTO.md) — Principios rectores de neutralidad ciudadana.
 - [docs/STACK_TECNOLOGICO.md](docs/STACK_TECNOLOGICO.md) — Documentación detallada del stack Python/FastAPI.
 - [docs/PODER_EJECUTIVO_ESTADOS.md](docs/PODER_EJECUTIVO_ESTADOS.md) — Documentación de la cronología de gobernadores.
 - [docs/PIPELINE_STAGING.md](docs/PIPELINE_STAGING.md) — Flujo de recepción y validación de datos externos.
@@ -462,7 +452,10 @@ git push -u origin docs/mejora-documentacion
 
 ---
 
-## ⚖️ Licencias
+## ⚖️ Licencias y Atribución Legal (AGPLv3)
 
 - **Código:** [GNU Affero General Public License v3.0 (AGPL-3.0)](LICENSE).
+- **Aviso Legal e Identidad:** [NOTICE.md](NOTICE.md).
 - **Datos generados:** [Creative Commons Atribución 4.0 Internacional (CC BY 4.0)](DATA_LICENSE.md).
+
+<sub>Proyecto Tlatoa es una bifurcación independiente (Hard Fork) iniciada en octubre de 2026 por Kineyo. Código base derivado originalmente de Pulso Cívico (Copyright (c) 2024-2026 Autores Originales), distribuido bajo licencia GNU AGPLv3. Modificaciones y mantenimiento multiplataforma Copyright (c) 2026 Kineyo. Código fuente completo disponible en <a href="https://github.com/Kineyo/proyecto-tlatoa">https://github.com/Kineyo/proyecto-tlatoa</a>. Consulta <a href="NOTICE.md">NOTICE.md</a> y <a href="LICENSE">LICENSE</a>.</sub>

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\ViewHelper;
 
 /**
  * @var array{

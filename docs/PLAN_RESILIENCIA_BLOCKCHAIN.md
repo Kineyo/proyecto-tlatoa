@@ -1,10 +1,10 @@
-# ARQUITECTURA DE RESILIENCIA Y ANTI-CENSURA: PULSO CÍVICO
+# ARQUITECTURA DE RESILIENCIA Y ANTI-CENSURA: PROYECTO TLATOA
 **Plan Estratégico y Técnico Paso a Paso (Web3 / Respaldo Inmutable / Anonimato)**
 
 ---
 
 ## 1. Visión y Objetivos de Supervivencia
-El objetivo de este plan es garantizar que **Pulso Cívico** sea:
+El objetivo de este plan es garantizar que **Proyecto Tlatoa** sea:
 1. **Inapagable (Resistente a la censura):** Ningún actor (gobierno, ISP o proveedor de hosting) podrá tirar el sitio o borrar los datos.
 2. **Inalterable (Prueba Criptográfica de Evidencia):** Cada contrato, licitación o dato oficial vinculado a notas periodísticas contará con sello de tiempo y hash matemático para evitar acusaciones de falsificación o alteración.
 3. **Legal y Operativamente Seguro (OpSec & Zero-Liability):** Blindaje de identidad para los operadores y estructura de datos que actúe como "archivo y agregador objetivo", no como emisor de acusaciones.
@@ -55,12 +55,12 @@ flowchart TD
   * Guardar el archivo estructurado con timestamp ISO-8601 en `storage/evidence/`.
 * [ ] **Paso 1.3: Redacción Legal Tipo Espejo (Anti-Difamación)**
   * Redactar las plantillas del sitio bajo el estándar:
-    > *"El presente registro es una copia fiel del documento oficial emitido por [Dependencia] bajo el folio [Folio], el cual fue correlacionado con la cobertura informativa del medio [Medio] con fecha [Fecha]. Pulso Cívico no emite juicio de valor sobre el contenido de dichas fuentes."*
+    > *"El presente registro es una copia fiel del documento oficial emitido por [Dependencia] bajo el folio [Folio], el cual fue correlacionado con la cobertura informativa del medio [Medio] con fecha [Fecha]. Proyecto Tlatoa no emite juicio de valor sobre el contenido de dichas fuentes."*
 
 ---
 
 ### FASE 2: Archivado Inmutable y Permanente (Costos Mínimos / Respaldo)
-*Objetivo: Que si el gobierno borra la página oficial de transparencia, la copia de Pulso Cívico sea legalmente incuestionable e indestructible.*
+*Objetivo: Que si el gobierno borra la página oficial de transparencia, la copia de Proyecto Tlatoa sea legalmente incuestionable e indestructible.*
 
 * [ ] **Paso 2.1: Integración con Servicios de Archivado Web**
   * Automatizar llamadas API a servicios de snapshot en caliente:
@@ -94,9 +94,9 @@ flowchart TD
 
 * [ ] **Paso 4.1: Despliegue de Frontend Estático en IPFS + ENS**
   * Compilar una versión ligera del frontend (lectura de datos públicos) como archivos estáticos.
-  * Adquirir un dominio **ENS** (Ethereum Name Service), por ejemplo `pulsocivico.eth`.
+  * Adquirir un dominio **ENS** (Ethereum Name Service), por ejemplo `tlatoa.eth`.
   * Asociar el dominio ENS al CID de IPFS.
-  * El sitio se vuelve accesible automáticamente en navegadores como Brave, Opera o mediante pasarelas descentralizadas (`pulsocivico.eth.limo`).
+  * El sitio se vuelve accesible automáticamente en navegadores como Brave, Opera o mediante pasarelas descentralizadas (`tlatoa.eth.limo`).
 * [ ] **Paso 4.2: Servicio Oculto en Tor (.onion)**
   * Levantar un espejo en la red Tor.
   * Permite el acceso anónimo de periodistas y ciudadanos sin rastreo de IP ni riesgo de bloqueo por parte de los operadores de telecomunicaciones nacionales.

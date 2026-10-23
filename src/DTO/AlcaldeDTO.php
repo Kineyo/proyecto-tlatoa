@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\DTO;
+namespace Tlatoa\DTO;
 
 /**
  * Data Transfer Object que representa a un Alcalde o Presidente Municipal,
@@ -34,7 +34,7 @@ class AlcaldeDTO
     }
 
     /**
-     * Serializa el DTO a un arreglo compatible con el estándar JSON de Pulso Cívico.
+     * Serializa el DTO a un arreglo compatible con el estándar JSON de Proyecto Tlatoa.
      * @return array<string, mixed>
      */
     public function toArray(): array

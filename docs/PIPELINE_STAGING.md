@@ -10,14 +10,14 @@
 El **Staging** es un área de recepción y revisión intermedia:
 1. Tú nos compartes los datos oficiales, gacetas o documentos que encontraste.
 2. Nuestro equipo y herramientas automáticas revisan que la liga oficial funcione (`.gob.mx`), calculan su huella digital criptográfica (SHA-256) y guardan una copia permanente en la Wayback Machine para que nunca se pierda.
-3. Una vez verificado, los datos se publican en el repositorio abierto de Pulso Cívico para que cualquier ciudadano pueda consultarlos.
+3. Una vez verificado, los datos se publican en el repositorio abierto de Proyecto Tlatoa para que cualquier ciudadano pueda consultarlos.
 
 ```mermaid
 flowchart LR
     A["1. Dato Oficial<br/>(Gaceta, PDF, acta)"]
     --> B["2. Buzón Seguro<br/>(CryptPad, Session, Proton)"]
     --> C["3. Verificación<br/>(Link .gob.mx + SHA-256)"]
-    --> D["4. Publicación Abierta<br/>(En Pulso Cívico)"]
+    --> D["4. Publicación Abierta<br/>(En Proyecto Tlatoa)"]
 ```
 
 ---
@@ -56,4 +56,4 @@ Para que un dato pueda ser publicado, solo requerimos estos 3 elementos:
 Si manejas información sensible o documentos internos que son de interés público:
 1. **Limpia los metadatos de los archivos:** Las fotos y PDFs guardan información oculta (marca de cámara, coordenadas GPS, usuario de Word). Puedes usar herramientas gratuitas y libres como **Metadata Cleaner** o **MAT2** antes de enviar un archivo.
 2. **No uses redes laborales:** Nunca envíes datos desde computadoras de oficinas gubernamentales ni redes Wi-Fi institucionales.
-3. **Pulso Cívico nunca solicita datos personales:** Jamás te pediremos tu nombre real, credencial ni número telefónico para recibir información pública verificable.
+3. **Proyecto Tlatoa nunca solicita datos personales:** Jamás te pediremos tu nombre real, credencial ni número telefónico para recibir información pública verificable.

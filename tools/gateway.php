@@ -13,17 +13,17 @@ require_once __DIR__ . '/core/DataIntegrityAudit.php';
 require_once dirname(__DIR__) . '/src/Core/PageCache.php';
 require_once dirname(__DIR__) . '/src/Services/AuditService.php';
 
-use PulsoCivico\Tools\Linter;
-use PulsoCivico\Tools\GitOps;
-use PulsoCivico\Tools\GitHubOps;
-use PulsoCivico\Tools\Inspector;
-use PulsoCivico\Tools\ScraperRouter;
-use PulsoCivico\Tools\DataRepair;
-use PulsoCivico\Tools\CatalogBuilder;
-use PulsoCivico\Tools\BuildDirectoryIndex;
-use PulsoCivico\Tools\DataIntegrityAudit;
-use PulsoCivico\Core\PageCache;
-use PulsoCivico\Services\AuditService;
+use Tlatoa\Tools\Linter;
+use Tlatoa\Tools\GitOps;
+use Tlatoa\Tools\GitHubOps;
+use Tlatoa\Tools\Inspector;
+use Tlatoa\Tools\ScraperRouter;
+use Tlatoa\Tools\DataRepair;
+use Tlatoa\Tools\CatalogBuilder;
+use Tlatoa\Tools\BuildDirectoryIndex;
+use Tlatoa\Tools\DataIntegrityAudit;
+use Tlatoa\Core\PageCache;
+use Tlatoa\Services\AuditService;
 
 $rootDir = dirname(__DIR__);
 $action = $argv[1] ?? 'help';
@@ -148,7 +148,7 @@ switch ($action) {
             'ip' => '127.0.0.1',
             'origen' => [
                 'nombre' => 'Expediente de Prueba',
-                'url' => 'http://localhost/elpulso/politicos',
+                'url' => 'http://localhost/tlatoa/politicos',
             ],
             'categoria' => 'homonimo',
             'checkmarks' => ['Prueba de integración de tickets a Telegram'],
@@ -164,7 +164,7 @@ switch ($action) {
 
     case 'cache:warmup':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -172,7 +172,7 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
 
-        $ctrl = new \PulsoCivico\Controllers\WebController();
+        $ctrl = new \Tlatoa\Controllers\WebController();
         ob_start();
         $ctrl->politicos();
         $htmlPoliticos = ob_get_clean();
@@ -249,7 +249,7 @@ switch ($action) {
     case 'test:speed':
         // Autoloader PSR-4 nativo
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -258,13 +258,13 @@ switch ($action) {
         });
 
         $t0 = microtime(true);
-        $ds = new \PulsoCivico\Services\DataService($rootDir . '/storage');
+        $ds = new \Tlatoa\Services\DataService($rootDir . '/storage');
         $t1 = microtime(true);
         $directorio = $ds->getDirectorioPoliticos(null);
         $t2 = microtime(true);
 
         // Prueba de PageCache
-        $cache = new \PulsoCivico\Core\PageCache('politicos_todas');
+        $cache = new \Tlatoa\Core\PageCache('politicos_todas');
         $tc0 = microtime(true);
         $cachedHtml = $cache->get();
         $tc1 = microtime(true);
@@ -272,7 +272,7 @@ switch ($action) {
         // Prueba de API paginada /api/politicos
         $_GET['page'] = '2';
         $_GET['limit'] = '32';
-        $ctrl = new \PulsoCivico\Controllers\WebController($ds);
+        $ctrl = new \Tlatoa\Controllers\WebController($ds);
         $tApi0 = microtime(true);
         ob_start();
         $ctrl->apiPoliticos();
@@ -350,7 +350,7 @@ switch ($action) {
         require_once $rootDir . '/src/Services/EducationService.php';
         require_once $rootDir . '/src/Services/DataService.php';
         
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $testSlug = $target ?: 'ayala-robles-armando';
         $pol = $ds->getPoliticoBySlug($testSlug);
         
@@ -535,7 +535,7 @@ switch ($action) {
 
     case 'inspect:politico':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -543,7 +543,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $slugs = explode(',', $target !== '' ? $target : 'valladolid-rodriguez-antonio,talavera-hernandez-maria-eloisa,schroeder-verdugo-maria-fernanda,zepeda-berrelleza-hugo-adriel');
         $directorio = $ds->getDirectorioPoliticos();
         $dirBySlug = [];
@@ -641,7 +641,7 @@ switch ($action) {
 
     case 'github:prs':
         $state = in_array($target, ['open', 'closed', 'all'], true) ? $target : 'open';
-        $result = GitHubOps::listPullRequests('Kineyo/pulso-civico', $state);
+        $result = GitHubOps::listPullRequests('Kineyo/proyecto-tlatoa', $state);
         $prs = [];
         if (!empty($result['data']) && is_array($result['data'])) {
             foreach ($result['data'] as $p) {
@@ -665,7 +665,7 @@ switch ($action) {
         break;
 
     case 'github:search':
-        $query = urlencode($target . ' repo:Kineyo/pulso-civico');
+        $query = urlencode($target . ' repo:Kineyo/proyecto-tlatoa');
         $result = GitHubOps::api('GET', "search/issues?q={$query}");
         $items = [];
         foreach ($result['data']['items'] ?? [] as $it) {
@@ -684,7 +684,7 @@ switch ($action) {
         $branches = ['data/leg-58', 'data/leg-59', 'data/leg-60'];
         $foundPrs = [];
         foreach ($branches as $b) {
-            $res = GitHubOps::api('GET', "repos/Kineyo/pulso-civico/pulls?head=Kineyo:{$b}&state=all");
+            $res = GitHubOps::api('GET', "repos/Kineyo/proyecto-tlatoa/pulls?head=Kineyo:{$b}&state=all");
             $list = [];
             if (!empty($res['data']) && is_array($res['data'])) {
                 foreach ($res['data'] as $p) {
@@ -703,7 +703,7 @@ switch ($action) {
 
     case 'github:pr':
         $num = is_numeric($target) ? (int)$target : 52;
-        $result = GitHubOps::api('GET', "repos/Kineyo/pulso-civico/pulls/{$num}");
+        $result = GitHubOps::api('GET', "repos/Kineyo/proyecto-tlatoa/pulls/{$num}");
         $d = $result['data'] ?? [];
         $response['pr'] = [
             'number' => $d['number'] ?? $num,
@@ -718,7 +718,7 @@ switch ($action) {
 
     case 'github:fetch_all_prs_data':
         $dryRun = ($target === 'dry-run');
-        $prListRes = GitHubOps::listPullRequests('Kineyo/pulso-civico', 'open');
+        $prListRes = GitHubOps::listPullRequests('Kineyo/proyecto-tlatoa', 'open');
         $prs = $prListRes['data'] ?? [];
         $downloadedFiles = [];
         $errors = [];
@@ -730,7 +730,7 @@ switch ($action) {
             $headRef = $pr['head']['ref'] ?? '';
             if ($prNum <= 0) continue;
 
-            $filesRes = GitHubOps::api('GET', "repos/Kineyo/pulso-civico/pulls/{$prNum}/files?per_page=100");
+            $filesRes = GitHubOps::api('GET', "repos/Kineyo/proyecto-tlatoa/pulls/{$prNum}/files?per_page=100");
             $prFiles = $filesRes['data'] ?? [];
             if (!is_array($prFiles)) continue;
 
@@ -779,7 +779,7 @@ switch ($action) {
                     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
                     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
                     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                        'User-Agent: PulsoCivico-Agent/1.0',
+                        'User-Agent: Tlatoa-Agent/1.0',
                         'Authorization: Bearer ' . $token,
                     ]);
                     $content = curl_exec($ch);
@@ -793,7 +793,7 @@ switch ($action) {
 
                 if ($content === null) {
                     // Fallback a contents API
-                    $cRes = GitHubOps::api('GET', "repos/Kineyo/pulso-civico/contents/{$filename}?ref=" . urlencode($headRef));
+                    $cRes = GitHubOps::api('GET', "repos/Kineyo/proyecto-tlatoa/contents/{$filename}?ref=" . urlencode($headRef));
                     if ($cRes['ok'] && isset($cRes['data']['content'])) {
                         $content = base64_decode($cRes['data']['content']);
                     }
@@ -1206,7 +1206,7 @@ switch ($action) {
         $leg = $target !== '' ? (int)$target : 61;
         $cam = $extra !== '' ? (int)$extra : 1;
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1215,8 +1215,8 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
         $config = require $rootDir . '/config/config.php';
-        $logger = new \PulsoCivico\Core\Logger($config['paths']['logs'], 'PROBE');
-        $http = new \PulsoCivico\Core\HttpClient($config['sil'], $logger);
+        $logger = new \Tlatoa\Core\Logger($config['paths']['logs'], 'PROBE');
+        $http = new \Tlatoa\Core\HttpClient($config['sil'], $logger);
         
         // Petición al formulario de reporte para ver opciones de entidad
         $reportUrl = $config['sil']['report_url'];
@@ -1292,7 +1292,7 @@ switch ($action) {
             '66' => count($byLegFiles[66] ?? []) . ' archivos',
         ];
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1300,7 +1300,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $disponiblesWeb = $ds->getLegislaturasDisponibles();
         $webConteo = [];
         foreach ($disponiblesWeb as $lNum) {
@@ -1324,7 +1324,7 @@ switch ($action) {
         $leg = $target !== '' ? (int)$target : 61;
         $cam = $extra !== '' ? (int)$extra : 1;
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1333,8 +1333,8 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
         $config = require $rootDir . '/config/config.php';
-        $logger = new \PulsoCivico\Core\Logger($config['paths']['logs'], 'INSPECT-PARSER');
-        $http = new \PulsoCivico\Core\HttpClient($config['sil'], $logger);
+        $logger = new \Tlatoa\Core\Logger($config['paths']['logs'], 'INSPECT-PARSER');
+        $http = new \Tlatoa\Core\HttpClient($config['sil'], $logger);
         $res = $http->request('POST', $config['sil']['report_url'], [
             'CAMARA' => (string)$cam,
             'LEGISLATURA' => (string)$leg,
@@ -1371,7 +1371,7 @@ switch ($action) {
     case 'extract:df:fast':
         $leg = $target !== '' ? (int)$target : 61;
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1380,8 +1380,8 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
         $config = require $rootDir . '/config/config.php';
-        $logger = new \PulsoCivico\Core\Logger($config['paths']['logs'], 'FAST-EXTRACT');
-        $http = new \PulsoCivico\Core\HttpClient($config['sil'], $logger);
+        $logger = new \Tlatoa\Core\Logger($config['paths']['logs'], 'FAST-EXTRACT');
+        $http = new \Tlatoa\Core\HttpClient($config['sil'], $logger);
         
         $camaras = [
             1 => 'Diputados',
@@ -1411,7 +1411,7 @@ switch ($action) {
                 if (!preg_match('/Referencia=(\d+)/i', $onclick, $refMatch)) continue;
                 $refId = $refMatch[1];
                 
-                $dto = new \PulsoCivico\DTO\LegisladorDTO(
+                $dto = new \Tlatoa\DTO\LegisladorDTO(
                     referenciaSil: $refId,
                     nombreCompleto: trim($tds->item(2)->textContent),
                     camara: $camName,
@@ -1532,7 +1532,7 @@ switch ($action) {
 
     case 'stats:educacion':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1540,7 +1540,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $targetEstado = $target !== '' ? $target : null;
         $response['target'] = $targetEstado;
         $response['estadisticas'] = $ds->getEstadisticasEscolaridad(null, $targetEstado);
@@ -1548,7 +1548,7 @@ switch ($action) {
 
     case 'stats:instituciones':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1556,7 +1556,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $stats = $ds->getEstadisticasEscolaridad();
         $response['resumen_tipo_institucion'] = $stats['resumen_tipo_institucion'] ?? [];
         $response['por_camara_institucion'] = $stats['por_camara_institucion'] ?? [];
@@ -1570,8 +1570,8 @@ switch ($action) {
 
 
     case 'sync:paths':
-        // Fuente: argumento (run.ps1 sync:paths "<ruta>") o variable de entorno PULSO_PATHS_SOURCE
-        $sourcePaths = $target !== '' ? $target : (string) (getenv('PULSO_PATHS_SOURCE') ?: '');
+        // Fuente: argumento (run.ps1 sync:paths "<ruta>") o variable de entorno TLATOA_PATHS_SOURCE
+        $sourcePaths = $target !== '' ? $target : (string) (getenv('TLATOA_PATHS_SOURCE') ?: '');
         $destPaths = $rootDir . '/storage/data/mexico_paths.json';
         if (file_exists($sourcePaths)) {
             @mkdir(dirname($destPaths), 0777, true);
@@ -1586,7 +1586,7 @@ switch ($action) {
 
     case 'politico':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1594,7 +1594,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $targetSlug = $target !== '' ? $target : 'ayala-robles-armando';
         $pol = $ds->getPoliticoBySlug($targetSlug);
         $response['politico'] = [
@@ -1632,7 +1632,7 @@ switch ($action) {
 
     case 'check:trunca':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1640,7 +1640,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $ed = $ds->getEducationService();
         $casos = [];
         foreach ($ds->getPoliticos() as $p) {
@@ -1664,7 +1664,7 @@ switch ($action) {
 
     case 'votaciones':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1672,13 +1672,13 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $response['votaciones'] = $ds->getVotaciones(20);
         break;
 
     case 'sesiones':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1686,7 +1686,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $response['sesiones'] = $ds->getSesiones(50);
         break;
 
@@ -1732,7 +1732,7 @@ switch ($action) {
             }
         }
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1740,7 +1740,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $ds = new \PulsoCivico\Services\DataService();
+        $ds = new \Tlatoa\Services\DataService();
         $titularesEstado = [];
         foreach ($suplentesDe as $sRef => $tData) {
             $nom = $tData['titular_nombre'];
@@ -1761,7 +1761,7 @@ switch ($action) {
 
     case 'ingest:titular':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1771,8 +1771,8 @@ switch ($action) {
         });
 
         $titularRef = $target !== '' ? $target : '9228515';
-        $logger = new \PulsoCivico\Core\Logger($rootDir . '/storage/logs');
-        $client = new \PulsoCivico\Core\HttpClient(['timeout' => 15], $logger);
+        $logger = new \Tlatoa\Core\Logger($rootDir . '/storage/logs');
+        $client = new \Tlatoa\Core\HttpClient(['timeout' => 15], $logger);
 
         // 1. Descargar HTML de perfil
         $rawPath = $rootDir . "/storage/raw/html/profile_{$titularRef}.html";
@@ -1795,7 +1795,7 @@ switch ($action) {
 
         // 3. Parsear perfil
         $cfg = require $rootDir . '/config/config.php';
-        $silService = new \PulsoCivico\Services\SilIngestService($cfg, $client, $logger);
+        $silService = new \Tlatoa\Services\SilIngestService($cfg, $client, $logger);
 
         // Usar reflection para llamar a fetchAndParseProfile
         $refMethod = new \ReflectionMethod($silService, 'fetchAndParseProfile');
@@ -1847,7 +1847,7 @@ switch ($action) {
         $suplenteNombre = $perfilData['suplente'] ?? null;
         $suplenteRef = $perfilData['suplente_referencia_sil'] ?? null;
 
-        $dto = new \PulsoCivico\DTO\LegisladorDTO(
+        $dto = new \Tlatoa\DTO\LegisladorDTO(
             referenciaSil: $titularRef,
             nombreCompleto: $nombreOrdenado,
             camara: $camara,
@@ -1916,7 +1916,7 @@ switch ($action) {
         $response['ok'] = true;
         $response['legislador_ingestado'] = [
             'nombre' => $dto->nombreCompleto,
-            'slug' => \PulsoCivico\Services\DataService::slugify($dto->nombreCompleto),
+            'slug' => \Tlatoa\Services\DataService::slugify($dto->nombreCompleto),
             'cargo' => $dto->tipoCargo,
             'suplente' => $dto->suplenteNombre,
             'redes' => count($dto->redesSociales),
@@ -1926,7 +1926,7 @@ switch ($action) {
 
     case 'enrich:social':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1934,13 +1934,13 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $result = \PulsoCivico\Services\SilIngestService::enrichExistingJsonWithSocial($rootDir);
+        $result = \Tlatoa\Services\SilIngestService::enrichExistingJsonWithSocial($rootDir);
         $response = array_merge($response, $result);
         break;
 
     case 'enrich:suplentes':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1948,13 +1948,13 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $result = \PulsoCivico\Services\SilIngestService::enrichExistingJsonWithSuplentes($rootDir);
+        $result = \Tlatoa\Services\SilIngestService::enrichExistingJsonWithSuplentes($rootDir);
         $response = array_merge($response, $result);
         break;
 
     case 'status:avance':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -1962,7 +1962,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $entidades = \PulsoCivico\Services\SilIngestService::ENTIDADES;
+        $entidades = \Tlatoa\Services\SilIngestService::ENTIDADES;
         $jsonDir = $rootDir . '/storage/data/json';
         $completados = [];
         $pendientes = [];
@@ -1998,7 +1998,7 @@ switch ($action) {
 
     case 'scrape:pendientes':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2007,11 +2007,11 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
         $config = require $rootDir . '/config/config.php';
-        $logger = new \PulsoCivico\Core\Logger($config['paths']['logs'], 'ROUTER-SCRAPER');
-        $httpClient = new \PulsoCivico\Core\HttpClient($config['sil'], $logger);
-        $service = new \PulsoCivico\Services\SilIngestService($config, $httpClient, $logger);
+        $logger = new \Tlatoa\Core\Logger($config['paths']['logs'], 'ROUTER-SCRAPER');
+        $httpClient = new \Tlatoa\Core\HttpClient($config['sil'], $logger);
+        $service = new \Tlatoa\Services\SilIngestService($config, $httpClient, $logger);
 
-        $entidades = \PulsoCivico\Services\SilIngestService::ENTIDADES;
+        $entidades = \Tlatoa\Services\SilIngestService::ENTIDADES;
         $jsonDir = $rootDir . '/storage/data/json';
         $pendientes = [];
         foreach ($entidades as $id => $nombre) {
@@ -2055,7 +2055,7 @@ switch ($action) {
 
     case 'consolidate:nacional':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2063,7 +2063,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $entidades = \PulsoCivico\Services\SilIngestService::ENTIDADES;
+        $entidades = \Tlatoa\Services\SilIngestService::ENTIDADES;
         $jsonDir = $rootDir . '/storage/data/json';
         $todosDiputados = [];
         $todosSenadores = [];
@@ -2128,7 +2128,7 @@ switch ($action) {
 
     case 'alcaldes:ingest':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2137,14 +2137,14 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
         $csvPath = $target !== '' ? $target : 'https://raw.githubusercontent.com/emagar/elecRetrns/master/data/aymu1989-on.incumbents.csv';
-        $srv = new \PulsoCivico\Services\MunicipioService();
+        $srv = new \Tlatoa\Services\MunicipioService();
         $res = $srv->ingestarHistoricoIncumbents($csvPath);
         $response = array_merge($response, $res);
         break;
 
     case 'alcaldes:stats':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2152,7 +2152,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $srv = new \PulsoCivico\Services\MunicipioService();
+        $srv = new \Tlatoa\Services\MunicipioService();
         $vigentes = $srv->getDirectorioVigente();
         $partidos = [];
         $entidades = [];
@@ -2171,7 +2171,7 @@ switch ($action) {
 
     case 'alcaldes:municipio':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2180,7 +2180,7 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
         $cvegeo = $target !== '' ? $target : '01001';
-        $srv = new \PulsoCivico\Services\MunicipioService();
+        $srv = new \Tlatoa\Services\MunicipioService();
         $historial = $srv->getHistorialMunicipio($cvegeo);
         if ($historial !== null) {
             $response['municipio'] = $historial;
@@ -2191,7 +2191,7 @@ switch ($action) {
 
     case 'alcaldes:inafed':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2200,11 +2200,11 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
         $config = require $rootDir . '/config/config.php';
-        $logger = new \PulsoCivico\Core\Logger($config['paths']['logs'], 'GATEWAY-INAFED');
+        $logger = new \Tlatoa\Core\Logger($config['paths']['logs'], 'GATEWAY-INAFED');
         $httpConfig = $config['sil'] ?? [];
         $httpConfig['rate_limit_ms'] = max(1000, (int)($httpConfig['rate_limit_ms'] ?? 1000));
-        $httpClient = new \PulsoCivico\Core\HttpClient($httpConfig, $logger);
-        $inafed = new \PulsoCivico\Services\InafedScraperService($httpClient, $logger);
+        $httpClient = new \Tlatoa\Core\HttpClient($httpConfig, $logger);
+        $inafed = new \Tlatoa\Services\InafedScraperService($httpClient, $logger);
         $cvegeo = $target !== '' ? $target : '01001';
         $res = $inafed->scrapeMunicipioHistorico($cvegeo);
         $response = array_merge($response, $res);
@@ -2212,7 +2212,7 @@ switch ($action) {
 
     case 'alcaldes:sni':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2220,14 +2220,14 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $srv = new \PulsoCivico\Services\MunicipioService();
+        $srv = new \Tlatoa\Services\MunicipioService();
         $res = $srv->integrarMunicipiosIndigenasOaxaca();
         $response = array_merge($response, $res);
         break;
 
     case 'alcaldes:extend1970':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2236,14 +2236,14 @@ switch ($action) {
             if (file_exists($file)) require_once $file;
         });
         $csvUrl = $target !== '' ? $target : 'https://raw.githubusercontent.com/emagar/elecRetrns/master/data/aymu1970-on.coalAgg.csv';
-        $srv = new \PulsoCivico\Services\MunicipioService();
+        $srv = new \Tlatoa\Services\MunicipioService();
         $res = $srv->extenderHistorico1970($csvUrl);
         $response = array_merge($response, $res);
         break;
 
     case 'alcaldes:completar':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2251,7 +2251,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $srv = new \PulsoCivico\Services\MunicipioService();
+        $srv = new \Tlatoa\Services\MunicipioService();
         $resSni = $srv->integrarMunicipiosIndigenasOaxaca();
         $csvUrl = 'https://raw.githubusercontent.com/emagar/elecRetrns/master/data/aymu1970-on.coalAgg.csv';
         $res1970 = $srv->extenderHistorico1970($csvUrl);
@@ -2263,7 +2263,7 @@ switch ($action) {
     case 'cabildos:procesar':
     case 'cabildos:ingest':
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) return;
@@ -2271,7 +2271,7 @@ switch ($action) {
             $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';
             if (file_exists($file)) require_once $file;
         });
-        $srv = new \PulsoCivico\Services\CabildoService();
+        $srv = new \Tlatoa\Services\CabildoService();
         $zipPath = $target !== '' ? $target : null;
         $res = $srv->procesarCabildosInegi($zipPath);
         $response = array_merge($response, $res);
@@ -2279,7 +2279,7 @@ switch ($action) {
 
     case 'help':
     default:
-        $response['message'] = "CLI Gateway Pulso Civico";
+        $response['message'] = "CLI Gateway Proyecto Tlatoa";
         $response['commands'] = [
             'lint <file1,file2...>'  => 'Valida sintaxis PHP de uno o varios archivos',
             'lint:dir [dir]'         => 'Valida sintaxis PHP de todo un directorio recursivamente',

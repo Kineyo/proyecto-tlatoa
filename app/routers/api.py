@@ -192,6 +192,6 @@ async def api_exportar_explorador_csv(
     return Response(
         content=output.getvalue(),
         media_type="text/csv; charset=utf-8",
-        headers={"Content-Disposition": 'attachment; filename="pulso_civico_reporte.csv"'}
+        headers={"Content-Disposition": 'attachment; filename="proyecto_tlatoa_reporte.csv"'}
     )
 

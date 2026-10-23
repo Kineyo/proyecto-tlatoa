@@ -6,7 +6,7 @@
 
 ## 1. Contexto y Principios Rectores
 
-Pulso Cívico es una plataforma de transparencia ciudadana **100% neutral y basada en fuentes oficiales**.
+Proyecto Tlatoa es una plataforma de transparencia ciudadana **100% neutral y basada en fuentes oficiales**.
 1. **Neutralidad Absoluta:** Cero calificativos, opiniones o sesgos. Solo datos oficiales públicos.
 2. **Trazabilidad Mandatoria:** Todo dataset debe incluir su `fuente_url` oficial directa y `fecha_extraccion`.
 3. **Privacidad Estricta:** Solo información de cargos públicos (oficinas institucionales, correos de enlace oficial). Prohibido registrar domicilios o teléfonos particulares.
@@ -139,7 +139,7 @@ Todo archivo debe ser un **Array JSON válido en UTF-8**, indentado a 2 espacios
 Copia y pega este prompt al asistente o agente de IA junto con el contenido oficial (texto, PDF o tabla del sitio web institucional):
 
 ```text
-Actúa como un extractor y validador de datasets cívicos para el proyecto open source Pulso Cívico.
+Actúa como un extractor y validador de datasets ciudadanos para el proyecto open source Proyecto Tlatoa.
 Tu tarea es convertir la información de [DIPUTADOS LOCALES / ALCALDES] de [NOMBRE DEL ESTADO] al formato JSON estricto del proyecto.
 
 REGLAS OBLIGATORIAS:

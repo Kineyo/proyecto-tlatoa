@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    container_name: pulso_civico_app
+    container_name: proyecto_tlatoa_app
     restart: unless-stopped
     ports:
       - "8000:8000"
@@ -17,11 +17,11 @@ services:
 
   tor:
     image: goldy/tor-hidden-service:latest
-    container_name: pulso_civico_tor
+    container_name: proyecto_tlatoa_tor
     restart: unless-stopped
     links:
       - web
     environment:
-      PULSO_TOR_SERVICE_HOSTS: "80:web:8000"
+      TLATOA_TOR_SERVICE_HOSTS: "80:web:8000"
     volumes:
       - ./tor_keys:/var/lib/tor/hidden_service/

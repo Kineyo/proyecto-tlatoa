@@ -1,5 +1,5 @@
 # DICCIONARIO DE DATOS Y ESPECIFICACIÓN DEL MODELO RELACIONAL
-## Pulso Cívico — Plataforma de Transparencia Legislativa de México
+## Proyecto Tlatoa — Plataforma de Transparencia Legislativa de México
 **Versión:** 1.0 | **Motor:** MySQL 8.0 / MariaDB 10.11 | **Collation:** `utf8mb4_unicode_ci`
 
 ---
@@ -46,7 +46,7 @@ flowchart TD
 </details>
 
 <p align="center">
-  <img src="../assets/modelo_relacional.png" alt="Pulso Cívico — Modelo Relacional de Datos y Grafo de Conocimiento" width="100%">
+  <img src="../assets/modelo_relacional.png" alt="Proyecto Tlatoa — Modelo Relacional de Datos y Grafo de Conocimiento" width="100%">
 </p>
 
 ---

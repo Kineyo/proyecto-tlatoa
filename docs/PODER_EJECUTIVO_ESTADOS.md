@@ -1,4 +1,4 @@
-# PODER EJECUTIVO ESTATAL — PULSO CÍVICO
+# PODER EJECUTIVO ESTATAL — PROYECTO TLATOA
 
 Este documento describe el modelo de datos, metodología y cobertura histórica de los titulares del **Poder Ejecutivo de las 32 Entidades Federativas**, incluyendo los Gobernadores Constitucionales, Gobernadores Sustitutos/Interinos, Jefes de Gobierno de la Ciudad de México y Regentes del Departamento del Distrito Federal (1929–1997).
 

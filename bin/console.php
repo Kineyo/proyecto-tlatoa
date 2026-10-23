@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 // Autoload simple y nativo PSR-4 para evitar dependencias de composer en esta etapa
 spl_autoload_register(function (string $class): void {
-    $prefix = 'PulsoCivico\\';
+    $prefix = 'Tlatoa\\';
     $baseDir = dirname(__DIR__) . '/src/';
 
     $len = strlen($prefix);
@@ -19,9 +19,9 @@ spl_autoload_register(function (string $class): void {
     }
 });
 
-use PulsoCivico\Core\Logger;
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Services\SilIngestService;
+use Tlatoa\Core\Logger;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Services\SilIngestService;
 
 $config = require dirname(__DIR__) . '/config/config.php';
 
@@ -36,7 +36,7 @@ $options = getopt('', [
 
 if (isset($options['help'])) {
     echo "========================================================\n";
-    echo " Pulso Civico - CLI Ingest Engine\n";
+    echo " Proyecto Tlatoa - CLI Ingest Engine\n";
     echo "========================================================\n";
     echo "Uso:\n";
     echo "  php bin/console.php [opciones]\n\n";
@@ -57,7 +57,7 @@ $descargarFotos = !isset($options['no-photos']);
 $logger = new Logger($config['paths']['logs'], 'CLI-INGEST');
 
 echo "========================================================\n";
-echo " PULSO CIVICO — MOTOR DE INGESTA GUBERNAMENTAL\n";
+echo " PROYECTO TLATOA — MOTOR DE INGESTA GUBERNAMENTAL\n";
 echo " Version: {$config['app']['version']} | Entorno: {$config['app']['env']}\n";
 echo " Modo: " . ($esNacional ? "NACIONAL (32 Entidades)" : "Entidad ID {$entidadId}") . "\n";
 echo "========================================================\n";

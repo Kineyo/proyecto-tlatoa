@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Core;
+namespace Tlatoa\Core;
 
 /**
  * Router: Enrutador Front Controller nativo y ligero.
- * Compatible al 100% con subdirectorios de XAMPP (/elpulso/) y servidores de producción en raíz.
+ * Compatible al 100% con subdirectorios de XAMPP (/tlatoa/) y servidores de producción en raíz.
  */
 class Router
 {
@@ -23,7 +23,7 @@ class Router
     }
 
     /**
-     * Detecta dinámicamente la ruta base (ej. '/elpulso' en XAMPP o '' en producción).
+     * Detecta dinámicamente la ruta base (ej. '/tlatoa' en XAMPP o '' en producción).
      */
     public static function initBasePath(): string
     {
@@ -169,7 +169,7 @@ class Router
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 — Página no encontrada | Pulso Cívico</title>
+    <title>404 — Página no encontrada | Proyecto Tlatoa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { font-family: system-ui, -apple-system, sans-serif; background: #F2F2F7; min-height: 100vh; display: flex; align-items: center; justify-content: center; }

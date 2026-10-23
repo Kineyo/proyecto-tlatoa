@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Core\Logger;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Core\Logger;
 
 /**
  * Scraper y consolidador del H. Congreso del Estado de Querétaro.
@@ -352,7 +352,7 @@ class CongresoQueretaroScraperService
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($ch, CURLOPT_USERAGENT, 'PulsoCivicoBot/1.0 (https://pulsocivico.org; contacto@pulsocivico.org)');
+            curl_setopt($ch, CURLOPT_USERAGENT, 'TlatoaBot/1.0 (https://tlatoa.org; contacto@tlatoa.org)');
             $raw = curl_exec($ch);
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 

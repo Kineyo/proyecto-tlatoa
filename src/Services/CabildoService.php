@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 use ZipArchive;
-use PulsoCivico\Core\Logger;
+use Tlatoa\Core\Logger;
 
 /**
  * CabildoService: Procesa y estructura la integración de los Cabildos Canónicos
@@ -36,7 +36,7 @@ class CabildoService
             $this->logger->info("Descargando paquete de datos abiertos del INEGI: " . self::INEGI_CNGMD_URL);
             $context = stream_context_create([
                 'http' => [
-                    'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) PulsoCivicoBot/1.0',
+                    'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) TlatoaBot/1.0',
                     'timeout' => 120,
                 ],
                 'ssl' => [

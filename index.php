@@ -2,13 +2,13 @@
 declare(strict_types=1);
 
 /**
- * Pulso Cívico — Front Controller Principal (SEO-First & Observatorio Cívico).
+ * Proyecto Tlatoa — Front Controller Principal (SEO-First & Observatorio Ciudadano).
  * Enrutador de URLs canónicas, buscador y mapa interactivo de la República Mexicana.
  */
 
 // Autoload PSR-4 nativo
 spl_autoload_register(function (string $class): void {
-    $prefix = 'PulsoCivico\\';
+    $prefix = 'Tlatoa\\';
     $baseDir = __DIR__ . '/src/';
 
     $len = strlen($prefix);
@@ -24,10 +24,10 @@ spl_autoload_register(function (string $class): void {
     }
 });
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Controllers\WebController;
-use PulsoCivico\Controllers\MunicipioController;
-use PulsoCivico\Controllers\AuditController;
+use Tlatoa\Core\Router;
+use Tlatoa\Controllers\WebController;
+use Tlatoa\Controllers\MunicipioController;
+use Tlatoa\Controllers\AuditController;
 
 $router = new Router();
 $ctrl = new WebController();

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services\Catalog;
+namespace Tlatoa\Services\Catalog;
 
 /**
  * Catálogo verificado de la XXV Legislatura del H. Congreso de Baja California (2024-2027).

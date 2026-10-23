@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Controllers;
+namespace Tlatoa\Controllers;
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Services\AuditService;
+use Tlatoa\Core\Router;
+use Tlatoa\Services\AuditService;
 
 /**
  * AuditController: Controlador para la recepción de reportes ciudadanos y vista de suspensión por rate-limit.
@@ -72,7 +72,7 @@ class AuditController
         $banStatus = $this->auditService->checkBanStatus($ip);
 
         $seo = [
-            'title' => 'Acceso Temporalmente Restringido — Pulso Cívico',
+            'title' => 'Acceso Temporalmente Restringido — Proyecto Tlatoa',
             'description' => 'Aviso de seguridad por límite de velocidad en solicitudes de reporte.',
             'canonical' => Router::url('/baneado'),
             'robots' => 'noindex, nofollow',

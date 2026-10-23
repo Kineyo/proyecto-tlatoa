@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Runner centralizado y unificado de desarrollo para Pulso Cívico.
+    Runner centralizado y unificado de desarrollo para Proyecto Tlatoa.
 .DESCRIPTION
     Punto único de entrada para todas las tareas internas (lint, git, health check, etc.).
     Al otorgar permiso a este script una sola vez, Antigravity puede ejecutar tareas

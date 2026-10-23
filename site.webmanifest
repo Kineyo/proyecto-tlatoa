@@ -1,7 +1,7 @@
 {
-  "name": "El Pulso de la Política",
-  "short_name": "Pulso Político",
-  "description": "Observatorio cívico del Congreso Mexicano — Datos oficiales de legisladores, comisiones y municipios.",
+  "name": "Proyecto Tlatoa",
+  "short_name": "Tlatoa",
+  "description": "Observatorio ciudadano del Congreso Mexicano — Datos oficiales de legisladores, comisiones y municipios.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#F2F2F7",

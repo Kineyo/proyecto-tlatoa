@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 use DOMDocument;
 use DOMElement;
-use PulsoCivico\Core\HttpClient;
-use PulsoCivico\Core\Logger;
+use Tlatoa\Core\HttpClient;
+use Tlatoa\Core\Logger;
 
 class CongresoNayaritScraperService
 {
@@ -81,7 +81,7 @@ class CongresoNayaritScraperService
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'PulsoCivico/1.0 (https://pulsocivico.mx)');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Tlatoa/1.0 (https://tlatoa.org)');
         curl_setopt($ch, CURLOPT_TIMEOUT, 15);
         $res = curl_exec($ch);
 
@@ -152,7 +152,7 @@ class CongresoNayaritScraperService
         $url = "https://es.wikipedia.org/w/api.php?action=parse&page=Anexo:{$romano}_Legislatura_del_Congreso_del_Estado_de_Nayarit&prop=text&format=json";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_USERAGENT, 'PulsoCivico/1.0 (https://pulsocivico.mx)');
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Tlatoa/1.0 (https://tlatoa.org)');
         $res = curl_exec($ch);
 
         $json = json_decode((string)$res, true);

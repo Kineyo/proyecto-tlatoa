@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Tools;
+namespace Tlatoa\Tools;
 
-use PulsoCivico\Services\DataService;
+use Tlatoa\Services\DataService;
 
 /**
  * BuildDirectoryIndex: Precomputa y serializa el catálogo de políticos y directores
@@ -24,7 +24,7 @@ class BuildDirectoryIndex
 
         // Autoload PSR-4 nativo de src/ si aún no está registrado
         spl_autoload_register(function (string $class) use ($rootDir): void {
-            $prefix = 'PulsoCivico\\';
+            $prefix = 'Tlatoa\\';
             $baseDir = $rootDir . '/src/';
             $len = strlen($prefix);
             if (strncmp($prefix, $class, $len) !== 0) {

@@ -1,4 +1,4 @@
-# Arquitectura de Pulso Cívico
+# Arquitectura de Proyecto Tlatoa
 
 ## Principios de Diseño
 1. **Rendimiento Nativo y Low-Cost**: Servidor web asíncrono en **Python (FastAPI + Jinja2 + orjson)** para tiempos de respuesta ultra-rápidos (< 15 ms) con bajo consumo de memoria. Cero bases de datos complejas (sin SQL pesados); toda la información vive en archivos JSON estructurados y versionados en Git.
@@ -8,7 +8,7 @@
 
 ---
 
-## Modelo Conceptual: Grafo Cívico y Desacoplamiento Persona vs. Mandato
+## Modelo Conceptual: Grafo Ciudadano y Desacoplamiento Persona vs. Mandato
 
 La identidad de un actor político trasciende a una sola asamblea o legislatura. Para evitar duplicidades y permitir auditorías históricas a lo largo del tiempo, la plataforma desacopla la persona física de sus cargos temporales:
 
@@ -73,7 +73,7 @@ app/                     Núcleo activo de la aplicación en Python (FastAPI)
   templates/             Vistas Jinja2 (home.html, politico.html, layouts y partials)
 
 storage/                 Almacenamiento estático de datos abiertos y assets
-  data/json/             Datasets cívicos publicados (3,201 JSONs / 33,368 registros)
+  data/json/             Datasets ciudadanos publicados (3,201 JSONs / 33,368 registros)
     municipios/          Historial electoral de 54 años y cabildos (2,474 JSONs)
     ejecutivo/           Gobernadores de 32 estados y CDMX (34 JSONs / 300 reg.)
   raw/photos/            Fotografías oficiales de legisladores (distribuidas por pack externo)
@@ -99,7 +99,7 @@ requirements.txt         Dependencias Python (FastAPI, uvicorn, jinja2, orjson, 
 
 | Ruta | Motor | Descripción |
 |---|---|---|
-| `/` | FastAPI + Jinja2 | Portada interactiva, métricas nacionales, mapa cívico y buscador global (`Ctrl+K`) |
+| `/` | FastAPI + Jinja2 | Portada interactiva, métricas nacionales, mapa ciudadano y buscador global (`Ctrl+K`) |
 | `/politicos`, `/politicos/{slug}` | FastAPI + Jinja2 | Directorio nacional y expediente individual con historial de legislaturas y partidos |
 | `/legislaturas`, `/legislaturas/{num}` | FastAPI + Jinja2 | Explorador histórico parlamentario (LXI a LXVI) |
 | `/alcaldes`, `/municipios` | FastAPI + Jinja2 | Directorio de 2,474 presidentas y presidentes municipales en funciones |

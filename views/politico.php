@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
-use PulsoCivico\Core\ViewHelper;
+use Tlatoa\Core\Router;
+use Tlatoa\Core\ViewHelper;
 
 /**
  * @var array $politico
@@ -37,13 +37,13 @@ $lineaTiempo = $politico['linea_tiempo'] ?? [];
 $escolaridadItems = $politico['escolaridad_items'] ?? [];
 $iniciativas = $politico['iniciativas'] ?? [];
 
-$estadoSlug = PulsoCivico\Services\DataService::slugify($entidad);
+$estadoSlug = Tlatoa\Services\DataService::slugify($entidad);
 $estadoUrl = Router::url('/estados/' . $estadoSlug);
 $homeUrl = Router::url('/');
 $canonicalUrl = Router::url('/politicos/' . ($politico['slug'] ?? ''));
 
 $legNumero = (int)($politico['legislatura'] ?? 66);
-$legRomano = PulsoCivico\Services\DataService::numeroALegislaturaRomano($legNumero);
+$legRomano = Tlatoa\Services\DataService::numeroALegislaturaRomano($legNumero);
 $legislaturaRomano = $legRomano; // Pasa la legislatura activa al header.php
 $legUrl = Router::url('/legislaturas/' . $legNumero);
 
@@ -75,7 +75,7 @@ require __DIR__ . '/layout/header.php';
         </div>
         <div class="d-flex align-items-center gap-1 flex-wrap">
             <?php foreach ($legsDisponibles as $lDis): 
-                $lRom = PulsoCivico\Services\DataService::convertirNumeroARomano($lDis);
+                $lRom = Tlatoa\Services\DataService::convertirNumeroARomano($lDis);
                 $esActiva = ($lDis === $legNumero);
                 $lUrl = Router::url('/politicos/' . ($politico['slug'] ?? '') . ($lDis !== 66 ? '?leg=' . $lDis : ''));
             ?>
@@ -427,7 +427,7 @@ require __DIR__ . '/layout/header.php';
                 <div class="list-group list-group-flush">
                     <?php foreach ($comisiones as $com): 
                         $comNombre = $com['comision'] ?? '';
-                        $comSlug = PulsoCivico\Services\DataService::slugify($comNombre);
+                        $comSlug = Tlatoa\Services\DataService::slugify($comNombre);
                         $comUrl = Router::url('/comisiones/' . $comSlug . ($legNumero !== 66 ? '?leg=' . $legNumero : ''));
                         $puesto = $com['puesto'] ?? 'Integrante';
                         $esPresid = str_contains(strtoupper($puesto), 'PRESID');
@@ -847,7 +847,7 @@ require __DIR__ . '/layout/header.php';
                             </div>
                             <div class="d-flex flex-wrap gap-1">
                                 <?php foreach ($ini['co_promoventes'] as $cop): 
-                                    $copSlug = PulsoCivico\Services\DataService::slugify($cop);
+                                    $copSlug = Tlatoa\Services\DataService::slugify($cop);
                                     $copUrl = Router::url('/politicos/' . $copSlug);
                                 ?>
                                 <a href="<?= $copUrl ?>" class="btn btn-sm btn-outline-dark rounded-pill py-0 px-2 d-inline-flex align-items-center gap-1" style="font-size: 0.70rem;">
@@ -1023,7 +1023,7 @@ require __DIR__ . '/layout/header.php';
                     </h3>
 
                     <?php if (!empty($vd['resumen_ciudadano'])): ?>
-                    <!-- Resumen Cívico en Lenguaje Claro -->
+                    <!-- Resumen Ciudadano en Lenguaje Claro -->
                     <div class="p-2 mb-2 bg-white rounded-3 border border-light-subtle" style="font-size: 0.76rem; line-height: 1.4;">
                         <div class="d-flex align-items-start gap-2">
                             <i class="bi bi-info-circle-fill text-primary mt-1" style="font-size: 0.8rem;"></i>
@@ -1170,7 +1170,7 @@ require __DIR__ . '/layout/header.php';
             <div class="p-3 bg-light rounded-3 mb-4 border text-secondary" style="font-size: 0.88rem; line-height: 1.5;">
                 <p class="mb-0">
                     <strong>Garantía de fidelidad institucional:</strong> Los datos presentados en esta ficha provienen estrictamente de registros públicos y documentos oficiales emitidos por los Poderes de la Unión. 
-                    <strong>Pulso Cívico</strong> no emite opiniones subjetivas, no califica el desempeño político ni inventa métricas. Cada dato puede ser contrastado directamente en las dependencias y gacetas correspondientes.
+                    <strong>Proyecto Tlatoa</strong> no emite opiniones subjetivas, no califica el desempeño político ni inventa métricas. Cada dato puede ser contrastado directamente en las dependencias y gacetas correspondientes.
                 </p>
             </div>
 

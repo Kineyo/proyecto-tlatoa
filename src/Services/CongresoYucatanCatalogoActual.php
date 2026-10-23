@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PulsoCivico\Services;
+namespace Tlatoa\Services;
 
 /**
  * Catálogo oficial de la LXIV Legislatura (2024-2027) del H. Congreso del Estado de Yucatán.

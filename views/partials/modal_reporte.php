@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use PulsoCivico\Core\Router;
+use Tlatoa\Core\Router;
 
 $apiUrlReporte = Router::url('/api/reportar-anomalia');
 $urlBaneado = Router::url('/baneado');
@@ -18,7 +18,7 @@ $urlBaneado = Router::url('/baneado');
                     </span>
                     <div>
                         <h5 class="modal-title fw-bold text-dark mb-0" id="modalReporteLabel">Reportar anomalía o dato inconsistente</h5>
-                        <small class="text-secondary" id="modalReporteSubtitulo">Expediente cívico</small>
+                        <small class="text-secondary" id="modalReporteSubtitulo">Expediente ciudadano</small>
                     </div>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -121,7 +121,7 @@ $urlBaneado = Router::url('/baneado');
                         </label>
                         <input type="url" name="fuente_url" id="rep_fuente_url" class="form-control form-control-sm" placeholder="https://gaceta.diputados.gob.mx/... o nota periodística">
                         <div class="form-text" style="font-size: 0.72rem;">
-                            <i class="bi bi-info-circle me-1"></i>Pulso Cívico respeta el principio de neutralidad: toda corrección requiere respaldo documental oficial o periodístico.
+                            <i class="bi bi-info-circle me-1"></i>Proyecto Tlatoa respeta el principio de neutralidad: toda corrección requiere respaldo documental oficial o periodístico.
                         </div>
                     </div>
 
