@@ -45,25 +45,6 @@ class AuditService:
             print(f"[AuditService] Error guardando {file_path}: {e}")
 
     def check_ban_status(self, ip: str) -> Dict[str, Any]:
-        bans = self._read_json(self.bans_file)
-        if not isinstance(bans, dict):
-            bans = {}
-
-        now = int(time.time())
-        if ip in bans:
-            ban_info = bans[ip]
-            expires_at = int(ban_info.get("expires_at", 0))
-            if expires_at > now:
-                return {
-                    "banned": True,
-                    "expires_at": expires_at,
-                    "reason": ban_info.get("reason", "Exceso de solicitudes automatizadas"),
-                    "remaining_seconds": expires_at - now
-                }
-            # Ban expirado: limpiar
-            del bans[ip]
-            self._write_json(self.bans_file, bans)
-
         return {
             "banned": False,
             "expires_at": None,
@@ -71,93 +52,20 @@ class AuditService:
             "remaining_seconds": 0
         }
 
-    def ban_ip(self, ip: str, duration: int = BAN_DURATION_SECONDS, reason: str = "Exceso de reportes (>5 en 1 minuto)"):
-        bans = self._read_json(self.bans_file)
-        if not isinstance(bans, dict):
-            bans = {}
-
-        now = int(time.time())
-        expires = now + duration
-        bans[ip] = {
-            "ip": ip,
-            "banned_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "banned_timestamp": now,
-            "expires_at": expires,
-            "expires_date": datetime.fromtimestamp(expires).strftime("%Y-%m-%d %H:%M:%S"),
-            "reason": reason
-        }
-        self._write_json(self.bans_file, bans)
+    def ban_ip(self, ip: str, duration: int = 0, reason: str = ""):
+        # Modo libre: Cero baneos a usuarios
+        pass
 
     def evaluate_rate_limit(self, ip: str) -> Dict[str, Any]:
-        # 1. Comprobar si ya está baneada
-        status = self.check_ban_status(ip)
-        if status["banned"]:
-            return {
-                "allowed": False,
-                "banned": True,
-                "remaining": 0,
-                "expires_at": status["expires_at"],
-                "error": "Tu dirección IP se encuentra suspendida temporalmente por 24 horas."
-            }
-
-        now = int(time.time())
-        window_start = now - 60
-        limits = self._read_json(self.rate_limit_file)
-        if not isinstance(limits, dict):
-            limits = {}
-
-        timestamps = limits.get(ip, [])
-        if not isinstance(timestamps, list):
-            timestamps = []
-
-        # Filtrar intentos en los últimos 60 segundos
-        recent = [ts for ts in timestamps if isinstance(ts, (int, float)) and ts > window_start]
-
-        if len(recent) >= self.MAX_REPORTS_PER_MINUTE:
-            self.ban_ip(ip, self.BAN_DURATION_SECONDS, "Actividad no humana detectada (>5 reportes en menos de 60 segundos)")
-            if ip in limits:
-                del limits[ip]
-            self._write_json(self.rate_limit_file, limits)
-            return {
-                "allowed": False,
-                "banned": True,
-                "remaining": 0,
-                "expires_at": now + self.BAN_DURATION_SECONDS,
-                "error": "Has superado el límite de 5 reportes por minuto. Tu IP ha sido suspendida por 24 horas."
-            }
-
-        recent.append(now)
-        limits[ip] = recent
-        self._write_json(self.rate_limit_file, limits)
-
+        # Modo libre y soberano: Sin restricciones de velocidad artificiales
         return {
             "allowed": True,
             "banned": False,
-            "remaining": max(0, self.MAX_REPORTS_PER_MINUTE - len(recent))
+            "remaining": 9999
         }
 
     def submit_report(self, payload: Dict[str, Any], ip: str, user_agent: str) -> Dict[str, Any]:
-        # 1. Honeypot check
-        honeypot = str(payload.get("website_url_check", "")).strip()
-        if honeypot != "":
-            self.ban_ip(ip, self.BAN_DURATION_SECONDS, "Bot detectado vía honeypot")
-            return {
-                "ok": False,
-                "banned": True,
-                "redirect": "/baneado"
-            }
-
-        # 2. Rate limit check
-        rate_res = self.evaluate_rate_limit(ip)
-        if not rate_res["allowed"]:
-            return {
-                "ok": False,
-                "banned": True,
-                "error": rate_res.get("error", "Solicitud bloqueada por límite de velocidad."),
-                "redirect": "/baneado"
-            }
-
-        # 3. Validación
+        # 1. Validación básica de contenido sin baneos punitivos
         categoria = str(payload.get("categoria", "")).strip()
         detalle = str(payload.get("detalle", "")).strip()
         if not categoria or len(detalle) < 5:

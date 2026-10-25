@@ -2,36 +2,28 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
-from app.core.security import RateLimitMiddleware
 from app.routers import web, api, electoral
 
 # Candado 1: Ocultar documentación pública en producción (o si ENABLE_API_DOCS es False)
-docs_url = "/docs" if (settings.DEBUG and settings.ENABLE_API_DOCS) else None
-openapi_url = "/openapi.json" if (settings.DEBUG and settings.ENABLE_API_DOCS) else None
+docs_url = "/docs"
+openapi_url = "/openapi.json"
 
 app = FastAPI(
     title=settings.APP_NAME,
-    description="Observatorio del Congreso Mexicano y Auditoría Electoral Descentralizada",
+    description="Observatorio del Congreso Mexicano y Auditoría Electoral Descentralizada (Fork Libre y Abierto)",
     version="2.0.0",
     docs_url=docs_url,
     redoc_url=None,
     openapi_url=openapi_url
 )
 
-# Candado 2: Restringir consumo desde sitios externos (CORS)
+# Acceso abierto y transparente para desarrollo local y red privada (CORS abierto)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
-)
-
-# Candado 3: Freno de mano contra bots y saturación de CPU/memoria (Rate Limit por IP)
-app.add_middleware(
-    RateLimitMiddleware,
-    requests_limit=settings.API_RATE_LIMIT_PER_MINUTE,
-    window_seconds=60
 )
 
 # 1. Montar directorio de fotos existente (sin mover archivos)

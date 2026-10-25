@@ -129,15 +129,17 @@ fn bind_server_with_fallback() -> Server {
         );
     }
 
-    if let Ok(srv) = Server::http("127.0.0.1:0") {
-        return srv;
-    }
-
-    for fallback_port in 8080..=8095 {
-        let addr = format!("127.0.0.1:{}", fallback_port);
+    // Probar primero el puerto estándar 8080 y luego rango 8081..8095
+    for port in 8080..=8095 {
+        let addr = format!("127.0.0.1:{}", port);
         if let Ok(srv) = Server::http(&addr) {
             return srv;
         }
+    }
+
+    // Último recurso: puerto dinámico del sistema operativo
+    if let Ok(srv) = Server::http("127.0.0.1:0") {
+        return srv;
     }
 
     panic!("No fue posible abrir un socket local en 127.0.0.1. Verifica tu firewall local.");
@@ -247,6 +249,54 @@ fn main() {
             let response = Response::from_string(response_str).with_header(header_json.clone());
             let _ = request.respond(response);
             continue;
+        }
+
+        if url.starts_with("/photos/") || url.starts_with("/storage/raw/photos/") {
+            let sub = if let Some(stripped) = url.strip_prefix("/photos/") {
+                stripped
+            } else if let Some(stripped) = url.strip_prefix("/storage/raw/photos/") {
+                stripped
+            } else {
+                ""
+            };
+            let photo_path = PathBuf::from("storage/raw/photos").join(sub.split('?').next().unwrap_or(""));
+            if photo_path.exists() {
+                if let Ok(bytes) = std::fs::read(&photo_path) {
+                    let mime = if photo_path.extension().map_or(false, |ext| ext == "png") {
+                        "image/png"
+                    } else if photo_path.extension().map_or(false, |ext| ext == "svg") {
+                        "image/svg+xml"
+                    } else {
+                        "image/jpeg"
+                    };
+                    if let Ok(header_img) = Header::from_bytes(&b"Content-Type"[..], mime.as_bytes()) {
+                        let response = Response::from_data(bytes).with_header(header_img);
+                        let _ = request.respond(response);
+                        continue;
+                    }
+                }
+            }
+        }
+
+        if url.starts_with("/assets/") {
+            let sub = url.trim_start_matches("/assets/").split('?').next().unwrap_or("");
+            let asset_path = PathBuf::from("assets").join(sub);
+            if asset_path.exists() {
+                if let Ok(bytes) = std::fs::read(&asset_path) {
+                    let mime = if asset_path.extension().map_or(false, |ext| ext == "png") {
+                        "image/png"
+                    } else if asset_path.extension().map_or(false, |ext| ext == "svg") {
+                        "image/svg+xml"
+                    } else {
+                        "application/octet-stream"
+                    };
+                    if let Ok(header_asset) = Header::from_bytes(&b"Content-Type"[..], mime.as_bytes()) {
+                        let response = Response::from_data(bytes).with_header(header_asset);
+                        let _ = request.respond(response);
+                        continue;
+                    }
+                }
+            }
         }
 
         let response = Response::from_string("404 Not Found").with_status_code(StatusCode(404));

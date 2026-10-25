@@ -2,6 +2,8 @@ use rusqlite::{params, Connection};
 use serde::{Deserialize, Serialize};
 use std::sync::Mutex;
 
+pub mod scraper;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PoliticoSummary {
     pub slug: String,

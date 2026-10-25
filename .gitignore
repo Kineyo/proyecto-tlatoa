@@ -59,14 +59,74 @@ storage/cache/*
 
 # --- Python y entorno virtual ---
 .venv/
+venv/
 __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+.coverage
+.coverage.*
+htmlcov/
 storage/electoral/actas/*
 !storage/electoral/actas/.gitkeep
 tor_keys/
 
-# --- Rust y Base de Datos Móvil Compilada ---
+# --- Rust y Cargo Build ---
+target/
 **/target/
+*.rs.bk
+*.rlib
+*.rmeta
+
+# --- Binarios compilados y ejecutables nativos ---
+/tlatoa-desktop
+/tlatoa-desktop.exe
+/tlatoa
+/tlatoa.exe
+*.exe
+*.out
+*.bin
+*.app
+*.elf
+
+# --- Objetos y librerías compiladas (C / C++ / FFI / Shared Objects) ---
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.pdb
+*.idb
+
+# --- Android / Mobile Builds y Paquetes precompilados ---
+.gradle/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+*.jar
+*.aar
+local.properties
+
+# --- Bases de datos binarias compiladas y cachés SQLite ---
 storage/*.db
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+
+~/crates/
+crates/tlatoa-core/Cargo.toml

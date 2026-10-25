@@ -88,9 +88,8 @@ async def reportar_anomalia(request: Request, response: Response):
             payload["checkmarks"] = form.getlist("checkmarks[]")
 
     result = audit_service.submit_report(payload, client_ip, user_agent)
-    if result.get("banned"):
-        response.status_code = 429
-        result["redirect"] = "/baneado"
+    if not result.get("ok"):
+        response.status_code = 400
         return result
 
     if not result.get("ok"):

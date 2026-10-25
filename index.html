@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Tlatoa</title>
+    <meta name="description" content="Observatorio ciudadano independiente de datos abiertos sobre el poder público en México. 100% local, cero dependencias, cero rastreadores.">
+    <style>
+        :root {
+            --bg-body: #F4F5F8;
+            --bg-card: #FFFFFF;
+            --text-main: #1A1A1E;
+            --text-muted: #6B7280;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --accent-light: #EFF6FF;
+            --border: rgba(0, 0, 0, 0.08);
+            --card-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            --radius: 14px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+        .navbar-desktop {
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .mascot-icon {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: #1E1E2E;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .mascot-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+        .badge-status {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ECFDF5;
+            color: #065F46;
+            border: 1px solid #A7F3D0;
+        }
+        .container-main {
+            max-width: 1060px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 24px 16px 64px;
+            flex: 1;
+        }
+        .hero-banner {
+            background: linear-gradient(135deg, #1E1E2E 0%, #2A2A40 100%);
+            color: #FFFFFF;
+            padding: 28px 24px;
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .hero-banner h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero-banner p {
+            color: #E2E8F0;
+            font-size: 0.95rem;
+            max-width: 760px;
+        }
+        .native-runner-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .native-runner-box code {
+            background: #0F172A;
+            color: #38BDF8;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-weight: 600;
+        }
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 16px;
+        }
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+        .search-box {
+            width: 100%;
+            border-radius: 28px;
+            padding: 14px 20px 14px 50px;
+            border: 1px solid rgba(0, 0, 0, 0.14);
+            font-size: 1rem;
+            background: #FFFFFF;
+            outline: none;
+            box-shadow: var(--card-shadow);
+            transition: all 0.15s ease;
+        }
+        .search-box:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+        }
+        .pill-bar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+        .filter-pill {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.84rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: all 0.15s ease;
+        }
+        .filter-pill:hover {
+            background: #F3F4F6;
+        }
+        .filter-pill.active {
+            background: var(--text-main);
+            color: #FFFFFF;
+            border-color: var(--text-main);
+        }
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            padding: 0 4px;
+        }
+        .grid-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 14px;
+        }
+        .card-pol {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            padding: 16px;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-pol:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+        .badge-party {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .modal-backdrop-custom {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 16px;
+        }
+        .modal-backdrop-custom.open {
+            display: flex;
+        }
+        .modal-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            max-width: 580px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+        }
+        .modal-header-custom {
+            padding: 18px 22px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: #FFFFFF;
+            z-index: 10;
+        }
+        .btn-close-custom {
+            background: #F3F4F6;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+        .info-row {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.9rem;
+        }
+        footer {
+            background: #FFFFFF;
+            border-top: 1px solid var(--border);
+            padding: 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-desktop">
+        <a href="index.html" class="brand-container">
+            <span class="mascot-icon">
+                <img src="assets/img/tecolote.svg" alt="Tecolote" style="width:34px;height:34px;image-rendering:pixelated;" onerror="this.outerHTML='<span>🦉</span>'">
+            </span>
+            <div>
+                <strong style="font-size:1.15rem;display:block;line-height:1.2;">Proyecto Tlatoa</strong>
+                <span style="color:var(--text-muted);font-size:0.8rem;">La voz del pueblo</span>
+            </div>
+        </a>
+    </nav>
+
+    <div class="container-main">
+
+        <h1 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">¿Qué es Proyecto Tlatoa?</h1>
+        <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px; color: var(--text-muted);">Proyecto Tlatoa es una bifurcación independiente de <a href="https://github.com/elpulsocivico/pulso-civico" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">Pulso Cívico</a>, el cual se enfoca en expandir el proyecto a distintos entornos y reestructurando todo para que sea fácil de entender y fácil de colaborar sin necesidad de ser programador o tener instalada una terminal.</p>
+        <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; color: var(--text-muted);">Se enfoca en expandir la visión original de Pulso Cívico a Android, macOS, Windows, Linux, etc., a través de compilaciones independientes enfocadas en la rapidez y accesibilidad para cualquier usuario.</p>
+
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-box" placeholder="Busca por nombre, estado, municipio, cargo o partido (ej. Claudia, Noroña, Puebla, Jalisco, Morena, PAN)..." autofocus autocomplete="off">
+        </div>
+
+        <div class="pill-bar" id="filterContainer">
+            <span class="filter-pill active" data-filter="todos">Todos</span>
+            <span class="filter-pill" data-filter="Gobernador">Gobernadores</span>
+            <span class="filter-pill" data-filter="Senador">Senadores</span>
+            <span class="filter-pill" data-filter="Diputado(a) Federal">Diputados Federales</span>
+            <span class="filter-pill" data-filter="Municipal">Alcaldes</span>
+            <span class="filter-pill" data-filter="Local">Congresos Locales</span>
+        </div>
+
+        <div class="stats-bar">
+            <span id="resultCount">Iniciando catálogo local...</span>
+            <span id="dbCountStat">Motor: <strong>Rust Native / Client Offline</strong></span>
+        </div>
+
+        <div class="grid-results" id="resultsGrid"></div>
+    </div>
+
+    <!-- Modal de Expediente -->
+    <div class="modal-backdrop-custom" id="detailModal" onclick="if(event.target===this)closeModal()">
+        <div class="modal-card">
+            <div class="modal-header-custom">
+                <strong style="font-size:1.1rem;" id="modalPolName">Expediente Público</strong>
+                <button class="btn-close-custom" onclick="closeModal()" aria-label="Cerrar">✕</button>
+            </div>
+            <div style="padding:20px 22px;" id="modalPolBody"></div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 <strong>Proyecto Tlatoa (Fork Soberano)</strong> &bull; Datos públicos oficiales bajo el Artículo 6° Constitucional Mexicano &bull; Mascota Oficial: El Tecolote
+    </footer>
+
+    <script>
+        // Catálogo de muestra pre-embebido para navegación instantánea sin servidor (file://)
+        const SAMPLE_DATA = [{"slug": "ambriz-delgadillo-humberto", "nombre_completo": "Ambriz Delgadillo Humberto", "partido": "PRI", "partido_color": "#C8102E", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228115.jpg"}, {"slug": "avila-anaya-arturo", "nombre_completo": "Ávila Anaya Arturo", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228826.jpg"}, {"slug": "becerra-moreno-monica", "nombre_completo": "Becerra Moreno Mónica", "partido": "PAN", "partido_color": "#003893", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228117.jpg"}, {"slug": "leon-rosas-rosalia", "nombre_completo": "León Rosas Rosalía", "partido": "PT", "partido_color": "#DA291C", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229408.jpg"}, {"slug": "lopez-de-la-cruz-amalia", "nombre_completo": "López De la Cruz Amalia", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228832.jpg"}, {"slug": "martinez-alvarez-elizabeth", "nombre_completo": "Martínez Álvarez Elizabeth", "partido": "PAN", "partido_color": "#003893", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229100.jpg"}, {"slug": "martinez-lopez-paulo-gonzalo", "nombre_completo": "Martínez López Paulo Gonzalo", "partido": "PAN", "partido_color": "#003893", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228119.jpg"}, {"slug": "munoz-moreno-anayeli", "nombre_completo": "Muñoz Moreno Anayeli", "partido": "MC", "partido_color": "#FF8300", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228764.jpg"}, {"slug": "rubalcava-jimenez-jose-alfonso", "nombre_completo": "Rubalcava Jiménez José Alfonso", "partido": "PAN", "partido_color": "#003893", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Aguascalientes", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229099.jpg"}, {"slug": "anda-gonzalez-edith-carolina", "nombre_completo": "Anda González Edith Carolina", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228797.jpg"}, {"slug": "brown-figueredo-hilda-araceli", "nombre_completo": "Brown Figueredo Hilda Araceli", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228140.jpg"}, {"slug": "castro-trenti-fernando-jorge", "nombre_completo": "Castro Trenti Fernando Jorge", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228804.jpg"}, {"slug": "chedraui-peralta-alejandra", "nombre_completo": "Chedraui Peralta Alejandra", "partido": "PVEM", "partido_color": "#009E49", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229342.jpg"}, {"slug": "damian-retes-cesar-israel", "nombre_completo": "Damián Retes César Israel", "partido": "PAN", "partido_color": "#003893", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229042.jpg"}, {"slug": "de-hoyos-walther-gustavo-adolfo", "nombre_completo": "De Hoyos Walther Gustavo Adolfo", "partido": "MC", "partido_color": "#FF8300", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228736.jpg"}, {"slug": "espino-suarez-mayra", "nombre_completo": "Espino Suárez Mayra", "partido": "PVEM", "partido_color": "#009E49", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229344.jpg"}, {"slug": "fernandez-samaniego-jose-armando", "nombre_completo": "Fernández Samaniego José Armando", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228133.jpg"}, {"slug": "gallardo-garcia-fausto", "nombre_completo": "Gallardo García Fausto", "partido": "PVEM", "partido_color": "#009E49", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228138.jpg"}, {"slug": "herrera-solorzano-gilberto", "nombre_completo": "Herrera Solórzano Gilberto", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228131.jpg"}, {"slug": "lopez-gorosave-rocio", "nombre_completo": "López Gorosave Rocío", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228127.jpg"}, {"slug": "moreno-guerra-evangelina", "nombre_completo": "Moreno Guerra Evangelina", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228129.jpg"}, {"slug": "moreno-ramirez-claudia-lisbeth", "nombre_completo": "Moreno Ramírez Claudia Lisbeth", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228125.jpg"}, {"slug": "pelayo-covarrubias-francisco", "nombre_completo": "Pelayo Covarrubias Francisco", "partido": "PAN", "partido_color": "#003893", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229050.jpg"}, {"slug": "ruiz-lopez-alma-laura", "nombre_completo": "Ruiz López Alma Laura", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228121.jpg"}, {"slug": "sanchez-arredondo-nancy-guadalupe", "nombre_completo": "Sánchez Arredondo Nancy Guadalupe", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228123.jpg"}, {"slug": "santana-gonzalez-ana-erika", "nombre_completo": "Santana González Ana Erika", "partido": "PVEM", "partido_color": "#009E49", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229340.jpg"}, {"slug": "vasquez-hernandez-eva-maria", "nombre_completo": "Vásquez Hernández Eva María", "partido": "PAN", "partido_color": "#003893", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229056.jpg"}, {"slug": "diaz-luis-armando", "nombre_completo": "Díaz Luis Armando", "partido": "PT", "partido_color": "#DA291C", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California Sur", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228154.jpg"}, {"slug": "gonzalez-bareno-juan-carlos", "nombre_completo": "González Bareño Juan Carlos", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Baja California Sur", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228151.jpg"}, {"slug": "abreu-artinano-rocio-adriana", "nombre_completo": "Abreu Artiñano Rocío Adriana", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Campeche", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228868.jpg"}, {"slug": "basto-gonzalez-gabriela-del-carmen", "nombre_completo": "Basto González Gabriela del Carmen", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Campeche", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228164.jpg"}, {"slug": "castillo-quintana-elda-esther-del-carmen", "nombre_completo": "Castillo Quintana Elda Esther del Carmen", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Campeche", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228160.jpg"}, {"slug": "castro-bello-christian-mishel", "nombre_completo": "Castro Bello Christian Mishel", "partido": "PRI", "partido_color": "#C8102E", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Campeche", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229246.jpg"}, {"slug": "farias-bailon-francisco-javier", "nombre_completo": "Farias Bailón Francisco Javier", "partido": "MC", "partido_color": "#FF8300", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Campeche", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228770.jpg"}, {"slug": "lara-calderon-emilio", "nombre_completo": "Lara Calderón Emilio", "partido": "PRI", "partido_color": "#C8102E", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Campeche", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229260.jpg"}, {"slug": "rejon-lara-ariana-del-rocio", "nombre_completo": "Rejón Lara Ariana del Rocío", "partido": "PRI", "partido_color": "#C8102E", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Campeche", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229256.jpg"}, {"slug": "albores-gleason-roberto-armando", "nombre_completo": "Albores Gleason Roberto Armando", "partido": "PT", "partido_color": "#DA291C", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228626.jpg"}, {"slug": "armendariz-guerra-carmen-patricia", "nombre_completo": "Armendáriz Guerra Carmen Patricia", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228852.jpg"}, {"slug": "arreola-trinidad-azucena", "nombre_completo": "Arreola Trinidad Azucena", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228624.jpg"}, {"slug": "calcaneo-constantino-karen-yaiti", "nombre_completo": "Calcaneo Constantino Karen Yaiti", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228872.jpg"}, {"slug": "del-rio-zenteno-karina-margarita", "nombre_completo": "Del Río Zenteno Karina Margarita", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228280.jpg"}, {"slug": "espinosa-ramos-francisco-amadeo", "nombre_completo": "Espinosa Ramos Francisco Amadeo", "partido": "PT", "partido_color": "#DA291C", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229322.jpg"}, {"slug": "esponda-torres-flor-de-maria", "nombre_completo": "Esponda Torres Flor de María", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228294.jpg"}, {"slug": "gonzalez-flandez-deliamaria", "nombre_completo": "González Flandez Deliamaría", "partido": "PVEM", "partido_color": "#009E49", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228630.jpg"}, {"slug": "morelos-rodriguez-carlos", "nombre_completo": "Morelos Rodríguez Carlos", "partido": "PT", "partido_color": "#DA291C", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228278.jpg"}, {"slug": "moreno-villatoro-rosario-del-carmen", "nombre_completo": "Moreno Villatoro Rosario del Carmen", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228632.jpg"}, {"slug": "ramirez-guzman-emilio-ramon", "nombre_completo": "Ramírez Guzmán Emilio Ramón", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228290.jpg"}, {"slug": "rincon-chanona-sonia", "nombre_completo": "Rincón Chanona Sonia", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228864.jpg"}, {"slug": "santiago-rodriguez-guillermo-rafael", "nombre_completo": "Santiago Rodríguez Guillermo Rafael", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228628.jpg"}, {"slug": "trujillo-trujillo-karina-alejandra", "nombre_completo": "Trujillo Trujillo Karina Alejandra", "partido": "PVEM", "partido_color": "#009E49", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229354.jpg"}, {"slug": "urbina-castaneda-rosa-irene", "nombre_completo": "Urbina Castañeda Rosa Irene", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228634.jpg"}, {"slug": "vazquez-vazquez-alfredo", "nombre_completo": "Vázquez Vázquez Alfredo", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228282.jpg"}, {"slug": "villatoro-osorio-jorge-luis", "nombre_completo": "Villatoro Osorio Jorge Luis", "partido": "PVEM", "partido_color": "#009E49", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228636.jpg"}, {"slug": "zebadua-alva-joaquin", "nombre_completo": "Zebadúa Alva Joaquín", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chiapas", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228284.jpg"}, {"slug": "aguilar-gil-lilia", "nombre_completo": "Aguilar Gil Lilia", "partido": "PT", "partido_color": "#DA291C", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chihuahua", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228499.jpg"}, {"slug": "cabada-alvidrez-hector-armando", "nombre_completo": "Cabada Alvidrez Héctor Armando", "partido": "Morena", "partido_color": "#8B1C3F", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chihuahua", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228816.jpg"}, {"slug": "chavez-velazquez-noel", "nombre_completo": "Chávez Velázquez Noel", "partido": "PRI", "partido_color": "#C8102E", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chihuahua", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228511.jpg"}, {"slug": "corral-ordonez-jesus-roberto", "nombre_completo": "Corral Ordóñez Jesús Roberto", "partido": "PT", "partido_color": "#DA291C", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chihuahua", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228507.jpg"}, {"slug": "dominguez-dominguez-cesar-alejandro", "nombre_completo": "Domínguez Domínguez César Alejandro", "partido": "PRI", "partido_color": "#C8102E", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chihuahua", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228509.jpg"}, {"slug": "duran-alarcon-greycy-marian", "nombre_completo": "Durán Alarcón Greycy Marian", "partido": "PT", "partido_color": "#DA291C", "cargo": "Diputado(a) Federal", "camara": "Diputados", "entidad": "Chihuahua", "foto_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229308.jpg"}];
+
+        const searchInput = document.getElementById('searchInput');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const resultCount = document.getElementById('resultCount');
+        const latencyStat = document.getElementById('latencyStat');
+        const detailModal = document.getElementById('detailModal');
+        const dbCountStat = document.getElementById('dbCountStat');
+        const statusBadge = document.getElementById('statusBadge');
+
+        let currentFilter = 'todos';
+        let debounceTimer = null;
+        let lastQuery = '';
+        let isNativeServerOnline = false;
+
+        function closeModal() { detailModal.classList.remove('open'); }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        // Detectar si el binario nativo ./tlatoa-desktop está corriendo en http://127.0.0.1:8080
+        async function checkNativeServer() {
+            try {
+                const res = await fetch('/api/status', { signal: AbortSignal.timeout(600) });
+                if (res.ok) {
+                    const st = await res.json();
+                    isNativeServerOnline = true;
+                    if (statusBadge) {
+                        statusBadge.innerHTML = '⚡ Motor Rust Activo &bull; 16,100 Registros';
+                        statusBadge.style.background = '#EFF6FF';
+                        statusBadge.style.color = '#1D4ED8';
+                        statusBadge.style.borderColor = '#BFDBFE';
+                    }
+                    if (dbCountStat) {
+                        dbCountStat.innerHTML = `Base Completa: <strong>${st.total_records.toLocaleString()} registros FTS5</strong>`;
+                    }
+                    return;
+                }
+            } catch (_) {}
+
+            // Modo archivo local (file://)
+            isNativeServerOnline = false;
+        }
+
+        document.querySelectorAll('.filter-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                currentFilter = pill.dataset.filter;
+                executeSearch(lastQuery);
+            });
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(debounceTimer);
+                const query = e.target.value.trim();
+                debounceTimer = setTimeout(() => executeSearch(query), 120);
+            });
+        }
+
+        async function executeSearch(query) {
+            lastQuery = query;
+            const t0 = performance.now();
+
+            if (isNativeServerOnline && query.length >= 2) {
+                try {
+                    const res = await fetch(`/api/buscar?q=${encodeURIComponent(query)}&limit=60`);
+                    const data = await res.json();
+                    let items = data.resultados || [];
+                    if (currentFilter !== 'todos') {
+                        items = items.filter(p => p.cargo && p.cargo.toLowerCase().includes(currentFilter.toLowerCase()));
+                    }
+                    const elapsed = (performance.now() - t0).toFixed(1);
+                    if (latencyStat) latencyStat.innerHTML = `Latencia: <strong style="color:#059669;">${elapsed} ms</strong>`;
+                    if (resultCount) resultCount.innerText = `Se encontraron ${items.length} resultados en ${elapsed} ms (Base Completa)`;
+                    renderResults(items);
+                    return;
+                } catch (_) {}
+            }
+
+            // Búsqueda en catálogo cliente offline
+            let filtered = SAMPLE_DATA;
+            if (currentFilter !== 'todos') {
+                filtered = filtered.filter(p => (p.cargo && p.cargo.toLowerCase().includes(currentFilter.toLowerCase())) || (p.camara && p.camara.toLowerCase().includes(currentFilter.toLowerCase())));
+            }
+            if (query.length > 0) {
+                const qLower = query.toLowerCase();
+                filtered = filtered.filter(p => 
+                    (p.nombre_completo && p.nombre_completo.toLowerCase().includes(qLower)) ||
+                    (p.entidad && p.entidad.toLowerCase().includes(qLower)) ||
+                    (p.partido && p.partido.toLowerCase().includes(qLower)) ||
+                    (p.cargo && p.cargo.toLowerCase().includes(qLower))
+                );
+            }
+
+            const elapsed = (performance.now() - t0).toFixed(1);
+            if (latencyStat) latencyStat.innerHTML = `Latencia: <strong style="color:#059669;">${elapsed} ms</strong>`;
+            if (resultCount) resultCount.innerText = `Mostrando ${filtered.length} representantes clave`;
+            renderResults(filtered);
+        }
+
+        function renderResults(items) {
+            if (items.length === 0) {
+                resultsGrid.innerHTML = `
+                <div style="grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--text-muted);">
+                    <div style="font-size:3rem;margin-bottom:12px;">🦉</div>
+                    <div style="font-weight:700;font-size:1.1rem;color:var(--text-main);margin-bottom:6px;">Sin coincidencias</div>
+                    <div style="max-width:460px;margin:0 auto;font-size:0.9rem;">
+                        El <strong>Tecolote de la Transparencia</strong> no encontró servidores públicos para "${escapeHtml(lastQuery)}".
+                        ${!isNativeServerOnline ? '<br><br>💡 <em>Tip: Para buscar entre los 16,100 registros históricos, abre una terminal y corre <code>./tlatoa-desktop</code> o haz doble clic en <code>iniciar_tlatoa.sh</code>.</em>' : ''}
+                    </div>
+                </div>`;
+                return;
+            }
+
+            resultsGrid.innerHTML = items.map(p => {
+                const color = p.partido_color || '#6C757D';
+                const fotoHtml = p.foto_url 
+                    ? `<img src="${encodeURI(p.foto_url)}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:12px;flex-shrink:0;background:#E5E7EB;" onerror="this.style.display='none'">` 
+                    : '';
+                return `
+                <div class="card-pol" onclick="openDetails('${escapeHtml(p.slug)}')">
+                    <div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                            <span class="badge-party" style="background-color:${color}18;color:${color};">${escapeHtml(p.partido)}</span>
+                            <span style="color:var(--text-muted);font-size:0.8rem;">${escapeHtml(p.entidad)}</span>
+                        </div>
+                        <div style="display:flex;align-items:center;">
+                            ${fotoHtml}
+                            <div style="overflow:hidden;">
+                                <div style="font-weight:700;font-size:0.98rem;margin-bottom:2px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">${escapeHtml(p.nombre_completo)}</div>
+                                <div style="color:var(--text-muted);font-size:0.82rem;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">${escapeHtml(p.cargo)}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        async function openDetails(slug) {
+            const fallbackItem = SAMPLE_DATA.find(p => p.slug === slug);
+            let detailData = null;
+
+            if (isNativeServerOnline) {
+                try {
+                    const res = await fetch(`/api/politico?slug=${encodeURIComponent(slug)}`);
+                    detailData = await res.json();
+                } catch (_) {}
+            }
+
+            const p = detailData || fallbackItem;
+            if (!p) return;
+
+            document.getElementById('modalPolName').innerText = p.nombre_completo || p.nombre || 'Expediente Público';
+            const fuente = (p.metadata && p.metadata.fuente_url) || p.fuente_url || 'https://sil.gobernacion.gob.mx';
+            
+            document.getElementById('modalPolBody').innerHTML = `
+                <div style="margin-bottom:14px;">
+                    <span class="badge-party" style="background:#EFF6FF;color:#2563EB;margin-bottom:6px;">${escapeHtml(p.partido || 'Sin Partido')}</span>
+                    <div style="font-weight:700;font-size:1.1rem;">${escapeHtml(p.cargo || p.cargo_oficial || 'Servidor Público')}</div>
+                    <div style="color:var(--text-muted);font-size:0.88rem;">Entidad: ${escapeHtml(p.entidad || 'México')}</div>
+                </div>
+                <div class="info-row"><strong>Cámara / Órgano:</strong> ${escapeHtml(p.camara || 'Poder Público')}</div>
+                <div class="info-row"><strong>Identificador Oficial (Slug):</strong> <code>${escapeHtml(p.slug)}</code></div>
+                <div style="background:#F3F4F6;padding:12px;border-radius:10px;margin-top:14px;font-size:0.82rem;word-break:break-all;">
+                    <strong>Fuente Primaria Verificada:</strong><br>
+                    <a href="${escapeHtml(fuente)}" target="_blank" rel="noopener noreferrer" style="color:#2563EB;">${escapeHtml(fuente)} &rarr;</a>
+                </div>
+            `;
+            detailModal.classList.add('open');
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // Inicializar
+        (async () => {
+            await checkNativeServer();
+            executeSearch('');
+        })();
+    </script>
+</body>
+</html>

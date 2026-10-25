@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>{{ seo.title if seo and seo.title else app_name ~ " — Gobernadores, Alcaldes y Congreso de México" }}</title>
-    <meta name="description" content="{{ seo.description if seo and seo.description else "Observatorio comunitario e independiente de datos abiertos sobre el poder público en México. Información 100% oficial y comprobable sobre gobernadores, alcaldes, diputados y senadores." }}">
-    <link rel="canonical" href="{{ seo.canonical if seo and seo.canonical else "/" }}">
+    <title>{% if seo and seo.title %}{{ seo.title }}{% else %}{{ app_name or 'Proyecto Tlatoa' }} — Gobernadores, Alcaldes y Congreso de México{% endif %}</title>
+    <meta name="description" content="{% if seo and seo.description %}{{ seo.description }}{% else %}Observatorio comunitario e independiente de datos abiertos sobre el poder público en México. Información 100% oficial y comprobable sobre gobernadores, alcaldes, diputados y senadores.{% endif %}">
+    <link rel="canonical" href="{% if seo and seo.canonical %}{{ seo.canonical }}{% else %}/{% endif %}">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ seo.title if seo and seo.title else app_name ~ " — Datos Abiertos de Servidores Públicos en México" }}">
-    <meta property="og:description" content="{{ seo.description if seo and seo.description else "Observatorio comunitario e independiente con información 100% oficial y comprobable sobre más de 4,300 gobernadores, alcaldes, diputados y senadores en México." }}">
-    <meta property="og:url" content="{{ seo.canonical if seo and seo.canonical else "/" }}">
+    <meta property="og:title" content="{% if seo and seo.title %}{{ seo.title }}{% else %}{{ app_name or 'Proyecto Tlatoa' }} — Datos Abiertos de Servidores Públicos en México{% endif %}">
+    <meta property="og:description" content="{% if seo and seo.description %}{{ seo.description }}{% else %}Observatorio comunitario e independiente con información 100% oficial y comprobable sobre más de 4,300 gobernadores, alcaldes, diputados y senadores en México.{% endif %}">
+    <meta property="og:url" content="{% if seo and seo.canonical %}{{ seo.canonical }}{% else %}/{% endif %}">
 
     <!-- Bootstrap 5.3 CSS & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -174,10 +174,9 @@
     <div class="container">
         <!-- Marca / Logo -->
         <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-dark me-3" href="/">
-            <span class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                <i class="bi bi-activity"></i>
-            </span>
+            <img src="/assets/img/tecolote.png" alt="Tecolote" style="width: 34px; height: 34px; image-rendering: pixelated; border-radius: 6px;" onerror="this.outerHTML='<span class=\'rounded-circle bg-dark text-warning d-inline-flex align-items-center justify-content-center\' style=\'width:32px;height:32px;\'>🦉</span>'">
             <span>{{ app_name }}</span>
+            <span class="badge bg-dark text-warning border ms-1 d-none d-sm-inline-block" style="font-size:0.65rem;">Fork Soberano</span>
         </a>
 
         <!-- Botón Hamburguesa Móvil -->
@@ -370,13 +369,11 @@
             <!-- Columna 1: Identidad & Comunidad -->
             <div class="col-12 col-md-4">
                 <a class="d-flex align-items-center gap-2 fw-bold text-dark text-decoration-none mb-2" href="/">
-                    <span class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 28px; height: 28px;">
-                        <i class="bi bi-activity"></i>
-                    </span>
+                    <img src="/assets/img/tecolote.png" alt="Tecolote" style="width: 28px; height: 28px; image-rendering: pixelated; border-radius: 4px;" onerror="this.outerHTML='<span>🦉</span>'">
                     <span>{{ app_name }}</span>
                 </a>
                 <div class="mb-2">
-                    <span class="badge bg-light text-secondary border rounded-pill" style="font-size: 0.7rem;">Iniciativa Ciudadana Comunitaria</span>
+                    <span class="badge bg-light text-secondary border rounded-pill" style="font-size: 0.7rem;">Fork Libre y Soberano • Tecolote de la Transparencia</span>
                 </div>
                 <p class="text-secondary small mb-2" style="line-height: 1.6;">
                     Observatorio ciudadano independiente de datos abiertos sobre el poder público en México. Monitoreo, trazabilidad y rendición de cuentas de más de 4,300 servidores públicos en los 32 estados.
@@ -457,7 +454,7 @@
                 <a href="/#seccion-mapa" class="text-muted text-decoration-none hover-text-primary">Mapa</a>
                 <a href="/politicos" class="text-muted text-decoration-none hover-text-primary">Políticos</a>
                 <a href="/docs" class="text-muted text-decoration-none hover-text-primary">API</a>
-                <a href="https://github.com/Kineyo/proyecto-tlatoa" target="_blank" rel="noopener" class="text-muted text-decoration-none hover-text-primary"><i class="bi bi-github me-1"></i>GitHub</a>
+                <a href="https://github.com/Kineyo/proyecto-tlatoa" target="_blank" rel="noopener" class="text-muted text-decoration-none hover-text-primary"><i class="bi bi-diagram-3 me-1"></i>Fork Soberano</a>
             </div>
         </div>
     </div>

@@ -114,7 +114,8 @@ async def legislaturas_index_view(request: Request):
         context={
             "seo": {
                 "title": f"Legislaturas del Congreso de la Unión — Archivo Histórico | {settings.APP_NAME}",
-                "description": "Explora los periodos constitucionales del Congreso de la Unión: LXVI (actual), LXV, LXIV y archivo histórico federal."
+                "description": "Explora los periodos constitucionales del Congreso de la Unión: LXVI (actual), LXV, LXIV y archivo histórico federal.",
+                "canonical": "/legislaturas"
             },
             "catalogo": data_service.LEGISLATURAS_CATALOG
         }
@@ -372,7 +373,8 @@ async def politico_view(request: Request, slug: str, leg: Optional[int] = Query(
         context={
             "seo": {
                 "title": f"{pol.get('nombre_completo')} ({pol.get('partido')}) — {pol.get('camara')} ({meta_leg['romano']} Legislatura) | {settings.APP_NAME}",
-                "description": f"Expediente oficial de {pol.get('nombre_completo')}, {pol.get('camara')} de la {meta_leg['romano']} Legislatura por {pol.get('entidad')}. Bancada {pol.get('partido')}, comisiones legislativas e iniciativas."
+                "description": f"Expediente oficial de {pol.get('nombre_completo')}, {pol.get('camara')} de la {meta_leg['romano']} Legislatura por {pol.get('entidad')}. Bancada {pol.get('partido')}, comisiones legislativas e iniciativas.",
+                "canonical": f"/politicos/{slug}"
             },
             "politico": pol,
             "legislatura": pol_leg,
@@ -399,7 +401,8 @@ async def estado_view(request: Request, slug: str, leg: int = Query(66)):
         context={
             "seo": {
                 "title": f"Legisladores Federales de {estado.get('nombre')} ({meta_leg['romano']} Legislatura) | {settings.APP_NAME}",
-                "description": f"Radiografía completa de los senadores y diputados federales que representan a {estado.get('nombre')} en el Congreso de la Unión durante la {meta_leg['romano']} Legislatura."
+                "description": f"Radiografía completa de los senadores y diputados federales que representan a {estado.get('nombre')} en el Congreso de la Unión durante la {meta_leg['romano']} Legislatura.",
+                "canonical": f"/estados/{slug}"
             },
             "legislatura": legislatura,
             "meta_legislatura": meta_leg,
@@ -461,7 +464,8 @@ async def comision_detalle_view(request: Request, slug: str, leg: Optional[int] 
         context={
             "seo": {
                 "title": f"{comision.get('nombre')} — Integrantes y Mesa Directiva | {settings.APP_NAME}",
-                "description": f"Composición, presidencia e integrantes de la {comision.get('nombre')} en el Congreso de la Unión."
+                "description": f"Composición, presidencia e integrantes de la {comision.get('nombre')} en el Congreso de la Unión.",
+                "canonical": f"/comisiones/{slug}"
             },
             "comision": comision,
             "legislatura": comision.get("legislatura", 66),
@@ -530,7 +534,8 @@ async def estudios_view(request: Request, categoria: Optional[str] = None, leg: 
         context={
             "seo": {
                 "title": f"{titulos_seo.get(categoria_activa, titulos_seo['todos'])} — {settings.APP_NAME}",
-                "description": f"Radiografía curricular, títulos universitarios y grados académicos de {total_todos} legisladores federales, locales, alcaldes y gobernadores de México."
+                "description": f"Radiografía curricular, títulos universitarios y grados académicos de {total_todos} legisladores federales, locales, alcaldes y gobernadores de México.",
+                "canonical": f"/estudios/{categoria_activa}"
             },
             "stats": stats,
             "categoria_activa": categoria_activa,
@@ -713,29 +718,10 @@ async def electoral_view(request: Request):
         context={
             "seo": {
                 "title": f"Auditoría Electoral Ciudadana — {settings.APP_NAME}",
-                "description": "Sube y protege fotografías de las actas de tu casilla electoral de forma descentralizada."
+                "description": "Sube y protege fotografías de las actas de tu casilla electoral de forma descentralizada.",
+                "canonical": "/electoral"
             }
         }
     )
 
-@router.get("/baneado")
-async def baneado_view(request: Request):
-    forwarded = request.headers.get("x-forwarded-for")
-    if forwarded:
-        client_ip = forwarded.split(",")[0].strip()
-    else:
-        client_ip = request.client.host if request.client else "127.0.0.1"
 
-    ban_status = audit_service.check_ban_status(client_ip)
-    return templates.TemplateResponse(
-        request=request,
-        name="baneado.html",
-        context={
-            "seo": {
-                "title": f"Acceso a Reportes Restringido — {settings.APP_NAME}",
-                "description": "Suspensión temporal de 24 horas por límite de velocidad en solicitudes de reporte."
-            },
-            "ip": client_ip,
-            "ban_status": ban_status
-        }
-    )

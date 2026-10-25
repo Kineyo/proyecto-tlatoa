@@ -344,11 +344,6 @@
 
             const data = await resp.json().catch(() => ({}));
 
-            if (resp.status === 429 || data.banned) {
-                window.location.href = data.redirect || '/baneado';
-                return;
-            }
-
             if (!resp.ok || !data.ok) {
                 alertaEl.className = 'alert alert-danger mb-3';
                 alertaEl.textContent = data.error || 'Ocurrió un error al registrar el reporte. Inténtalo nuevamente.';

@@ -19,3 +19,5 @@ rusqlite = { version = "0.31", features = ["bundled"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 jni = { version = "0.21", default-features = false }
+mlua = { version = "0.12.2", features = ["lua54", "vendored"] }
+ureq = "3.5.0"
