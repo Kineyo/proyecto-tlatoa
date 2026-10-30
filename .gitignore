@@ -5,7 +5,7 @@
 # --- Secretos y entorno local ---
 .env
 .env.*
-!.env.example
+!.env.exampleha
 .env.example
 storage/raw/cookie.txt
 *.cookie
