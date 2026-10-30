@@ -1,0 +1,46 @@
+# ============================================
+# Scrapers Engine — .gitignore
+# ============================================
+
+# Secretos y entorno local
+.env
+.env.*
+!.env.example
+
+# Datos crudos y descargas temporales (respetar cuotas y tamaño)
+storage/raw/html/*
+!storage/raw/html/.gitkeep
+storage/raw/photos/*
+!storage/raw/photos/.gitkeep
+storage/raw/*.txt
+storage/raw/*.html
+storage/raw/*.zip
+storage/raw/*.json
+storage/raw/cookie.txt
+*.cookie
+
+# Logs y trazas de ejecución
+storage/logs/*
+!storage/logs/.gitkeep
+*.log
+*.jsonl
+
+# Caché temporal
+storage/cache/*
+!storage/cache/.gitkeep
+.phpunit.cache/
+.phpstan.cache/
+
+# Archivos de respaldo y editores
+*.bak
+*.old
+*.swp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Python / bytecode
+__pycache__/
+*.py[cod]
+.venv/
