@@ -6,7 +6,7 @@ https://creativecommons.org/licenses/by/4.0/deed.es
 
 Puedes copiarlos, redistribuirlos y adaptarlos para cualquier fin, incluso comercial, **siempre que cites**:
 
-> Fuente: Proyecto Tlatoa (https://github.com/Kineyo/proyecto-tlatoa), con datos de [fuente oficial original].
+> Fuente: Proyecto Tlatoa (https://github.com/Proyecto-Tlatoa/proyecto-tlatoa), con datos de [fuente oficial original].
 
 ## Notas
 - Los datos originales provienen de portales públicos del Estado mexicano (SIL-SEGOB, Cámara de Diputados, Senado, etc.). Cada registro conserva su `fuente_url`.

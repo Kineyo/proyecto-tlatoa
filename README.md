@@ -91,11 +91,11 @@ Toda la documentación está clasificada en cuatro secciones temáticas:
 ## 📱 Cómo Ejecutar la Aplicación
 
 ### Android (.APK directo, 100% Offline)
-* Descarga `tlatoa-vX.X.X.apk` desde **[Releases](https://github.com/Kineyo/proyecto-tlatoa/releases)**.
+* Descarga `tlatoa-vX.X.X.apk` desde **[Releases](https://github.com/Proyecto-Tlatoa/proyecto-tlatoa/releases)**.
 * No requiere Google Play Store ni conexión permanente. Búsquedas en < 1 ms.
 
 ### Escritorio Nativo (Windows, Linux, macOS)
-* Descarga el ejecutable desde **[Releases](https://github.com/Kineyo/proyecto-tlatoa/releases)**:
+* Descarga el ejecutable desde **[Releases](https://github.com/Proyecto-Tlatoa/proyecto-tlatoa/releases)**:
   * **Windows:** `tlatoa-desktop-windows-x86_64.exe`
   * **Linux:** `tlatoa-desktop-linux-x86_64` (dar permisos con `chmod +x`)
   * **macOS:** `tlatoa-desktop-macos-x86_64`
@@ -121,7 +121,7 @@ Consulta en tu navegador: `http://localhost:8000`
 * **Guía de Contribución y Código de Conducta:** [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md) · [.github/CODE_OF_CONDUCT.md](.github/CODE_OF_CONDUCT.md).
 
 
-<sub>Proyecto Tlatoa es una bifurcación independiente iniciada en octubre de 2026 por Kineyo. Código base derivado originalmente de Pulso Cívico (Copyright (c) 2024-2026 Autores Originales), distribuido bajo licencia GNU AGPLv3. Código fuente disponible en <a href="https://github.com/Kineyo/proyecto-tlatoa">https://github.com/Kineyo/proyecto-tlatoa</a>.</sub>
+<sub>Proyecto Tlatoa es una bifurcación independiente iniciada en octubre de 2026. Código base derivado originalmente de Pulso Cívico (Copyright (c) 2024-2026 Autores Originales), distribuido bajo licencia GNU AGPLv3. Código fuente disponible en <a href="https://github.com/Proyecto-Tlatoa/proyecto-tlatoa">https://github.com/Proyecto-Tlatoa/proyecto-tlatoa</a>.</sub>
 
 ---
 

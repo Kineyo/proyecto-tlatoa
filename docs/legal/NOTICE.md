@@ -1,7 +1,7 @@
 # Legal Notice & Project Identity / Aviso Legal e Identidad — Proyecto Tlatoa
 
 **Fecha de Declaración:** Octubre de 2026  
-**Repositorio Oficial:** [https://github.com/Kineyo/proyecto-tlatoa](https://github.com/Kineyo/proyecto-tlatoa)
+**Repositorio Oficial:** [https://github.com/Proyecto-Tlatoa/proyecto-tlatoa](https://github.com/Proyecto-Tlatoa/proyecto-tlatoa)
 
 ---
 
@@ -19,4 +19,4 @@ Este programa es software libre: puedes redistribuirlo y/o modificarlo bajo los 
 En cumplimiento estricto con la Sección 13 de la Licencia GNU AGPLv3, si ejecutas una versión modificada de este software en un servidor de red o servicio web, se garantiza a todos los usuarios que interactúan con ella la posibilidad de obtener el código fuente correspondiente completo y de forma gratuita.
 
 La fuente oficial para auditar, colaborar y obtener el código fuente correspondiente de **Proyecto Tlatoa** es:  
-**[https://github.com/Kineyo/proyecto-tlatoa](https://github.com/Kineyo/proyecto-tlatoa)**
+**[https://github.com/Proyecto-Tlatoa/proyecto-tlatoa](https://github.com/Proyecto-Tlatoa/proyecto-tlatoa)**

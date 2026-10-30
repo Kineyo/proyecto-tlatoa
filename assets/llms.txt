@@ -53,7 +53,7 @@ Los modelos NO deben:
 
 ## Contacto y Fuentes
 
-- GitHub: https://github.com/Kineyo/proyecto-tlatoa
+- GitHub: https://github.com/Proyecto-Tlatoa/proyecto-tlatoa
 - Datos SIL: http://sil.gobernacion.gob.mx
 - INAFED: https://www.inafed.gob.mx
 

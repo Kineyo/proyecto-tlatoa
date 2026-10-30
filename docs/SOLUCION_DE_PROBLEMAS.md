@@ -33,7 +33,7 @@ Esta guía está diseñada para ayudar a **ciudadanos, periodistas y usuarios fi
 * **Solución:**
   1. Desinstala cualquier versión anterior de **Proyecto Tlatoa** de tu teléfono.
   2. Verifica que tengas al menos **100 MB de espacio libre** en tu almacenamiento interno.
-  3. Vuelve a descargar el archivo `.apk` desde la sección de [Releases en GitHub](https://github.com/Kineyo/proyecto-tlatoa/releases).
+  3. Vuelve a descargar el archivo `.apk` desde la sección de [Releases en GitHub](https://github.com/Proyecto-Tlatoa/proyecto-tlatoa/releases).
 
 ### 1.4. La app abre pero no muestra resultados al buscar
 * **Mecanismo de autorreparación integrado:**
@@ -54,7 +54,7 @@ Esta guía está diseñada para ayudar a **ciudadanos, periodistas y usuarios fi
 * **Causa:** Ejecutaste el programa suelto sin tener el archivo `tlatoa.db` en la misma carpeta.
 * **Cómo funciona el modo de respaldo:** En lugar de cerrarse o fallar, la aplicación inicia en **Modo Diagnóstico de Respaldo** y te muestra las instrucciones en pantalla.
 * **Solución para usuarios finales:**
-  1. Descarga el paquete **`portable.zip`** desde [GitHub Releases](https://github.com/Kineyo/proyecto-tlatoa/releases) y extrae **ambos archivos** (`tlatoa-desktop` y `tlatoa.db`) dentro de la misma carpeta.
+  1. Descarga el paquete **`portable.zip`** desde [GitHub Releases](https://github.com/Proyecto-Tlatoa/proyecto-tlatoa/releases) y extrae **ambos archivos** (`tlatoa-desktop` y `tlatoa.db`) dentro de la misma carpeta.
   2. También puedes indicarle manualmente dónde está la base de datos ejecutando:
      ```bash
      ./tlatoa-desktop --db /ruta/a/tu/tlatoa.db
@@ -123,7 +123,7 @@ Esta guía está diseñada para ayudar a **ciudadanos, periodistas y usuarios fi
 
 ## 🆘 ¿Tu problema no aparece aquí?
 
-Abre un reporte en la sección de **[Issues de GitHub](https://github.com/Kineyo/proyecto-tlatoa/issues)** indicando:
+Abre un reporte en la sección de **[Issues de GitHub](https://github.com/Proyecto-Tlatoa/proyecto-tlatoa/issues)** indicando:
 1. En qué dispositivo estás (Android, Windows, Linux o macOS).
 2. Qué estabas buscando o haciendo cuando ocurrió el problema.
 3. Una captura de pantalla o el mensaje que apareció en pantalla.
