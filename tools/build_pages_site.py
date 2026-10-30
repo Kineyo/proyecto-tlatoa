@@ -38,9 +38,23 @@ def build():
         (ASSETS_DIR / "img").mkdir(exist_ok=True)
         shutil.copy2(src_svg, ASSETS_DIR / "img" / "tecolote.svg")
 
+    # 3. Copiar fotos locales de representantes si existen en storage/raw/photos
+    src_photos = ROOT_DIR / "storage" / "raw" / "photos"
+    dest_photos = ASSETS_DIR / "photos"
+    dest_photos.mkdir(parents=True, exist_ok=True)
+    local_photo_files = set()
+    if src_photos.exists():
+        for p_file in src_photos.glob("*.jpg"):
+            shutil.copy2(p_file, dest_photos / p_file.name)
+            local_photo_files.add(p_file.name)
+        for p_file in src_photos.glob("*.png"):
+            shutil.copy2(p_file, dest_photos / p_file.name)
+            local_photo_files.add(p_file.name)
+        print(f"  [+] Copiadas {len(local_photo_files)} fotos locales a pages/assets/photos/")
+
     output_path = DATA_DIR / "search_index.json"
 
-    # 3. Extraer datos compactos de SQLite si existe
+    # 4. Extraer datos compactos de SQLite si existe
     if DB_PATH.exists():
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
@@ -59,9 +73,18 @@ def build():
             if not fuente and dj.get("referencia_sil"):
                 fuente = f"https://sil.gobernacion.gob.mx/Librerias/pp_PerfilLegislador.php?Referencia={dj['referencia_sil']}"
 
-            # Garantizar HTTPS en fotos del SIL para evitar bloqueo de contenido mixto en navegadores
-            if foto and foto.startswith("http://sil.gobernacion.gob.mx"):
-                foto = foto.replace("http://sil.gobernacion.gob.mx", "https://sil.gobernacion.gob.mx")
+            # Resolver foto: priorizar copia local en ./assets/photos/ para carga instantánea y sin fallos SSL
+            final_foto = ""
+            if foto:
+                f_name = Path(foto).name
+                if f_name in local_photo_files:
+                    final_foto = f"./assets/photos/{f_name}"
+                elif dj.get("referencia_sil") and f"{dj['referencia_sil']}.jpg" in local_photo_files:
+                    final_foto = f"./assets/photos/{dj['referencia_sil']}.jpg"
+                elif foto.startswith("http://") or foto.startswith("https://"):
+                    final_foto = foto.replace("http://sil.gobernacion.gob.mx", "https://sil.gobernacion.gob.mx")
+            elif dj.get("referencia_sil") and f"{dj['referencia_sil']}.jpg" in local_photo_files:
+                final_foto = f"./assets/photos/{dj['referencia_sil']}.jpg"
 
             c_lower = (cargo or "").lower()
             if "senador" in c_lower:
@@ -86,7 +109,7 @@ def build():
                 "e": entidad or "México",
                 "k": categoria,
                 "a": es_activo or 0,
-                "f": foto or "",
+                "f": final_foto or "",
                 "u": fuente or "https://www.gob.mx"
             })
 

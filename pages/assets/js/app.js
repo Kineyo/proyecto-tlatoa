@@ -127,6 +127,36 @@ function filterAndRender() {
     renderGrid(toRender, filtered.length);
 }
 
+function getInitials(name) {
+    if (!name) return '🦉';
+    const words = name.trim().split(/\s+/).filter(w => w.length > 0);
+    if (words.length >= 2) {
+        return (words[0][0] + words[1][0]).toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
+}
+
+function renderAvatarHtml(name, color, size, extraStyle = '') {
+    const initials = getInitials(name);
+    const bg = color ? color + '1F' : '#EFF6FF';
+    const fg = color || '#1D4ED8';
+    const border = color ? color + '40' : '#BFDBFE';
+    const fontSize = Math.round(size * 0.38);
+    return `<div class="avatar-badge" style="width:${size}px;height:${size}px;min-width:${size}px;border-radius:50%;background:${bg};color:${fg};border:1.5px solid ${border};display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:${fontSize}px;flex-shrink:0;user-select:none;${extraStyle}">${escapeHtml(initials)}</div>`;
+}
+
+window.handleImgError = function(img) {
+    const name = img.getAttribute('data-name') || '';
+    const color = img.getAttribute('data-color') || '#4B5563';
+    const size = parseInt(img.getAttribute('data-size') || '42', 10);
+    const extraStyle = img.getAttribute('data-style') || '';
+    const div = document.createElement('div');
+    div.innerHTML = renderAvatarHtml(name, color, size, extraStyle);
+    if (div.firstElementChild) {
+        img.replaceWith(div.firstElementChild);
+    }
+};
+
 function renderGrid(items, totalCount) {
     if (items.length === 0) {
         resultsGrid.innerHTML = `
@@ -141,8 +171,8 @@ function renderGrid(items, totalCount) {
     let html = items.map(p => {
         const color = p.c || '#4B5563';
         const fotoHtml = p.f 
-            ? `<img src="${encodeURI(p.f)}" style="width:42px;height:42px;border-radius:50%;object-fit:cover;margin-right:12px;flex-shrink:0;background:#E5E7EB;" onerror="this.style.display='none'">` 
-            : '';
+            ? `<img src="${encodeURI(p.f)}" alt="${escapeHtml(p.n)}" data-name="${escapeHtml(p.n)}" data-color="${escapeHtml(color)}" data-size="42" data-style="margin-right:12px;" loading="lazy" referrerpolicy="no-referrer" style="width:42px;height:42px;border-radius:50%;object-fit:cover;margin-right:12px;flex-shrink:0;background:#E5E7EB;" onerror="handleImgError(this)">` 
+            : renderAvatarHtml(p.n, color, 42, 'margin-right:12px;');
         return `
         <div class="card-pol" onclick="openDetails('${escapeHtml(p.s)}')">
             <div>
@@ -179,8 +209,8 @@ function openDetails(slug) {
 
     const color = p.c || '#2563EB';
     const fotoHtml = p.f 
-        ? `<img src="${encodeURI(p.f)}" style="width:68px;height:68px;border-radius:50%;object-fit:cover;margin-bottom:12px;background:#E5E7EB;" onerror="this.style.display='none'">`
-        : '';
+        ? `<img src="${encodeURI(p.f)}" alt="${escapeHtml(p.n)}" data-name="${escapeHtml(p.n)}" data-color="${escapeHtml(color)}" data-size="68" data-style="margin:0 auto 12px auto;display:flex;" loading="lazy" referrerpolicy="no-referrer" style="width:68px;height:68px;border-radius:50%;object-fit:cover;margin:0 auto 12px auto;display:block;background:#E5E7EB;" onerror="handleImgError(this)">`
+        : renderAvatarHtml(p.n, color, 68, 'margin:0 auto 12px auto;display:flex;');
 
     document.getElementById('modalPolHeader').innerHTML = `
         <div style="text-align:center;border-bottom:1px solid var(--border);padding-bottom:16px;">
