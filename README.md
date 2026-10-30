@@ -53,17 +53,24 @@ Proyecto Tlatoa es una bifurcación independiente (Hard Fork) que se alimenta co
 3. **Pipeline de Sincronización Tlatoa:** `git fetch upstream` incorpora nuevos datasets (`storage/data/json/`) y parches de indexación (`tools/`) preservando intactas las personalizaciones locales y runtimes propios de Tlatoa.
 4. **Compilación Multiplataforma:** `tools/build_mobile_db.py` transforma los más de 3,200 datasets JSON en la base de datos binaria compacta `storage/tlatoa.db` con búsqueda FTS5 tolerante a acentos.
 
-> [!IMPORTANT]
-> ### 🕷️ Suite de Scrapers (Rama Huérfana `scrapers`) y Política de Contribuciones
-> Para preservar la ligereza del repositorio de aplicaciones y runtimes offline, la suite completa de extractores (PHP, Python y Lua) se mantiene aislada en la rama huérfana **`scrapers`**:
+## [!IMPORTANTE]
+### 🕷️ Suite de Scrapers (Rama Huérfana `scrapers`) y Política de Contribuciones
+Para preservar la ligereza del repositorio de aplicaciones y runtimes offline, la suite completa de extractores (PHP, Python y Lua) se mantiene aislada en la rama huérfana **`scrapers`**:
 > ```bash
 > # Inspeccionar o utilizar los extractores
 > git checkout scrapers
 > ```
-> Consulta el `README.md` de dicha rama para conocer los parámetros de ejecución, cumplimiento de `robots.txt` y directivas éticas de rate-limiting (1,250 ms).
-> 
-> **🚫 Aviso de Pull Requests en este Hard Fork:**  
-> En este repositorio **no se aceptan Pull Requests**. Si desarrollas o mejoras un scraper, o deseas incorporar nuevos datasets, envía tu contribución mediante Pull Request directamente al repositorio base upstream: **[`pulso-civico/pulso-civico/main`](https://github.com/elpulsocivico/pulso-civico)** siguiendo los contratos canónicos de datos.
+o tambien solo clonar la rama y hacer PR manualmente en el [Repositorio Base](https://github.com/elpulsocivico/pulso-civico)
+
+> ```bash
+> git clone https://github.com/Proyecto-Tlatoa/proyecto-tlatoa -b scrapers
+> ```
+
+Consulta el `README.md` de dicha rama para conocer los parámetros de ejecución, cumplimiento de `robots.txt` y directivas éticas de rate-limiting (1,250 ms).
+
+**🚫 Aviso de Pull Requests en este Hard Fork:** 
+
+En este repositorio **no se aceptan Pull Requests**. Si desarrollas o mejoras un scraper, o deseas incorporar nuevos datasets, envía tu contribución mediante Pull Request directamente al repositorio base upstream: **[`pulso-civico/pulso-civico/main`](https://github.com/elpulsocivico/pulso-civico)** siguiendo los contratos canónicos de datos.
 
 ---
 
