@@ -40,11 +40,10 @@ Valida en lote al terminar cada bloque de trabajo. Prohibido ejecutar comandos d
 
 ### Linux / macOS
 ```bash
-# Validar sintaxis Python y PHP
+# Validar sintaxis Python y codificación de datos
 python3 -m py_compile app/main.py app/routers/*.py app/services/*.py
-php tools/gateway.php lint "ruta/archivo1.php,ruta/archivo2.php"  # si modificaste PHP
-php tools/gateway.php health
-php tools/gateway.php git:status
+python3 tools/audit_encoding.py
+git status
 ```
 
 ### Windows (PowerShell)
@@ -71,7 +70,7 @@ Actúas como Claude Code en Proyecto Tlatoa.
 - DATOS: `storage/data/json/`. Neutralidad absoluta, sin juicios y con `fuente_url` oficial (.gob.mx).
 - REGLAS: Archivos < 400 líneas. Cero dependencias nuevas. Cero secretos (usar `.env`). Código completo sin truncar.
 - VERIFICACIÓN:
-  * Linux/macOS: `python3 -m py_compile <archivos>` y `php tools/gateway.php health`
+  * Linux/macOS: `python3 -m py_compile <archivos>` y `python3 tools/audit_encoding.py`
   * Windows: `python -m py_compile <archivos>` y `powershell .\tools\run.ps1 health`
 - GIT: Nunca uses `git add .`; stage archivo por archivo con prefijo convencional (`feat:`, `fix:`).
 - RESPUESTA: Diagnóstico -> Acción -> Ubicación exacta.
@@ -82,8 +81,8 @@ Actúas como Claude Code en Proyecto Tlatoa.
 Actúas como OpenCode en Proyecto Tlatoa.
 - ENTORNO ACTIVO: Python / FastAPI con Jinja2 en `app/`.
 - DIRECTIVA: Edita solo en `app/routers/`, `app/services/` y `app/templates/`. No toques `src/` ni `views/`.
-- RUNNER: Usa el gateway centralizado sin comandos sueltos:
-  * Unix: `php tools/gateway.php health` | `php tools/gateway.php lint "<rutas>"`
+- RUNNER: Usa comandos estandarizados:
+  * Unix: `python3 -m py_compile <archivos>` | `python3 tools/audit_encoding.py`
   * Windows: `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health`
 - SINTAXIS: Valida con `python3 -m py_compile <archivos>`.
 - REGLAS: Archivos < 400 líneas, sin secretos, código completo funcional, neutralidad total en datos. Nunca uses `git add .`.
@@ -96,7 +95,7 @@ Eres un agente de desarrollo basado en OpenAI Codex en Proyecto Tlatoa.
 - ZONA PERMITIDA: `app/routers/`, `app/services/`, `app/templates/`, `storage/data/json/`.
 - PROHIBIDO: Editar `src/` o `views/` para la aplicación web activa.
 - DIRECTRICES: Neutralidad estricta (datos con `fuente_url` oficial), archivos < 400 líneas, cero dependencias nuevas, código completo sin abreviar.
-- VALIDACIÓN: `python3 -m py_compile <archivos>` y runner `php tools/gateway.php health` (Unix) o `powershell .\tools\run.ps1 health` (Windows).
+- VALIDACIÓN: `python3 -m py_compile <archivos>` y `python3 tools/audit_encoding.py` (Unix) o `powershell .\tools\run.ps1 health` (Windows).
 - GIT: Commits convencionales; nunca `git add .`.
 ```
 
@@ -106,7 +105,7 @@ Eres el agente Antigravity / Gemini en Proyecto Tlatoa.
 - MODO: Ultra-eficiencia, bajo consumo de tokens y cero prompts innecesarios en terminal.
 - ENTORNO ACTIVO: Python (FastAPI + Jinja2) en `app/main.py`. Todo desarrollo web va en `app/routers/`, `app/services/` o `app/templates/`. PROHIBIDO tocar PHP (`src/`, `views/`) para la web activa.
 - LECTURA QUIRÚRGICA: Inspecciona bloques de 30-80 líneas con StartLine/EndLine. No leas archivos enteros sin necesidad.
-- RUNNER ZERO-PROMPT: Valida en lote con `python3 -m py_compile` y el runner del OS (`php tools/gateway.php health` o `powershell .\tools\run.ps1 health`). Prohibido comandos ad-hoc dispersos.
+- RUNNER ZERO-PROMPT: Valida en lote con `python3 -m py_compile` y `python3 tools/audit_encoding.py` (o en Windows `powershell .\tools\run.ps1 health`). Prohibido comandos ad-hoc dispersos.
 - RESPUESTA: Diagnóstico rápido -> Acción tomada -> Ubicación exacta con enlace.
 - REGLAS: Archivos < 400 líneas, neutralidad absoluta, nunca `git add .`.
 ```
@@ -127,3 +126,16 @@ Contexto para Cursor / GitHub Copilot en Proyecto Tlatoa:
 - Scrapers: `docs/COMO_CREAR_UN_SCRAPER.md`
 - Fuentes: `docs/FUENTES.md`
 - Diccionario: `docs/DICCIONARIO_DE_DATOS.md`
+
+
+---
+
+## 🗺️ Navegación Rápida
+
+* [Guía Maestra para Desarrolladores](index.md)
+* [Índice Principal de Proyecto Tlatoa](README.md)
+* [Arquitectura del Sistema](docs/ARQUITECTURA.md)
+* [Contratos de Datos y Esquemas JSON](docs/DATA_SCHEMA.md)
+* [Guía para Crear un Scraper](docs/COMO_CREAR_UN_SCRAPER.md)
+* [Manual de Datos y Evidencia](docs/MANUAL_DE_DATOS_Y_EVIDENCIA.md)
+* [Guía de Contribución](.github/CONTRIBUTING.md)

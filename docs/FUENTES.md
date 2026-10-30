@@ -36,3 +36,16 @@ Estado: ✅ cubierta · 🚧 en progreso · 🙋 busca voluntario
 - Debe ser **oficial** (dominio `.gob.mx`, órgano autónomo) o medio periodístico identificable.
 - Revisar `robots.txt` y términos de uso.
 - Documentar formato (HTML, PDF, CSV, API) y frecuencia de actualización.
+
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[DATA_SCHEMA|Contratos de Datos y Esquemas JSON]]
+* [[ESTADOS_COBERTURA|Mapa de Cobertura de las 32 Entidades]]
+* [[PODER_EJECUTIVO_ESTADOS|Poder Ejecutivo Estatal y Regentes]]
+* [[COMO_CREAR_UN_SCRAPER|Guía para Crear un Scraper]]
+* [[MANUAL_DE_DATOS_Y_EVIDENCIA|Manual de Datos y Evidencia]]
+* [[PLAN_RESILIENCIA_Y_PRESERVACION|Protocolo de Resiliencia y Preservación Digital]]

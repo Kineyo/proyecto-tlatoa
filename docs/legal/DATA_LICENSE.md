@@ -12,3 +12,12 @@ Puedes copiarlos, redistribuirlos y adaptarlos para cualquier fin, incluso comer
 - Los datos originales provienen de portales públicos del Estado mexicano (SIL-SEGOB, Cámara de Diputados, Senado, etc.). Cada registro conserva su `fuente_url`.
 - Las fotografías oficiales pertenecen a sus respectivas instituciones; se reproducen con fines informativos citando la fuente.
 - Los datos se ofrecen "tal cual", sin garantía. Ante discrepancias, prevalece la fuente oficial. Reporta errores mediante un Issue.
+
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]
+* [[DATA_SCHEMA|Contratos de Datos y Esquemas JSON]]

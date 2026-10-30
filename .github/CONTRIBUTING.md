@@ -31,10 +31,9 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 
-# Verificar sintaxis antes de hacer commit
-python3 -m py_compile app/main.py app/routers/web.py
-php tools/gateway.php lint "archivos,modificados.php"
-php tools/gateway.php health
+# Verificar sintaxis y codificación antes de hacer commit
+python3 -m py_compile app/main.py app/routers/*.py app/services/*.py
+python3 tools/audit_encoding.py
 ```
 
 <details>
@@ -45,7 +44,7 @@ Trabajas en Proyecto Tlatoa sobre Linux. Lee primero `AGENTS.md`.
 - Entorno web activo: Python / FastAPI (`app/main.py`), routers en `app/routers/`, servicios en `app/services/` y plantillas Jinja2 en `app/templates/`.
 - Datasets JSON en `storage/data/json/`.
 - Antes de entregar cambios valida en terminal con:
-  `python3 -m py_compile <archivos.py>` y `php tools/gateway.php lint "<archivos.php>"`
+  `python3 -m py_compile <archivos.py>` y `python3 tools/audit_encoding.py`
 - Nunca uses `git add .`; agrega solo los archivos modificados.
 ```
 </details>
@@ -93,10 +92,9 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 
-# Verificar sintaxis antes de hacer commit
-python3 -m py_compile app/main.py app/routers/web.py
-php tools/gateway.php lint "archivos,modificados.php"
-php tools/gateway.php health
+# Verificar sintaxis y codificación antes de hacer commit
+python3 -m py_compile app/main.py app/routers/*.py app/services/*.py
+python3 tools/audit_encoding.py
 ```
 
 <details>
@@ -107,7 +105,7 @@ Trabajas en Proyecto Tlatoa sobre macOS. Lee primero `AGENTS.md`.
 - Entorno web activo: Python / FastAPI (`app/main.py`), routers en `app/routers/`, servicios en `app/services/` y plantillas Jinja2 en `app/templates/`.
 - Datasets JSON en `storage/data/json/`.
 - Antes de entregar cambios valida en terminal con:
-  `python3 -m py_compile <archivos.py>` y `php tools/gateway.php lint "<archivos.php>"`
+  `python3 -m py_compile <archivos.py>` y `python3 tools/audit_encoding.py`
 - Nunca uses `git add .`; agrega solo los archivos modificados.
 ```
 </details>
@@ -145,3 +143,16 @@ Abre un Issue con la plantilla **"Dato erróneo"** indicando: político, dato in
 
 ## Licencias de tus aportes
 Al contribuir aceptas que tu código se publique bajo **AGPL-3.0** y los datos bajo **CC BY 4.0**.
+
+
+---
+
+## 🗺️ Navegación Rápida
+
+* [Guía Maestra para Desarrolladores](../index.md)
+* [Índice Principal de Proyecto Tlatoa](../README.md)
+* [Manifiesto Ético y Neutralidad](../docs/MANIFIESTO.md)
+* [Guía para Crear un Scraper](../docs/COMO_CREAR_UN_SCRAPER.md)
+* [Buzón de Colaboración y Staging](../docs/PIPELINE_STAGING.md)
+* [Contratos de Datos y Esquemas JSON](../docs/DATA_SCHEMA.md)
+* [Reglas para Asistentes de IA (AGENTS.md)](../AGENTS.md)

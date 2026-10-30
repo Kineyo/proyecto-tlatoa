@@ -15,3 +15,13 @@ Incluye: descripción, pasos para reproducir y posible impacto. Respondemos en u
 ## Buenas prácticas para colaboradores
 - Nunca subir `.env`, cookies, tokens ni credenciales.
 - Si subiste un secreto por error, avisa de inmediato: hay que rotarlo y limpiar el historial.
+
+
+---
+
+## 🗺️ Navegación Rápida
+
+* [Índice Principal de Proyecto Tlatoa](../README.md)
+* [Guía de Contribución](CONTRIBUTING.md)
+* [Reglas para Asistentes de IA](../AGENTS.md)
+* [Guía Maestra para Desarrolladores](../index.md)

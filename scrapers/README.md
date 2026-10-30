@@ -25,3 +25,13 @@ cargo build --release -p tlatoa-core
 
 ## Estructura de un Scraper en Lua
 Consulta [`scrapers/template.lua`](template.lua) para ver una plantilla lista para usar.
+
+
+---
+
+## 🗺️ Navegación Rápida
+
+* [Índice Principal de Proyecto Tlatoa](../README.md)
+* [Guía para Crear un Scraper](../docs/COMO_CREAR_UN_SCRAPER.md)
+* [Arquitectura del Sistema](../docs/ARQUITECTURA.md)
+* [Guía Maestra para Desarrolladores](../index.md)

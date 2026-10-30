@@ -12,6 +12,12 @@
     <meta property="og:title" content="{% if seo and seo.title %}{{ seo.title }}{% else %}{{ app_name or 'Proyecto Tlatoa' }} — Datos Abiertos de Servidores Públicos en México{% endif %}">
     <meta property="og:description" content="{% if seo and seo.description %}{{ seo.description }}{% else %}Observatorio comunitario e independiente con información 100% oficial y comprobable sobre más de 4,300 gobernadores, alcaldes, diputados y senadores en México.{% endif %}">
     <meta property="og:url" content="{% if seo and seo.canonical %}{{ seo.canonical }}{% else %}/{% endif %}">
+    <meta property="og:image" content="/assets/img/tecolote.png">
+
+    <!-- Favicon Oficial -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="alternate icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/img/tecolote.png">
 
     <!-- Bootstrap 5.3 CSS & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -174,7 +180,7 @@
     <div class="container">
         <!-- Marca / Logo -->
         <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-dark me-3" href="/">
-            <img src="/assets/img/tecolote.png" alt="Tecolote" style="width: 34px; height: 34px; image-rendering: pixelated; border-radius: 6px;" onerror="this.outerHTML='<span class=\'rounded-circle bg-dark text-warning d-inline-flex align-items-center justify-content-center\' style=\'width:32px;height:32px;\'>🦉</span>'">
+            <img src="/assets/img/tecolote.svg" alt="Tecolote" style="width: 36px; height: 36px; object-fit: contain;" onerror="this.src='/assets/img/tecolote.png'">
             <span>{{ app_name }}</span>
             <span class="badge bg-dark text-warning border ms-1 d-none d-sm-inline-block" style="font-size:0.65rem;">Fork Soberano</span>
         </a>
@@ -336,6 +342,47 @@
                     <span class="d-none d-xl-inline small">Buscar...</span>
                     <kbd class="bg-white border text-muted px-1" style="font-size: 0.65rem;">Ctrl+K</kbd>
                 </button>
+
+                <!-- Menú Repositorios GitHub -->
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-dark text-white rounded-pill px-2 px-md-3 d-inline-flex align-items-center gap-1 gap-md-2 shadow-xs" type="button" id="dropdownGithub" data-bs-toggle="dropdown" aria-expanded="false" title="Repositorios de GitHub">
+                        <i class="bi bi-github fs-6"></i>
+                        <span class="d-none d-md-inline small fw-medium">GitHub</span>
+                        <i class="bi bi-chevron-down text-white-50" style="font-size: 0.65rem;"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 p-2 mt-2" aria-labelledby="dropdownGithub" style="min-width: 275px; z-index: 1060;">
+                        <li class="px-2 py-1 mb-1 border-bottom">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <span class="text-uppercase text-secondary fw-bold" style="font-size: 0.65rem; letter-spacing: 0.05em;">
+                                    <i class="bi bi-git me-1 text-primary"></i> Repositorios
+                                </span>
+                                <span class="badge bg-light text-muted border" style="font-size: 0.62rem;">Código Abierto</span>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item rounded-3 py-2 px-2 d-flex align-items-start gap-2 text-dark" href="https://github.com/elpulsocivico/pulso-civico" target="_blank" rel="noopener">
+                                <div class="bg-primary-subtle text-primary rounded-circle p-1 d-inline-flex align-items-center justify-content-center mt-1" style="width: 26px; height: 26px;">
+                                    <i class="bi bi-box-arrow-up-right" style="font-size: 0.75rem;"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="fw-semibold small leading-tight">Proyecto Original</div>
+                                    <div class="text-muted" style="font-size: 0.72rem;">elpulsocivico/pulso-civico</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item rounded-3 py-2 px-2 d-flex align-items-start gap-2 text-dark" href="https://github.com/Kineyo/proyecto-tlatoa" target="_blank" rel="noopener">
+                                <div class="bg-dark text-white rounded-circle p-1 d-inline-flex align-items-center justify-content-center mt-1" style="width: 26px; height: 26px;">
+                                    <i class="bi bi-github" style="font-size: 0.75rem;"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="fw-semibold small leading-tight">Repositorio del codigo</div>
+                                    <div class="text-muted" style="font-size: 0.72rem;">Kineyo/proyecto-tlatoa (Este observatorio)</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -369,7 +416,7 @@
             <!-- Columna 1: Identidad & Comunidad -->
             <div class="col-12 col-md-4">
                 <a class="d-flex align-items-center gap-2 fw-bold text-dark text-decoration-none mb-2" href="/">
-                    <img src="/assets/img/tecolote.png" alt="Tecolote" style="width: 28px; height: 28px; image-rendering: pixelated; border-radius: 4px;" onerror="this.outerHTML='<span>🦉</span>'">
+                    <img src="/assets/img/tecolote.svg" alt="Tecolote" style="width: 30px; height: 30px; object-fit: contain;" onerror="this.src='/assets/img/tecolote.png'">
                     <span>{{ app_name }}</span>
                 </a>
                 <div class="mb-2">
@@ -431,7 +478,8 @@
                     <li><a href="/legislaturas" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-clock-history me-1"></i>Archivo Histórico (1997–2027)</a></li>
                     <li><a href="/desarrolladores" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-terminal me-1"></i>Desarrolladores y Agentes IA</a></li>
                     <li><a href="/docs" target="_blank" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-code-slash me-1"></i>API REST Documentation</a></li>
-                    <li><a href="https://github.com/Kineyo/proyecto-tlatoa" target="_blank" rel="noopener" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-github me-1"></i>Código Fuente (AGPLv3)</a></li>
+                    <li><a href="https://github.com/Kineyo/proyecto-tlatoa" target="_blank" rel="noopener" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-github me-1"></i>Repositorio del codigo (Tlatoa)</a></li>
+                    <li><a href="https://github.com/elpulsocivico/pulso-civico" target="_blank" rel="noopener" class="text-secondary text-decoration-none hover-text-primary"><i class="bi bi-box-arrow-up-right me-1"></i>Proyecto Original (pulso-civico)</a></li>
                 </ul>
                 <div class="p-2 bg-light rounded-3 border">
                     <span class="d-block text-dark fw-semibold" style="font-size: 0.75rem;">

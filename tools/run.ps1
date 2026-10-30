@@ -1,10 +1,8 @@
 <#
 .SYNOPSIS
-    Runner centralizado y unificado de desarrollo para Proyecto Tlatoa.
+    Runner centralizado de desarrollo para Proyecto Tlatoa (PowerShell / Windows).
 .DESCRIPTION
-    Punto único de entrada para todas las tareas internas (lint, git, health check, etc.).
-    Al otorgar permiso a este script una sola vez, Antigravity puede ejecutar tareas
-    en lote y diagnósticos internos sin solicitar confirmación repetitiva.
+    Punto de entrada unificado para chequeos de salud, linting y comandos comunes.
 #>
 param (
     [Parameter(Position = 0, Mandatory = $false)]
@@ -17,51 +15,43 @@ param (
     [string[]]$Extra = @()
 )
 
-$extraStr = $Extra -join " "
-
-
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$gatewayPhp = Join-Path $scriptDir "gateway.php"
+$rootDir = Split-Path -Parent $scriptDir
 
-if (-not (Test-Path $gatewayPhp)) {
-    Write-Error "No se encontro gateway.php en $scriptDir"
-    exit 1
-}
-
-# Auto-detección inteligente del ejecutable de PHP
-$phpCmd = "php"
-if (-not (Get-Command "php" -ErrorAction SilentlyContinue)) {
-    $possiblePaths = @(
-        "E:\xampp\php\php.exe",
-        "C:\xampp\php\php.exe",
-        "D:\xampp\php\php.exe"
-    )
-    foreach ($p in $possiblePaths) {
-        if (Test-Path $p) {
-            $phpCmd = $p
-            break
+switch ($Action) {
+    "health" {
+        Write-Host "🔍 Verificando salud del proyecto Tlatoa..." -ForegroundColor Cyan
+        python -m py_compile "$rootDir\app\main.py"
+        python "$rootDir\tools\audit_encoding.py"
+        Write-Host "✅ Entorno saludable y verificado." -ForegroundColor Green
+        exit 0
+    }
+    "lint" {
+        Write-Host "🔍 Validando sintaxis Python..." -ForegroundColor Cyan
+        if ($Target) {
+            python -m py_compile $Target
+        } else {
+            python -m py_compile "$rootDir\app\main.py"
         }
+        exit $LASTEXITCODE
+    }
+    "git:status" {
+        git status
+        exit $LASTEXITCODE
+    }
+    "python" {
+        python $Target $Extra
+        exit $LASTEXITCODE
+    }
+    "py" {
+        python $Target $Extra
+        exit $LASTEXITCODE
+    }
+    default {
+        Write-Host "Comandos disponibles:" -ForegroundColor Yellow
+        Write-Host "  health      - Verifica sintaxis y codificación del proyecto"
+        Write-Host "  lint        - Valida sintaxis Python"
+        Write-Host "  git:status  - Muestra el estado del repositorio Git"
+        Write-Host "  python [args] - Ejecuta script de Python"
     }
 }
-
-# Ejecución directa y resiliente para comandos git si es necesario
-if ($Action -eq "git:raw") {
-    & git $Target $Extra
-    exit $LASTEXITCODE
-}
-
-# Ejecución para entorno activo de Python
-if ($Action -eq "python" -or $Action -eq "py") {
-    $uvPath = "C:\Users\pc\.local\bin\uv.exe"
-    if (Test-Path $uvPath) {
-        & $uvPath run python $Target $Extra
-    } else {
-        & python $Target $Extra
-    }
-    exit $LASTEXITCODE
-}
-
-# Ejecutar el gateway PHP pasando los argumentos
-& $phpCmd $gatewayPhp $Action $Target $extraStr
-
-

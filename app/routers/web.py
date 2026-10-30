@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from fastapi import APIRouter, Request, HTTPException, Query, Response
+from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 from typing import Optional
 from app.core.config import settings
@@ -723,5 +724,43 @@ async def electoral_view(request: Request):
             }
         }
     )
+
+@router.get("/favicon.ico", include_in_schema=False)
+async def favicon_ico():
+    ico_path = settings.ASSETS_DIR / "favicon.ico"
+    if ico_path.exists():
+        return FileResponse(ico_path, media_type="image/x-icon")
+    svg_path = settings.ASSETS_DIR / "favicon.svg"
+    if svg_path.exists():
+        return FileResponse(svg_path, media_type="image/svg+xml")
+    return Response(status_code=404)
+
+@router.get("/favicon.svg", include_in_schema=False)
+async def favicon_svg():
+    svg_path = settings.ASSETS_DIR / "favicon.svg"
+    if svg_path.exists():
+        return FileResponse(svg_path, media_type="image/svg+xml")
+    return Response(status_code=404)
+
+@router.get("/robots.txt", include_in_schema=False)
+async def robots_txt():
+    p = settings.ASSETS_DIR / "robots.txt"
+    if p.exists():
+        return FileResponse(p, media_type="text/plain; charset=utf-8")
+    return Response(status_code=404)
+
+@router.get("/llms.txt", include_in_schema=False)
+async def llms_txt():
+    p = settings.ASSETS_DIR / "llms.txt"
+    if p.exists():
+        return FileResponse(p, media_type="text/plain; charset=utf-8")
+    return Response(status_code=404)
+
+@router.get("/site.webmanifest", include_in_schema=False)
+async def site_webmanifest():
+    p = settings.ASSETS_DIR / "site.webmanifest"
+    if p.exists():
+        return FileResponse(p, media_type="application/manifest+json")
+    return Response(status_code=404)
 
 

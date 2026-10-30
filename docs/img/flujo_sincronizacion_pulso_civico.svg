@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 840" width="100%" height="100%" style="background:#0b1120; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="step1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#2a1f1d" />
+    </linearGradient>
+    <linearGradient id="step2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#142c38" />
+    </linearGradient>
+    <linearGradient id="step3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#2c1f38" />
+    </linearGradient>
+    <linearGradient id="step4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#16382b" />
+    </linearGradient>
+    <filter id="shadow2" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="30" y="25" width="1000" height="90" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow2)" />
+  <text x="60" y="62" font-size="24" font-weight="bold" fill="url(#headerGrad2)">FLUJO DE DATOS: INGESTA, SINCRONIZACIÓN Y PROCESAMIENTO</text>
+  <text x="60" y="92" font-size="14" fill="#94a3b8">Cómo Proyecto Tlatoa se alimenta y sincroniza con las bases de datos de Pulso Cívico</text>
+
+  <!-- Step 1: Fuentes Primarias Oficiales -->
+  <g transform="translate(30, 135)">
+    <rect width="1000" height="120" rx="12" fill="url(#step1Grad)" stroke="#f97316" stroke-width="1.5" filter="url(#shadow2)" />
+    <rect x="25" y="20" width="38" height="38" rx="8" fill="#f97316" opacity="0.2" />
+    <text x="34" y="46" font-size="20">🏛️</text>
+    <text x="80" y="40" font-size="17" font-weight="bold" fill="#ffedd5">1. FUENTES PRIMARIAS OFICIALES DEL ESTADO MEXICANO (.gob.mx)</text>
+    <text x="80" y="60" font-size="12" fill="#fdba74">Sistema SIL SEGOB · SITL Cámara de Diputados · Senado · 32 Congresos Estatales · DOF · INEGI · POEs</text>
+    <text x="80" y="85" font-size="12" fill="#cbd5e1">• Portales gubernamentales oficiales donde se publican asistencias, votos nominales, curules y gacetas.</text>
+    <text x="80" y="103" font-size="11" fill="#94a3b8">Principio de Neutralidad: Toda evidencia debe provenir de URLs oficiales verificables.</text>
+  </g>
+
+  <!-- Down Arrow 1 -->
+  <g transform="translate(530, 260)">
+    <line x1="0" y1="0" x2="0" y2="28" stroke="#f97316" stroke-width="2.5" />
+    <polygon points="-6,26 0,36 6,26" fill="#f97316" />
+  </g>
+
+  <!-- Step 2: Pulso Cívico Original -->
+  <g transform="translate(30, 305)">
+    <rect width="1000" height="130" rx="12" fill="url(#step2Grad)" stroke="#0ea5e9" stroke-width="1.5" filter="url(#shadow2)" />
+    <rect x="25" y="20" width="38" height="38" rx="8" fill="#0ea5e9" opacity="0.2" />
+    <text x="34" y="46" font-size="20">🌐</text>
+    <text x="80" y="40" font-size="17" font-weight="bold" fill="#e0f2fe">2. REPOSITORIO ORIGINAL UPSTREAM: PULSO CÍVICO</text>
+    <text x="80" y="60" font-size="12" fill="#7dd3fc">Repositorio: github.com/elpulsocivico/pulso-civico · Licencia AGPLv3 / CC BY 4.0</text>
+    <text x="80" y="85" font-size="12" fill="#cbd5e1">• Scrapers comunitarios automatizados que descargan y estructuran la información legislativa periódicamente.</text>
+    <text x="80" y="103" font-size="12" fill="#cbd5e1">• Generación de datasets JSON planos en rama upstream/main y ramas regionales (data/*).</text>
+    <text x="80" y="120" font-size="11" fill="#94a3b8">Bases de datos: votaciones nominales, catalogo de alcaldes, legislaturas 57-66 y directores ejecutivos.</text>
+  </g>
+
+  <!-- Down Arrow 2 -->
+  <g transform="translate(530, 440)">
+    <line x1="0" y1="0" x2="0" y2="28" stroke="#0ea5e9" stroke-width="2.5" />
+    <polygon points="-6,26 0,36 6,26" fill="#0ea5e9" />
+  </g>
+
+  <!-- Step 3: Pipeline de Sincronización e Ingesta -->
+  <g transform="translate(30, 485)">
+    <rect width="1000" height="155" rx="12" fill="url(#step3Grad)" stroke="#a855f7" stroke-width="1.5" filter="url(#shadow2)" />
+    <rect x="25" y="20" width="38" height="38" rx="8" fill="#a855f7" opacity="0.2" />
+    <text x="34" y="46" font-size="20">🔄</text>
+    <text x="80" y="40" font-size="17" font-weight="bold" fill="#f3e8ff">3. CANAL DE SINCRONIZACIÓN Y PARCHES (PROYECTO TLATOA)</text>
+    <text x="80" y="60" font-size="12" fill="#d8b4fe">git fetch upstream · Sincronización selectiva de datasets sin sobreescribir código local</text>
+    <text x="80" y="88" font-size="12" fill="#cbd5e1">• Checkout selectivo: storage/data/json/ (nuevas votaciones, catálogos de alcaldes, tabuladores).</text>
+    <text x="80" y="108" font-size="12" fill="#cbd5e1">• Protección de personalizaciones: Preservación de congresos locales propios y configuraciones de Tlatoa.</text>
+    <text x="80" y="128" font-size="12" fill="#cbd5e1">• Herramientas de enriquecimiento: tools/sync_titulares_lxvi.py y tools/build_universal_search_index.py.</text>
+    <text x="80" y="146" font-size="11" fill="#94a3b8">Regla de oro: Cero sobreescritura de adaptaciones y runtimes creados para Tlatoa.</text>
+  </g>
+
+  <!-- Down Arrow 3 -->
+  <g transform="translate(530, 645)">
+    <line x1="0" y1="0" x2="0" y2="28" stroke="#a855f7" stroke-width="2.5" />
+    <polygon points="-6,26 0,36 6,26" fill="#a855f7" />
+  </g>
+
+  <!-- Step 4: Compilación y Distribución Multiplataforma -->
+  <g transform="translate(30, 690)">
+    <rect width="1000" height="125" rx="12" fill="url(#step4Grad)" stroke="#10b981" stroke-width="1.5" filter="url(#shadow2)" />
+    <rect x="25" y="20" width="38" height="38" rx="8" fill="#10b981" opacity="0.2" />
+    <text x="34" y="46" font-size="20">⚡</text>
+    <text x="80" y="40" font-size="17" font-weight="bold" fill="#ecfdf5">4. COMPILACIÓN NATIVA &amp; DISTRIBUCIÓN OFFLINE EN TLATOA</text>
+    <text x="80" y="60" font-size="12" fill="#6ee7b7">Búsqueda FTS5 &lt; 1 ms · Aplicaciones Autónomas · Cero Dependencia de Conectividad</text>
+    <text x="80" y="88" font-size="12" fill="#cbd5e1">• tools/build_mobile_db.py compila 16,136 actores y miles de votos en el archivo compacto storage/tlatoa.db.</text>
+    <text x="80" y="108" font-size="12" fill="#cbd5e1">• Distribución instantánea a Android (APK autónomo), Desktop (Windows/Linux/Mac) y Servidor FastAPI local.</text>
+  </g>
+</svg>

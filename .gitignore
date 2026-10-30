@@ -97,6 +97,7 @@ target/
 *.elf
 
 # --- Objetos y librerías compiladas (C / C++ / FFI / Shared Objects) ---
+bin/
 *.o
 *.obj
 *.a
@@ -130,3 +131,11 @@ storage/*.db
 
 ~/crates/
 crates/tlatoa-core/Cargo.toml
+
+# --- Obsidian Visor
+.obsidian/
+.obsidian/workspace.json
+.obsidian/graph.json
+.obsidian/core-plugins.json
+.obsidian/appearance.json
+.obsidian/app.json

@@ -43,3 +43,15 @@ Los datasets se almacenan en `storage/data/json/ejecutivo/` (34 archivos JSON en
 * `ejecutivo_cdmx_cronologia_completa.json`: 35 mandatarios en secuencia cronológica ininterrumpida (1929–2030) con hashes SHA-256 independientes por registro.
 
 
+
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[ESTADOS_COBERTURA|Mapa de Cobertura de las 32 Entidades]]
+* [[PLAYBOOK_LOCALES|Playbook de Extracción de Congresos Locales y Alcaldías]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]
+* [[DICCIONARIO_DE_DATOS|Diccionario de Datos y Entidades]]
+* [[ARQUITECTURA|Arquitectura del Sistema y Grafo de Conocimiento]]

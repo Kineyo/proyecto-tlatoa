@@ -88,9 +88,9 @@ pip install -r requirements.txt
 # 3. Iniciar servidor FastAPI con recarga en vivo
 uvicorn app.main:app --reload --port 8000
 
-# 4. Validar sintaxis Python y chequeo de salud CLI
-python3 -m py_compile app/main.py app/routers/web.py
-php tools/gateway.php health</code></pre>
+# 4. Validar sintaxis Python y codificación de datos
+python3 -m py_compile app/main.py app/routers/*.py app/services/*.py
+python3 tools/audit_encoding.py</code></pre>
 
                     <!-- Sublista desplegable: Agentes (Linux) -->
                     <div class="accordion" id="subAccordionLinux">
@@ -114,10 +114,9 @@ REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
 2. Todo desarrollo nuevo de backend, endpoints y vistas DEBE implementarse en `app/routers/`, `app/services/` y `app/templates/` (NO en `src/` ni `views/` salvo herramientas CLI).
 3. Los datasets JSON viven en `storage/data/json/`.
 4. Para verificar sintaxis y estado en terminal usa:
-   - `python3 -m py_compile app/main.py app/routers/web.py`
-   - `php tools/gateway.php lint "src/Services/MiArchivo.php"`
-   - `php tools/gateway.php health`
-   - `php tools/gateway.php git:status`
+   - `python3 -m py_compile app/main.py app/routers/*.py app/services/*.py`
+   - `python3 tools/audit_encoding.py`
+   - `git status`
 5. Mantén neutralidad estricta, archivos &lt; 400 líneas, enlaza siempre `fuente_url` oficial (.gob.mx) y nunca uses `git add .`.</code></pre>
                                 </div>
                             </div>
@@ -218,9 +217,9 @@ pip install -r requirements.txt
 # 3. Iniciar servidor FastAPI con recarga en vivo
 uvicorn app.main:app --reload --port 8000
 
-# 4. Validar sintaxis Python y chequeo de salud CLI
-python3 -m py_compile app/main.py app/routers/web.py
-php tools/gateway.php health</code></pre>
+# 4. Validar sintaxis Python y codificación de datos
+python3 -m py_compile app/main.py app/routers/*.py app/services/*.py
+python3 tools/audit_encoding.py</code></pre>
 
                     <!-- Sublista desplegable: Agentes (macOS) -->
                     <div class="accordion" id="subAccordionMac">
@@ -244,10 +243,9 @@ REGLAS OBLIGATORIAS DE RUTAS Y ENTORNOS:
 2. Todo desarrollo nuevo de backend, endpoints y vistas DEBE implementarse en `app/routers/`, `app/services/` y `app/templates/` (NO en `src/` ni `views/` salvo herramientas CLI).
 3. Los datasets JSON viven en `storage/data/json/`.
 4. Para verificar sintaxis y estado en terminal usa:
-   - `python3 -m py_compile app/main.py app/routers/web.py`
-   - `php tools/gateway.php lint "src/Services/MiArchivo.php"`
-   - `php tools/gateway.php health`
-   - `php tools/gateway.php git:status`
+   - `python3 -m py_compile app/main.py app/routers/*.py app/services/*.py`
+   - `python3 tools/audit_encoding.py`
+   - `git status`
 5. Mantén neutralidad estricta, archivos &lt; 400 líneas, enlaza siempre `fuente_url` oficial (.gob.mx) y nunca uses `git add .`.</code></pre>
                                 </div>
                             </div>

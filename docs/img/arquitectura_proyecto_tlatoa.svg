@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 760" width="100%" height="100%" style="background:#0f172a; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <linearGradient id="boxGradAndroid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f2b38" />
+    </linearGradient>
+    <linearGradient id="boxGradDesktop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#2d1f3d" />
+    </linearGradient>
+    <linearGradient id="boxGradWeb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#14362d" />
+    </linearGradient>
+    <linearGradient id="boxGradCore" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1e38" />
+      <stop offset="100%" stop-color="#28224d" />
+    </linearGradient>
+    <linearGradient id="boxGradData" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#192734" />
+      <stop offset="100%" stop-color="#16384c" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="30" y="25" width="1000" height="90" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+  <text x="60" y="62" font-size="24" font-weight="bold" fill="url(#headerGrad)">PROYECTO TLATOA — ARQUITECTURA MULTIPLATAFORMA &amp; OFFLINE-FIRST</text>
+  <text x="60" y="92" font-size="14" fill="#94a3b8">Ecosistema cívico independiente: Motor nativo Rust, Android Compose, Desktop Portable y Backend FastAPI</text>
+
+  <!-- Section 1: Clientes y Runtimes de Usuario (Top Row) -->
+  <rect x="30" y="135" width="1000" height="235" rx="14" fill="#141e33" stroke="#334155" stroke-width="1.2" />
+  <text x="55" y="165" font-size="15" font-weight="bold" fill="#38bdf8" letter-spacing="1">1. CLIENTES &amp; RUNTIMES DE PRESENTACIÓN AL CIUDADANO</text>
+
+  <!-- Android Card -->
+  <g transform="translate(55, 185)">
+    <rect width="290" height="165" rx="10" fill="url(#boxGradAndroid)" stroke="#0284c7" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="15" y="15" width="34" height="34" rx="8" fill="#0284c7" opacity="0.2" />
+    <text x="24" y="38" font-size="18" fill="#38bdf8">📱</text>
+    <text x="60" y="32" font-size="16" font-weight="bold" fill="#f8fafc">Android Nativo</text>
+    <text x="60" y="49" font-size="12" fill="#38bdf8">APK Directo 100% Offline</text>
+    <text x="16" y="80" font-size="12" fill="#cbd5e1">• Kotlin + Jetpack Compose UI</text>
+    <text x="16" y="100" font-size="12" fill="#cbd5e1">• Puente JNI a Rust (libtlatoa_core)</text>
+    <text x="16" y="120" font-size="12" fill="#cbd5e1">• Búsqueda instantánea en SQLite local</text>
+    <text x="16" y="140" font-size="11" fill="#94a3b8">Latencia: &lt; 1 ms · Sin datos móviles</text>
+  </g>
+
+  <!-- Desktop Card -->
+  <g transform="translate(385, 185)">
+    <rect width="290" height="165" rx="10" fill="url(#boxGradDesktop)" stroke="#c084fc" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="15" y="15" width="34" height="34" rx="8" fill="#c084fc" opacity="0.2" />
+    <text x="24" y="38" font-size="18" fill="#c084fc">💻</text>
+    <text x="60" y="32" font-size="16" font-weight="bold" fill="#f8fafc">Escritorio Nativo</text>
+    <text x="60" y="49" font-size="12" fill="#c084fc">Windows / Linux / macOS</text>
+    <text x="16" y="80" font-size="12" fill="#cbd5e1">• Motor compilado en Rust 2021</text>
+    <text x="16" y="100" font-size="12" fill="#cbd5e1">• Binario portable autocontenido</text>
+    <text x="16" y="120" font-size="12" fill="#cbd5e1">• Interfaz gráfica HTML/JS liviana</text>
+    <text x="16" y="140" font-size="11" fill="#94a3b8">Búsqueda FTS5 fonética ultra-rápida</text>
+  </g>
+
+  <!-- Web Card -->
+  <g transform="translate(715, 185)">
+    <rect width="290" height="165" rx="10" fill="url(#boxGradWeb)" stroke="#10b981" stroke-width="1.5" filter="url(#shadow)" />
+    <rect x="15" y="15" width="34" height="34" rx="8" fill="#10b981" opacity="0.2" />
+    <text x="24" y="38" font-size="18" fill="#10b981">🌐</text>
+    <text x="60" y="32" font-size="16" font-weight="bold" fill="#f8fafc">Servidor Web Local</text>
+    <text x="60" y="49" font-size="12" fill="#34d399">FastAPI + Jinja2 (Python)</text>
+    <text x="16" y="80" font-size="12" fill="#cbd5e1">• Servidor ASGI asíncrono (Uvicorn)</text>
+    <text x="16" y="100" font-size="12" fill="#cbd5e1">• Pre-indexación en RAM con orjson</text>
+    <text x="16" y="120" font-size="12" fill="#cbd5e1">• API REST pública y vistas dinámicas</text>
+    <text x="16" y="140" font-size="11" fill="#94a3b8">Puerto local 8000 · Modos P2P/Web</text>
+  </g>
+
+  <!-- Arrows connecting Clients to Data Core -->
+  <path d="M 200 350 L 200 395 Q 200 410 240 410 L 320 410" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4" />
+  <path d="M 530 350 L 530 400" fill="none" stroke="#c084fc" stroke-width="2" marker-end="url(#arrow)" />
+  <path d="M 860 350 L 860 395 Q 860 410 820 410 L 740 410" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" />
+
+  <!-- Section 2: Núcleo de Almacenamiento & Datos (Middle Row) -->
+  <rect x="30" y="390" width="1000" height="190" rx="14" fill="#141e33" stroke="#334155" stroke-width="1.2" />
+  <text x="55" y="420" font-size="15" font-weight="bold" fill="#818cf8" letter-spacing="1">2. CAPA DE DATOS ABIERTOS &amp; MOTOR DE BÚSQUEDA OFFLINE</text>
+
+  <!-- SQLite DB Card -->
+  <g transform="translate(55, 435)">
+    <rect width="460" height="125" rx="10" fill="url(#boxGradCore)" stroke="#6366f1" stroke-width="1.5" filter="url(#shadow)" />
+    <text x="25" y="35" font-size="16" font-weight="bold" fill="#a5b4fc">🗄️ Base SQLite FTS5 Unificada (tlatoa.db)</text>
+    <text x="25" y="60" font-size="12" fill="#e2e8f0">• 16,136 actores públicos indexados (Federales, Estatales, Alcaldes)</text>
+    <text x="25" y="80" font-size="12" fill="#e2e8f0">• Búsqueda en texto completo tolerante a acentos y caracteres especiales</text>
+    <text x="25" y="102" font-size="11" fill="#94a3b8">Empaquetada en Android APK y Desktop Portable · Cero servidor SQL externo</text>
+  </g>
+
+  <!-- JSON Datasets Card -->
+  <g transform="translate(545, 435)">
+    <rect width="460" height="125" rx="10" fill="url(#boxGradData)" stroke="#0ea5e9" stroke-width="1.5" filter="url(#shadow)" />
+    <text x="25" y="35" font-size="16" font-weight="bold" fill="#7dd3fc">📂 Datasets JSON Estructurados (storage/data/json/)</text>
+    <text x="25" y="60" font-size="12" fill="#e2e8f0">• 3,200+ archivos JSON canónicos auditables directamente en Git</text>
+    <text x="25" y="80" font-size="12" fill="#e2e8f0">• Historial de votaciones, asistencias, comisiones y cronologías 1929–2030</text>
+    <text x="25" y="102" font-size="11" fill="#94a3b8">Alimentan tanto al servidor FastAPI como al compilador SQLite FTS5</text>
+  </g>
+
+  <!-- Arrow from JSON to SQLite -->
+  <path d="M 545 495 L 525 495" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+  <polygon points="525,490 515,495 525,500" fill="#38bdf8" />
+
+  <!-- Section 3: Herramientas, Integridad y Trazabilidad (Bottom Row) -->
+  <rect x="30" y="600" width="1000" height="135" rx="14" fill="#141e33" stroke="#334155" stroke-width="1.2" />
+  <text x="55" y="630" font-size="15" font-weight="bold" fill="#34d399" letter-spacing="1">3. INTEGRIDAD CRIPTOGRÁFICA &amp; COMPILACIÓN AUTOMATIZADA</text>
+
+  <!-- Tool 1: Mobile DB Builder -->
+  <g transform="translate(55, 645)">
+    <rect width="460" height="72" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="18" y="28" font-size="13" font-weight="bold" fill="#f8fafc">⚙️ tools/build_mobile_db.py</text>
+    <text x="18" y="50" font-size="11" fill="#94a3b8">Compila todos los JSON en la base SQLite compacta para móviles en ~4 segundos.</text>
+  </g>
+
+  <!-- Tool 2: Integrity & Evidence -->
+  <g transform="translate(545, 645)">
+    <rect width="460" height="72" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="18" y="28" font-size="13" font-weight="bold" fill="#f8fafc">🛡️ Huellas SHA-256 de Evidencia (sha256_evidencia)</text>
+    <text x="18" y="50" font-size="11" fill="#94a3b8">Cada registro político enlaza a su fuente oficial (.gob.mx) y preserva su huella inalterable.</text>
+  </g>
+</svg>

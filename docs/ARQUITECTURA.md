@@ -1,19 +1,51 @@
 # Arquitectura de Proyecto Tlatoa
 
-## Principios de Diseño
-1. **Rendimiento Nativo y Low-Cost**: Servidor web asíncrono en **Python (FastAPI + Jinja2 + orjson)** para tiempos de respuesta ultra-rápidos (< 15 ms) con bajo consumo de memoria. Cero bases de datos complejas (sin SQL pesados); toda la información vive en archivos JSON estructurados y versionados en Git.
-2. **Trazabilidad y Evidencia**: Cada registro político posee un hash criptográfico SHA-256 (`sha256_evidencia`) vinculado a fuentes oficiales primarias (`.gob.mx`, POEs, DOF, SIL, INEGI, INE).
-3. **Separación de Capas**: El frontend jamás accede a datos directos sin pasar por los servicios de repositorio (`DataService`), garantizando sanitización, normalización de partidos y cálculo de facetas.
-4. **Dualidad y Resiliencia**: Capa primaria en Python para servicio web/API, y capa auxiliar en PHP 8.1+ para herramientas CLI de auditoría, runner unificado y scrapers históricos.
+> **Plataforma de Transparencia Ciudadana, Fiscalización del Poder y Grafo de Conocimiento Político.**  
+> Arquitectura multiplataforma, offline-first y de latencia ultra-baja sin dependencias de bases de datos pesadas.
 
 ---
 
-## Modelo Conceptual: Grafo Ciudadano y Desacoplamiento Persona vs. Mandato
+## 1. Visión General de la Arquitectura
 
-La identidad de un actor político trasciende a una sola asamblea o legislatura. Para evitar duplicidades y permitir auditorías históricas a lo largo del tiempo, la plataforma desacopla la persona física de sus cargos temporales:
+Proyecto Tlatoa opera como un ecosistema cívico desacoplado en tres capas: clientes de consulta inmediata (Android, Desktop y Web), núcleo de datos estructurados en JSON/SQLite FTS5, y canal de ingesta y preservación criptográfica.
+
+![Arquitectura Multiplataforma de Proyecto Tlatoa](img/arquitectura_proyecto_tlatoa.svg)
+
+### Principios Fundamentales de Diseño:
+1. **Rendimiento Nativo y Offline-First:** Motor nativo en **Rust 2021** y base de datos compacta **SQLite FTS5** (`storage/tlatoa.db`), permitiendo búsquedas en texto completo en menos de **1 milisegundo** sin necesidad de internet ni datos móviles.
+2. **Cero Bases de Datos Engorrosas:** Eliminación de servidores MySQL o PostgreSQL obligatorios. Toda la información histórica vive en **archivos JSON estructurados y versionados en Git** (`storage/data/json/`).
+3. **Servidor Web Asíncrono de Alto Rendimiento:** Backend en **Python (FastAPI + Jinja2 + orjson)** con pre-indexación en memoria RAM para latencias de respuesta menores a 15 ms.
+4. **Trazabilidad y Evidencia Criptográfica:** Cada registro político cuenta con un hash SHA-256 (`sha256_evidencia`) vinculado a fuentes oficiales primarias del Estado mexicano (`.gob.mx`).
+
+---
+
+## 2. Flujo de Datos y Sincronización Upstream
+
+El proyecto se alimenta periódicamente de fuentes primarias gubernamentales y mantiene sincronización continua con el repositorio original **Pulso Cívico** (`elpulsocivico/pulso-civico`), aplicando parches selectivos sin sobreescribir personalizaciones locales:
+
+![Flujo de Datos e Ingesta](img/flujo_sincronizacion_pulso_civico.svg)
+
+---
+
+## 3. Resumen Ejecutivo del Stack Tecnológico
+
+| Capa | Tecnología | Justificación y Ventaja |
+|---|---|---|
+| **Capa Móvil (Android)** | **Kotlin + Jetpack Compose** | Aplicación nativa 100% offline, Material Design 3, enlace JNI a motor Rust y SQLite FTS5. |
+| **Motor Nativo Offline & Desktop** | **Rust 2021 (FTS5 + tiny_http)** | Búsquedas en < 0.5 ms (`crates/tlatoa-core`), app de escritorio portable sin runtime de Python (`crates/tlatoa-desktop`). |
+| **Backend Primario (Web)** | **Python 3.10+ (FastAPI + Uvicorn)** | Arquitectura asíncrona (ASGI) de latencia ultra-baja (< 15 ms), tipado estricto con Pydantic y pre-indexación en memoria de más de 3,200 datasets con `orjson`. |
+| **Motor de Vistas** | **Jinja2 + HTML5 Semántico** | Renderizado server-side ultrarrápido, componentes modulares (`app/templates/partials/`), herencia de layouts y compatibilidad mobile-first. |
+| **Almacenamiento y Datos** | **Datasets JSON (`storage/data/json/`)** | Cero motores de bases de datos pesados. Más de 16,000 actores públicos y 33,000 registros electorales auditables directamente en Git. |
+| **Integridad & Fe Pública** | **Criptografía SHA-256** | Huella única (`sha256_evidencia`) ligada a fuentes oficiales (.gob.mx, POEs, DOF, SIL, INEGI). |
+
+---
+
+## 4. Modelo Conceptual: Grafo Ciudadano y Desacoplamiento Persona vs. Mandato
+
+La identidad de un actor político trasciende a una sola legislatura. Para evitar duplicidades y permitir auditorías históricas a lo largo del tiempo, la plataforma desacopla la persona física de sus cargos temporales:
 
 * **Entidad `politicos` (Persona Invariante):**  
-  Representa a la persona física: nombre oficial, fotografía principal, semblanza curricular, escolaridad y slug SEO permanente (`/politicos/{slug}`).
+  Representa a la persona física: nombre oficial, fotografía principal, semblanza curricular, escolaridad y slug permanente (`/politicos/{slug}`).
 * **Entidad `mandatos_legislativos` (Cargo Temporal en una Legislatura):**  
   Representa el ejercicio del cargo en un periodo constitucional determinado:
   - Cámara (Diputados / Senadores / Congreso Local) y Legislatura (ej. LXVI).
@@ -34,36 +66,7 @@ flowchart TD
 
 ---
 
-## Flujo de Datos del Sistema
-
-```mermaid
-flowchart TD
-  subgraph Ingesta["1. Fuentes Oficiales e Ingesta"]
-    A["Portales Oficiales (SIL, DOF, POEs, INEGI, IEEs)"] -->|Scrapers / HTTP Client| B["storage/data/json/*.json\n(3,201 datasets estructurados)"]
-  end
-
-  subgraph Backend["2. Núcleo Activo Python (FastAPI)"]
-    B -->|Carga ultrarrápida orjson| DS["DataService (app/services/data_service.py)"]
-    DS -->|Índice en Memoria / Caché| R_WEB["Web Router (app/routers/web.py)"]
-    DS -->|Serialización JSON| R_API["API Router (app/routers/api.py)"]
-    DS -->|Auditoría Ciudadana| R_ELEC["Electoral / Auditoría (app/routers/electoral.py)"]
-  end
-
-  subgraph Frontend["3. Presentación (Jinja2 + Bootstrap)"]
-    R_WEB --> TPL["app/templates/ (Plantillas Jinja2)"]
-    R_API --> CLIENT["Consumo AJAX / APIs Externas"]
-  end
-
-  subgraph Contingencia["4. Capa Auxiliar y CLI (PHP)"]
-    B -.-> DS_PHP["DataService PHP (src/Services/)"]
-    DS_PHP -.-> PHP_WEB["WebController (views/*.php)"]
-    GATEWAY["tools/gateway.php / tools/run.ps1"] -->|Linter, Health, Scrapers| B
-  end
-```
-
----
-
-## Estructura del Proyecto
+## 5. Estructura del Repositorio
 
 ```text
 android/                 Aplicación móvil nativa (Kotlin + Jetpack Compose + JNI a Rust)
@@ -80,31 +83,22 @@ app/                     Núcleo activo de la plataforma web en Python (FastAPI)
   templates/             Vistas Jinja2 (home.html, politico.html, layouts y partials)
 
 storage/                 Almacenamiento estático de datos abiertos y assets
-  tlatoa.db              Base de datos SQLite optimizada con FTS5 (< 18 MB) para apps móviles y escritorio
-  data/json/             Datasets ciudadanos publicados (3,201 JSONs / 33,368 registros)
+  tlatoa.db              Base de datos SQLite optimizada con FTS5 (< 40 MB) para apps móviles y escritorio
+  data/json/             Datasets ciudadanos publicados (3,200+ JSONs / 16,000+ actores públicos)
     municipios/          Historial electoral de 54 años y cabildos (2,474 JSONs)
     ejecutivo/           Gobernadores de 32 estados y CDMX (34 JSONs / 300 reg.)
-  raw/photos/            Fotografías oficiales de legisladores (distribuidas por pack externo)
-  cache/                 Caché de índices y páginas compiladas (ignorado en git)
+  raw/photos/            Fotografías oficiales de legisladores
 
-tools/                   Herramientas de línea de comandos, runner y scrapers
+tools/                   Herramientas de línea de comandos, runner y ETL
   build_mobile_db.py     ETL para compilar datasets JSON a SQLite FTS5 para Android/Desktop
-  run.ps1                Runner centralizado multiplataforma
-  gateway.php            CLI universal de inspección, linting y scrapers
-  core/                  Linter, GitOps, Inspector, CatalogBuilder, DataIntegrityAudit
-
-src/                     Capa legacy / contingencia en PHP
-  Controllers/           WebController, MunicipioController, AuditController
-  Services/              DataService, IngestServices, Scrapers
-  Core/                  Router, HttpClient, Logger, ViewHelper, PageCache
-
-views/                   Plantillas PHP legacy (contingencia / hosting compartido)
-requirements.txt         Dependencias Python (FastAPI, uvicorn, jinja2, orjson, pydantic)
+  sync_titulares_lxvi.py Sincronización e indexación de titulares y suplencias SIL
+  build_universal_search_index.py Constructor de índice jerárquico de búsqueda
+  audit_encoding.py      Auditor de codificación UTF-8 en datasets JSON
 ```
 
 ---
 
-## Rutas Web Principales
+## 6. Rutas Web Principales
 
 | Ruta | Motor | Descripción |
 |---|---|---|
@@ -117,30 +111,16 @@ requirements.txt         Dependencias Python (FastAPI, uvicorn, jinja2, orjson, 
 | `/comisiones`, `/comisiones/{slug}` | FastAPI + Jinja2 | Comisiones legislativas y composición de integrantes |
 | `/estudios`, `/estudios/{categoria}` | FastAPI + Jinja2 | Análisis de paridad de género, pluralidad y escolaridad parlamentaria |
 | `/api/buscar`, `/api/politicos` | FastAPI (JSON) | API de autocompletado y búsqueda parametrizada |
-| `/sitemap.xml`, `/llms.txt` | FastAPI | Indexación SEO y contexto para agentes de Inteligencia Artificial |
 
 ---
 
-## Requerimientos del Sistema (RF y RNF)
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
 
-### Requerimientos Funcionales (RF)
-* **RF-01 (Perfil Integral del Político):** Datos biográficos, contacto oficial, fotografía oficial y semáforos de actividad parlamentaria.
-* **RF-02 (Red Bidireccional de Suplencias):** Enlace mutuo entre titular y suplente con detalle del periodo de asunción.
-* **RF-03 (Navegación de Comisiones):** Detalle de integrantes clasificados por cargo (Presidente, Secretarios, Integrantes).
-* **RF-04 (Línea de Tiempo de Bancadas / Chapulineo):** Registro cronológico de cambios de partido a lo largo de legislaturas.
-* **RF-05 (Auditoría Criptográfica):** Todo registro incluye `fuente_url` (`.gob.mx`) y hash SHA-256 de respaldo.
-* **RF-06 (Búsqueda Rápida):** Búsqueda instantánea en cliente/servidor por nombre, estado, distrito o comisión (`Ctrl+K`).
-
-### Requerimientos No Funcionales (RNF)
-* **RNF-01 (Rendimiento Extremo):** Renderizado SSR en menos de 500 ms en redes móviles; consultas en memoria resueltas en < 15 ms gracias al motor FastAPI con orjson.
-* **RNF-02 (Arquitectura Sin Dependencias Pesadas):** Cero bases de datos complejas obligatorias; frontend ágil con Bootstrap 5.3 vía CDN y JavaScript Vanilla nativo.
-* **RNF-03 (SEO y Rich Snippets):** Metadatos OpenGraph para redes sociales y marcado estructurado Schema.org (`Person`, `GovernmentOrganization`).
-* **RNF-04 (Blindaje de Neutralidad):** Cero juicios o descalificaciones. Solo datos oficiales trazables a portales gubernamentales.
-
----
-
-## Seguridad Zero-Trust y Resiliencia
-- **Rate Limiting por IP**: Middleware nativo en `app/core/security.py` para protección contra abusos y scraping no autorizado.
-- **Cero Secretos en Repositorio**: Variables de entorno sensibles (`TELEGRAM_BOT_TOKEN`, claves privadas) aisladas en `.env` (ignorado en `.gitignore`).
-- **Aislamiento de Binarios Pesados**: Las más de 4,000 fotos de legisladores se excluyen del repositorio y se distribuyen vía almacenamiento externo, preservando un repositorio liviano.
-- **Protección de Rutas**: `.htaccess` bloquea el acceso HTTP directo a archivos de configuración, logs y datasets crudos.
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[PLAN_RESILIENCIA_Y_PRESERVACION|Protocolo de Resiliencia, Integridad Criptográfica y Preservación Digital]]
+* [[DATA_SCHEMA|Contratos de Datos y Esquemas JSON]]
+* [[DICCIONARIO_DE_DATOS|Diccionario de Datos y Entidades]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]
+* [[ESTADOS_COBERTURA|Mapa de Cobertura de las 32 Entidades]]
+* [[COMO_CREAR_UN_SCRAPER|Guía para Crear Scrapers]]
+* [[SOLUCION_DE_PROBLEMAS|Guía de Solución de Problemas (Troubleshooting)]]

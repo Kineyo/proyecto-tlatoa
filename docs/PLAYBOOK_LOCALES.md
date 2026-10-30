@@ -162,13 +162,10 @@ Antes de abrir un Pull Request en GitHub:
 
 1. **Colocar el archivo en la ruta correspondiente:**
    `storage/data/json/local/{estado_slug}/{archivo}.json`
-2. **Validar sintaxis y salud del proyecto:**
+2. **Validar sintaxis y codificación:**
    ```bash
-   # En Windows PowerShell:
-   powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 health
-
-   # En Linux / macOS / Bash:
-   php tools/gateway.php health
+   python3 -m py_compile app/main.py tools/*.py
+   python3 tools/audit_encoding.py
    ```
 3. **Hacer commit selectivo (nunca `git add .`):**
    ```bash
@@ -178,3 +175,15 @@ Antes de abrir un Pull Request en GitHub:
    git push origin data/{estado_slug}-locales
    ```
 4. **Abrir PR** indicando la fuente oficial consultada y el método de extracción utilizado.
+
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[ESTADOS_COBERTURA|Mapa de Cobertura de las 32 Entidades]]
+* [[PODER_EJECUTIVO_ESTADOS|Poder Ejecutivo Estatal y Regentes]]
+* [[COMO_CREAR_UN_SCRAPER|Guía para Crear un Scraper]]
+* [[DATA_SCHEMA|Contratos de Datos y Esquemas JSON]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]

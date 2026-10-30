@@ -1,157 +1,88 @@
-# Cómo crear un scraper (nueva legislatura o fuente)
+# Cómo Crear un Scraper o Extractor de Datos
 
-## 1. Antes de programar
-1. Revisa [FUENTES.md](FUENTES.md) y abre un Issue **"Nueva fuente"** para reservarla.
-2. Revisa `robots.txt` del portal.
-3. Guarda 2-3 páginas de ejemplo (HTML) para probar sin golpear el servidor.
+> **Proyecto Tlatoa** — Guía para extraer información parlamentaria y gubernamental oficial (.gob.mx).
 
-## 2. Estructura
-Los scrapers actuales viven en `src/Services/`:
-- `SilIngestService.php` — legisladores (SIL-SEGOB).
-- `ParliamentScraperService.php` — votaciones y asistencias (SITL).
+---
 
-Se registran en `tools/core/ScraperRouter.php` (fuentes `sil`, `votaciones`, `asistencias`).
+## 1. Antes de Programar
+1. **Verificar Fuente Oficial**: Consulta [FUENTES.md](FUENTES.md). Toda fuente debe ser gubernamental (`.gob.mx`, congreso estatal, POE, DOF).
+2. **Revisar Términos y `robots.txt`**: Respeta intervalos de consulta (mínimo 1 segundo entre peticiones).
+3. **Mapeo de Datos**: Revisa los contratos en [DATA_SCHEMA.md](DATA_SCHEMA.md) y [DICCIONARIO_DE_DATOS.md](DICCIONARIO_DE_DATOS.md).
 
-Para una fuente nueva:
-1. Crea `src/Services/<Fuente>ScraperService.php` (< 400 líneas; divide en helpers si crece).
-2. Usa **siempre** `Tlatoa\Core\HttpClient` (ya trae reintentos, rate limit y logs). No uses `file_get_contents` sobre URLs.
-3. Mapea los resultados a los DTOs de `src/DTO/` (ver [DATA_SCHEMA.md](DATA_SCHEMA.md)).
-4. Guarda el resultado en `storage/data/json/<camara>_leg_<numero>.json`.
-5. Registra un nuevo `case` en `ScraperRouter::run()`.
-6. Compila los nuevos datos a la base SQLite optimizada para las aplicaciones móviles y escritorio: `python3 tools/build_mobile_db.py`.
+---
 
-## 3. Esqueleto
-```php
-<?php
-declare(strict_types=1);
+## 2. Tecnologías Disponibles para Scraping
 
-namespace Tlatoa\Services;
+Proyecto Tlatoa soporta dos mecanismos de extracción:
 
-use Tlatoa\Core\HttpClient;
-use Tlatoa\Core\Logger;
-use Tlatoa\DTO\LegisladorDTO;
+### A. Motor Nativo Lua + Rust (`scrapers/`) — Recomendado
+Los scrapers en Lua se ejecutan directamente con el motor Rust embebido (`tlatoa-cli`), con cero dependencias externas y ejecución ultrarrápida:
 
-final class CongresoEjemploScraperService
+* **Ubicación:** `scrapers/<fuente>.lua` (Plantilla disponible: [`scrapers/template.lua`](../scrapers/template.lua)).
+* **APIs globales en Lua (`tlatoa.*`):**
+  * `tlatoa.http_get(url)`: Descarga HTTP/HTTPS nativo.
+  * `tlatoa.read_file(path)` / `tlatoa.write_file(path, content)`: Lectura y escritura en disco.
+  * `tlatoa.slugify(text)`: Normalización de cadenas y slugs.
+  * `tlatoa.log(msg)`: Logging con formato de la plataforma.
+* **Ejecución:**
+  ```bash
+  # Compilar tlatoa-cli (solo la primera vez)
+  cargo build --release -p tlatoa-core
+  
+  # Ejecutar scraper
+  ./crates/tlatoa-core/target/release/tlatoa-cli scrape scrapers/<fuente>.lua
+  ```
+
+### B. Scripts Python (`tools/`)
+Para procesamiento que requiere librerías especializadas (PDFs, regex complejas o procesamiento de archivos masivos):
+* **Ubicación:** `tools/<nombre_herramienta>.py` o `tools/core/`.
+* **Convención:** Usar `urllib.request` o `requests` con manejo de codificación UTF-8 estricto.
+* **Validación:** Comprobar con `python3 tools/audit_encoding.py`.
+
+---
+
+## 3. Formato y Salida de Datos
+
+Todo dataset extraído debe guardarse en `storage/data/json/` con la siguiente nomenclatura canónica:
+- **Congreso Federal:** `congreso_union_leg_<numero>.json`
+- **Congresos Estatales:** `congreso_<estado_slug>_leg_<numero>.json`
+- **Municipios y Cabildos:** `storage/data/json/municipios/<cvegeo>.json`
+
+### Campos Obligatorios de Metadatos
+Cada registro o archivo debe contener trazabilidad de evidencia:
+```json
 {
-    public function __construct(
-        private readonly array $config,
-        private readonly HttpClient $http,
-        private readonly Logger $logger
-    ) {}
-
-    /** @return LegisladorDTO[] */
-    public function ingest(int $legislatura): array
-    {
-        $url = 'https://congreso-ejemplo.gob.mx/diputados';
-        $response = $this->http->request('GET', $url);
-        // 1. Parsear HTML con DOMDocument + DOMXPath (nativo)
-        // 2. Construir LegisladorDTO por cada registro
-        // 3. metadata: ['fuente_url' => $url, 'fecha_extraccion' => date('Y-m-d')]
-        return [];
-    }
+  "fuente_url": "https://congreso-ejemplo.gob.mx/diputados",
+  "sha256_evidencia": "a1b2c3d4e5f6...",
+  "fecha_extraccion": "2026-10-29"
 }
 ```
 
-## 4. Checklist del PR
-- [ ] Validación de sintaxis sin errores según tu OS.
-- [ ] Cada registro tiene `metadata.fuente_url` y `metadata.fecha_extraccion`.
-- [ ] Rate limit ≥ 1000 ms; sin peticiones en paralelo.
-- [ ] Sin datos personales no públicos.
-- [ ] Fila actualizada en `docs/FUENTES.md`.
-- [ ] Base de datos offline actualizada con `python3 tools/build_mobile_db.py` (si se incorporan nuevos políticos).
+---
 
-## 5. Compilación, Ejecución y Prompts de Agentes según tu OS
+## 4. Compilación e Integración a la Base de Datos
 
-<details open>
-<summary><strong>🛠️ ¿Cómo compilar / ejecutar tu scraper según tu OS?</strong></summary>
-<br>
-
-<details>
-<summary><strong>🐧 Linux (Bash / Zsh)</strong></summary>
+Una vez generado o actualizado el archivo JSON, actualiza la base de datos binaria SQLite (`storage/tlatoa.db`) utilizada por las apps de escritorio y móviles:
 
 ```bash
-# Validar sintaxis del scraper PHP
-php tools/gateway.php lint "src/Services/CongresoEjemploScraperService.php,tools/core/ScraperRouter.php"
-
-# Ejecutar el scraper desde el gateway CLI
-php tools/gateway.php scrape congreso-ejemplo
-
-# Si integras el nuevo dataset en el servicio activo Python (FastAPI), verifica su compilación:
-python3 -m py_compile app/services/data_service.py
+python3 tools/build_mobile_db.py
 ```
 
-<details>
-<summary><strong>🤖 Agentes (Prompt adaptado para Linux)</strong></summary>
+---
 
-```text
-Lee `AGENTS.md`, `docs/DATA_SCHEMA.md` y `src/Services/SilIngestService.php` (entorno Linux, rutas POSIX `/`).
-1. Crea un scraper en `src/Services/<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
-2. Usa `Tlatoa\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
-3. Guarda el dataset en `storage/data/json/<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
-4. Registra la fuente en `tools/core/ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app/services/data_service.py`.
-5. Valida antes de finalizar con:
-   `php tools/gateway.php lint "src/Services/<Fuente>ScraperService.php,tools/core/ScraperRouter.php"`
-```
-</details>
-</details>
+## 5. Checklist Obligatorio para Pull Requests
+- [ ] La fuente es oficial (`.gob.mx`).
+- [ ] Registros con `fuente_url` y `sha256_evidencia`.
+- [ ] Codificación UTF-8 limpia validada con `python3 tools/audit_encoding.py`.
+- [ ] Sin datos personales privados (teléfonos, domicilios particulares).
+- [ ] Base SQLite recompilada con `tools/build_mobile_db.py`.
 
-<details>
-<summary><strong>🪟 Windows (PowerShell)</strong></summary>
+---
 
-```powershell
-# Validar sintaxis del scraper con el runner centralizado de Windows
-powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "src\Services\CongresoEjemploScraperService.php,tools\core\ScraperRouter.php"
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
 
-# Ejecutar el scraper desde el runner centralizado
-powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 scrape congreso-ejemplo
-
-# Si integras el nuevo dataset en el servicio activo Python (FastAPI), verifica su compilación:
-python -m py_compile app\services\data_service.py
-```
-
-<details>
-<summary><strong>🤖 Agentes (Prompt adaptado para Windows)</strong></summary>
-
-```text
-Lee `AGENTS.md`, `docs\DATA_SCHEMA.md` y `src\Services\SilIngestService.php` (entorno Windows PowerShell, rutas con `\`).
-1. Crea un scraper en `src\Services\<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
-2. Usa `Tlatoa\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
-3. Guarda el dataset en `storage\data\json\<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
-4. Registra la fuente en `tools\core\ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app\services\data_service.py`.
-5. Valida antes de finalizar con el runner centralizado:
-   `powershell -ExecutionPolicy Bypass -File .\tools\run.ps1 lint "src\Services\<Fuente>ScraperService.php,tools\core\ScraperRouter.php"`
-```
-</details>
-</details>
-
-<details>
-<summary><strong>🍎 macOS (Zsh / Bash)</strong></summary>
-
-```zsh
-# Validar sintaxis del scraper PHP
-php tools/gateway.php lint "src/Services/CongresoEjemploScraperService.php,tools/core/ScraperRouter.php"
-
-# Ejecutar el scraper desde el gateway CLI
-php tools/gateway.php scrape congreso-ejemplo
-
-# Si integras el nuevo dataset en el servicio activo Python (FastAPI), verifica su compilación:
-python3 -m py_compile app/services/data_service.py
-```
-
-<details>
-<summary><strong>🤖 Agentes (Prompt adaptado para macOS)</strong></summary>
-
-```text
-Lee `AGENTS.md`, `docs/DATA_SCHEMA.md` y `src/Services/SilIngestService.php` (entorno macOS, rutas POSIX `/`).
-1. Crea un scraper en `src/Services/<Fuente>ScraperService.php` (< 400 líneas) para <URL del portal> que extraiga <datos> de la legislatura <N>.
-2. Usa `Tlatoa\Core\HttpClient` y `LegisladorDTO`, PHP 8.1+ con `declare(strict_types=1);`, sin dependencias externas, parseando con `DOMDocument`/`DOMXPath`.
-3. Guarda el dataset en `storage/data/json/<camara>_leg_<numero>.json` incluyendo `metadata.fuente_url` y `fecha_extraccion`.
-4. Registra la fuente en `tools/core/ScraperRouter.php` y, si requiere visualización en la web activa, intégralo en Python dentro de `app/services/data_service.py`.
-5. Valida antes de finalizar con:
-   `php tools/gateway.php lint "src/Services/<Fuente>ScraperService.php,tools/core/ScraperRouter.php"`
-```
-</details>
-</details>
-
-</details>
-
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[DATA_SCHEMA|Contratos de Datos y Esquemas JSON]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]
+* [[ESTADOS_COBERTURA|Mapa de Cobertura de las 32 Entidades]]
+* [[ARQUITECTURA|Arquitectura del Sistema]]

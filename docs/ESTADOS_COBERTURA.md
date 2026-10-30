@@ -68,3 +68,15 @@
 4. **Validación y Merge**:
    - Correr en terminal: `powershell -File .\tools\run.ps1 lint:dir src/Services`
    - Someter Pull Request para auditoría automatizada (`tools/run.ps1 audit:pr`).
+
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[PLAYBOOK_LOCALES|Playbook de Extracción de Congresos Locales y Alcaldías]]
+* [[PODER_EJECUTIVO_ESTADOS|Poder Ejecutivo Estatal y Regentes]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]
+* [[COMO_CREAR_UN_SCRAPER|Guía para Crear un Scraper]]
+* [[ARQUITECTURA|Arquitectura del Sistema y Grafo de Conocimiento]]

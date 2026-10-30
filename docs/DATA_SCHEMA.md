@@ -96,3 +96,16 @@ Ver `src/DTO/SesionPlenoDTO.php` (asistencias por sesión).
 ---
 
 > Cambiar un DTO o esquema existente requiere verificación de compatibilidad con los datasets JSON ya consolidados.
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[DICCIONARIO_DE_DATOS|Diccionario de Datos y Entidades]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]
+* [[MANUAL_DE_DATOS_Y_EVIDENCIA|Manual de Datos y Evidencia]]
+* [[COMO_CREAR_UN_SCRAPER|Guía para Crear un Scraper]]
+* [[ARQUITECTURA|Arquitectura del Sistema y Grafo de Conocimiento]]
+* [[PLAN_RESILIENCIA_Y_PRESERVACION|Protocolo de Resiliencia y Preservación Digital]]
+

@@ -57,3 +57,14 @@ Si manejas información sensible o documentos internos que son de interés públ
 1. **Limpia los metadatos de los archivos:** Las fotos y PDFs guardan información oculta (marca de cámara, coordenadas GPS, usuario de Word). Puedes usar herramientas gratuitas y libres como **Metadata Cleaner** o **MAT2** antes de enviar un archivo.
 2. **No uses redes laborales:** Nunca envíes datos desde computadoras de oficinas gubernamentales ni redes Wi-Fi institucionales.
 3. **Proyecto Tlatoa nunca solicita datos personales:** Jamás te pediremos tu nombre real, credencial ni número telefónico para recibir información pública verificable.
+
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[MANIFIESTO|Manifiesto Ético y Neutralidad]]
+* [[MANUAL_DE_DATOS_Y_EVIDENCIA|Manual de Datos y Evidencia]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]
+* [[PLAN_RESILIENCIA_Y_PRESERVACION|Protocolo de Resiliencia y Preservación Digital]]

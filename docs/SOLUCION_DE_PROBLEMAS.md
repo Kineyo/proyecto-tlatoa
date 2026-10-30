@@ -111,14 +111,13 @@ Esta guía está diseñada para ayudar a **ciudadanos, periodistas y usuarios fi
   - Si no tienes `pydantic-settings`, [`app/core/config.py`](../app/core/config.py) carga automáticamente las variables desde `.env` y el sistema operativo.
   - Si `Pillow` (`PIL`) o la librería del sistema `libwebp` no están instalados al subir un acta electoral, [`app/services/image_service.py`](../app/services/image_service.py) degrada con elegancia a formato `JPEG` o resguardo binario con hash SHA-256 sin detener el servidor.
 
-### 4.2. El comando `php tools/gateway.php health` muestra `healthy: false`
-* **Causa:** El chequeo de salud audita tanto la sintaxis del código como que todos los directorios de `storage/` existan y que los 33,000+ registros históricos tengan `fuente_url`.
+### 4.2. Error de directorios faltantes en `storage/`
+* **Causa:** Si se clona el proyecto sin los directorios de almacenamiento local.
 * **Solución:**
-  1. Revisa que `"syntax_errors_count": 0` esté en cero.
-  2. Si algún directorio como `storage/raw/html` aparece con `"exists": false`, créalo con:
-     ```bash
-     mkdir -p storage/logs storage/data/json storage/raw/html storage/raw/photos
-     ```
+  Crear las carpetas necesarias con:
+  ```bash
+  mkdir -p storage/logs storage/data/json storage/raw/html storage/raw/photos storage/staging storage/cache
+  ```
 
 ---
 
@@ -128,3 +127,13 @@ Abre un reporte en la sección de **[Issues de GitHub](https://github.com/Kineyo
 1. En qué dispositivo estás (Android, Windows, Linux o macOS).
 2. Qué estabas buscando o haciendo cuando ocurrió el problema.
 3. Una captura de pantalla o el mensaje que apareció en pantalla.
+
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[ARQUITECTURA|Arquitectura del Sistema y Grafo de Conocimiento]]
+* [[COMO_CREAR_UN_SCRAPER|Guía para Crear un Scraper]]
+* [[MANUAL_DE_DATOS_Y_EVIDENCIA|Manual de Datos y Evidencia]]

@@ -18,9 +18,9 @@ No somos un partido político, no representamos a ninguna facción y no recibimo
 ---
 
 ## 3. Principio del Bazar y Reproducibilidad Criptográfica
-1. **Prohibido Subir Datasets Manuales**: Ningún archivo JSON puede ser editado a mano en el repositorio principal. Todo dato debe ser el resultado reproducible de un script extractor (*scraper*) registrado en `src/Services/`.
+1. **Prohibido Subir Datasets Manuales**: Ningún archivo JSON puede ser editado a mano de forma arbitraria. Todo dato debe ser el resultado reproducible de un script extractor registrado en `scrapers/` o `tools/`.
 2. **Cualquiera Puede Verificar**: Cualquier persona puede clonar el repositorio, ejecutar el scraper en su máquina local y obtener exactamente los mismos datos directamente de los servidores de gobierno.
-3. **Auditoría Automatizada**: El pipeline de integración y las herramientas de auditoría (`tools/gateway.php`) rechazan cualquier Pull Request cuyos registros carezcan de `fuente_url` oficial verificable o intenten inyectar fuentes no gubernamentales.
+3. **Auditoría Automatizada**: El pipeline de integración y las herramientas de auditoría (`tools/audit_encoding.py`) verifican que los registros cuenten con `fuente_url` oficial verificable y no contengan anomalías de codificación o fuentes apócrifas.
 
 ---
 
@@ -28,3 +28,14 @@ No somos un partido político, no representamos a ninguna facción y no recibimo
 1. **Código y Datos Abiertos**: Todo el código se distribuye bajo licencias abiertas y los datos son de dominio público.
 2. **Forks y Espejos Bienvenidos**: Si un nodo o servidor es dado de baja, cualquier ciudadano u organización tiene el derecho y la capacidad técnica de levantar un espejo o fork independiente con la totalidad de los datos históricos.
 3. **Meritocracia Técnica**: No existen comités de censura ni mandos burocráticos. Las mejoras se proponen mediante código funcional, trazabilidad y consenso técnico documentado en Pull Requests públicos.
+
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[ARQUITECTURA|Arquitectura del Sistema y Grafo de Conocimiento]]
+* [[PLAN_RESILIENCIA_Y_PRESERVACION|Protocolo de Resiliencia y Preservación Digital]]
+* [[PIPELINE_STAGING|Buzón de Colaboración y Staging]]
+* [[CONTRIBUTING|Guía de Contribución Comunitaria]]

@@ -173,3 +173,15 @@ Registra el historial político, administrativo, legislativo y escolar extraído
 * `estados`: (id, nombre, slug, abreviatura, senadores_total=3, diputados_distritos_total).
 * `partidos`: (id, sigla, nombre_completo, slug, color_primario_hex, color_secundario_hex, logo_path).
 * `legislaturas`: (id, numero_romano, inicio_ano, fin_ano, slug, es_actual).
+
+---
+
+## 🗺️ Navegación y Conexiones (Obsidian Graph)
+
+* [[README|Índice Principal de Proyecto Tlatoa]]
+* [[DATA_SCHEMA|Contratos de Datos y Esquemas JSON]]
+* [[ARQUITECTURA|Arquitectura del Sistema y Grafo de Conocimiento]]
+* [[FUENTES|Catálogo de Fuentes Primarias Gubernamentales]]
+* [[PODER_EJECUTIVO_ESTADOS|Poder Ejecutivo Estatal y Regentes]]
+* [[ESTADOS_COBERTURA|Mapa de Cobertura de las 32 Entidades]]
+
