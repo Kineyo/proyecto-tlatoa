@@ -19,7 +19,7 @@
             "entidad": "Nayarit",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Irma Graciana Arjona Crespo ",
+            "suplente_nombre": "Irma Graciana Arjona Crespo",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -29,7 +29,7 @@
             "preparacion_academica": "Odontología",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228393.jpg",
-            "foto_local_path": "storage/raw/photos/9228393.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228393.jpg",
             "total_comisiones": 5,
             "comisiones": [
                 {
@@ -215,7 +215,7 @@
             "entidad": "Nayarit",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Nancy Nelly Frías Moreno ",
+            "suplente_nombre": "Nancy Nelly Frías Moreno",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1984-03-20",
             "correo_institucional": null,
@@ -225,7 +225,7 @@
             "preparacion_academica": "Administración y Gestión Electoral",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228746.jpg",
-            "foto_local_path": "storage/raw/photos/9228746.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228746.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -392,7 +392,7 @@
             "entidad": "Nayarit",
             "distrito": "3 (Compos",
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Ángel Ignacio Chávez Solís ",
+            "suplente_nombre": "Ángel Ignacio Chávez Solís",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1979-01-30",
             "correo_institucional": null,
@@ -402,7 +402,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228389.jpg",
-            "foto_local_path": "storage/raw/photos/9228389.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228389.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -533,7 +533,7 @@
             "entidad": "Nayarit",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Elisa Maley Woo Barajas ",
+            "suplente_nombre": "Elisa Maley Woo Barajas",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -543,7 +543,7 @@
             "preparacion_academica": "Trabajo Social",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228391.jpg",
-            "foto_local_path": "storage/raw/photos/9228391.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228391.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -655,7 +655,7 @@
             "entidad": "Nayarit",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Alejandro García Monroy ",
+            "suplente_nombre": "Alejandro García Monroy",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -665,7 +665,7 @@
             "preparacion_academica": "Economía",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229030.jpg",
-            "foto_local_path": "storage/raw/photos/9229030.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229030.jpg",
             "total_comisiones": 12,
             "comisiones": [
                 {
@@ -938,7 +938,7 @@
             "preparacion_academica": "Educación",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229025.jpg",
-            "foto_local_path": "storage/raw/photos/9229025.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229025.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1021,7 +1021,7 @@
             "entidad": "Nayarit",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Ana Yusara Ramírez Salazar ",
+            "suplente_nombre": "Ana Yusara Ramírez Salazar",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1978-12-23",
             "correo_institucional": null,
@@ -1031,7 +1031,7 @@
             "preparacion_academica": "Derecho Penal",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229032.jpg",
-            "foto_local_path": "storage/raw/photos/9229032.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229032.jpg",
             "total_comisiones": 7,
             "comisiones": [
                 {
@@ -1275,6 +1275,52 @@
                     "color": "#e4405f"
                 }
             ]
+        },
+        {
+            "referencia_sil": "9229024",
+            "nombre_completo": "Bugarín Rodríguez Jasmine María",
+            "camara": "Senadores",
+            "legislatura": 66,
+            "partido": "PVEM",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "Nayarit",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Angélica Montes Rentería",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "27/10/1986",
+            "correo_institucional": "jasmine.bugarin@senado.gob.mx",
+            "telefono": "55 5345 3000 Ext.5820",
+            "ubicacion_oficina": "Senado de la República",
+            "ultimo_grado_estudios": "Licenciatura",
+            "preparacion_academica": "Derecho",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229024.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9229024.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Licenciatura en Derecho"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9229025",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:13"
+            }
         }
     ]
 }

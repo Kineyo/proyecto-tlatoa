@@ -19,7 +19,7 @@
             "entidad": "Tlaxcala",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Luis Alan Báez Medrano ",
+            "suplente_nombre": "Luis Alan Báez Medrano",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -29,7 +29,7 @@
             "preparacion_academica": "Administración de Empresas",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228254.jpg",
-            "foto_local_path": "storage/raw/photos/9228254.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228254.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -149,7 +149,7 @@
             "entidad": "Tlaxcala",
             "distrito": "3 (Zaca",
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Floria María Hernández Hernández ",
+            "suplente_nombre": "Floria María Hernández Hernández",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1988-01-01",
             "correo_institucional": null,
@@ -159,7 +159,7 @@
             "preparacion_academica": "Administración",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228276.jpg",
-            "foto_local_path": "storage/raw/photos/9228276.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228276.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -260,7 +260,7 @@
             "entidad": "Tlaxcala",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Noemí Jasmín Rivera Lobato ",
+            "suplente_nombre": "Noemí Jasmín Rivera Lobato",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -270,7 +270,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229156.jpg",
-            "foto_local_path": "storage/raw/photos/9229156.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229156.jpg",
             "total_comisiones": 6,
             "comisiones": [
                 {
@@ -380,7 +380,7 @@
             "entidad": "Tlaxcala",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Oscar Lobaton Corona ",
+            "suplente_nombre": "Oscar Lobaton Corona",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -390,7 +390,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228274.jpg",
-            "foto_local_path": "storage/raw/photos/9228274.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228274.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -506,7 +506,7 @@
             "entidad": "Tlaxcala",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Luis Gabino Vargas González ",
+            "suplente_nombre": "Luis Gabino Vargas González",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1942-05-03",
             "correo_institucional": null,
@@ -516,7 +516,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229162.jpg",
-            "foto_local_path": "storage/raw/photos/9229162.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229162.jpg",
             "total_comisiones": 5,
             "comisiones": [
                 {
@@ -702,7 +702,7 @@
             "entidad": "Tlaxcala",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Zonia Montiel Candaneda ",
+            "suplente_nombre": "Zonia Montiel Candaneda",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -712,7 +712,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229166.jpg",
-            "foto_local_path": "storage/raw/photos/9229166.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229166.jpg",
             "total_comisiones": 7,
             "comisiones": [
                 {
@@ -1017,7 +1017,7 @@
             "preparacion_academica": "Ciencias Políticas y Administración Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229165.jpg",
-            "foto_local_path": "storage/raw/photos/9229165.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229165.jpg",
             "total_comisiones": 7,
             "comisiones": [
                 {
@@ -1162,6 +1162,52 @@
                     "color": "#1877f2"
                 }
             ]
+        },
+        {
+            "referencia_sil": "9229164",
+            "nombre_completo": "Rivera Rivera Ana Lilia",
+            "camara": "Senadores",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "Tlaxcala",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Eréndira Olimpia Cova Brindis",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "14/02/1973",
+            "correo_institucional": "ana.lilia.rivera@senado.gob.mx",
+            "telefono": "55 5345 3000 Ext.3260, 3342 y 5487",
+            "ubicacion_oficina": "Senado de la República",
+            "ultimo_grado_estudios": "Licenciatura",
+            "preparacion_academica": "Derecho",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229164.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9229164.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Licenciatura en Derecho"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9229165",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:25"
+            }
         }
     ]
 }

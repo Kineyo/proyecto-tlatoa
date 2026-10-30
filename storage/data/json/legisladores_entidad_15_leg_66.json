@@ -29,7 +29,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228671.jpg",
-            "foto_local_path": "storage/raw/photos/9228671.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228671.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -87,7 +87,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "María Emma Aguilar Delgado ",
+            "suplente_nombre": "María Emma Aguilar Delgado",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -97,7 +97,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228704.jpg",
-            "foto_local_path": "storage/raw/photos/9228704.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228704.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -211,7 +211,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Rosa Carmen Alvarado Bello ",
+            "suplente_nombre": "Rosa Carmen Alvarado Bello",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -221,7 +221,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228666.jpg",
-            "foto_local_path": "storage/raw/photos/9228666.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228666.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -299,7 +299,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "María Guadalupe Campillo Martínez ",
+            "suplente_nombre": "María Guadalupe Campillo Martínez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -309,7 +309,7 @@
             "preparacion_academica": "Derechos Humanos",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228658.jpg",
-            "foto_local_path": "storage/raw/photos/9228658.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228658.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -431,7 +431,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Tanya Rellstab Carreto ",
+            "suplente_nombre": "Tanya Rellstab Carreto",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1969-05-01",
             "correo_institucional": null,
@@ -441,7 +441,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229368.jpg",
-            "foto_local_path": "storage/raw/photos/9229368.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229368.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -615,7 +615,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "María Guadalupe Aparicio Balbuena ",
+            "suplente_nombre": "María Guadalupe Aparicio Balbuena",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -625,7 +625,7 @@
             "preparacion_academica": "Educación",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228686.jpg",
-            "foto_local_path": "storage/raw/photos/9228686.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228686.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -713,7 +713,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Carmen Lizeth Balderas Soto ",
+            "suplente_nombre": "Carmen Lizeth Balderas Soto",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1968-07-26",
             "correo_institucional": null,
@@ -723,7 +723,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229190.jpg",
-            "foto_local_path": "storage/raw/photos/9229190.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229190.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -900,7 +900,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Emma Mondragón Navarrete ",
+            "suplente_nombre": "Emma Mondragón Navarrete",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -910,7 +910,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229292.jpg",
-            "foto_local_path": "storage/raw/photos/9229292.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229292.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -1083,7 +1083,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "José Guadalupe González Vargas ",
+            "suplente_nombre": "José Guadalupe González Vargas",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -1093,7 +1093,7 @@
             "preparacion_academica": "Derecho Constitucional y Amparo",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228698.jpg",
-            "foto_local_path": "storage/raw/photos/9228698.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228698.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -1204,7 +1204,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "María Guadalupe De la Rosa León ",
+            "suplente_nombre": "María Guadalupe De la Rosa León",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -1214,7 +1214,7 @@
             "preparacion_academica": "Comunicación y Cultura",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228702.jpg",
-            "foto_local_path": "storage/raw/photos/9228702.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228702.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1364,7 +1364,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Constanza Olvera Reyes ",
+            "suplente_nombre": "Constanza Olvera Reyes",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1976-10-19",
             "correo_institucional": null,
@@ -1374,7 +1374,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229370.jpg",
-            "foto_local_path": "storage/raw/photos/9229370.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229370.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1496,7 +1496,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Jessica Saraí Aguirre Olguín ",
+            "suplente_nombre": "Jessica Saraí Aguirre Olguín",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -1506,7 +1506,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228644.jpg",
-            "foto_local_path": "storage/raw/photos/9228644.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228644.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1620,7 +1620,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Alicia Castro Arévalos ",
+            "suplente_nombre": "Alicia Castro Arévalos",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -1630,7 +1630,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228642.jpg",
-            "foto_local_path": "storage/raw/photos/9228642.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228642.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1731,7 +1731,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Liliana Escobar Benítez ",
+            "suplente_nombre": "Liliana Escobar Benítez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1995-06-20",
             "correo_institucional": null,
@@ -1741,7 +1741,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228660.jpg",
-            "foto_local_path": "storage/raw/photos/9228660.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228660.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1857,7 +1857,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "José Alejandro Rodríguez Salgado ",
+            "suplente_nombre": "José Alejandro Rodríguez Salgado",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -1867,7 +1867,7 @@
             "preparacion_academica": "Ingeniería Forestal",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228712.jpg",
-            "foto_local_path": "storage/raw/photos/9228712.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228712.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1996,7 +1996,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Hilda Canto Arrieta ",
+            "suplente_nombre": "Hilda Canto Arrieta",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -2006,7 +2006,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228990.jpg",
-            "foto_local_path": "storage/raw/photos/9228990.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228990.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -2077,7 +2077,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Pedro Eduardo Pineda Delgado ",
+            "suplente_nombre": "Pedro Eduardo Pineda Delgado",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1980-01-27",
             "correo_institucional": null,
@@ -2202,7 +2202,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Juan Fernando Coronel Aranda ",
+            "suplente_nombre": "Juan Fernando Coronel Aranda",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1961-02-21",
             "correo_institucional": null,
@@ -2212,7 +2212,7 @@
             "preparacion_academica": "Ingeniería Mecánica y Eléctrica",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228684.jpg",
-            "foto_local_path": "storage/raw/photos/9228684.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228684.jpg",
             "total_comisiones": 6,
             "comisiones": [
                 {
@@ -2349,7 +2349,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229029.jpg",
-            "foto_local_path": "storage/raw/photos/9229029.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229029.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -2419,7 +2419,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Ileana del Socorro González Estrada ",
+            "suplente_nombre": "Ileana del Socorro González Estrada",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -2429,7 +2429,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228646.jpg",
-            "foto_local_path": "storage/raw/photos/9228646.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228646.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -2543,7 +2543,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Cecilia Victoria Villagrán ",
+            "suplente_nombre": "Cecilia Victoria Villagrán",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -2553,7 +2553,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228664.jpg",
-            "foto_local_path": "storage/raw/photos/9228664.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228664.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -2767,7 +2767,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Guadalupe Jasmín Rojas Jasso ",
+            "suplente_nombre": "Guadalupe Jasmín Rojas Jasso",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -2777,7 +2777,7 @@
             "preparacion_academica": "Administración Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229180.jpg",
-            "foto_local_path": "storage/raw/photos/9229180.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229180.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -2929,7 +2929,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "José Alberto Aguilar Iñárritu ",
+            "suplente_nombre": "José Alberto Aguilar Iñárritu",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -2939,7 +2939,7 @@
             "preparacion_academica": "Administración",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229296.jpg",
-            "foto_local_path": "storage/raw/photos/9229296.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229296.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -3058,7 +3058,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Alexa Fernanda Cervantes Villegas ",
+            "suplente_nombre": "Alexa Fernanda Cervantes Villegas",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -3068,7 +3068,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228786.jpg",
-            "foto_local_path": "storage/raw/photos/9228786.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228786.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -3179,7 +3179,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Luis Vallejo Valverde ",
+            "suplente_nombre": "Luis Vallejo Valverde",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -3189,7 +3189,7 @@
             "preparacion_academica": "Administración Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228696.jpg",
-            "foto_local_path": "storage/raw/photos/9228696.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228696.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -3336,7 +3336,7 @@
             "preparacion_academica": "Contabilidad y Administración Empresarial",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228683.jpg",
-            "foto_local_path": "storage/raw/photos/9228683.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228683.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -3420,7 +3420,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Felipe Vidal Gómez ",
+            "suplente_nombre": "Felipe Vidal Gómez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1961-05-05",
             "correo_institucional": null,
@@ -3430,7 +3430,7 @@
             "preparacion_academica": "Administración en Sistemas de Salud",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228706.jpg",
-            "foto_local_path": "storage/raw/photos/9228706.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228706.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -3585,7 +3585,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Cinthya Gabriela Franco López ",
+            "suplente_nombre": "Cinthya Gabriela Franco López",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -3595,7 +3595,7 @@
             "preparacion_academica": "Contaduría Pública y Finanzas",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228718.jpg",
-            "foto_local_path": "storage/raw/photos/9228718.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228718.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -3674,7 +3674,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Jazmín Jaimes Albarrán ",
+            "suplente_nombre": "Jazmín Jaimes Albarrán",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -3684,7 +3684,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229410.jpg",
-            "foto_local_path": "storage/raw/photos/9229410.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229410.jpg",
             "total_comisiones": 6,
             "comisiones": [
                 {
@@ -3875,7 +3875,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228653.jpg",
-            "foto_local_path": "storage/raw/photos/9228653.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228653.jpg",
             "total_comisiones": 0,
             "comisiones": [],
             "trayectoria_politica": [],
@@ -3920,7 +3920,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Graciela Pérez Romero ",
+            "suplente_nombre": "Graciela Pérez Romero",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -3930,7 +3930,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229002.jpg",
-            "foto_local_path": "storage/raw/photos/9229002.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229002.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -4026,7 +4026,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Mónica Eulalia Cruz Jiménez ",
+            "suplente_nombre": "Mónica Eulalia Cruz Jiménez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -4036,7 +4036,7 @@
             "preparacion_academica": "Ciencias Políticas y Administración Urbana",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228668.jpg",
-            "foto_local_path": "storage/raw/photos/9228668.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228668.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -4137,7 +4137,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Viridiana García González ",
+            "suplente_nombre": "Viridiana García González",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -4147,7 +4147,7 @@
             "preparacion_academica": "Ciencias Políticas y Gestión Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228654.jpg",
-            "foto_local_path": "storage/raw/photos/9228654.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228654.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -4236,7 +4236,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Jaime Gonzalo Vargas Álvarez ",
+            "suplente_nombre": "Jaime Gonzalo Vargas Álvarez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1963-08-19",
             "correo_institucional": null,
@@ -4246,7 +4246,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228700.jpg",
-            "foto_local_path": "storage/raw/photos/9228700.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228700.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -4359,7 +4359,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Marcos Pavel Ramírez Acevedo ",
+            "suplente_nombre": "Marcos Pavel Ramírez Acevedo",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -4369,7 +4369,7 @@
             "preparacion_academica": "Médico Cirujano",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228992.jpg",
-            "foto_local_path": "storage/raw/photos/9228992.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228992.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -4498,7 +4498,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Alejandra García Macías ",
+            "suplente_nombre": "Alejandra García Macías",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -4508,7 +4508,7 @@
             "preparacion_academica": "Administración Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228638.jpg",
-            "foto_local_path": "storage/raw/photos/9228638.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228638.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -4667,7 +4667,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Gabriela Calleja Corona ",
+            "suplente_nombre": "Gabriela Calleja Corona",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -4677,7 +4677,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228678.jpg",
-            "foto_local_path": "storage/raw/photos/9228678.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228678.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -4806,7 +4806,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Sonia Castillo Ortega ",
+            "suplente_nombre": "Sonia Castillo Ortega",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -4816,7 +4816,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228688.jpg",
-            "foto_local_path": "storage/raw/photos/9228688.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228688.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -4937,7 +4937,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Óscar Brazil Montalvo Duarte ",
+            "suplente_nombre": "Óscar Brazil Montalvo Duarte",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -4947,7 +4947,7 @@
             "preparacion_academica": "Ciencias de la Educación",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228716.jpg",
-            "foto_local_path": "storage/raw/photos/9228716.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228716.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -5129,7 +5129,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Kennya Joseline Oropeza Peña ",
+            "suplente_nombre": "Kennya Joseline Oropeza Peña",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -5139,7 +5139,7 @@
             "preparacion_academica": "Desarrollo Comunitario",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228680.jpg",
-            "foto_local_path": "storage/raw/photos/9228680.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228680.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -5252,7 +5252,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228663.jpg",
-            "foto_local_path": "storage/raw/photos/9228663.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228663.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -5372,7 +5372,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Jorge Alejandro Albarrán Velázquez ",
+            "suplente_nombre": "Jorge Alejandro Albarrán Velázquez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1964-04-26",
             "correo_institucional": null,
@@ -5382,7 +5382,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229412.jpg",
-            "foto_local_path": "storage/raw/photos/9229412.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229412.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -5527,7 +5527,7 @@
             "preparacion_academica": "Sociología",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229023.jpg",
-            "foto_local_path": "storage/raw/photos/9229023.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229023.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -5625,7 +5625,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Margarito Arias Benítez ",
+            "suplente_nombre": "Margarito Arias Benítez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -5635,7 +5635,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228780.jpg",
-            "foto_local_path": "storage/raw/photos/9228780.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228780.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -5771,7 +5771,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Brenda Anayeli Lara Hernández ",
+            "suplente_nombre": "Brenda Anayeli Lara Hernández",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -5781,7 +5781,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228788.jpg",
-            "foto_local_path": "storage/raw/photos/9228788.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228788.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -5896,7 +5896,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Angelina Carreño Mijares ",
+            "suplente_nombre": "Angelina Carreño Mijares",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -5906,7 +5906,7 @@
             "preparacion_academica": "Psicología Moderna",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229304.jpg",
-            "foto_local_path": "storage/raw/photos/9229304.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229304.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -6073,7 +6073,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Valeria Ximena Cisneros Bravo ",
+            "suplente_nombre": "Valeria Ximena Cisneros Bravo",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -6083,7 +6083,7 @@
             "preparacion_academica": "Administración Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228676.jpg",
-            "foto_local_path": "storage/raw/photos/9228676.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228676.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -6235,7 +6235,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Ana Paola Guerra Flores ",
+            "suplente_nombre": "Ana Paola Guerra Flores",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1979-11-04",
             "correo_institucional": null,
@@ -6245,7 +6245,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228672.jpg",
-            "foto_local_path": "storage/raw/photos/9228672.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228672.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -6391,7 +6391,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Óscar Alejandro González Márquez ",
+            "suplente_nombre": "Óscar Alejandro González Márquez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1963-09-23",
             "correo_institucional": null,
@@ -6401,7 +6401,7 @@
             "preparacion_academica": "Economía y Buen Gobierno",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228690.jpg",
-            "foto_local_path": "storage/raw/photos/9228690.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228690.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -6497,7 +6497,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Iván Rodrygo García Escamilla ",
+            "suplente_nombre": "Iván Rodrygo García Escamilla",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1965-10-29",
             "correo_institucional": null,
@@ -6507,7 +6507,7 @@
             "preparacion_academica": "Educador Físico",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228694.jpg",
-            "foto_local_path": "storage/raw/photos/9228694.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228694.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -6647,7 +6647,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "María del Carmen Becerril De la Cruz ",
+            "suplente_nombre": "María del Carmen Becerril De la Cruz",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -6657,7 +6657,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228674.jpg",
-            "foto_local_path": "storage/raw/photos/9228674.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228674.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -6833,7 +6833,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Víctor Hugo Mara Montoya ",
+            "suplente_nombre": "Víctor Hugo Mara Montoya",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -6843,7 +6843,7 @@
             "preparacion_academica": "Educación",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228708.jpg",
-            "foto_local_path": "storage/raw/photos/9228708.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228708.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -6949,7 +6949,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Esperanza Badillo Godínez ",
+            "suplente_nombre": "Esperanza Badillo Godínez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1948-03-29",
             "correo_institucional": null,
@@ -6959,7 +6959,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228640.jpg",
-            "foto_local_path": "storage/raw/photos/9228640.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228640.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -7071,7 +7071,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228785.jpg",
-            "foto_local_path": "storage/raw/photos/9228785.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228785.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -7159,7 +7159,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Germán Sendic Contreras García ",
+            "suplente_nombre": "Germán Sendic Contreras García",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -7169,7 +7169,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228656.jpg",
-            "foto_local_path": "storage/raw/photos/9228656.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228656.jpg",
             "total_comisiones": 5,
             "comisiones": [
                 {
@@ -7324,7 +7324,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Valeria Naomi Pérez Francia ",
+            "suplente_nombre": "Valeria Naomi Pérez Francia",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1970-05-02",
             "correo_institucional": null,
@@ -7334,7 +7334,7 @@
             "preparacion_academica": "Administración Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228648.jpg",
-            "foto_local_path": "storage/raw/photos/9228648.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228648.jpg",
             "total_comisiones": 0,
             "comisiones": [],
             "trayectoria_politica": [
@@ -7449,7 +7449,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Laura Mónica Guerra Navarro ",
+            "suplente_nombre": "Laura Mónica Guerra Navarro",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -7459,7 +7459,7 @@
             "preparacion_academica": "Diseño y Comunicación Visual",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228650.jpg",
-            "foto_local_path": "storage/raw/photos/9228650.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228650.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -7596,7 +7596,7 @@
             "entidad": "México",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Eleazar Rodríguez Ortiz ",
+            "suplente_nombre": "Eleazar Rodríguez Ortiz",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -7606,7 +7606,7 @@
             "preparacion_academica": "Médico Cirujano",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228710.jpg",
-            "foto_local_path": "storage/raw/photos/9228710.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228710.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -7732,6 +7732,322 @@
                 "suplente_referencia_sil": "9228711",
                 "fecha_extraccion": "2026-10-09T19:35:45+02:00"
             }
+        },
+        {
+            "referencia_sil": "9228670",
+            "nombre_completo": "De la Rosa García Juan Hugo",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "México",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Zaria Aguilera Claro",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "02/04/1958",
+            "correo_institucional": "juan.delarosa@diputados.gob.mx",
+            "telefono": "55 5036 0000 Ext. 61502.",
+            "ubicacion_oficina": "Edificio B, 3er. Piso.",
+            "ultimo_grado_estudios": "Preparatoria",
+            "preparacion_academica": "",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228670.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228670.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Preparatoria en"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228671",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:06"
+            }
+        },
+        {
+            "referencia_sil": "9229028",
+            "nombre_completo": "Llerenas Morales Vidal",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Representación Proporcional",
+            "entidad": "México",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Sebastián Ebrard Lestrade",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "02/02/1972",
+            "correo_institucional": "vidal.llerenas@diputados.gob.mx",
+            "telefono": "",
+            "ubicacion_oficina": "",
+            "ultimo_grado_estudios": "Doctorado",
+            "preparacion_academica": "Administración y Gerencia Pública",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229028.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9229028.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Doctorado en Administración y Gerencia Pública"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9229029",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:06"
+            }
+        },
+        {
+            "referencia_sil": "9228682",
+            "nombre_completo": "Carballo Gutiérrez Luis Alberto",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "PVEM",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "México",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "José Luis Hernández Pérez",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "18/03/1981",
+            "correo_institucional": "",
+            "telefono": "",
+            "ubicacion_oficina": "",
+            "ultimo_grado_estudios": "",
+            "preparacion_academica": "",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228682.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228682.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228683",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:07"
+            }
+        },
+        {
+            "referencia_sil": "9228652",
+            "nombre_completo": "Beltrán Reyes Anay",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "México",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Yessica Juárez García",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "27/09/1981",
+            "correo_institucional": "anay.beltran@diputados.gob.mx",
+            "telefono": "55 5036 0000 Ext. 61462.",
+            "ubicacion_oficina": "Edificio B, 3er. Piso.",
+            "ultimo_grado_estudios": "Licenciatura",
+            "preparacion_academica": "Derecho",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228652.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228652.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Licenciatura en Derecho"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228653",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:07"
+            }
+        },
+        {
+            "referencia_sil": "9228662",
+            "nombre_completo": "Córdoba Navarrete Alma Monserrat",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "México",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Alma Delia Navarrete Rivera",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "14/02/2002",
+            "correo_institucional": "alma.cordoba@diputados.gob.mx",
+            "telefono": "55 5036 0000 Ext. 61500.",
+            "ubicacion_oficina": "Edificio B, 3er. Piso.",
+            "ultimo_grado_estudios": "Pasante",
+            "preparacion_academica": "Arte y Diseño",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228662.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228662.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Pasante en Arte y Diseño"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228663",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:08"
+            }
+        },
+        {
+            "referencia_sil": "9229022",
+            "nombre_completo": "Cabiedes Uranga Francisco Javier",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Representación Proporcional",
+            "entidad": "México",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "José Alejandro Peña Villa",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "28/01/1973",
+            "correo_institucional": "francisco.cabiedes@diputados.gob.mx",
+            "telefono": "",
+            "ubicacion_oficina": "",
+            "ultimo_grado_estudios": "Pasante/Licenciatura trunca",
+            "preparacion_academica": "",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229022.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9229022.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Pasante/Licenciatura trunca en"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9229023",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:08"
+            }
+        },
+        {
+            "referencia_sil": "9228784",
+            "nombre_completo": "Samperio Montaño Juan Ignacio",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "MC",
+            "principio_eleccion": "Representación Proporcional",
+            "entidad": "México",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Alfonso Armando Vidales Vargas Ochoa",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "04/10/1957",
+            "correo_institucional": "juan.samperio@diputados.gob.mx",
+            "telefono": "55 5036 0000 Ext. 62619.",
+            "ubicacion_oficina": "Edificio F, 3er Piso.",
+            "ultimo_grado_estudios": "Licenciatura",
+            "preparacion_academica": "Derecho",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228784.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228784.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Licenciatura en Derecho"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228785",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:09"
+            }
         }
     ],
     "senadores": [
@@ -7745,7 +8061,7 @@
             "entidad": "México",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Monzeisela García Ramos ",
+            "suplente_nombre": "Monzeisela García Ramos",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1971-07-30",
             "correo_institucional": null,
@@ -7755,7 +8071,7 @@
             "preparacion_academica": "Psicología",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228976.jpg",
-            "foto_local_path": "storage/raw/photos/9228976.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228976.jpg",
             "total_comisiones": 9,
             "comisiones": [
                 {
@@ -7898,7 +8214,7 @@
             "entidad": "México",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Sandra Luz Falcón Venegas ",
+            "suplente_nombre": "Sandra Luz Falcón Venegas",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1956-06-18",
             "correo_institucional": null,
@@ -7908,7 +8224,7 @@
             "preparacion_academica": "Médico Cirujano",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228972.jpg",
-            "foto_local_path": "storage/raw/photos/9228972.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228972.jpg",
             "total_comisiones": 8,
             "comisiones": [
                 {
@@ -8168,7 +8484,7 @@
             "entidad": "México",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Héctor Quezada Quezada ",
+            "suplente_nombre": "Héctor Quezada Quezada",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -8178,7 +8494,7 @@
             "preparacion_academica": "Administración Pública",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228996.jpg",
-            "foto_local_path": "storage/raw/photos/9228996.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228996.jpg",
             "total_comisiones": 8,
             "comisiones": [
                 {

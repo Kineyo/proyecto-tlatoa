@@ -19,7 +19,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Magdalena Ramírez Pacheco ",
+            "suplente_nombre": "Magdalena Ramírez Pacheco",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1971-12-30",
             "correo_institucional": null,
@@ -29,7 +29,7 @@
             "preparacion_academica": "Administración",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228593.jpg",
-            "foto_local_path": "storage/raw/photos/9228593.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228593.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -194,7 +194,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Nayeli Abundis Muñoz ",
+            "suplente_nombre": "Nayeli Abundis Muñoz",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -204,7 +204,7 @@
             "preparacion_academica": "Gestión Pública Aplicada",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228603.jpg",
-            "foto_local_path": "storage/raw/photos/9228603.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228603.jpg",
             "total_comisiones": 5,
             "comisiones": [
                 {
@@ -333,7 +333,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Patricia Guadalupe Pérez Ortega ",
+            "suplente_nombre": "Patricia Guadalupe Pérez Ortega",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -343,7 +343,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228591.jpg",
-            "foto_local_path": "storage/raw/photos/9228591.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228591.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -475,7 +475,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Cecilia Monserrat Nieto Arias ",
+            "suplente_nombre": "Cecilia Monserrat Nieto Arias",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -485,7 +485,7 @@
             "preparacion_academica": "Administración",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228589.jpg",
-            "foto_local_path": "storage/raw/photos/9228589.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228589.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -602,7 +602,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Judith Magaly Nájera Valero ",
+            "suplente_nombre": "Judith Magaly Nájera Valero",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -612,7 +612,7 @@
             "preparacion_academica": "Forestal",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228599.jpg",
-            "foto_local_path": "storage/raw/photos/9228599.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228599.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -695,7 +695,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Mayra Wuences Cardona ",
+            "suplente_nombre": "Mayra Wuences Cardona",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -705,7 +705,7 @@
             "preparacion_academica": "Ingeniero Agrónomo",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228597.jpg",
-            "foto_local_path": "storage/raw/photos/9228597.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228597.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -794,7 +794,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Usi Nataly Guerrero Bravo ",
+            "suplente_nombre": "Usi Nataly Guerrero Bravo",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1957-08-17",
             "correo_institucional": null,
@@ -804,7 +804,7 @@
             "preparacion_academica": "Ciencias Sociales",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228601.jpg",
-            "foto_local_path": "storage/raw/photos/9228601.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228601.jpg",
             "total_comisiones": 2,
             "comisiones": [
                 {
@@ -969,7 +969,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "José de Jesús Herrera Pintos ",
+            "suplente_nombre": "José de Jesús Herrera Pintos",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -979,7 +979,7 @@
             "preparacion_academica": "Contaduría Administrativa",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228595.jpg",
-            "foto_local_path": "storage/raw/photos/9228595.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228595.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -1077,7 +1077,7 @@
             "entidad": "Guerrero",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "María Elena Ríos Ortiz ",
+            "suplente_nombre": "María Elena Ríos Ortiz",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1988-05-07",
             "correo_institucional": null,
@@ -1087,7 +1087,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228982.jpg",
-            "foto_local_path": "storage/raw/photos/9228982.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228982.jpg",
             "total_comisiones": 5,
             "comisiones": [
                 {
@@ -1188,7 +1188,7 @@
             "entidad": "Guerrero",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Juan José Castro Justo ",
+            "suplente_nombre": "Juan José Castro Justo",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1957-05-15",
             "correo_institucional": null,
@@ -1198,7 +1198,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228946.jpg",
-            "foto_local_path": "storage/raw/photos/9228946.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228946.jpg",
             "total_comisiones": 7,
             "comisiones": [
                 {
@@ -1478,7 +1478,7 @@
             "preparacion_academica": "Comunicación y Relaciones Públicas",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228945.jpg",
-            "foto_local_path": "storage/raw/photos/9228945.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228945.jpg",
             "total_comisiones": 8,
             "comisiones": [
                 {
@@ -1631,7 +1631,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228941.jpg",
-            "foto_local_path": "storage/raw/photos/9228941.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228941.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -1683,6 +1683,98 @@
                 "fecha_extraccion": "2026-10-09T16:54:43+02:00"
             },
             "redes_sociales": []
+        },
+        {
+            "referencia_sil": "9228944",
+            "nombre_completo": "Salgado Macedonio José Félix",
+            "camara": "Senadores",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "Guerrero",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Francisco Arturo Pérez Pérez",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "14/01/1957",
+            "correo_institucional": "jfelix.salgado@senado.gob.mx",
+            "telefono": "55 5345 3000 Ext.3118, 3416 y 5392",
+            "ubicacion_oficina": "Senado de la República",
+            "ultimo_grado_estudios": "Maestría",
+            "preparacion_academica": "Administración y Políticas Públicas con Enfoque en Gestión Gubernamental",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228944.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228944.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Maestría en Administración y Políticas Públicas con Enfoque en Gestión Gubernamental"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228945",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:12"
+            }
+        },
+        {
+            "referencia_sil": "9228940",
+            "nombre_completo": "Mojica Morga Beatriz",
+            "camara": "Senadores",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "Guerrero",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Patricia Guadalupe Ramírez Bazán",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "25/02/1973",
+            "correo_institucional": "beatriz.mojica@senado.gob.mx",
+            "telefono": "55 5345 3000 Ext.2980, 2979 y 5827",
+            "ubicacion_oficina": "Senado de la República",
+            "ultimo_grado_estudios": "Maestría",
+            "preparacion_academica": "Políticas Públicas",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228940.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228940.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Maestría en Políticas Públicas"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228941",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:13"
+            }
         }
     ]
 }

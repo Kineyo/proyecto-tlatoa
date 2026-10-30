@@ -19,7 +19,7 @@
             "entidad": "Quintana Roo",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Guadalupe del Socorro Uitz Uitz ",
+            "suplente_nombre": "Guadalupe del Socorro Uitz Uitz",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -29,7 +29,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228344.jpg",
-            "foto_local_path": "storage/raw/photos/9228344.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228344.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -198,7 +198,7 @@
             "entidad": "Quintana Roo",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Adriana Del Rosario Chan Canul ",
+            "suplente_nombre": "Adriana Del Rosario Chan Canul",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -208,7 +208,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228347.jpg",
-            "foto_local_path": "storage/raw/photos/9228347.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228347.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -365,7 +365,7 @@
             "entidad": "Quintana Roo",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Guillermo Rubén Garrido Herrera ",
+            "suplente_nombre": "Guillermo Rubén Garrido Herrera",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1983-11-05",
             "correo_institucional": null,
@@ -375,7 +375,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228340.jpg",
-            "foto_local_path": "storage/raw/photos/9228340.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228340.jpg",
             "total_comisiones": 5,
             "comisiones": [
                 {
@@ -526,7 +526,7 @@
             "entidad": "Quintana Roo",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Janine Patricia Quijano Tapia ",
+            "suplente_nombre": "Janine Patricia Quijano Tapia",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1976-08-26",
             "correo_institucional": null,
@@ -536,7 +536,7 @@
             "preparacion_academica": "Arquitectura",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229358.jpg",
-            "foto_local_path": "storage/raw/photos/9229358.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229358.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -653,7 +653,7 @@
             "entidad": "Quintana Roo",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Patricia Sánchez Carrillo ",
+            "suplente_nombre": "Patricia Sánchez Carrillo",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -663,7 +663,7 @@
             "preparacion_academica": "Responsabilidad Social",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229122.jpg",
-            "foto_local_path": "storage/raw/photos/9229122.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229122.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -816,7 +816,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228875.jpg",
-            "foto_local_path": "storage/raw/photos/9228875.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228875.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -880,7 +880,7 @@
             "entidad": "Quintana Roo",
             "distrito": null,
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Freyda Marybel Villegas Canché ",
+            "suplente_nombre": "Freyda Marybel Villegas Canché",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -890,7 +890,7 @@
             "preparacion_academica": "Ciencias de la Educación",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228342.jpg",
-            "foto_local_path": "storage/raw/photos/9228342.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228342.jpg",
             "total_comisiones": 2,
             "comisiones": [
                 {
@@ -1047,6 +1047,52 @@
                     "color": "#e4405f"
                 }
             ]
+        },
+        {
+            "referencia_sil": "9228874",
+            "nombre_completo": "Natale López Juan Carlos",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Representación Proporcional",
+            "entidad": "Quintana Roo",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Enrique Vázquez Navarro",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "26/01/1981",
+            "correo_institucional": "",
+            "telefono": "",
+            "ubicacion_oficina": "",
+            "ultimo_grado_estudios": "Doctorado",
+            "preparacion_academica": "Administración Pública",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228874.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228874.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Doctorado en Administración Pública"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228875",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:10"
+            }
         }
     ],
     "senadores": [
@@ -1070,7 +1116,7 @@
             "preparacion_academica": "Negocios Internacionales",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229087.jpg",
-            "foto_local_path": "storage/raw/photos/9229087.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229087.jpg",
             "total_comisiones": 7,
             "comisiones": [
                 {
@@ -1179,7 +1225,7 @@
             "entidad": "Quintana Roo",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Maribel Cruz Rodríguez ",
+            "suplente_nombre": "Maribel Cruz Rodríguez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -1189,7 +1235,7 @@
             "preparacion_academica": "Terapia Cognitiva Conductual",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229082.jpg",
-            "foto_local_path": "storage/raw/photos/9229082.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229082.jpg",
             "total_comisiones": 6,
             "comisiones": [
                 {
@@ -1375,7 +1421,7 @@
             "entidad": "Quintana Roo",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Araceli Sandoval Ortiz ",
+            "suplente_nombre": "Araceli Sandoval Ortiz",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -1385,7 +1431,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229088.jpg",
-            "foto_local_path": "storage/raw/photos/9229088.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9229088.jpg",
             "total_comisiones": 9,
             "comisiones": [
                 {
@@ -1591,6 +1637,52 @@
                     "color": "#e4405f"
                 }
             ]
+        },
+        {
+            "referencia_sil": "9229086",
+            "nombre_completo": "Segura Vázquez Eugenio",
+            "camara": "Senadores",
+            "legislatura": 66,
+            "partido": "Morena",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "Quintana Roo",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Francisco Alejandro Carrillo Flores",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "07/02/1994",
+            "correo_institucional": "eugenio.segura@senado.gob.mx",
+            "telefono": "55 5345 3000 Ext.3698, 3643 y 3253",
+            "ubicacion_oficina": "Senado de la República",
+            "ultimo_grado_estudios": "Licenciatura",
+            "preparacion_academica": "Economía",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9229086.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9229086.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Licenciatura en Economía"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9229087",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:20"
+            }
         }
     ]
 }

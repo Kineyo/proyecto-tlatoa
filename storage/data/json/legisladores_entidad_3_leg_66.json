@@ -19,7 +19,7 @@
             "entidad": "Baja California Sur",
             "distrito": null,
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "María Verónica Olvera Guevara ",
+            "suplente_nombre": "María Verónica Olvera Guevara",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": "1965-11-06",
             "correo_institucional": null,
@@ -29,7 +29,7 @@
             "preparacion_academica": "Estudios Parlamentarios",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228154.jpg",
-            "foto_local_path": "storage/raw/photos/9228154.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228154.jpg",
             "total_comisiones": 4,
             "comisiones": [
                 {
@@ -164,7 +164,7 @@
             "preparacion_academica": null,
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228151.jpg",
-            "foto_local_path": "storage/raw/photos/9228151.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228151.jpg",
             "total_comisiones": 3,
             "comisiones": [
                 {
@@ -211,6 +211,52 @@
                 "fecha_extraccion": "2026-10-09T16:12:33+02:00"
             },
             "redes_sociales": []
+        },
+        {
+            "referencia_sil": "9228150",
+            "nombre_completo": "Cota Cárdenas Manuel Alejandro",
+            "camara": "Diputados",
+            "legislatura": 66,
+            "partido": "PVEM",
+            "principio_eleccion": "Mayoría Relativa",
+            "entidad": "Baja California Sur",
+            "distrito": null,
+            "tipo_cargo": "Titular (Con Licencia)",
+            "suplente_nombre": "Juan Carlos González Bareño",
+            "fecha_toma_protesta": "29/08/2024",
+            "fecha_nacimiento": "26/12/1991",
+            "correo_institucional": "manuel.cota@diputados.gob.mx",
+            "telefono": "55 5036 0000 Ext. 59098",
+            "ubicacion_oficina": "Edificio H, 3er Piso.",
+            "ultimo_grado_estudios": "Maestría",
+            "preparacion_academica": "Comunicación Política y Gobernanza Estratégica",
+            "experiencia_legislativa_resumen": null,
+            "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228150.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso\\storage\\raw\\photos\\9228150.jpg",
+            "total_comisiones": 0,
+            "comisiones": [],
+            "trayectoria_politica": [],
+            "trayectoria_legislativa": [],
+            "trayectoria_administrativa": [],
+            "escolaridad_detalle": [
+                {
+                    "del_ano": null,
+                    "al_ano": null,
+                    "experiencia": "Maestría en Comunicación Política y Gobernanza Estratégica"
+                }
+            ],
+            "licencias": [],
+            "iniciativas": [],
+            "puntos_acuerdo": [],
+            "redes_sociales": [],
+            "metadata": {
+                "fuente": "SIL SEGOB",
+                "titular_referencia_sil": null,
+                "titular_nombre": null,
+                "suplente_referencia_sil": "9228151",
+                "estatus_licencia": "Con Licencia",
+                "fecha_extraccion": "2026-10-23 18:15:02"
+            }
         }
     ],
     "senadores": [
@@ -224,7 +270,7 @@
             "entidad": "Baja California Sur",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietario",
-            "suplente_nombre": "Eda María Palacios Márquez ",
+            "suplente_nombre": "Eda María Palacios Márquez",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -234,7 +280,7 @@
             "preparacion_academica": "Administración de Empresas",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228744.jpg",
-            "foto_local_path": "storage/raw/photos/9228744.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228744.jpg",
             "total_comisiones": 9,
             "comisiones": [
                 {
@@ -417,7 +463,7 @@
             "entidad": "Baja California Sur",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "María Elba Lombera Romero ",
+            "suplente_nombre": "María Elba Lombera Romero",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -427,7 +473,7 @@
             "preparacion_academica": "Derecho y Ciencias Sociales",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228740.jpg",
-            "foto_local_path": "storage/raw/photos/9228740.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228740.jpg",
             "total_comisiones": 8,
             "comisiones": [
                 {
@@ -584,7 +630,7 @@
             "entidad": "Baja California Sur",
             "distrito": "Senaduría de la República",
             "tipo_cargo": "Propietaria",
-            "suplente_nombre": "Yesenia Ramírez Saldaña ",
+            "suplente_nombre": "Yesenia Ramírez Saldaña",
             "fecha_toma_protesta": "29/08/2024",
             "fecha_nacimiento": null,
             "correo_institucional": null,
@@ -594,7 +640,7 @@
             "preparacion_academica": "Derecho",
             "experiencia_legislativa_resumen": null,
             "foto_oficial_url": "http://sil.gobernacion.gob.mx/Archivos/Fotos/9228748.jpg",
-            "foto_local_path": "storage/raw/photos/9228748.jpg",
+            "foto_local_path": "E:\\xampp\\htdocs\\elpulso/storage/raw/photos/9228748.jpg",
             "total_comisiones": 7,
             "comisiones": [
                 {
