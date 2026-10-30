@@ -305,9 +305,11 @@ Scripts en Python para compilar bases de datos, normalizar texto y auditar la ca
 Sitio estático autónomo optimizado para hospedar en GitHub Pages con buscador instantáneo del lado del cliente.
 
 * [`index.html`](pages/index.html): Interfaz web responsiva con buscador ultra rápido (< 5 ms), filtros por cargo (Diputados, Senadores, Gobernadores, Alcaldes, Locales) y selector de las 32 entidades.
+* [`404.html`](pages/404.html): Manejador de rutas no encontradas y redirección controlada para GitHub Pages.
+* [`.nojekyll`](pages/.nojekyll): Archivo de configuración que desactiva el procesamiento de Jekyll en GitHub Pages.
 * `data/`:
   * [`search_index.json`](pages/data/search_index.json): Catálogo estático compacto con 16,136 representantes públicos y sus fuentes oficiales `.gob.mx` (~500 KB comprimido).
-* `assets/`: Recursos visuales optimizados (`banner.png`, `tecolote.png`, `favicon.svg`).
+* `assets/`: Recursos visuales optimizados (`banner.png`, `tecolote.png`, `favicon.svg`), hojas de estilo ([`css/app.css`](pages/assets/css/app.css)) y lógica cliente ([`js/app.js`](pages/assets/js/app.js)).
 
 ---
 

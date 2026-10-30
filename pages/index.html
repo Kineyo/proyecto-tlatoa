@@ -5,284 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Tlatoa — Observatorio Ciudadano</title>
     <meta name="description" content="Observatorio ciudadano independiente de datos abiertos sobre el poder público en México. Consulta 16,100 registros con fuentes oficiales .gob.mx.">
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <style>
-        :root {
-            --bg-body: #F4F5F8;
-            --bg-card: #FFFFFF;
-            --text-main: #111827;
-            --text-muted: #6B7280;
-            --accent: #2563EB;
-            --accent-hover: #1D4ED8;
-            --accent-light: #EFF6FF;
-            --border: rgba(0, 0, 0, 0.08);
-            --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-            --radius: 12px;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.5;
-        }
-        .banner-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 20px 0;
-        }
-        .banner-img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--radius);
-            box-shadow: var(--card-shadow);
-            display: block;
-        }
-        .navbar-desktop {
-            background: #FFFFFF;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        }
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: inherit;
-        }
-        .mascot-icon {
-            width: 38px;
-            height: 38px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            background: #1E1E2E;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-        .badge-live {
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 9999px;
-            background: #EFF6FF;
-            color: #1D4ED8;
-            border: 1px solid #BFDBFE;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .badge-live::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #10B981;
-            display: inline-block;
-        }
-        .main-content {
-            flex: 1;
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 24px 20px;
-        }
-        .search-box-container {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 20px;
-            margin-bottom: 24px;
-            box-shadow: var(--card-shadow);
-        }
-        .search-input-wrapper {
-            position: relative;
-            margin-bottom: 16px;
-        }
-        .search-input {
-            width: 100%;
-            padding: 14px 16px 14px 44px;
-            font-size: 1.05rem;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            outline: none;
-            background: #F9FAFB;
-            transition: all 0.2s;
-        }
-        .search-input:focus {
-            background: #FFFFFF;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-        }
-        .search-icon {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            pointer-events: none;
-        }
-        .filters-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .filter-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .filter-pill {
-            padding: 6px 14px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            background: #F9FAFB;
-            color: var(--text-main);
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-        .filter-pill:hover { background: #E5E7EB; }
-        .filter-pill.active {
-            background: var(--accent);
-            color: #FFFFFF;
-            border-color: var(--accent);
-        }
-        .state-select {
-            padding: 7px 12px;
-            font-size: 0.85rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: #FFFFFF;
-            color: var(--text-main);
-            outline: none;
-            cursor: pointer;
-        }
-        .results-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
-        .card-pol {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 16px;
-            cursor: pointer;
-            transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: var(--card-shadow);
-        }
-        .card-pol:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-            border-color: var(--accent);
-        }
-        .badge-party {
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 6px;
-            letter-spacing: 0.5px;
-            display: inline-block;
-        }
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-            padding: 16px;
-        }
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .modal-content {
-            background: #FFFFFF;
-            width: 100%;
-            max-width: 520px;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-        }
-        .close-btn {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-muted);
-            line-height: 1;
-        }
-        .loading-spinner {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-        footer {
-            background: #FFFFFF;
-            border-top: 1px solid var(--border);
-            padding: 24px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-    </style>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="stylesheet" href="./assets/css/app.css">
 </head>
 <body>
 
     <nav class="navbar-desktop">
-        <a href="#" class="brand-container">
+        <a href="./" class="brand-container">
             <span class="mascot-icon">
-                <img src="assets/tecolote.png" alt="Tecolote" style="width:34px;height:34px;object-fit:cover;" onerror="this.outerHTML='<span>🦉</span>'">
+                <img src="./assets/tecolote.png" alt="Tecolote" style="width:34px;height:34px;object-fit:cover;" onerror="this.outerHTML='<span>🦉</span>'">
             </span>
             <div>
                 <strong style="font-size:1.15rem;display:block;line-height:1.2;">Proyecto Tlatoa</strong>
                 <span style="color:var(--text-muted);font-size:0.8rem;">Observatorio Ciudadano de México</span>
             </div>
         </a>
-        <div id="statusBadge" class="badge-live">Cargando 16,100 registros...</div>
+        <div id="statusBadge" class="badge-live">Cargando catálogo...</div>
     </nav>
 
     <div class="banner-container">
-        <img src="assets/banner.png" alt="Proyecto Tlatoa Banner" class="banner-img" onerror="this.style.display='none'">
+        <img src="./assets/banner.png" alt="Proyecto Tlatoa Banner" class="banner-img" onerror="this.style.display='none'">
     </div>
 
     <main class="main-content">
@@ -307,7 +49,7 @@
         </div>
 
         <div class="results-meta">
-            <span id="resultCount">Cargando catálogo...</span>
+            <span id="resultCount">Cargando catálogo oficial...</span>
             <span id="latencyStat">Latencia: <strong>0 ms</strong></span>
         </div>
 
@@ -318,6 +60,8 @@
             </div>
         </div>
     </main>
+
+    <button id="btnTop" class="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">↑</button>
 
     <!-- Modal Detalle -->
     <div id="detailModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
@@ -333,198 +77,6 @@
         <p style="margin-top:4px;">100% estático, cero rastreadores, cero cookies. Licencia <a href="https://github.com/Proyecto-Tlatoa/proyecto-tlatoa/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">GNU AGPL-3.0</a>.</p>
     </footer>
 
-    <script>
-        let ALL_DATA = [];
-        let currentCat = 'todos';
-        let currentState = 'todos';
-        let debounceTimer = null;
-        let lastQuery = '';
-
-        const resultsGrid = document.getElementById('resultsGrid');
-        const searchInput = document.getElementById('searchInput');
-        const resultCount = document.getElementById('resultCount');
-        const latencyStat = document.getElementById('latencyStat');
-        const statusBadge = document.getElementById('statusBadge');
-        const stateFilter = document.getElementById('stateFilter');
-        const detailModal = document.getElementById('detailModal');
-
-        function closeModal() { detailModal.classList.remove('open'); }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-        // Cargar datos
-        async function loadData() {
-            try {
-                const res = await fetch('data/search_index.json');
-                ALL_DATA = await res.json();
-                
-                statusBadge.innerText = `Catálogo Activo • ${ALL_DATA.length.toLocaleString()} Registros`;
-
-                // Poblar estados únicos
-                const states = [...new Set(ALL_DATA.map(d => d.e).filter(Boolean))].sort();
-                states.forEach(st => {
-                    const opt = document.createElement('option');
-                    opt.value = st;
-                    opt.textContent = st;
-                    stateFilter.appendChild(opt);
-                });
-
-                filterAndRender();
-            } catch (err) {
-                resultsGrid.innerHTML = `
-                    <div style="grid-column:1/-1;text-align:center;padding:48px 16px;color:#DC2626;">
-                        <div style="font-size:3rem;margin-bottom:8px;">⚠️</div>
-                        <strong>No se pudo cargar el archivo data/search_index.json</strong>
-                        <p style="font-size:0.9rem;margin-top:4px;">Verifica que el archivo exista o compílalo con <code>python3 tools/build_pages_site.py</code>.</p>
-                    </div>`;
-            }
-        }
-
-        // Filtros por Categoría
-        document.querySelectorAll('.filter-pill').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentCat = btn.dataset.cat;
-                filterAndRender();
-            });
-        });
-
-        // Filtro por Estado
-        stateFilter.addEventListener('change', (e) => {
-            currentState = e.target.value;
-            filterAndRender();
-        });
-
-        // Búsqueda con debounce
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(debounceTimer);
-            lastQuery = e.target.value.trim().toLowerCase();
-            debounceTimer = setTimeout(filterAndRender, 100);
-        });
-
-        function filterAndRender() {
-            const t0 = performance.now();
-            let filtered = ALL_DATA;
-
-            // Filtro por categoría
-            if (currentCat !== 'todos') {
-                filtered = filtered.filter(item => item.k === currentCat);
-            }
-
-            // Filtro por estado
-            if (currentState !== 'todos') {
-                filtered = filtered.filter(item => item.e === currentState);
-            }
-
-            // Filtro por texto de búsqueda
-            if (lastQuery.length > 0) {
-                filtered = filtered.filter(item => 
-                    item.n.toLowerCase().includes(lastQuery) ||
-                    item.e.toLowerCase().includes(lastQuery) ||
-                    item.p.toLowerCase().includes(lastQuery) ||
-                    item.r.toLowerCase().includes(lastQuery)
-                );
-            }
-
-            const elapsed = (performance.now() - t0).toFixed(1);
-            latencyStat.innerHTML = `Latencia: <strong style="color:#059669;">${elapsed} ms</strong>`;
-            resultCount.innerText = `Mostrando ${filtered.length.toLocaleString()} resultados de ${ALL_DATA.length.toLocaleString()}`;
-
-            // Renderizar máximo 120 en pantalla para rendimiento fluido
-            const toRender = filtered.slice(0, 120);
-            renderGrid(toRender, filtered.length);
-        }
-
-        function renderGrid(items, totalCount) {
-            if (items.length === 0) {
-                resultsGrid.innerHTML = `
-                    <div style="grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--text-muted);">
-                        <div style="font-size:3rem;margin-bottom:8px;">🦉</div>
-                        <strong style="color:var(--text-main);">Sin coincidencias</strong>
-                        <p style="font-size:0.9rem;margin-top:4px;">No se encontraron registros para tu búsqueda o filtros actuales.</p>
-                    </div>`;
-                return;
-            }
-
-            let html = items.map(p => {
-                const color = p.c || '#4B5563';
-                const fotoHtml = p.f 
-                    ? `<img src="${encodeURI(p.f)}" style="width:42px;height:42px;border-radius:50%;object-fit:cover;margin-right:12px;flex-shrink:0;background:#E5E7EB;" onerror="this.style.display='none'">` 
-                    : '';
-                return `
-                <div class="card-pol" onclick="openDetails('${escapeHtml(p.s)}')">
-                    <div>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                            <span class="badge-party" style="background-color:${color}18;color:${color};">${escapeHtml(p.p)}</span>
-                            <span style="color:var(--text-muted);font-size:0.8rem;">${escapeHtml(p.e)}</span>
-                        </div>
-                        <div style="display:flex;align-items:center;">
-                            ${fotoHtml}
-                            <div style="overflow:hidden;">
-                                <div style="font-weight:700;font-size:0.95rem;margin-bottom:2px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">${escapeHtml(p.n)}</div>
-                                <div style="color:var(--text-muted);font-size:0.82rem;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">${escapeHtml(p.r)}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-            }).join('');
-
-            if (totalCount > 120) {
-                html += `
-                <div style="grid-column:1/-1;text-align:center;padding:16px;color:var(--text-muted);font-size:0.85rem;">
-                    <em>(Mostrando los primeros 120 de ${totalCount.toLocaleString()} resultados. Escribe más letras en el buscador para filtrar con precisión).</em>
-                </div>`;
-            }
-
-            resultsGrid.innerHTML = html;
-        }
-
-        function openDetails(slug) {
-            const p = ALL_DATA.find(item => item.s === slug);
-            if (!p) return;
-
-            const color = p.c || '#2563EB';
-            const fotoHtml = p.f 
-                ? `<img src="${encodeURI(p.f)}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:12px;background:#E5E7EB;">`
-                : '';
-
-            document.getElementById('modalPolHeader').innerHTML = `
-                <div style="text-align:center;border-bottom:1px solid var(--border);padding-bottom:16px;">
-                    ${fotoHtml}
-                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">${escapeHtml(p.n)}</h3>
-                    <span class="badge-party" style="background:${color}20;color:${color};font-size:0.85rem;padding:4px 12px;">${escapeHtml(p.p)}</span>
-                </div>
-            `;
-
-            document.getElementById('modalPolBody').innerHTML = `
-                <div style="display:flex;flex-direction:column;gap:10px;font-size:0.9rem;">
-                    <div><strong>Cargo Oficial:</strong> ${escapeHtml(p.r)}</div>
-                    <div><strong>Entidad Federativa:</strong> ${escapeHtml(p.e)}</div>
-                    <div><strong>Identificador Único (Slug):</strong> <code>${escapeHtml(p.s)}</code></div>
-                    <div><strong>Estatus:</strong> ${p.a ? '✅ Activo / Vigente' : '📜 Histórico'}</div>
-                    <div style="background:#F9FAFB;border:1px solid var(--border);border-radius:10px;padding:12px;margin-top:8px;">
-                        <strong style="display:block;margin-bottom:4px;color:var(--text-main);">Fuente Gubernamental Oficial:</strong>
-                        <a href="${escapeHtml(p.u)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent);word-break:break-all;font-size:0.85rem;text-decoration:underline;">
-                            ${escapeHtml(p.u)} &rarr;
-                        </a>
-                    </div>
-                </div>
-            `;
-
-            detailModal.classList.add('open');
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#039;');
-        }
-
-        loadData();
-    </script>
+    <script src="./assets/js/app.js"></script>
 </body>
 </html>

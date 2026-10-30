@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Compilador del sitio estático para GitHub Pages (Proyecto Tlatoa)
-Genera el índice de búsqueda search_index.json y sincroniza assets en pages/
+Genera el índice de búsqueda search_index.json, sincroniza assets y genera .nojekyll y 404.html
 """
 
 import sqlite3
@@ -20,7 +20,12 @@ def build():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 1. Copiar assets esenciales
+    # 1. Crear .nojekyll para evitar que GitHub Pages ejecute Jekyll
+    nojekyll_file = PAGES_DIR / ".nojekyll"
+    nojekyll_file.touch()
+    print("  [+] Creado pages/.nojekyll")
+
+    # 2. Copiar assets esenciales
     src_assets = ROOT_DIR / "assets"
     for filename in ["banner.png", "tecolote.png", "favicon.svg", "favicon.ico"]:
         src_file = src_assets / filename
@@ -28,70 +33,142 @@ def build():
             shutil.copy2(src_file, ASSETS_DIR / filename)
             print(f"  [+] Copiado asset: {filename}")
 
-    # Copiar también tecolote.svg si existe en img
     src_svg = src_assets / "img" / "tecolote.svg"
     if src_svg.exists():
         (ASSETS_DIR / "img").mkdir(exist_ok=True)
         shutil.copy2(src_svg, ASSETS_DIR / "img" / "tecolote.svg")
 
-    # 2. Extraer datos compactos de SQLite
-    if not DB_PATH.exists():
-        raise FileNotFoundError(f"No se encontró la base de datos en {DB_PATH}")
-
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute("""
-        SELECT slug, nombre_completo, partido, partido_color, cargo, camara, entidad, es_activo, foto_url, datos_json 
-        FROM politicos
-        ORDER BY es_activo DESC, nombre_completo ASC
-    """)
-
-    items = []
-    for row in cursor.fetchall():
-        slug, nombre, partido, color, cargo, camara, entidad, es_activo, foto, dj_str = row
-        dj = json.loads(dj_str) if dj_str else {}
-        
-        fuente = dj.get("fuente_url") or (dj.get("metadata") or {}).get("fuente_url")
-        if not fuente and dj.get("referencia_sil"):
-            fuente = f"http://sil.gobernacion.gob.mx/Librerias/pp_PerfilLegislador.php?Referencia={dj['referencia_sil']}"
-
-        # Clasificación simplificada para filtros rápidos
-        c_lower = (cargo or "").lower()
-        if "senador" in c_lower:
-            categoria = "senador"
-        elif "diputado(a) federal" in c_lower or "diputados" in (camara or "").lower():
-            categoria = "diputado_federal"
-        elif "gobernador" in c_lower or "jefe de gobierno" in c_lower or "regente" in c_lower:
-            categoria = "gobernador"
-        elif "municipal" in c_lower or "alcalde" in c_lower or "alcaldesa" in c_lower:
-            categoria = "alcalde"
-        elif "local" in c_lower:
-            categoria = "diputado_local"
-        else:
-            categoria = "otros"
-
-        items.append({
-            "s": slug,
-            "n": nombre,
-            "p": partido or "Ind.",
-            "c": color or "#4B5563",
-            "r": cargo or "Servidor Público",
-            "e": entidad or "México",
-            "k": categoria,
-            "a": es_activo or 0,
-            "f": foto or "",
-            "u": fuente or "https://www.gob.mx"
-        })
-
-    conn.close()
-
     output_path = DATA_DIR / "search_index.json"
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(items, f, ensure_ascii=False, separators=(",", ":"))
 
-    size_mb = output_path.stat().st_size / (1024 * 1024)
-    print(f"✅ Catálogo generado con éxito: {len(items):,} registros ({size_mb:.2f} MB)")
-    print(f"📁 Salida: {output_path}")
+    # 3. Extraer datos compactos de SQLite si existe
+    if DB_PATH.exists():
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT slug, nombre_completo, partido, partido_color, cargo, camara, entidad, es_activo, foto_url, datos_json 
+            FROM politicos
+            ORDER BY es_activo DESC, nombre_completo ASC
+        """)
+
+        items = []
+        for row in cursor.fetchall():
+            slug, nombre, partido, color, cargo, camara, entidad, es_activo, foto, dj_str = row
+            dj = json.loads(dj_str) if dj_str else {}
+            
+            fuente = dj.get("fuente_url") or (dj.get("metadata") or {}).get("fuente_url")
+            if not fuente and dj.get("referencia_sil"):
+                fuente = f"https://sil.gobernacion.gob.mx/Librerias/pp_PerfilLegislador.php?Referencia={dj['referencia_sil']}"
+
+            # Garantizar HTTPS en fotos del SIL para evitar bloqueo de contenido mixto en navegadores
+            if foto and foto.startswith("http://sil.gobernacion.gob.mx"):
+                foto = foto.replace("http://sil.gobernacion.gob.mx", "https://sil.gobernacion.gob.mx")
+
+            c_lower = (cargo or "").lower()
+            if "senador" in c_lower:
+                categoria = "senador"
+            elif "diputado(a) federal" in c_lower or "diputados" in (camara or "").lower():
+                categoria = "diputado_federal"
+            elif "gobernador" in c_lower or "jefe de gobierno" in c_lower or "regente" in c_lower:
+                categoria = "gobernador"
+            elif "municipal" in c_lower or "alcalde" in c_lower or "alcaldesa" in c_lower:
+                categoria = "alcalde"
+            elif "local" in c_lower:
+                categoria = "diputado_local"
+            else:
+                categoria = "otros"
+
+            items.append({
+                "s": slug,
+                "n": nombre,
+                "p": partido or "Ind.",
+                "c": color or "#4B5563",
+                "r": cargo or "Servidor Público",
+                "e": entidad or "México",
+                "k": categoria,
+                "a": es_activo or 0,
+                "f": foto or "",
+                "u": fuente or "https://www.gob.mx"
+            })
+
+        conn.close()
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(items, f, ensure_ascii=False, separators=(",", ":"))
+
+        size_mb = output_path.stat().st_size / (1024 * 1024)
+        print(f"✅ Catálogo generado con éxito: {len(items):,} registros ({size_mb:.2f} MB)")
+    else:
+        if output_path.exists():
+            print(f"ℹ️ Base de datos no encontrada en CI; usando catálogo existente en {output_path}")
+        else:
+            print("⚠️ Advertencia: No se encontró storage/tlatoa.db ni pages/data/search_index.json")
+
+    # 4. Crear 404.html estático para redirección SPA elegante
+    create_404()
+
+def create_404():
+    p404 = PAGES_DIR / "404.html"
+    content = """<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada — Proyecto Tlatoa</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #F4F5F8;
+            color: #1A1A1E;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            padding: 20px;
+        }
+        .box {
+            background: #FFFFFF;
+            padding: 40px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            max-width: 440px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 24px;
+            background: #2563EB;
+            color: #FFF;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div style="font-size:3.5rem;margin-bottom:8px;">🦉</div>
+        <h2 style="margin:0 0 8px;">Página no encontrada</h2>
+        <p style="color:#6B7280;font-size:0.95rem;margin:0 0 16px;">
+            La ruta solicitada no existe o fue movida.
+        </p>
+        <a href="./" class="btn">Volver al Observatorio</a>
+    </div>
+    <script>
+        // Si el usuario intentó acceder a un subpath, redirigir al index con hash
+        const path = window.location.pathname.split('/').pop();
+        if (path && path !== '404' && path !== '404.html') {
+            window.location.replace('./#q=' + encodeURIComponent(path));
+        }
+    </script>
+</body>
+</html>
+"""
+    with open(p404, "w", encoding="utf-8") as f:
+        f.write(content)
+    print("  [+] Generado pages/404.html")
 
 if __name__ == "__main__":
     build()
