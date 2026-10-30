@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Configurar PHP 8.2
         uses: shivammathur/setup-php@v2
