@@ -53,6 +53,18 @@ Proyecto Tlatoa es una bifurcación independiente (Hard Fork) que se alimenta co
 3. **Pipeline de Sincronización Tlatoa:** `git fetch upstream` incorpora nuevos datasets (`storage/data/json/`) y parches de indexación (`tools/`) preservando intactas las personalizaciones locales y runtimes propios de Tlatoa.
 4. **Compilación Multiplataforma:** `tools/build_mobile_db.py` transforma los más de 3,200 datasets JSON en la base de datos binaria compacta `storage/tlatoa.db` con búsqueda FTS5 tolerante a acentos.
 
+> [!IMPORTANT]
+> ### 🕷️ Suite de Scrapers (Rama Huérfana `scrapers`) y Política de Contribuciones
+> Para preservar la ligereza del repositorio de aplicaciones y runtimes offline, la suite completa de extractores (PHP, Python y Lua) se mantiene aislada en la rama huérfana **`scrapers`**:
+> ```bash
+> # Inspeccionar o utilizar los extractores
+> git checkout scrapers
+> ```
+> Consulta el `README.md` de dicha rama para conocer los parámetros de ejecución, cumplimiento de `robots.txt` y directivas éticas de rate-limiting (1,250 ms).
+> 
+> **🚫 Aviso de Pull Requests en este Hard Fork:**  
+> En este repositorio **no se aceptan Pull Requests**. Si desarrollas o mejoras un scraper, o deseas incorporar nuevos datasets, envía tu contribución mediante Pull Request directamente al repositorio base upstream: **[`pulso-civico/pulso-civico/main`](https://github.com/elpulsocivico/pulso-civico)** siguiendo los contratos canónicos de datos.
+
 ---
 
 ## 📚 Documentación Integral del Proyecto
@@ -76,6 +88,7 @@ Toda la documentación está clasificada en cuatro secciones temáticas:
 * [**Poder Ejecutivo Estatal**](docs/PODER_EJECUTIVO_ESTADOS.md) — Modelo de datos y cobertura de mandatarios estatales y regentes (1929–2030).
 
 ### 3. 🛠️ Desarrollo, Scrapers y Contribución
+* [**Suite de Scrapers (Rama Huérfana `scrapers`)**](https://github.com/Proyecto-Tlatoa/proyecto-tlatoa/tree/scrapers) — Suite completa de extractores oficiales (PHP, Python, Lua) en entorno aislado.
 * [**Cómo Crear un Scraper**](docs/COMO_CREAR_UN_SCRAPER.md) — Guía paso a paso para programar extractores en Lua o Python.
 * [**Playbook de Congresos Locales**](docs/PLAYBOOK_LOCALES.md) — Playbook de extracción para congresos locales y alcaldías asistida por IA.
 * [**Pipeline de Staging**](docs/PIPELINE_STAGING.md) — Buzón seguro para enviar evidencia ciudadana sin programar.

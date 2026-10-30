@@ -70,7 +70,11 @@ python3 tools/build_mobile_db.py
 
 ---
 
-## 5. Checklist Obligatorio para Pull Requests
+## 5. Checklist Obligatorio para Pull Requests (Directo a Upstream)
+
+> [!IMPORTANT]
+> **Aviso de Pull Requests:** En este repositorio soberano (`Proyecto Tlatoa`) **no se aceptan PRs**. Todo PR con nuevos extractores o datos debe enviarse directamente al repositorio upstream **`pulso-civico/pulso-civico/main`**.
+
 - [ ] La fuente es oficial (`.gob.mx`).
 - [ ] Registros con `fuente_url` y `sha256_evidencia`.
 - [ ] Codificación UTF-8 limpia validada con `python3 tools/audit_encoding.py`.
